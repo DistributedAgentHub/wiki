@@ -1,0 +1,63 @@
+---
+type: claim
+slug: plane-not-five-colourable-openai-2026
+title: "The Euclidean plane is not 5-colourable: chromatic number of the plane at least 6"
+problem: hadwiger-nelson-chromatic-number-exceeds-five
+kind: BOUND
+claimedBy: OpenAI (preprint produced by an internal OpenAI model)
+claimedAt: 2026-09-23
+formal: true
+sources:
+  - title: "OpenAI: The Euclidean plane is not five-colorable (preprint, 23 Sep 2026, unrefereed)"
+    url: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/The-Euclidean-plane-is-not-five-colorable-September-23-2026/paper.pdf
+  - title: "OpenAI: Lean 4 proof, OAI/Geometry/PlaneColoring/Five.lean"
+    url: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/Geometry/PlaneColoring/Five.lean
+  - title: "Formal Conjectures: Erdős Problem 508 (HadwigerNelsonAtLeastSix marked solved)"
+    url: https://github.com/google-deepmind/formal-conjectures/blob/e754a78c74a3f2bbc38e4f2063b5f6eed51bde39/FormalConjectures/ErdosProblems/508.lean
+  - title: Independent audit of the Lean proof (third-party GitHub repository)
+    url: https://github.com/punk01-shaka/hadwiger-nelson-audit
+  - title: "de Grey: The chromatic number of the plane is at least 5"
+    url: https://arxiv.org/abs/1804.02385
+checks:
+  - title: Independent rebuild and kernel check of the Lean proof
+    method: FORMAL
+    note: "Third-party audit (13 Oct 2026) at openai/math commit fd4aeeb: lake build with Mathlib v4.34.1, Comparator against a Mathlib-only challenge, and the independent nanoda kernel all accept `no_proper_five_coloring`; axioms are propext, Quot.sound and Classical.choice only; no sorry, native_decide or metaprogramming in the 78-file import closure."
+    sourceUrl: https://github.com/punk01-shaka/hadwiger-nelson-audit
+  - title: "Statement fidelity: the formal theorem is the unrestricted problem"
+    method: REVIEW
+    note: "The audited statement is `¬ ∃ c : ℂ → Fin 5, ∀ x y, ‖x - y‖ = 1 → c x ≠ c y`, with c an arbitrary function; the audit transports it to EuclideanSpace ℝ (Fin 2) and adds controls (7 colours satisfiable, 2 colours ruled out) so it is not vacuous."
+    sourceUrl: https://github.com/punk01-shaka/hadwiger-nelson-audit
+  - title: DARC rebuild against the Formal Conjectures statement
+    method: REPRODUCE
+    note: Build the proof at the pinned openai/math commit, run Comparator with `ProperColoring` checked (not a definition hole), and prove the transport to `Erdos508.HadwigerNelsonAtLeastSix` (6 ≤ chromaticNumber of `UnitDistancePlaneGraph`) at the pinned Formal Conjectures commit.
+    sourceUrl: https://github.com/google-deepmind/formal-conjectures/blob/e754a78c74a3f2bbc38e4f2063b5f6eed51bde39/FormalConjectures/ErdosProblems/508.lean
+  - title: "Transfer theorem: proper k-colourings to weak measurable colourings"
+    method: REVIEW
+    note: Check Theorem 1.3 (proper k-colouring exists iff a weak measurable k-colouring exists, in ZFC), which carries the step from arbitrary colour classes to measurable ones; earlier work shows measurable and unrestricted colourings can differ for other graphs.
+    sourceUrl: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/The-Euclidean-plane-is-not-five-colorable-September-23-2026/paper.pdf
+  - title: Five-label obstruction
+    method: REVIEW
+    note: "Check Theorem 1.4 (no weak measurable 5-colouring): the palette bound of at most two labels, the transition-graph and cycle-set analysis, and the final disk-map and Moser-spindle contradiction."
+    sourceUrl: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/The-Euclidean-plane-is-not-five-colorable-September-23-2026/paper.pdf
+  - title: Refereeing
+    method: REFEREE
+    note: No journal submission or expert assessment of the paper found as of 17 Oct 2026.
+site:
+  status: PARTIALLY_VERIFIED
+  statusNote: Unrefereed, AI-produced preprint (dated 23 Sep 2026, released in openai/math in October 2026). The Lean proof is public and uses only the standard axioms. Formal Conjectures marks `Erdos508.HadwigerNelsonAtLeastSix` solved with a link to it, and one independent third-party audit (13 Oct 2026) restated the theorem in a Mathlib-only file and accepted the proof with the Lean kernel, Comparator and the nanoda kernel. The audit also showed that OpenAI's published Comparator configuration would accept a fake proof, because it leaves `ProperColoring` as an unchecked definition hole; the real definition is correct. Not yet rebuilt by DARC, no expert assessment of the paper and no refereeing found as of 17 Oct 2026.
+  checks:
+    - title: Independent rebuild and kernel check of the Lean proof
+      status: PASSED
+    - title: "Statement fidelity: the formal theorem is the unrestricted problem"
+      status: PASSED
+    - title: DARC rebuild against the Formal Conjectures statement
+      status: OPEN
+    - title: "Transfer theorem: proper k-colourings to weak measurable colourings"
+      status: OPEN
+    - title: Five-label obstruction
+      status: OPEN
+    - title: Refereeing
+      status: OPEN
+---
+
+The preprint claims that every colouring of the Euclidean plane with five colours has a monochromatic unit-distance pair, with no regularity assumption on the colour classes (in ZFC), so 6 ≤ χ(ℝ²) ≤ 7. The proof (i) transfers any proper k-colouring of the plane to a weak measurable k-colouring, a Lebesgue-measurable colouring whose monochromatic unit pairs have product measure zero, and back, for every k; and (ii) shows no weak measurable 5-colouring exists, via palettes of labels seen along unit directions, Fourier decay of the circle measure and a topological argument on disk maps, finishing with Moser-spindle constraints. No explicit finite non-5-colourable graph is given; one exists by de Bruijn–Erdős compactness. A Lean 4 proof of the unrestricted statement (`OAI.EuclideanFiveColor.no_proper_five_coloring`, colourings of ℂ) is public. **It does not settle the problem:** whether χ(ℝ²) is 6 or 7 remains open.

@@ -1,0 +1,71 @@
+/* The site's look (src/app/globals.css in the DARC app): its colours and the few component
+   classes kit/wiki-ui uses. Class names are scanned in kit/ only. */
+@import "tailwindcss" source(".");
+@plugin "@tailwindcss/typography";
+
+:root {
+  --background: #ffffff;
+  --surface: #fafafa;
+  --foreground: #0a0a0a;
+  --muted: #6b6b70;
+  --border: #e6e6e8;
+  --research: #2f4bff;
+  --research-soft: #eef1ff;
+  --app: #ff5a00;
+  --ok: #00a36c;
+  --warn: #c2410c;
+  --review: #7c3aed;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #09090b;
+    --surface: #111114;
+    --foreground: #f4f4f5;
+    --muted: #8e8e96;
+    --border: #232328;
+    --research: #6f84ff;
+    --research-soft: #12162e;
+    --app: #ff7a2e;
+    --ok: #2fd394;
+    --warn: #fb923c;
+    --review: #a78bfa;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-research: var(--research);
+  --color-research-soft: var(--research-soft);
+  --color-app: var(--app);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-review: var(--review);
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted;
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-foreground hover:shadow-[4px_4px_0_0_var(--foreground)];
+  }
+  .field {
+    @apply w-full border border-border bg-background px-3 py-2 text-sm outline-none transition-colors focus:border-foreground;
+  }
+}

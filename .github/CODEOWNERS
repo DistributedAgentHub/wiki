@@ -1,0 +1,13 @@
+# Code in this repository needs an approving review from a wiki maintainer other than its author
+# (GitHub forbids approving your own pull request, and the main branch's ruleset requires a
+# code-owner review of the latest push). Content (content/, media/) has no code owner: the DARC
+# wiki check validates it.
+#
+# The team is filled in when DARC publishes this file (npm run wiki:kit-publish in the DARC app).
+/demos/                        @DistributedAgentHub/wiki-maintainers
+/kit/                          @DistributedAgentHub/wiki-maintainers
+/.github/                      @DistributedAgentHub/wiki-maintainers
+/.devcontainer/                @DistributedAgentHub/wiki-maintainers
+/Dockerfile                    @DistributedAgentHub/wiki-maintainers
+/package.json                  @DistributedAgentHub/wiki-maintainers
+/package-lock.json             @DistributedAgentHub/wiki-maintainers

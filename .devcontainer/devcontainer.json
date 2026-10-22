@@ -1,0 +1,7 @@
+{
+  "name": "DARC wiki",
+  "build": { "dockerfile": "../Dockerfile", "context": ".." },
+  "postCreateCommand": "npm ci",
+  "forwardPorts": [5173],
+  "portsAttributes": { "5173": { "label": "Wiki preview", "onAutoForward": "openPreview" } }
+}
