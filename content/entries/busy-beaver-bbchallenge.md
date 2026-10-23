@@ -90,12 +90,30 @@ explainer:
     - title: Busy beaver (Wikipedia)
       url: https://en.wikipedia.org/wiki/Busy_beaver
       why: Definitions and known values.
-raw:
-  body: "## The function\n\nA Turing machine with *n* states and two symbols starts on a blank tape. The Busy Beaver function BB(n) is the largest number of steps that any such machine takes before halting (the value S(n) in the paper). It grows faster than any computable function, so only a few values can ever be found. BB(1) to BB(4) were known from the 1960s and 1980s; BB(5) was settled in 2024.\n\n## BB(5) = 47,176,870\n\nThe **bbchallenge** collaboration enumerated 5-state machines and decided, for each of 181,385,789 candidates in the paper's account, whether it halts. Most machines were handled by *deciders*, short programs that prove non-halting for broad families (cyclers, translated cyclers, counters, and so on); a small set of difficult machines needed individual proofs. On 2 July 2024 the collaboration announced that BB(5) = 47,176,870, the value of a champion machine found by Marxen and Buntrock in 1990. The proof was formalised in **Coq** (repository `ccz181078/Coq-BB5`), the first formally verified new Busy Beaver value, and written up as arXiv:2509.12337 (v1 September 2025, revised March 2026). The bbchallenge site lists no remaining undecided 5-state machines.\n\n## BB(6) and cryptids\n\nFor six states, a champion halting machine of enormous size is known: the project page records BB(6) > 2↑↑↑5 (a halter by mxdys, 2025). Deciding BB(6) is a different order of difficulty because it contains **cryptids**, machines whose behaviour resembles open problems in number theory. **Antihydra** is the best known: a 6-state, 2-symbol machine (code `1RB1RA_0LC1LE_1LD1LC_1LA0LB_1LF1RE_---0RA`) whose configurations follow a Collatz-like iteration. Halting is equivalent to a statement about repeated application of f(n) = ⌊3n/2⌋ + 2, namely that eventually more odd values than twice the number of even values occur; the wiki describes the trajectory as resembling a random walk (steps +2 or −1 with equal probability) and states that this strongly suggests the machine runs forever, but no proof exists. The wiki ties the question to Mahler's Z-number problem and the equidistribution of {ξ(3/2)^n}. Any complete proof of BB(6) must settle Antihydra, as discussed by Ligocki (2024).\n\n## Why it is machine-checkable\n\nA decider output is a proof object. For BB(5) the checker was Coq itself; the 6-state frontier is a natural target for Lean and Mathlib, which defines Turing machine models in the `Mathlib/Computability/TuringMachine/` directory. An unreviewed, LLM-written Lean 4 development (rwst/Antihydra-Basics) already models the Antihydra machine and states the reduction of its halting to the Collatz-like iteration. Open items include small classes such as BB(2,5) and BB(3,3) (machines with different state and symbol counts) listed as challenges by the project.\n\n## Limits\n\nBB values say little about practical computing; their value is as a precise, formal benchmark of how hard it is to decide halting for tiny programs."
 site:
   published: true
   aiReviewed: true
 ---
+
+## The function
+
+A Turing machine with _n_ states and two symbols starts on a blank tape. The Busy Beaver function BB(n) is the largest number of steps that any such machine takes before halting (the value S(n) in the paper). It grows faster than any computable function, so only a few values can ever be found. BB(1) to BB(4) were known from the 1960s and 1980s; BB(5) was settled in 2024.
+
+## BB(5) = 47,176,870
+
+The **bbchallenge** collaboration enumerated 5-state machines and decided, for each of 181,385,789 candidates in the paper's account, whether it halts. Most machines were handled by _deciders_, short programs that prove non-halting for broad families (cyclers, translated cyclers, counters, and so on); a small set of difficult machines needed individual proofs. On 2 July 2024 the collaboration announced that BB(5) = 47,176,870, the value of a champion machine found by Marxen and Buntrock in 1990. The proof was formalised in **Coq** (repository `ccz181078/Coq-BB5`), the first formally verified new Busy Beaver value, and written up as arXiv:2509.12337 (v1 September 2025, revised March 2026). The bbchallenge site lists no remaining undecided 5-state machines.
+
+## BB(6) and cryptids
+
+For six states, a champion halting machine of enormous size is known: the project page records BB(6) > 2↑↑↑5 (a halter by mxdys, 2025). Deciding BB(6) is a different order of difficulty because it contains **cryptids**, machines whose behaviour resembles open problems in number theory. **Antihydra** is the best known: a 6-state, 2-symbol machine (code `1RB1RA_0LC1LE_1LD1LC_1LA0LB_1LF1RE_---0RA`) whose configurations follow a Collatz-like iteration. Halting is equivalent to a statement about repeated application of f(n) = ⌊3n/2⌋ + 2, namely that eventually more odd values than twice the number of even values occur; the wiki describes the trajectory as resembling a random walk (steps +2 or −1 with equal probability) and states that this strongly suggests the machine runs forever, but no proof exists. The wiki ties the question to Mahler's Z-number problem and the equidistribution of {ξ(3/2)^n}. Any complete proof of BB(6) must settle Antihydra, as discussed by Ligocki (2024).
+
+## Why it is machine-checkable
+
+A decider output is a proof object. For BB(5) the checker was Coq itself; the 6-state frontier is a natural target for Lean and Mathlib, which defines Turing machine models in the `Mathlib/Computability/TuringMachine/` directory. An unreviewed, LLM-written Lean 4 development (rwst/Antihydra-Basics) already models the Antihydra machine and states the reduction of its halting to the Collatz-like iteration. Open items include small classes such as BB(2,5) and BB(3,3) (machines with different state and symbol counts) listed as challenges by the project.
+
+## Limits
+
+BB values say little about practical computing; their value is as a precise, formal benchmark of how hard it is to decide halting for tiny programs.
 
 # Plain explanation
 
