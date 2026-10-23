@@ -93,12 +93,37 @@ explainer:
     - title: FATE paper
       url: https://arxiv.org/abs/2511.02872
       why: A harder benchmark in graduate algebra.
-raw:
-  body: "## What is being measured\n\nA **proof-search agent** takes a formal statement and must return a Lean proof the kernel accepts. The score is the number of statements solved under stated rules: attempts per problem, compute or dollar cost, whether answers to \"find the value\" problems are given, and whether weights and harness are public. Because the checker is the kernel, a solved problem is solved, but the *rules* decide how much a number means.\n\n## The main suites\n\n- **miniF2F** ([Zheng, Han, Polu, 2021](https://arxiv.org/abs/2109.00110)): 488 formalized problems from AIME, AMC, IMO and coursework, across several proof assistants. Code: [openai/miniF2F](https://github.com/openai/miniF2F). Mistral reports its Leanstral 1.5 model at 100% on the Lean validation and test sets ([Mistral](https://mistral.ai/news/leanstral-1-5/)), so it no longer separates strong systems.\n- **PutnamBench** ([Tsoukalas et al., 2024](https://arxiv.org/abs/2407.11214)): problems from the Putnam Competition 1962 to 2025, 672 of them in Lean 4. 346 of the 672 require the solver to find an answer, not only prove it. The [leaderboard](https://trishullab.github.io/PutnamBench/leaderboard.html) lists self-reported entries with their compute budgets. Aleph Prover (Logical Intelligence) reported 668 in January 2026, and by October 2026 several entries report 672/672 with answers given (for example an open-weight DeepSeek V4 pipeline whose run cost a mean of USD 0.17 per problem at the prices of the time), and one reports 672/672 without answers; the leaderboard itself says new problems were added after some earlier evaluations.\n- **ProofNet** ([Azerbayev et al., 2023](https://arxiv.org/abs/2302.12433)): undergraduate analysis and algebra statements aligned with textbooks, to test both autoformalization and proving.\n- **FATE** ([Jiang et al., 2025](https://arxiv.org/abs/2511.02872)): FATE-H and FATE-X, 100 problems each, in abstract and commutative algebra, with FATE-X designed to exceed PhD-level difficulty and Mathlib's coverage. The paper reported the best model at 3% pass@64 on FATE-H and 0% on FATE-X; Mistral's July 2026 release reports 87 and 34 solved (vendor-reported, not independently checked).\n- **FLTEval** ([Mistral](https://github.com/mistralai/FLTEval)): repository-level tasks built from pull requests to the Fermat's Last Theorem project, closer to real formalization work than isolated problems.\n\n## The agents\n\nSystems differ in design: language-model provers trained with reinforcement learning on Lean feedback (AlphaProof, DeepSeek-Prover-V2, Seed-Prover, Goedel-Prover), agentic scaffolds that call a general model with Lean tools, and whole-project systems. DeepMind reported four of six IMO 2024 problems solved by AlphaProof and AlphaGeometry 2 with proofs checked in Lean ([blog](https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/)).\n\n## How to read a result\n\n1. **Budget:** dollars, GPU days or tokens per problem, and the number of attempts.\n2. **Openness:** weights, harness and proofs public or not; the PutnamBench leaderboard tags each entry.\n3. **Statement version:** benchmarks get fixes and additions, so the version used must be stated.\n4. **Verification:** proofs should be re-checked outside the submitter's pipeline, with the statement fixed in advance (Comparator or SafeVerify style).\n\n## Why this entry is load-bearing\n\nCompetition-style suites are close to saturated, so claims now turn on cost, openness and reproducibility, and on harder suites. Open conjectures with formal statements (the Formal Conjectures corpus) are the next test set because they cannot have leaked into training data."
 site:
   published: true
   aiReviewed: true
 ---
+
+## What is being measured
+
+A **proof-search agent** takes a formal statement and must return a Lean proof the kernel accepts. The score is the number of statements solved under stated rules: attempts per problem, compute or dollar cost, whether answers to "find the value" problems are given, and whether weights and harness are public. Because the checker is the kernel, a solved problem is solved, but the _rules_ decide how much a number means.
+
+## The main suites
+
+- **miniF2F** ([Zheng, Han, Polu, 2021](https://arxiv.org/abs/2109.00110)): 488 formalized problems from AIME, AMC, IMO and coursework, across several proof assistants. Code: [openai/miniF2F](https://github.com/openai/miniF2F). Mistral reports its Leanstral 1.5 model at 100% on the Lean validation and test sets ([Mistral](https://mistral.ai/news/leanstral-1-5/)), so it no longer separates strong systems.
+- **PutnamBench** ([Tsoukalas et al., 2024](https://arxiv.org/abs/2407.11214)): problems from the Putnam Competition 1962 to 2025, 672 of them in Lean 4. 346 of the 672 require the solver to find an answer, not only prove it. The [leaderboard](https://trishullab.github.io/PutnamBench/leaderboard.html) lists self-reported entries with their compute budgets. Aleph Prover (Logical Intelligence) reported 668 in January 2026, and by October 2026 several entries report 672/672 with answers given (for example an open-weight DeepSeek V4 pipeline whose run cost a mean of USD 0.17 per problem at the prices of the time), and one reports 672/672 without answers; the leaderboard itself says new problems were added after some earlier evaluations.
+- **ProofNet** ([Azerbayev et al., 2023](https://arxiv.org/abs/2302.12433)): undergraduate analysis and algebra statements aligned with textbooks, to test both autoformalization and proving.
+- **FATE** ([Jiang et al., 2025](https://arxiv.org/abs/2511.02872)): FATE-H and FATE-X, 100 problems each, in abstract and commutative algebra, with FATE-X designed to exceed PhD-level difficulty and Mathlib's coverage. The paper reported the best model at 3% pass\@64 on FATE-H and 0% on FATE-X; Mistral's July 2026 release reports 87 and 34 solved (vendor-reported, not independently checked).
+- **FLTEval** ([Mistral](https://github.com/mistralai/FLTEval)): repository-level tasks built from pull requests to the Fermat's Last Theorem project, closer to real formalization work than isolated problems.
+
+## The agents
+
+Systems differ in design: language-model provers trained with reinforcement learning on Lean feedback (AlphaProof, DeepSeek-Prover-V2, Seed-Prover, Goedel-Prover), agentic scaffolds that call a general model with Lean tools, and whole-project systems. DeepMind reported four of six IMO 2024 problems solved by AlphaProof and AlphaGeometry 2 with proofs checked in Lean ([blog](https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/)).
+
+## How to read a result
+
+1. **Budget:** dollars, GPU days or tokens per problem, and the number of attempts.
+2. **Openness:** weights, harness and proofs public or not; the PutnamBench leaderboard tags each entry.
+3. **Statement version:** benchmarks get fixes and additions, so the version used must be stated.
+4. **Verification:** proofs should be re-checked outside the submitter's pipeline, with the statement fixed in advance (Comparator or SafeVerify style).
+
+## Why this entry is load-bearing
+
+Competition-style suites are close to saturated, so claims now turn on cost, openness and reproducibility, and on harder suites. Open conjectures with formal statements (the Formal Conjectures corpus) are the next test set because they cannot have leaked into training data.
 
 # Plain explanation
 
