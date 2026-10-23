@@ -102,11 +102,11 @@ explainer:
     - title: Lattice-based cryptography (Wikipedia)
       url: https://en.wikipedia.org/wiki/Lattice-based_cryptography
       why: Why the problem matters for security.
-raw:
-  body: "The shortest vector problem SVP asks, given a basis of a lattice $\\mathcal L\\subset\\mathbb Z^n$, for a nonzero vector of minimum $\\ell_p$ norm $\\lambda_1^{(p)}(\\mathcal L)$; $\\mathrm{GapSVP}_\\gamma$ asks to decide $\\lambda_1\\le1$ versus $\\lambda_1>\\gamma(n)$. SVP in $\\ell_2$ is NP-hard under *randomised* reductions (Ajtai 1998), and $\\mathrm{GapSVP}_\\gamma$ is NP-hard under randomised reductions for every constant $\\gamma$ (Khot 2005; Micciancio 2012) and for $\\gamma=2^{(\\log n)^{1-\\varepsilon}}$ (Haviv and Regev 2007, under $\\mathsf{NP}\\not\\subset\\mathsf{RTIME}(2^{\\mathrm{polylog}\\,n})$). Deterministic NP-hardness for finite $\\ell_p$ was open until Hair and Sahai (STOC 2026) proved it for all $p>2$; for the Euclidean norm only a conditional result is known. *Problem: prove, from $\\mathsf P\\ne\\mathsf{NP}$ alone, that exact SVP in $\\ell_2$ (and $\\mathrm{GapSVP}_\\gamma$ for a constant $\\gamma>1$) is NP-hard under deterministic polynomial-time reductions; then extend to polynomial factors $\\gamma=n^{c}$ with $c<1/2$.* The $\\sqrt n$ ceiling is forced: $\\mathrm{GapSVP}_{\\sqrt n}\\in\\mathsf{NP}\\cap\\mathsf{coNP}$ (Aharonov and Regev 2005)."
 site:
   aiReviewed: true
 ---
+
+The shortest vector problem SVP asks, given a basis of a lattice $\mathcal L\subset\mathbb Z^n$, for a nonzero vector of minimum $\ell_p$ norm $\lambda_1^{(p)}(\mathcal L)$; $\mathrm{GapSVP}_\gamma$ asks to decide $\lambda_1\le1$ versus $\lambda_1>\gamma(n)$. SVP in $\ell_2$ is NP-hard under _randomised_ reductions (Ajtai 1998), and $\mathrm{GapSVP}_\gamma$ is NP-hard under randomised reductions for every constant $\gamma$ (Khot 2005; Micciancio 2012) and for $\gamma=2^{(\log n)^{1-\varepsilon}}$ (Haviv and Regev 2007, under $\mathsf{NP}\not\subset\mathsf{RTIME}(2^{\mathrm{polylog}\,n})$). Deterministic NP-hardness for finite $\ell_p$ was open until Hair and Sahai (STOC 2026) proved it for all $p>2$; for the Euclidean norm only a conditional result is known. _Problem: prove, from $\mathsf P\ne\mathsf{NP}$ alone, that exact SVP in $\ell_2$ (and $\mathrm{GapSVP}_\gamma$ for a constant $\gamma>1$) is NP-hard under deterministic polynomial-time reductions; then extend to polynomial factors $\gamma=n^{c}$ with $c<1/2$._ The $\sqrt n$ ceiling is forced: $\mathrm{GapSVP}_{\sqrt n}\in\mathsf{NP}\cap\mathsf{coNP}$ (Aharonov and Regev 2005).
 
 # State of the art
 
