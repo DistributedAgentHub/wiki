@@ -95,11 +95,13 @@ explainer:
     - title: Matbench Discovery
       url: https://arxiv.org/abs/2308.14920
       why: How foundation potentials are benchmarked.
-raw:
-  body: "Train or construct a universal MLIP that matches its reference electronic-structure method on the parts of the potential energy surface away from equilibrium: reaction barrier heights and transition-state geometries (mean absolute error at most 1 kcal/mol over a held-out set of at least 10,000 reactions spanning organic, organometallic and heterogeneous catalysis), bond dissociation curves, surface and defect energies, ion-migration barriers and high-pressure or high-temperature configurations, while retaining accuracy near equilibrium (phonons and elastic constants within about 3% of the reference).\n\nThe failure to remove is *systematic softening*: universal models trained on near-equilibrium data underpredict energies, forces and curvature on high-energy structures by a roughly constant scale factor, and generalise worse to pressure and bond-breaking regimes."
 site:
   aiReviewed: true
 ---
+
+Train or construct a universal MLIP that matches its reference electronic-structure method on the parts of the potential energy surface away from equilibrium: reaction barrier heights and transition-state geometries (mean absolute error at most 1 kcal/mol over a held-out set of at least 10,000 reactions spanning organic, organometallic and heterogeneous catalysis), bond dissociation curves, surface and defect energies, ion-migration barriers and high-pressure or high-temperature configurations, while retaining accuracy near equilibrium (phonons and elastic constants within about 3% of the reference).
+
+The failure to remove is _systematic softening_: universal models trained on near-equilibrium data underpredict energies, forces and curvature on high-energy structures by a roughly constant scale factor, and generalise worse to pressure and bond-breaking regimes.
 
 # State of the art
 
