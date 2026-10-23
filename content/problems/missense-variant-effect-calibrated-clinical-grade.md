@@ -96,11 +96,15 @@ explainer:
     - title: Calibration (statistics) (Wikipedia)
       url: https://en.wikipedia.org/wiki/Calibration_(statistics)
       why: What it means for a probability to be trustworthy.
-raw:
-  body: "A large share of missense variants found in patients are classified as variants of uncertain significance (VUS), for which no clinical action is possible. Computational predictors supply supporting evidence (ACMG/AMP criteria PP3 for pathogenic and BP4 for benign), but conversion of a score to a *calibrated* strength of evidence differs by tool and gene.\n\n**Task.** Produce, for every possible human missense variant, a score with a calibrated posterior probability of pathogenicity that is valid across genes and across genetic ancestry groups, and flag when it is uncertain.\n\n**Concrete target.** On held-out clinical-grade and functional ground truth, not used in training and not circular (new ClinVar submissions with expert-panel review after a cut-off date, plus saturation genome editing / multiplexed assays of variant effect (MAVE) for at least 50 genes): (i) after Bayesian calibration to ACMG/AMP evidence levels (Tavtigian framework), at least 'moderate' evidence strength (odds of pathogenicity $\\ge 4.3{:}1$) for $\\ge 50\\%$ of variants in known disease genes, with an empirically verified false-assertion rate $\\le 5\\%$ at that threshold; (ii) coverage-adjusted accuracy not differing by more than 3 percentage points between genetic ancestry groups (accounting for ClinVar submission bias); (iii) gene-agnostic: no per-gene retraining; (iv) separation of loss-of-function from gain-of-function and dominant-negative mechanisms for at least 80% of variants in genes where the mechanism is known."
 site:
   aiReviewed: true
 ---
+
+A large share of missense variants found in patients are classified as variants of uncertain significance (VUS), for which no clinical action is possible. Computational predictors supply supporting evidence (ACMG/AMP criteria PP3 for pathogenic and BP4 for benign), but conversion of a score to a _calibrated_ strength of evidence differs by tool and gene.
+
+**Task.** Produce, for every possible human missense variant, a score with a calibrated posterior probability of pathogenicity that is valid across genes and across genetic ancestry groups, and flag when it is uncertain.
+
+**Concrete target.** On held-out clinical-grade and functional ground truth, not used in training and not circular (new ClinVar submissions with expert-panel review after a cut-off date, plus saturation genome editing / multiplexed assays of variant effect (MAVE) for at least 50 genes): (i) after Bayesian calibration to ACMG/AMP evidence levels (Tavtigian framework), at least 'moderate' evidence strength (odds of pathogenicity $\ge 4.3{:}1$) for $\ge 50\%$ of variants in known disease genes, with an empirically verified false-assertion rate $\le 5\%$ at that threshold; (ii) coverage-adjusted accuracy not differing by more than 3 percentage points between genetic ancestry groups (accounting for ClinVar submission bias); (iii) gene-agnostic: no per-gene retraining; (iv) separation of loss-of-function from gain-of-function and dominant-negative mechanisms for at least 80% of variants in genes where the mechanism is known.
 
 # State of the art
 
