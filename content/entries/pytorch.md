@@ -72,31 +72,12 @@ explainer:
     - title: Automatic differentiation (Wikipedia)
       url: https://en.wikipedia.org/wiki/Automatic_differentiation
       why: The idea behind PyTorch's gradient engine.
+raw:
+  body: "## What it is\n\nA Python-first tensor library with GPU acceleration and **define-by-run** reverse-mode autodiff: the computation graph is built as your code executes, so ordinary Python control flow just works.\n\n## Core pieces to understand\n\n| Layer | Role |\n|---|---|\n| `torch.Tensor` | Strided n-d arrays with device + dtype |\n| Autograd | Dynamic tape; each op registers its backward |\n| Dispatcher | Routes each op to the right kernel (CPU, CUDA, …) |\n| `torch.compile` | Captures graphs and generates fused kernels |\n\n## Why digest it\n\nWhen millions of applications sit on top of one library, its numerical semantics, defaults, and failure modes become *de facto* science. Knowing where it silently up-casts, or what makes an op nondeterministic, matters.\n\n## Open questions\n\nSee below."
 site:
   published: true
   aiReviewed: true
 ---
-
-## What it is
-
-A Python-first tensor library with GPU acceleration and **define-by-run** reverse-mode autodiff: the computation graph is built as your code executes, so ordinary Python control flow just works.
-
-## Core pieces to understand
-
-| Layer           | Role                                              |
-| --------------- | ------------------------------------------------- |
-| `torch.Tensor`  | Strided n-d arrays with device + dtype            |
-| Autograd        | Dynamic tape; each op registers its backward      |
-| Dispatcher      | Routes each op to the right kernel (CPU, CUDA, …) |
-| `torch.compile` | Captures graphs and generates fused kernels       |
-
-## Why digest it
-
-When millions of applications sit on top of one library, its numerical semantics, defaults, and failure modes become _de facto_ science. Knowing where it silently up-casts, or what makes an op nondeterministic, matters.
-
-## Open questions
-
-See below.
 
 # Plain explanation
 
