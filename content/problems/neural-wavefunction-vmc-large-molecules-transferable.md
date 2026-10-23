@@ -86,11 +86,16 @@ explainer:
     - title: Towards a transferable fermionic neural wavefunction for molecules (Nat. Commun.)
       url: https://doi.org/10.1038/s41467-023-44216-9
       why: Open-access paper on sharing one network across molecules.
-raw:
-  body: "Show that a neural-network wavefunction ansatz optimised by variational Monte Carlo (or combined with DMC) delivers\n\n1. total energies within 1 mHa (about 0.6 kcal/mol) of near-exact references, and *relative* energies (reaction, conformer, noncovalent interaction) within 0.5 kcal/mol, for molecules with at least 100 electrons, including second-row and first-row transition-metal atoms, at a total cost not exceeding about ten times that of CCSD(T) in the same basis for the same molecule, and\n2. a *transferable* pretrained model: one network (or a family of networks with shared parameters) trained once over a chemically diverse set of molecules and geometries, then applied to unseen molecules and geometries with fine-tuning costing at most a few percent of from-scratch training, with energy errors of the same size.\n\nAlso required: a way to certify the variational error independent of the reference (for example via variance extrapolation or an improved variational bound), because VMC energies are upper bounds without an error bar."
 site:
   aiReviewed: true
 ---
+
+Show that a neural-network wavefunction ansatz optimised by variational Monte Carlo (or combined with DMC) delivers
+
+1. total energies within 1 mHa (about 0.6 kcal/mol) of near-exact references, and _relative_ energies (reaction, conformer, noncovalent interaction) within 0.5 kcal/mol, for molecules with at least 100 electrons, including second-row and first-row transition-metal atoms, at a total cost not exceeding about ten times that of CCSD(T) in the same basis for the same molecule, and
+2. a _transferable_ pretrained model: one network (or a family of networks with shared parameters) trained once over a chemically diverse set of molecules and geometries, then applied to unseen molecules and geometries with fine-tuning costing at most a few percent of from-scratch training, with energy errors of the same size.
+
+Also required: a way to certify the variational error independent of the reference (for example via variance extrapolation or an improved variational bound), because VMC energies are upper bounds without an error bar.
 
 # State of the art
 
