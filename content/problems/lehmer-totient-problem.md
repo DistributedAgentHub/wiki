@@ -73,8 +73,6 @@ explainer:
     - title: Carmichael number (Wikipedia)
       url: https://en.wikipedia.org/wiki/Carmichael_number
       why: Why these numbers are the natural suspects.
-raw:
-  stateOfArt: "No composite solution is known. Lehmer (1932) showed a solution must be odd, squarefree, have at least 7 distinct prime factors and be a Carmichael number. Cohen and Hagis (1980) raised the prime-factor count to at least 14. Hagis (1988) showed that if $3$ divides a solution then it exceeds $10^{1{,}937{,}042}$ and has at least 298,848 prime factors; Burcsi, Czirbusz and Farkas (2011, *Ann. Univ. Sci. Budapest. Sect. Comput.* 35) raised this to more than $10^{360{,}000{,}000}$ and at least 40 million prime factors. Luca and Pomerance (2011) bound the number of solutions up to $X$ by roughly $X^{1/2}/(\\log X)^{1/2}$. Because solutions are rare or absent and any search must reach enormous sizes, neither computation nor current theory settles it."
 site:
   aiReviewed: true
 ---
@@ -87,6 +85,10 @@ Lean 4 statement in the Formal Conjectures corpus, where the open question is wh
 theorem lehmer_totient :
     ∃ n > 1, ¬Prime n ∧ Nat.totient n ∣ n - 1
 ```
+
+# State of the art
+
+No composite solution is known. Lehmer (1932) showed a solution must be odd, squarefree, have at least 7 distinct prime factors and be a Carmichael number. Cohen and Hagis (1980) raised the prime-factor count to at least 14. Hagis (1988) showed that if $3$ divides a solution then it exceeds $10^{1{,}937{,}042}$ and has at least 298,848 prime factors; Burcsi, Czirbusz and Farkas (2011, _Ann. Univ. Sci. Budapest. Sect. Comput._ 35) raised this to more than $10^{360{,}000{,}000}$ and at least 40 million prime factors. Luca and Pomerance (2011) bound the number of solutions up to $X$ by roughly $X^{1/2}/(\log X)^{1/2}$. Because solutions are rare or absent and any search must reach enormous sizes, neither computation nor current theory settles it.
 
 # Applications
 
