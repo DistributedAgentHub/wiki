@@ -107,11 +107,11 @@ explainer:
     - title: SAT solver (Wikipedia)
       url: https://en.wikipedia.org/wiki/SAT_solver
       why: Overview of solvers and where they are used.
-raw:
-  body: "Fix a concrete deterministic CDCL solver model: unit propagation, first-UIP clause learning, the VSIDS decision heuristic with a fixed decay, phase saving and Luby or geometric restarts, with no random decisions. For a CNF formula $F$ with $n$ variables whose primal graph has treewidth at most $k$, is the number of conflicts before this solver terminates on unsatisfiable $F$ bounded by $\\mathrm{poly}(n)\\cdot 2^{O(k)}$? Equivalently: *does the practical heuristic stack, not a nondeterministic or randomised idealisation, find a resolution refutation whose size matches the structure-based upper bound?* Davis–Putnam variable elimination along an elimination order of width $k$ gives resolution refutations of size $2^{O(k)}\\mathrm{poly}(n)$, so short proofs exist; the question is whether the actual heuristic search finds them."
 site:
   aiReviewed: true
 ---
+
+Fix a concrete deterministic CDCL solver model: unit propagation, first-UIP clause learning, the VSIDS decision heuristic with a fixed decay, phase saving and Luby or geometric restarts, with no random decisions. For a CNF formula $F$ with $n$ variables whose primal graph has treewidth at most $k$, is the number of conflicts before this solver terminates on unsatisfiable $F$ bounded by $\mathrm{poly}(n)\cdot 2^{O(k)}$? Equivalently: _does the practical heuristic stack, not a nondeterministic or randomised idealisation, find a resolution refutation whose size matches the structure-based upper bound?_ Davis–Putnam variable elimination along an elimination order of width $k$ gives resolution refutations of size $2^{O(k)}\mathrm{poly}(n)$, so short proofs exist; the question is whether the actual heuristic search finds them.
 
 # State of the art
 
