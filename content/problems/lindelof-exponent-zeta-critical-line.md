@@ -91,11 +91,11 @@ explainer:
     - title: Riemann zeta function - Wikipedia
       url: https://en.wikipedia.org/wiki/Riemann_zeta_function
       why: Reference for the function and its growth.
-raw:
-  body: "Define μ(σ) = limsup_{t→∞} log|ζ(σ+it)| / log t. The Lindelöf hypothesis states μ(1/2) = 0, i.e. ζ(1/2+it) ≪ t^ε. The convexity bound gives μ(1/2) ≤ 1/4. The problem asks for any improvement of Bourgain's μ(1/2) ≤ 13/84 ≈ 0.1548, via exponential-sum or decoupling methods, or any new bound on 2k-th moments of ζ on the critical line."
 site:
   aiReviewed: true
 ---
+
+Define μ(σ) = limsup\_{t→∞} log|ζ(σ+it)| / log t. The Lindelöf hypothesis states μ(1/2) = 0, i.e. ζ(1/2+it) ≪ t^ε. The convexity bound gives μ(1/2) ≤ 1/4. The problem asks for any improvement of Bourgain's μ(1/2) ≤ 13/84 ≈ 0.1548, via exponential-sum or decoupling methods, or any new bound on 2k-th moments of ζ on the critical line.
 
 # State of the art
 
