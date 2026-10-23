@@ -90,13 +90,11 @@ explainer:
     - title: Initial state preparation for quantum chemistry on quantum computers
       url: https://arxiv.org/abs/2310.18410
       why: Survey of preparation methods.
+raw:
+  body: "Quantum phase estimation returns the ground-state energy $E_0$ with probability $|\\langle\\Psi_0|\\phi\\rangle|^2$ for an input state $|\\phi\\rangle$, so the algorithm is efficient only if a state with overlap at least $1/\\mathrm{poly}(N)$ can be prepared in polynomial time. Determine, for a family of strongly correlated molecules, whether there exists a polynomial-time preparable state $|\\phi_N\\rangle$ with $|\\langle\\Psi_0|\\phi_N\\rangle|^2\\ge 1/\\mathrm{poly}(N)$ for which *no* known polynomial-cost classical method (DMRG, selected CI, coupled cluster, AFQMC) computes $E_0$ to chemical accuracy.\n\nEquivalently: either (a) exhibit such a family together with evidence (numerical scaling for system sizes beyond exact diagonalisation, or complexity-theoretic arguments) that classical heuristics fail, or (b) show that the structural features that make state preparation efficient (low entanglement, sparse determinant expansions, matrix-product or Jastrow structure) also make the classical problem tractable, which would rule out generic exponential advantage for ground-state chemistry."
 site:
   aiReviewed: true
 ---
-
-Quantum phase estimation returns the ground-state energy $E_0$ with probability $|\langle\Psi_0|\phi\rangle|^2$ for an input state $|\phi\rangle$, so the algorithm is efficient only if a state with overlap at least $1/\mathrm{poly}(N)$ can be prepared in polynomial time. Determine, for a family of strongly correlated molecules, whether there exists a polynomial-time preparable state $|\phi_N\rangle$ with $|\langle\Psi_0|\phi_N\rangle|^2\ge 1/\mathrm{poly}(N)$ for which _no_ known polynomial-cost classical method (DMRG, selected CI, coupled cluster, AFQMC) computes $E_0$ to chemical accuracy.
-
-Equivalently: either (a) exhibit such a family together with evidence (numerical scaling for system sizes beyond exact diagonalisation, or complexity-theoretic arguments) that classical heuristics fail, or (b) show that the structural features that make state preparation efficient (low entanglement, sparse determinant expansions, matrix-product or Jastrow structure) also make the classical problem tractable, which would rule out generic exponential advantage for ground-state chemistry.
 
 # State of the art
 
