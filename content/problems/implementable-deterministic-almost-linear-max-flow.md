@@ -95,11 +95,11 @@ explainer:
     - title: Flow network (Wikipedia)
       url: https://en.wikipedia.org/wiki/Flow_network
       why: Basic concepts like capacity and cuts.
-raw:
-  body: "Given a directed graph with $m$ edges, integer capacities in $[1,U]$ with $U=\\mathrm{poly}(m)$, find a maximum $s$–$t$ flow. Almost-linear-time algorithms with running time $m^{1+o(1)}$ exist, including deterministic ones, but their $m^{o(1)}$ factor is a large subpolynomial overhead (for example $2^{O(\\log^{7/8}m\\,\\log\\log m)}$ in the first version) and they rely on dynamic data structures for low-stretch decompositions and expander hierarchies. *Does there exist a deterministic algorithm with running time $O(m\\,\\mathrm{polylog}(m))$, or at least an implementation of an $m^{1+o(1)}$ algorithm, whose measured running time on the DIMACS and SNAP benchmark families beats push-relabel and Dinic implementations on graphs with $m\\ge10^{8}$?* The target is the combination: deterministic, within a logarithmic or small-polynomial-in-log factor of linear, and implementable."
 site:
   aiReviewed: true
 ---
+
+Given a directed graph with $m$ edges, integer capacities in $[1,U]$ with $U=\mathrm{poly}(m)$, find a maximum $s$–$t$ flow. Almost-linear-time algorithms with running time $m^{1+o(1)}$ exist, including deterministic ones, but their $m^{o(1)}$ factor is a large subpolynomial overhead (for example $2^{O(\log^{7/8}m\,\log\log m)}$ in the first version) and they rely on dynamic data structures for low-stretch decompositions and expander hierarchies. _Does there exist a deterministic algorithm with running time $O(m\,\mathrm{polylog}(m))$, or at least an implementation of an $m^{1+o(1)}$ algorithm, whose measured running time on the DIMACS and SNAP benchmark families beats push-relabel and Dinic implementations on graphs with $m\ge10^{8}$?_ The target is the combination: deterministic, within a logarithmic or small-polynomial-in-log factor of linear, and implementable.
 
 # State of the art
 
