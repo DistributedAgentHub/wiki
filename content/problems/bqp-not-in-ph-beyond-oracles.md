@@ -88,21 +88,12 @@ explainer:
     - title: Polynomial hierarchy (Wikipedia)
       url: https://en.wikipedia.org/wiki/Polynomial_hierarchy
       why: Definitions and the meaning of collapse.
+raw:
+  body: "It is known that $\\mathsf{BQP}\\subseteq\\mathsf{PP}\\subseteq\\mathsf{PSPACE}$, and relative to an oracle $\\mathsf{BQP}\\not\\subseteq\\mathsf{PH}$ (Raz and Tal, 2019). Whether $\\mathsf{BQP}\\subseteq\\mathsf{PH}$ in the real (unrelativised) world is open. An unconditional proof that $\\mathsf{BQP}\\not\\subseteq\\mathsf{PH}$ would imply $\\mathsf{PH}\\ne\\mathsf{PSPACE}$ and so $\\mathsf{P}\\ne\\mathsf{PSPACE}$, which is beyond current techniques.\n\n**Question:** give non-oracle evidence that BQP is not contained in PH. The target is a theorem of the form \"if $\\mathsf{BQP}\\subseteq\\mathsf{PH}$ then the polynomial hierarchy collapses to a finite level\", or the same conclusion under another standard, widely believed assumption, for a *decision* (or promise) problem in BQP. For *sampling* problems such results are known; for decision problems none is."
+  stateOfArt: "**Oracle evidence.** Simon's problem gives an oracle separation of BQP from BPP. Aaronson (STOC 2010) gave an oracle *relation* problem in BQP but not PH, and reduced an oracle *decision* separation to a generalised Linial–Nisan conjecture. Aaronson and Ambainis (2015) introduced Forrelation, and Raz and Tal (STOC 2019; J. ACM 2022) proved that the Forrelation distribution is pseudorandom for constant-depth classical circuits ($\\mathsf{AC}^0$), which gives an oracle relative to which $\\mathsf{BQP}\\not\\subseteq\\mathsf{PH}$; Wu (2020) gave a simpler stochastic-calculus proof. For *random* oracles the question is tied to the Aaronson–Ambainis conjecture.\n\n**Sampling.** Exact classical sampling from IQP circuits or boson sampling would collapse PH to its third level (Bremner, Jozsa and Shepherd, 2010; Aaronson and Arkhipov, 2011), and approximate versions follow under further conjectures. These concern sampling, and the collapse arguments (based on Stockmeyer approximate counting and PostBQP = PP) do not transfer to decision problems.\n\n**Barriers.** An unconditional separation must be non-relativising, since relative to a PSPACE-complete oracle $\\mathsf{BQP}=\\mathsf{P}\\subseteq\\mathsf{PH}$. No conditional decision-problem result of the requested form is known."
 site:
   aiReviewed: true
 ---
-
-It is known that $\mathsf{BQP}\subseteq\mathsf{PP}\subseteq\mathsf{PSPACE}$, and relative to an oracle $\mathsf{BQP}\not\subseteq\mathsf{PH}$ (Raz and Tal, 2019). Whether $\mathsf{BQP}\subseteq\mathsf{PH}$ in the real (unrelativised) world is open. An unconditional proof that $\mathsf{BQP}\not\subseteq\mathsf{PH}$ would imply $\mathsf{PH}\ne\mathsf{PSPACE}$ and so $\mathsf{P}\ne\mathsf{PSPACE}$, which is beyond current techniques.
-
-**Question:** give non-oracle evidence that BQP is not contained in PH. The target is a theorem of the form "if $\mathsf{BQP}\subseteq\mathsf{PH}$ then the polynomial hierarchy collapses to a finite level", or the same conclusion under another standard, widely believed assumption, for a _decision_ (or promise) problem in BQP. For _sampling_ problems such results are known; for decision problems none is.
-
-# State of the art
-
-**Oracle evidence.** Simon's problem gives an oracle separation of BQP from BPP. Aaronson (STOC 2010) gave an oracle _relation_ problem in BQP but not PH, and reduced an oracle _decision_ separation to a generalised Linial–Nisan conjecture. Aaronson and Ambainis (2015) introduced Forrelation, and Raz and Tal (STOC 2019; J. ACM 2022) proved that the Forrelation distribution is pseudorandom for constant-depth classical circuits ($\mathsf{AC}^0$), which gives an oracle relative to which $\mathsf{BQP}\not\subseteq\mathsf{PH}$; Wu (2020) gave a simpler stochastic-calculus proof. For _random_ oracles the question is tied to the Aaronson–Ambainis conjecture.
-
-**Sampling.** Exact classical sampling from IQP circuits or boson sampling would collapse PH to its third level (Bremner, Jozsa and Shepherd, 2010; Aaronson and Arkhipov, 2011), and approximate versions follow under further conjectures. These concern sampling, and the collapse arguments (based on Stockmeyer approximate counting and PostBQP = PP) do not transfer to decision problems.
-
-**Barriers.** An unconditional separation must be non-relativising, since relative to a PSPACE-complete oracle $\mathsf{BQP}=\mathsf{P}\subseteq\mathsf{PH}$. No conditional decision-problem result of the requested form is known.
 
 # Applications
 
