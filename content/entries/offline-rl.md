@@ -120,12 +120,35 @@ explainer:
     - title: "CORL: single-file offline RL implementations"
       url: https://github.com/corl-team/CORL
       why: Readable reference code.
-raw:
-  body: "## The setting\n\nIn offline (batch) RL the agent receives a dataset $\\mathcal{D}$ of transitions collected by some behaviour policy and must output a policy with no environment access. Off-policy algorithms such as DQN or DDPG fail here: their value estimates overestimate actions absent from the data, and the policy then exploits those errors. Fujimoto, Meger and Precup (2018) named this *extrapolation error* and proposed Batch-Constrained Q-learning (BCQ), restricting the policy to actions near the data.\n\n## Main algorithm families\n\n- **Policy constraint methods** (BCQ, BEAR, TD3+BC) keep the learned policy close to the behaviour policy.\n- **Conservative value methods** such as Conservative Q-Learning (Kumar et al., 2020) add a regulariser that lowers Q-values for out-of-distribution actions, so the learned value lower-bounds the true one.\n- **Implicit methods** such as Implicit Q-Learning (Kostrikov et al., 2021) avoid evaluating out-of-dataset actions by fitting value functions with expectile regression.\n- **Sequence-model approaches** such as Decision Transformer (Chen et al., 2021) treat RL as conditional sequence prediction on returns-to-go.\n\nLevine et al. (2020) give the standard tutorial and list open problems, including offline hyperparameter selection and evaluation.\n\n## Benchmarks\n\nD4RL (Fu et al., 2020) provides datasets for locomotion, navigation (AntMaze), manipulation and driving with normalised scores, and became the default benchmark. CORL provides single-file reference implementations. Evaluating a policy without running it requires off-policy evaluation; the DOPE benchmark (Fu et al., 2021) tests this. Paine et al. (2020) study offline hyperparameter selection and report that, with the algorithm and Q-estimator controlled, policies can be ranked well enough to choose close to the best of a set.\n\n## Theory\n\nPessimism, subtracting an uncertainty penalty from value estimates, is the theoretical principle. For tabular MDPs, Li et al. (2022) show that a pessimistic model-based method attains minimax-optimal sample complexity under single-policy clipped concentrability, of order $H^4 S C^\\star_{\\text{clipped}}/\\varepsilon^2$ in the finite-horizon case. For linear MDPs, Xiong et al. (2022) give a computationally efficient algorithm nearly matching a lower bound up to logarithmic factors. Beyond linear function approximation the picture is less complete.\n\n## Practice\n\nOffline pretraining followed by online fine-tuning, offline data in robotics, and logged-feedback learning in recommendation are the main uses. Unlike online RL, results are sensitive to dataset quality and to choosing hyperparameters without environment access."
 site:
   published: true
   aiReviewed: true
 ---
+
+## The setting
+
+In offline (batch) RL the agent receives a dataset $\mathcal{D}$ of transitions collected by some behaviour policy and must output a policy with no environment access. Off-policy algorithms such as DQN or DDPG fail here: their value estimates overestimate actions absent from the data, and the policy then exploits those errors. Fujimoto, Meger and Precup (2018) named this _extrapolation error_ and proposed Batch-Constrained Q-learning (BCQ), restricting the policy to actions near the data.
+
+## Main algorithm families
+
+- **Policy constraint methods** (BCQ, BEAR, TD3+BC) keep the learned policy close to the behaviour policy.
+- **Conservative value methods** such as Conservative Q-Learning (Kumar et al., 2020) add a regulariser that lowers Q-values for out-of-distribution actions, so the learned value lower-bounds the true one.
+- **Implicit methods** such as Implicit Q-Learning (Kostrikov et al., 2021) avoid evaluating out-of-dataset actions by fitting value functions with expectile regression.
+- **Sequence-model approaches** such as Decision Transformer (Chen et al., 2021) treat RL as conditional sequence prediction on returns-to-go.
+
+Levine et al. (2020) give the standard tutorial and list open problems, including offline hyperparameter selection and evaluation.
+
+## Benchmarks
+
+D4RL (Fu et al., 2020) provides datasets for locomotion, navigation (AntMaze), manipulation and driving with normalised scores, and became the default benchmark. CORL provides single-file reference implementations. Evaluating a policy without running it requires off-policy evaluation; the DOPE benchmark (Fu et al., 2021) tests this. Paine et al. (2020) study offline hyperparameter selection and report that, with the algorithm and Q-estimator controlled, policies can be ranked well enough to choose close to the best of a set.
+
+## Theory
+
+Pessimism, subtracting an uncertainty penalty from value estimates, is the theoretical principle. For tabular MDPs, Li et al. (2022) show that a pessimistic model-based method attains minimax-optimal sample complexity under single-policy clipped concentrability, of order $H^4 S C^\star_{\text{clipped}}/\varepsilon^2$ in the finite-horizon case. For linear MDPs, Xiong et al. (2022) give a computationally efficient algorithm nearly matching a lower bound up to logarithmic factors. Beyond linear function approximation the picture is less complete.
+
+## Practice
+
+Offline pretraining followed by online fine-tuning, offline data in robotics, and logged-feedback learning in recommendation are the main uses. Unlike online RL, results are sensitive to dataset quality and to choosing hyperparameters without environment access.
 
 # Plain explanation
 
