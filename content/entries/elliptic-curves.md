@@ -103,37 +103,12 @@ explainer:
     - title: "Quanta: New elliptic curve breaks 18-year-old record"
       url: https://www.quantamagazine.org/new-elliptic-curve-breaks-18-year-old-record-20241111/
       why: A readable account of the hunt for curves with large rank.
+raw:
+  body: "## Definition\n\nAn elliptic curve over a field $K$ (of characteristic not 2 or 3) is the set of solutions of\n$$y^2=x^3+ax+b,\\qquad 4a^3+27b^2\\neq 0,$$\ntogether with a point at infinity $O$. The nonvanishing discriminant ensures the curve is smooth. Over $\\mathbb{C}$ such a curve is a torus $\\mathbb{C}/\\Lambda$; over $\\mathbb{Q}$ and finite fields it is a source of deep arithmetic.\n\n## The group law\n\nChords and tangents define an addition: three collinear points sum to $O$. This makes the set $E(K)$ of $K$-rational points an abelian group.\n\n- **Mordell–Weil theorem.** For a number field $K$, $E(K)\\cong \\mathbb{Z}^r\\oplus E(K)_{\\mathrm{tors}}$ with $r$ finite, the *rank*. Mazur (1977) classified the possible torsion subgroups over $\\mathbb{Q}$ (15 groups). No algorithm is proven to compute the rank in general; the standard descent method is guaranteed to terminate only if the Tate–Shafarevich group is finite, which is conjectured but unproven.\n- **Finite fields.** Hasse's bound gives $\\left|\\#E(\\mathbb{F}_p)-(p+1)\\right|\\le 2\\sqrt{p}$. Schoof's algorithm counts points in polynomial time.\n\n## $L$-functions and modularity\n\nCounting points modulo every prime packages into the Hasse–Weil $L$-function $L(E,s)=\\prod_p L_p(E,p^{-s})^{-1}$. The modularity theorem (Wiles and Taylor–Wiles for semistable curves, 1995; Breuil, Conrad, Diamond and Taylor in general, 2001) says every elliptic curve over $\\mathbb{Q}$ corresponds to a weight-2 modular form, which proves that $L(E,s)$ has an analytic continuation and functional equation. A \"Frey curve\" built from a hypothetical solution of $a^p+b^p=c^p$ with $p\\ge 5$ prime would be non-modular (Ribet), which is the link to Fermat's Last Theorem (Frey, Serre, Ribet, then Wiles).\n\n## Open questions at the centre of the subject\n\n- **BSD conjecture:** the order of vanishing of $L(E,s)$ at $s=1$ equals the rank, with a precise formula for the leading coefficient.\n- **Rank distribution:** whether ranks are unbounded (a curve of rank at least 29 was found by Elkies and Klagsbrun in 2024, exactly 29 assuming GRH) and whether half of all curves have rank 0 and half rank 1 (Goldfeld and Katz–Sarnak heuristics). Bhargava, Shankar, Skinner and collaborators proved that positive proportions have rank 0 and rank 1, and A. Smith's work establishes the predicted behaviour of 2-power Selmer groups in many families of quadratic twists.\n- **Szpiro's conjecture** bounds the minimal discriminant by the conductor, $|\\Delta_E|\\ll_\\varepsilon N_E^{6+\\varepsilon}$. It follows from the abc conjecture, and a modified form of it is equivalent to abc.\n\n## Cryptography and computation\n\nElliptic-curve groups over finite fields are used because the best known attacks on the discrete logarithm for well-chosen curves are generic, about $\\sqrt{n}$ operations for a group of order $n$, whereas for the multiplicative group of a finite field faster index-calculus methods exist. This allows 256-bit curves (for example Curve25519, NIST P-256) to match the security of roughly 3072-bit RSA keys. Shor's quantum algorithm would break them, which motivates post-quantum standards. Lenstra's elliptic-curve method is also a standard integer-factoring tool. Supersingular isogeny key exchange (SIDH) was broken classically in 2022 (Castryck and Decru), an example of how number-theoretic structure can undermine a proposed scheme."
 site:
   published: true
   aiReviewed: true
 ---
-
-## Definition
-
-An elliptic curve over a field $K$ (of characteristic not 2 or 3) is the set of solutions of
-$y^2=x^3+ax+b,\qquad 4a^3+27b^2\neq 0,$
-together with a point at infinity $O$. The nonvanishing discriminant ensures the curve is smooth. Over $\mathbb{C}$ such a curve is a torus $\mathbb{C}/\Lambda$; over $\mathbb{Q}$ and finite fields it is a source of deep arithmetic.
-
-## The group law
-
-Chords and tangents define an addition: three collinear points sum to $O$. This makes the set $E(K)$ of $K$-rational points an abelian group.
-
-- **Mordell–Weil theorem.** For a number field $K$, $E(K)\cong \mathbb{Z}^r\oplus E(K)_{\mathrm{tors}}$ with $r$ finite, the _rank_. Mazur (1977) classified the possible torsion subgroups over $\mathbb{Q}$ (15 groups). No algorithm is proven to compute the rank in general; the standard descent method is guaranteed to terminate only if the Tate–Shafarevich group is finite, which is conjectured but unproven.
-- **Finite fields.** Hasse's bound gives $\left|\#E(\mathbb{F}_p)-(p+1)\right|\le 2\sqrt{p}$. Schoof's algorithm counts points in polynomial time.
-
-## $L$-functions and modularity
-
-Counting points modulo every prime packages into the Hasse–Weil $L$-function $L(E,s)=\prod_p L_p(E,p^{-s})^{-1}$. The modularity theorem (Wiles and Taylor–Wiles for semistable curves, 1995; Breuil, Conrad, Diamond and Taylor in general, 2001) says every elliptic curve over $\mathbb{Q}$ corresponds to a weight-2 modular form, which proves that $L(E,s)$ has an analytic continuation and functional equation. A "Frey curve" built from a hypothetical solution of $a^p+b^p=c^p$ with $p\ge 5$ prime would be non-modular (Ribet), which is the link to Fermat's Last Theorem (Frey, Serre, Ribet, then Wiles).
-
-## Open questions at the centre of the subject
-
-- **BSD conjecture:** the order of vanishing of $L(E,s)$ at $s=1$ equals the rank, with a precise formula for the leading coefficient.
-- **Rank distribution:** whether ranks are unbounded (a curve of rank at least 29 was found by Elkies and Klagsbrun in 2024, exactly 29 assuming GRH) and whether half of all curves have rank 0 and half rank 1 (Goldfeld and Katz–Sarnak heuristics). Bhargava, Shankar, Skinner and collaborators proved that positive proportions have rank 0 and rank 1, and A. Smith's work establishes the predicted behaviour of 2-power Selmer groups in many families of quadratic twists.
-- **Szpiro's conjecture** bounds the minimal discriminant by the conductor, $|\Delta_E|\ll_\varepsilon N_E^{6+\varepsilon}$. It follows from the abc conjecture, and a modified form of it is equivalent to abc.
-
-## Cryptography and computation
-
-Elliptic-curve groups over finite fields are used because the best known attacks on the discrete logarithm for well-chosen curves are generic, about $\sqrt{n}$ operations for a group of order $n$, whereas for the multiplicative group of a finite field faster index-calculus methods exist. This allows 256-bit curves (for example Curve25519, NIST P-256) to match the security of roughly 3072-bit RSA keys. Shor's quantum algorithm would break them, which motivates post-quantum standards. Lenstra's elliptic-curve method is also a standard integer-factoring tool. Supersingular isogeny key exchange (SIDH) was broken classically in 2022 (Castryck and Decru), an example of how number-theoretic structure can undermine a proposed scheme.
 
 # Plain explanation
 
