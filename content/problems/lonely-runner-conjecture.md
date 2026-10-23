@@ -85,8 +85,6 @@ explainer:
     - title: "Formal Conjectures: lonely runner"
       url: https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/Wikipedia/LonelyRunnerConjecture.lean
       why: The exact Lean statement.
-raw:
-  stateOfArt: "**Proved for small $n$:** up to 4 runners by Betke and Wills (1972) and Cusick (1974), 5 by Cusick and Pomerance (1984, computer-assisted), 6 by Bohman, Holzman and Kleitman (2001), 7 by Barajas and Serra (2008). **Recent computer-assisted extensions (2025 and 2026):** Rosenfeld proved 8 runners ([arXiv:2509.14111](https://arxiv.org/abs/2509.14111)); Trakulthongchai proved 9 and 10 ([arXiv:2511.22427](https://arxiv.org/abs/2511.22427)), independently of Rosenfeld's separate 9-runner write-up ([arXiv:2512.01912](https://arxiv.org/abs/2512.01912)); and Sungkawichai and Trakulthongchai proved 11, 12 and 13 runners ([arXiv:2604.23906](https://arxiv.org/abs/2604.23906), v2 September 2026). Runner counts here include every runner, as the Formal Conjectures statement does; papers that fix one runner at speed 0 count only the $k$ moving ones, so their $k = 10, 11, 12$ are 11, 12 and 13 runners. These are preprints and not yet verified in Lean. **General bound:** Tao (arXiv 2017, published 2018) proved that with $n$ runners some time gives a gap of at least $1/(2n-2)$ plus a correction of order $\\log n/(n^2(\\log\\log n)^2)$, about half of the conjectured $1/n$. **Finite checking:** Tao reduced the conjecture for a given $n$ to integer speeds of size $n^{O(n^2)}$, and Malikiosis, Santos and Schymura ([arXiv:2411.06903](https://arxiv.org/abs/2411.06903), *Forum Math. Sigma* 2025) improved this to speeds at most about $n^{2n}$, which is what makes each new case a computation."
 site:
   aiReviewed: true
 ---
@@ -106,6 +104,10 @@ theorem lonely_runner_conjecture (n : ℕ)
 ```
 
 The goal is the statement for every $n$, not a fixed small $n$.
+
+# State of the art
+
+**Proved for small $n$:** up to 4 runners by Betke and Wills (1972) and Cusick (1974), 5 by Cusick and Pomerance (1984, computer-assisted), 6 by Bohman, Holzman and Kleitman (2001), 7 by Barajas and Serra (2008). **Recent computer-assisted extensions (2025 and 2026):** Rosenfeld proved 8 runners ([arXiv:2509.14111](https://arxiv.org/abs/2509.14111)); Trakulthongchai proved 9 and 10 ([arXiv:2511.22427](https://arxiv.org/abs/2511.22427)), independently of Rosenfeld's separate 9-runner write-up ([arXiv:2512.01912](https://arxiv.org/abs/2512.01912)); and Sungkawichai and Trakulthongchai proved 11, 12 and 13 runners ([arXiv:2604.23906](https://arxiv.org/abs/2604.23906), v2 September 2026). Runner counts here include every runner, as the Formal Conjectures statement does; papers that fix one runner at speed 0 count only the $k$ moving ones, so their $k = 10, 11, 12$ are 11, 12 and 13 runners. These are preprints and not yet verified in Lean. **General bound:** Tao (arXiv 2017, published 2018) proved that with $n$ runners some time gives a gap of at least $1/(2n-2)$ plus a correction of order $\log n/(n^2(\log\log n)^2)$, about half of the conjectured $1/n$. **Finite checking:** Tao reduced the conjecture for a given $n$ to integer speeds of size $n^{O(n^2)}$, and Malikiosis, Santos and Schymura ([arXiv:2411.06903](https://arxiv.org/abs/2411.06903), _Forum Math. Sigma_ 2025) improved this to speeds at most about $n^{2n}$, which is what makes each new case a computation.
 
 # Applications
 
