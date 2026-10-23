@@ -91,8 +91,6 @@ explainer:
     - title: Quantum algorithm (Wikipedia)
       url: https://en.wikipedia.org/wiki/Quantum_algorithm
       why: Where quantum speedups are known to exist.
-raw:
-  verifySpec: "The statement is an influence bound for bounded low-degree multilinear polynomials, max_i Inf_i[f] >= (Var[f]/d)^C, or an explicit counterexample family. Mathlib has no Boolean-function analysis library, so it cannot be Lean-checked yet. Experts review the proof, and a counterexample could be partly screened numerically on small cases."
 site:
   aiReviewed: true
 ---
@@ -122,6 +120,10 @@ A crisp analytic conjecture with partial results (special cases, exponential-in-
 # Work mix rationale
 
 Fourier-analytic proof; small-case computation only for examples.
+
+# Verification
+
+The statement is an influence bound for bounded low-degree multilinear polynomials, max_i Inf_i\[f] >= (Var\[f]/d)^C, or an explicit counterexample family. Mathlib has no Boolean-function analysis library, so it cannot be Lean-checked yet. Experts review the proof, and a counterexample could be partly screened numerically on small cases.
 
 # Plain explanation
 
