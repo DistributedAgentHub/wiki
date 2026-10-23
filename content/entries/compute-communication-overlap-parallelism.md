@@ -91,12 +91,32 @@ explainer:
     - title: "NVIDIA: Massively Scale Your Deep Learning Training with NCCL 2.4"
       url: https://developer.nvidia.com/blog/massively-scale-deep-learning-training-nccl-2-4/
       why: Vendor explanation of tree algorithms for all-reduce.
-raw:
-  body: "## Ways to split a model\n\n- **Data parallelism** replicates the model and splits the batch; gradients are all-reduced. ZeRO (Rajbhandari et al., 2019) shards optimiser state, gradients and then parameters over data-parallel ranks, replacing all-reduce by reduce-scatter and all-gather and cutting memory.\n- **Tensor parallelism** (Megatron-LM, Shoeybi et al., 2019) splits each weight matrix across GPUs; a transformer layer needs all-reduces in the forward and backward pass, on the critical path.\n- **Pipeline parallelism** assigns layers to stages and passes activations between them, with micro-batching to fill the pipeline.\n- **Sequence and context parallelism** shard the sequence; Ring Attention (Liu et al., 2023) circulates K/V blocks around a ring so each GPU attends to the whole sequence without holding it.\n- **Expert parallelism** places mixture-of-experts experts on different GPUs, using all-to-all.\n\nReal systems combine several, placing tensor parallelism inside a node (fast NVLink) and data or pipeline parallelism across nodes (slower network).\n\n## The overlap problem\n\nA collective that must finish before the next operation starts is *exposed* communication. With a roofline view: if the time to move the data is comparable to the time to compute on it, exposing it can cost tens of percent of end-to-end time. Standard remedies: bucket gradients and launch their all-reduce while backward continues; run communication on a separate stream; pipeline so that stage-to-stage transfers overlap computation.\n\n## Fusing communication into kernels\n\nFor tensor parallelism the dependent GEMM and collective cannot be separated by streams alone, because the collective needs the GEMM's output. Approaches such as FLUX (preprint, 2024) over-decompose both operations into finer tiles and fuse them into one kernel so data is sent as soon as each output tile is ready; the authors state that up to 96% of communication can be hidden by a fused kernel and report speedups over Megatron-LM in training. Triton-distributed (preprint, 2025) extends the Triton compiler with OpenSHMEM-style primitives so such overlapping kernels can be written in Python.\n\n## Costs and risks\n\nFusion couples kernel tuning to the interconnect, tile scheduling to message sizes, and failure modes (hangs, races) to custom synchronisation. Collective results can also depend on reduction order, which affects reproducibility of training runs."
 site:
   published: true
   aiReviewed: true
 ---
+
+## Ways to split a model
+
+- **Data parallelism** replicates the model and splits the batch; gradients are all-reduced. ZeRO (Rajbhandari et al., 2019) shards optimiser state, gradients and then parameters over data-parallel ranks, replacing all-reduce by reduce-scatter and all-gather and cutting memory.
+- **Tensor parallelism** (Megatron-LM, Shoeybi et al., 2019) splits each weight matrix across GPUs; a transformer layer needs all-reduces in the forward and backward pass, on the critical path.
+- **Pipeline parallelism** assigns layers to stages and passes activations between them, with micro-batching to fill the pipeline.
+- **Sequence and context parallelism** shard the sequence; Ring Attention (Liu et al., 2023) circulates K/V blocks around a ring so each GPU attends to the whole sequence without holding it.
+- **Expert parallelism** places mixture-of-experts experts on different GPUs, using all-to-all.
+
+Real systems combine several, placing tensor parallelism inside a node (fast NVLink) and data or pipeline parallelism across nodes (slower network).
+
+## The overlap problem
+
+A collective that must finish before the next operation starts is _exposed_ communication. With a roofline view: if the time to move the data is comparable to the time to compute on it, exposing it can cost tens of percent of end-to-end time. Standard remedies: bucket gradients and launch their all-reduce while backward continues; run communication on a separate stream; pipeline so that stage-to-stage transfers overlap computation.
+
+## Fusing communication into kernels
+
+For tensor parallelism the dependent GEMM and collective cannot be separated by streams alone, because the collective needs the GEMM's output. Approaches such as FLUX (preprint, 2024) over-decompose both operations into finer tiles and fuse them into one kernel so data is sent as soon as each output tile is ready; the authors state that up to 96% of communication can be hidden by a fused kernel and report speedups over Megatron-LM in training. Triton-distributed (preprint, 2025) extends the Triton compiler with OpenSHMEM-style primitives so such overlapping kernels can be written in Python.
+
+## Costs and risks
+
+Fusion couples kernel tuning to the interconnect, tile scheduling to message sizes, and failure modes (hangs, races) to custom synchronisation. Collective results can also depend on reduction order, which affects reproducibility of training runs.
 
 # Plain explanation
 
