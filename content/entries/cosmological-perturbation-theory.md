@@ -113,12 +113,42 @@ explainer:
     - title: CLASS code website
       url: https://github.com/lesgourg/class_public
       why: Home of one of the two standard solver codes mentioned above.
-raw:
-  body: "## What it is\n\nThe theory perturbs the FLRW metric to first order and evolves each species' phase-space distribution with the linearized Einstein–Boltzmann system. Scalar metric perturbations come in two common gauges (Ma and Bertschinger 1995). The conformal Newtonian gauge is $ds^2 = a^2(\\tau)[-(1+2\\psi)d\\tau^2 + (1-2\\phi)\\delta_{ij}dx^i dx^j]$, and the synchronous gauge uses $h$ and $\\eta$. Bardeen (1980) built the gauge-invariant combinations. In Fourier space each mode $k$ evolves independently, and the initial conditions are set by an inflationary spectrum $\\mathcal{P}_\\mathcal{R}(k) = A_s (k/k_*)^{n_s - 1}$ (adiabatic in the base model).\n\n## The core machinery\n\n**Hierarchy.** Photon temperature and polarization perturbations and massless neutrinos are expanded in Legendre multipoles $\\Theta_\\ell(k,\\tau)$, giving an infinite coupled hierarchy. Thomson scattering at rate $\\dot\\kappa = a n_e \\sigma_T$ couples photons to baryons. Massive neutrinos also need a momentum grid. The hierarchy is truncated at a finite $\\ell_{\\max}$ with a free-streaming closure.\n\n**Tight coupling and acoustic oscillations.** For $\\dot\\kappa \\gg k$ the photon–baryon fluid oscillates with sound speed $c_s = c/\\sqrt{3(1+R)}$, $R = 3\\rho_b/4\\rho_\\gamma$. The comoving sound horizon at the baryon drag epoch,\n$$r_d = \\int_{z_d}^{\\infty} \\frac{c_s(z)\\,dz}{H(z)},$$\nis the BAO standard ruler. Photon diffusion damps small scales roughly as $e^{-k^2/k_D^2}$ (Silk damping).\n\n**Recombination.** The visibility function $g = \\dot\\kappa e^{-\\kappa}$ depends on the ionization history, computed with RECFAST, HyRec or CosmoRec at the accuracy needed for Planck. Reionization adds a large-angle bump in polarization controlled by $\\tau$.\n\n**Line of sight.** Seljak and Zaldarriaga (1996) wrote $\\Theta_\\ell(k,\\tau_0)$ as a time integral of sources times spherical Bessel functions. The CMB spectrum is then $C_\\ell = 4\\pi\\int d\\ln k\\, \\mathcal{P}_\\mathcal{R}(k)\\, |\\Delta_\\ell(k)|^2$ for T, E and B. Scalars source only T and E. Primordial tensors source B (amplitude $r$), and lensing converts E into B.\n\n**Matter.** The linear spectrum is $P(k,z) = \\tfrac{2\\pi^2}{k^3}\\mathcal{P}_\\mathcal{R}(k) T^2(k) D^2(z)$, with the growth rate $f = d\\ln D/d\\ln a$ entering redshift-space distortions as $f\\sigma_8$ and lensing through $S_8 = \\sigma_8\\sqrt{\\Omega_m/0.3}$. Massive neutrinos, warm dark matter and fuzzy (ultralight) dark matter suppress power below their free-streaming or Jeans scales. Projected observables use the Limber approximation, $C_\\ell \\approx \\int d\\chi\\, W^2(\\chi)\\chi^{-2} P(k = (\\ell+1/2)/\\chi)$.\n\n**Beyond linear.** The halo model and fitted emulators such as HMcode-2020 (which includes baryonic feedback) extend $P(k)$ into the non-linear regime that weak lensing probes.\n\n## Techniques to master\n\nGauge transformations and gauge-invariant variables; the Boltzmann equation in an expanding background; tight-coupling and radiation-streaming approximations; stiff ODE integration over many $k$ modes; Bessel-function quadrature; the Fisher matrix and MCMC wrappers (Cobaya, MontePython) that call CAMB or CLASS.\n\n## Reading path\n\nStart with Dodelson and Schmidt, *Modern Cosmology* (2nd ed.), and Baumann, *Cosmology*. Then read Ma and Bertschinger (1995) line by line, Seljak and Zaldarriaga (1996), the CAMB paper of Lewis, Challinor and Lasenby (2000), and CLASS I–II (Lesgourgues 2011; Blas, Lesgourgues and Tram 2011) for approximation schemes. Read the source of either code alongside.\n\n## Where it bites\n\nSound-horizon reduction models (early dark energy, extra $N_{\\rm eff}$, varying electron mass) change $r_d$ through the integral above and are tested against ACT, SPT and DESI. DESI's evolving-dark-energy preference and the neutrino-mass bound both enter through $H(z)$ and growth, and the $\\sum m_\\nu$ limit comes from free-streaming suppression. The $S_8$ problem hinges on the non-linear and baryonic corrections to $P(k)$. Lyman-α WDM and FDM bounds use the small-scale cutoff in the transfer function. B-mode delensing needs the lensing B-mode template, and birefringence rotates E into B."
 site:
   published: true
   aiReviewed: true
 ---
+
+## What it is
+
+The theory perturbs the FLRW metric to first order and evolves each species' phase-space distribution with the linearized Einstein–Boltzmann system. Scalar metric perturbations come in two common gauges (Ma and Bertschinger 1995). The conformal Newtonian gauge is $ds^2 = a^2(\tau)[-(1+2\psi)d\tau^2 + (1-2\phi)\delta_{ij}dx^i dx^j]$, and the synchronous gauge uses $h$ and $\eta$. Bardeen (1980) built the gauge-invariant combinations. In Fourier space each mode $k$ evolves independently, and the initial conditions are set by an inflationary spectrum $\mathcal{P}_\mathcal{R}(k) = A_s (k/k_*)^{n_s - 1}$ (adiabatic in the base model).
+
+## The core machinery
+
+**Hierarchy.** Photon temperature and polarization perturbations and massless neutrinos are expanded in Legendre multipoles $\Theta_\ell(k,\tau)$, giving an infinite coupled hierarchy. Thomson scattering at rate $\dot\kappa = a n_e \sigma_T$ couples photons to baryons. Massive neutrinos also need a momentum grid. The hierarchy is truncated at a finite $\ell_{\max}$ with a free-streaming closure.
+
+**Tight coupling and acoustic oscillations.** For $\dot\kappa \gg k$ the photon–baryon fluid oscillates with sound speed $c_s = c/\sqrt{3(1+R)}$, $R = 3\rho_b/4\rho_\gamma$. The comoving sound horizon at the baryon drag epoch,
+$r_d = \int_{z_d}^{\infty} \frac{c_s(z)\,dz}{H(z)},$
+is the BAO standard ruler. Photon diffusion damps small scales roughly as $e^{-k^2/k_D^2}$ (Silk damping).
+
+**Recombination.** The visibility function $g = \dot\kappa e^{-\kappa}$ depends on the ionization history, computed with RECFAST, HyRec or CosmoRec at the accuracy needed for Planck. Reionization adds a large-angle bump in polarization controlled by $\tau$.
+
+**Line of sight.** Seljak and Zaldarriaga (1996) wrote $\Theta_\ell(k,\tau_0)$ as a time integral of sources times spherical Bessel functions. The CMB spectrum is then $C_\ell = 4\pi\int d\ln k\, \mathcal{P}_\mathcal{R}(k)\, |\Delta_\ell(k)|^2$ for T, E and B. Scalars source only T and E. Primordial tensors source B (amplitude $r$), and lensing converts E into B.
+
+**Matter.** The linear spectrum is $P(k,z) = \tfrac{2\pi^2}{k^3}\mathcal{P}_\mathcal{R}(k) T^2(k) D^2(z)$, with the growth rate $f = d\ln D/d\ln a$ entering redshift-space distortions as $f\sigma_8$ and lensing through $S_8 = \sigma_8\sqrt{\Omega_m/0.3}$. Massive neutrinos, warm dark matter and fuzzy (ultralight) dark matter suppress power below their free-streaming or Jeans scales. Projected observables use the Limber approximation, $C_\ell \approx \int d\chi\, W^2(\chi)\chi^{-2} P(k = (\ell+1/2)/\chi)$.
+
+**Beyond linear.** The halo model and fitted emulators such as HMcode-2020 (which includes baryonic feedback) extend $P(k)$ into the non-linear regime that weak lensing probes.
+
+## Techniques to master
+
+Gauge transformations and gauge-invariant variables; the Boltzmann equation in an expanding background; tight-coupling and radiation-streaming approximations; stiff ODE integration over many $k$ modes; Bessel-function quadrature; the Fisher matrix and MCMC wrappers (Cobaya, MontePython) that call CAMB or CLASS.
+
+## Reading path
+
+Start with Dodelson and Schmidt, _Modern Cosmology_ (2nd ed.), and Baumann, _Cosmology_. Then read Ma and Bertschinger (1995) line by line, Seljak and Zaldarriaga (1996), the CAMB paper of Lewis, Challinor and Lasenby (2000), and CLASS I–II (Lesgourgues 2011; Blas, Lesgourgues and Tram 2011) for approximation schemes. Read the source of either code alongside.
+
+## Where it bites
+
+Sound-horizon reduction models (early dark energy, extra $N_{\rm eff}$, varying electron mass) change $r_d$ through the integral above and are tested against ACT, SPT and DESI. DESI's evolving-dark-energy preference and the neutrino-mass bound both enter through $H(z)$ and growth, and the $\sum m_\nu$ limit comes from free-streaming suppression. The $S_8$ problem hinges on the non-linear and baryonic corrections to $P(k)$. Lyman-α WDM and FDM bounds use the small-scale cutoff in the transfer function. B-mode delensing needs the lensing B-mode template, and birefringence rotates E into B.
 
 # Plain explanation
 
