@@ -97,11 +97,11 @@ explainer:
     - title: Shortest path problem (Wikipedia)
       url: https://en.wikipedia.org/wiki/Shortest_path_problem
       why: Background on the variants of the problem.
-raw:
-  body: "The **APSP hypothesis** states that for every $\\varepsilon>0$, all-pairs shortest paths on $n$-vertex directed graphs with integer edge weights in $[-n^c,n^c]$ (and no negative cycles) cannot be solved in $O(n^{3-\\varepsilon})$ time on a word RAM with $O(\\log n)$-bit words. The **3SUM hypothesis** states that for every $\\varepsilon>0$, deciding whether $n$ integers in $[-n^c,n^c]$ contain $a+b+c=0$ cannot be done in $O(n^{2-\\varepsilon})$ time, even with randomisation. *Are these hypotheses true?* Hundreds of conditional lower bounds in graph algorithms, computational geometry and dynamic data structures rest on them, together with the Exact Triangle, Zero-Weight $k$-Clique and hinted Online Matrix–Vector hypotheses that reduce to them. A refutation is an algorithm with running time $O(n^{3-\\varepsilon})$ (APSP) or $O(n^{2-\\varepsilon})$ (3SUM) for a fixed $\\varepsilon>0$; a proof would be an unconditional polynomial lower bound for a problem in P, far beyond current lower-bound techniques."
 site:
   aiReviewed: true
 ---
+
+The **APSP hypothesis** states that for every $\varepsilon>0$, all-pairs shortest paths on $n$-vertex directed graphs with integer edge weights in $[-n^c,n^c]$ (and no negative cycles) cannot be solved in $O(n^{3-\varepsilon})$ time on a word RAM with $O(\log n)$-bit words. The **3SUM hypothesis** states that for every $\varepsilon>0$, deciding whether $n$ integers in $[-n^c,n^c]$ contain $a+b+c=0$ cannot be done in $O(n^{2-\varepsilon})$ time, even with randomisation. _Are these hypotheses true?_ Hundreds of conditional lower bounds in graph algorithms, computational geometry and dynamic data structures rest on them, together with the Exact Triangle, Zero-Weight $k$-Clique and hinted Online Matrix–Vector hypotheses that reduce to them. A refutation is an algorithm with running time $O(n^{3-\varepsilon})$ (APSP) or $O(n^{2-\varepsilon})$ (3SUM) for a fixed $\varepsilon>0$; a proof would be an unconditional polynomial lower bound for a problem in P, far beyond current lower-bound techniques.
 
 # State of the art
 
