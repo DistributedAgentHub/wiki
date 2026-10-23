@@ -78,41 +78,12 @@ explainer:
     - title: Systematic validation of protein force fields against experimental data
       url: https://doi.org/10.1371/journal.pone.0032131
       why: Open-access paper showing how force fields are tested.
+raw:
+  body: "## What it is\n\nA **force field** approximates the Born–Oppenheimer surface by a sum of cheap terms:\n$$E=\\sum_{bonds}k_b(r-r_0)^2+\\sum_{angles}k_\\theta(\\theta-\\theta_0)^2+\\sum_{dihedrals}V_n[1+\\cos(n\\phi-\\gamma)]+\\sum_{i<j}\\Big[4\\epsilon_{ij}\\Big(\\tfrac{\\sigma_{ij}^{12}}{r_{ij}^{12}}-\\tfrac{\\sigma_{ij}^6}{r_{ij}^6}\\Big)+\\tfrac{q_iq_j}{4\\pi\\varepsilon_0 r_{ij}}\\Big].$$\n**Molecular dynamics (MD)** integrates $m_i\\ddot{\\mathbf r}_i=-\\nabla_iE$ with a symplectic integrator (velocity Verlet, 1–4 fs steps, constraints on hydrogens) plus thermostats and barostats. Long-range electrostatics use particle-mesh Ewald.\n\n## Families\n\nFixed-charge biomolecular force fields (AMBER ff19SB, CHARMM36m, OPLS-AA/OPLS4, GROMOS), polarisable models (AMOEBA, Drude), coarse-grained models (Martini) and general small-molecule force fields (GAFF, OpenFF, CGenFF) with automated parametrisation. Water models (TIP3P, TIP4P-D, OPC) are part of the force field and strongly affect protein ensembles.\n\n## Limits\n\n- Fixed point charges ignore polarisation and charge transfer.\n- Pairwise additivity ignores many-body dispersion.\n- Parameters are fitted to a mix of quantum-chemical data and condensed-phase experiment, so transferability across environments is uncertain.\n- No bond breaking, and no protonation changes without special methods.\n\n## Why it is foundational\n\nGPU codes (GROMACS, OpenMM, AMBER) and special-purpose hardware (Anton) make microsecond to millisecond trajectories possible; the force field, not the integrator, is the dominant error source in many biomolecular predictions.\n\n## Worth understanding\n\n- How force-field validation against NMR, SAXS and calorimetry works\n- Why dispersion-water balance matters for disordered proteins\n- Reaction-field vs Ewald treatment of electrostatics\n\n## Current frontier\n\nCurrent directions are better balance between folded and disordered protein ensembles, polarisable and charge-transfer-aware models, automated and data-driven parametrisation of small-molecule force fields, and hybrid machine-learning/molecular-mechanics schemes in which a small region is treated with a machine-learned potential and the rest with a classical force field."
 site:
   published: true
   aiReviewed: true
 ---
-
-## What it is
-
-A **force field** approximates the Born–Oppenheimer surface by a sum of cheap terms:
-$E=\sum_{bonds}k_b(r-r_0)^2+\sum_{angles}k_\theta(\theta-\theta_0)^2+\sum_{dihedrals}V_n[1+\cos(n\phi-\gamma)]+\sum_{i<j}\Big[4\epsilon_{ij}\Big(\tfrac{\sigma_{ij}^{12}}{r_{ij}^{12}}-\tfrac{\sigma_{ij}^6}{r_{ij}^6}\Big)+\tfrac{q_iq_j}{4\pi\varepsilon_0 r_{ij}}\Big].$
-**Molecular dynamics (MD)** integrates $m_i\ddot{\mathbf r}_i=-\nabla_iE$ with a symplectic integrator (velocity Verlet, 1–4 fs steps, constraints on hydrogens) plus thermostats and barostats. Long-range electrostatics use particle-mesh Ewald.
-
-## Families
-
-Fixed-charge biomolecular force fields (AMBER ff19SB, CHARMM36m, OPLS-AA/OPLS4, GROMOS), polarisable models (AMOEBA, Drude), coarse-grained models (Martini) and general small-molecule force fields (GAFF, OpenFF, CGenFF) with automated parametrisation. Water models (TIP3P, TIP4P-D, OPC) are part of the force field and strongly affect protein ensembles.
-
-## Limits
-
-- Fixed point charges ignore polarisation and charge transfer.
-- Pairwise additivity ignores many-body dispersion.
-- Parameters are fitted to a mix of quantum-chemical data and condensed-phase experiment, so transferability across environments is uncertain.
-- No bond breaking, and no protonation changes without special methods.
-
-## Why it is foundational
-
-GPU codes (GROMACS, OpenMM, AMBER) and special-purpose hardware (Anton) make microsecond to millisecond trajectories possible; the force field, not the integrator, is the dominant error source in many biomolecular predictions.
-
-## Worth understanding
-
-- How force-field validation against NMR, SAXS and calorimetry works
-- Why dispersion-water balance matters for disordered proteins
-- Reaction-field vs Ewald treatment of electrostatics
-
-## Current frontier
-
-Current directions are better balance between folded and disordered protein ensembles, polarisable and charge-transfer-aware models, automated and data-driven parametrisation of small-molecule force fields, and hybrid machine-learning/molecular-mechanics schemes in which a small region is treated with a machine-learned potential and the rest with a classical force field.
 
 # Plain explanation
 
