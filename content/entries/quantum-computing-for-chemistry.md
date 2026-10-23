@@ -87,43 +87,12 @@ explainer:
     - title: Quantum phase estimation algorithm (Wikipedia)
       url: https://en.wikipedia.org/wiki/Quantum_phase_estimation_algorithm
       why: Background on the key algorithm.
+raw:
+  body: "## What it is\n\nThe electronic Hamiltonian in second quantisation is $\\hat H=\\sum_{pq}h_{pq}a_p^\\dagger a_q+\\tfrac12\\sum_{pqrs}g_{pqrs}a_p^\\dagger a_q^\\dagger a_s a_r$. A quantum computer encodes spin orbitals in qubits (Jordan–Wigner, Bravyi–Kitaev) and estimates energies.\n\n## Algorithms\n\n- **Quantum phase estimation (QPE)** with Trotterised or qubitised block encodings: cost scales roughly as $\\lambda/\\epsilon$ for Hamiltonian 1-norm $\\lambda$ and target precision $\\epsilon$; needs error-corrected hardware. Tensor hypercontraction and double factorisation cut $\\lambda$ and gate counts.\n- **Variational quantum eigensolver (VQE)**: parametrised short circuits plus classical optimisation; suffers from measurement cost and barren plateaus.\n- **Sample-based quantum diagonalisation (SQD) / Krylov**: use hardware samples to select determinants for classical diagonalisation.\n- **Quantum dynamics and spectroscopy** simulation, where advantage arguments can be cleaner than for ground states.\n\n## Resource estimates\n\nReiher et al. (2017) estimated that the FeMo-cofactor ground state needs of order $10^{14}$ T gates for a 54-electron, 54-orbital model with Trotter methods; tensor-hypercontraction QPE (Lee et al., 2021) reduced this by several orders of magnitude to roughly $10^{10}$ Toffoli gates with a few thousand logical qubits; spectrum amplification (Low et al., preprint 2025) cuts it further.\n\n## What is not settled\n\nWhether ground-state chemistry offers *exponential* advantage depends on initial-state overlap; Lee et al. (2023) argued the evidence for generic exponential advantage is weak, and classical methods (DMRG, SHCI, coupled cluster) continue to solve benchmark instances once thought out of reach.\n\n## Why it is foundational\n\nIt frames which chemistry problems are worth quantum hardware, and sets a moving benchmark for classical methods.\n\n## Worth understanding\n\n- Qubitisation and the role of the Hamiltonian 1-norm\n- Logical vs physical qubit counts (see the quantum error-correction entry)\n- Why overlap with the true ground state controls QPE success\n\n## Current frontier\n\nWork now concentrates on lowering fault-tolerant costs (better block encodings, spectrum amplification, lower-overhead magic-state production), on state-preparation methods, and on hybrid quantum-classical workflows such as sample-based diagonalisation. Parallel classical work (DMRG at very large bond dimension, high-order coupled cluster, neural VMC) keeps raising the bar any claimed advantage must clear."
 site:
   published: true
   aiReviewed: true
 ---
-
-## What it is
-
-The electronic Hamiltonian in second quantisation is $\hat H=\sum_{pq}h_{pq}a_p^\dagger a_q+\tfrac12\sum_{pqrs}g_{pqrs}a_p^\dagger a_q^\dagger a_s a_r$. A quantum computer encodes spin orbitals in qubits (Jordan–Wigner, Bravyi–Kitaev) and estimates energies.
-
-## Algorithms
-
-- **Quantum phase estimation (QPE)** with Trotterised or qubitised block encodings: cost scales roughly as $\lambda/\epsilon$ for Hamiltonian 1-norm $\lambda$ and target precision $\epsilon$; needs error-corrected hardware. Tensor hypercontraction and double factorisation cut $\lambda$ and gate counts.
-- **Variational quantum eigensolver (VQE)**: parametrised short circuits plus classical optimisation; suffers from measurement cost and barren plateaus.
-- **Sample-based quantum diagonalisation (SQD) / Krylov**: use hardware samples to select determinants for classical diagonalisation.
-- **Quantum dynamics and spectroscopy** simulation, where advantage arguments can be cleaner than for ground states.
-
-## Resource estimates
-
-Reiher et al. (2017) estimated that the FeMo-cofactor ground state needs of order $10^{14}$ T gates for a 54-electron, 54-orbital model with Trotter methods; tensor-hypercontraction QPE (Lee et al., 2021) reduced this by several orders of magnitude to roughly $10^{10}$ Toffoli gates with a few thousand logical qubits; spectrum amplification (Low et al., preprint 2025) cuts it further.
-
-## What is not settled
-
-Whether ground-state chemistry offers _exponential_ advantage depends on initial-state overlap; Lee et al. (2023) argued the evidence for generic exponential advantage is weak, and classical methods (DMRG, SHCI, coupled cluster) continue to solve benchmark instances once thought out of reach.
-
-## Why it is foundational
-
-It frames which chemistry problems are worth quantum hardware, and sets a moving benchmark for classical methods.
-
-## Worth understanding
-
-- Qubitisation and the role of the Hamiltonian 1-norm
-- Logical vs physical qubit counts (see the quantum error-correction entry)
-- Why overlap with the true ground state controls QPE success
-
-## Current frontier
-
-Work now concentrates on lowering fault-tolerant costs (better block encodings, spectrum amplification, lower-overhead magic-state production), on state-preparation methods, and on hybrid quantum-classical workflows such as sample-based diagonalisation. Parallel classical work (DMRG at very large bond dimension, high-order coupled cluster, neural VMC) keeps raising the bar any claimed advantage must clear.
 
 # Plain explanation
 
