@@ -98,11 +98,17 @@ explainer:
     - title: Fold-switching proteins review (Chakravarty and Porter)
       url: https://arxiv.org/abs/2507.10839
       why: Open-access review for those ready to read a specialist article.
-raw:
-  body: "Some proteins reversibly remodel their secondary and/or tertiary structure in response to a cellular stimulus (ligand, redox state, oligomerisation, temperature, a binding partner): examples are RfaH (an alpha-helical C-terminal domain that refolds to a beta-barrel), KaiB, lymphotactin, and the bacterial transcription factor NusG family. Nearly 100 have been characterised experimentally, and an estimated up to 4% of PDB entries may switch folds.\n\n**Task.** Given only the amino-acid sequence (and its homologs), (i) decide whether the protein has two or more stable, functionally distinct folds that differ in secondary structure or topology, and (ii) predict the atomic structure of each, with qualitative population/trigger information.\n\n**A concrete benchmark.** Let $\\mathcal F$ be experimentally confirmed fold switchers whose second fold was first deposited after the model's training cut-off *and* that have no homologous fold-switcher in training (for example no sequence identity above 30% to any training chain with either fold). Let $\\mathcal N$ be a matched set of single-fold proteins that includes close homologs of fold switchers that are known not to switch (KaiB-like sequences are a documented trap for MSA-clustering methods). The problem is solved when one method, run without target-specific tuning or knowledge of the alternative fold, recovers both folds (TM-score $\\ge 0.8$ to each experimental structure for the correct fold pair) for at least 70% of $\\mathcal F$ while flagging no more than 5% of $\\mathcal N$ as switchers.\n\nThe difficulty is that current co-evolution-based predictors encode the dominant fold of a sequence family, and the alternative fold often leaves only a weak evolutionary signal that is hard to separate from noise or from the dominant fold's signal."
 site:
   aiReviewed: true
 ---
+
+Some proteins reversibly remodel their secondary and/or tertiary structure in response to a cellular stimulus (ligand, redox state, oligomerisation, temperature, a binding partner): examples are RfaH (an alpha-helical C-terminal domain that refolds to a beta-barrel), KaiB, lymphotactin, and the bacterial transcription factor NusG family. Nearly 100 have been characterised experimentally, and an estimated up to 4% of PDB entries may switch folds.
+
+**Task.** Given only the amino-acid sequence (and its homologs), (i) decide whether the protein has two or more stable, functionally distinct folds that differ in secondary structure or topology, and (ii) predict the atomic structure of each, with qualitative population/trigger information.
+
+**A concrete benchmark.** Let $\mathcal F$ be experimentally confirmed fold switchers whose second fold was first deposited after the model's training cut-off _and_ that have no homologous fold-switcher in training (for example no sequence identity above 30% to any training chain with either fold). Let $\mathcal N$ be a matched set of single-fold proteins that includes close homologs of fold switchers that are known not to switch (KaiB-like sequences are a documented trap for MSA-clustering methods). The problem is solved when one method, run without target-specific tuning or knowledge of the alternative fold, recovers both folds (TM-score $\ge 0.8$ to each experimental structure for the correct fold pair) for at least 70% of $\mathcal F$ while flagging no more than 5% of $\mathcal N$ as switchers.
+
+The difficulty is that current co-evolution-based predictors encode the dominant fold of a sequence family, and the alternative fold often leaves only a weak evolutionary signal that is hard to separate from noise or from the dominant fold's signal.
 
 # State of the art
 
