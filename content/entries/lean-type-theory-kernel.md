@@ -75,12 +75,36 @@ explainer:
     - title: Type theory (Wikipedia)
       url: https://en.wikipedia.org/wiki/Type_theory
       why: Gentle background on why types can serve as logic.
-raw:
-  body: "## What it is\n\nLean separates a large, untrusted **elaborator** (parsing, unification, tactics, automation) from a small **kernel**. The elaborator produces a term, and the kernel checks that the term has the claimed type. If the kernel accepts it, the theorem counts, however the term was found. This is the \"de Bruijn criterion\" and it is why a proof written by a language model can be trusted exactly as much as one written by a person.\n\n## The type theory\n\nLean's logic is a dependent type theory in the family of the calculus of inductive constructions. The pieces that matter in practice, as laid out in the [Lean reference manual](https://lean-lang.org/doc/reference/latest/The-Type-System/):\n\n- **Terms and types are the same kind of thing.** Functions can return types, and a type can depend on a value (a vector type indexed by its length).\n- **Universes.** Types live in a hierarchy `Sort u`. `Prop` is the universe of propositions and is *impredicative* and *proof-irrelevant*: any two proofs of the same proposition are definitionally equal.\n- **Inductive types** with recursors, which cover natural numbers, lists, structures such as groups and rings, and logical connectives.\n- **Quotients** (`Quot`) as a primitive with its own reduction rule, used to build objects such as quotient groups and the reals' Cauchy completion.\n- **Definitional equality** closes terms under β, δ (unfolding), ι (recursor on a constructor), ζ (let), quotient reduction, η for functions and structures, and proof irrelevance. The kernel decides it, and its cost is where heavy proofs by computation (`decide`, `rfl`) are won or lost.\n- **Three standard axioms** sit on top: `propext`, `Quot.sound` and `Classical.choice`. Checking a theorem with `#print axioms` shows which of them it uses.\n\n## Why it is load-bearing\n\nA soundness bug in the kernel would break every theorem at once, and a performance cliff in it limits what can be proved by computation. Two lines of work follow from that.\n\n1. **Independent re-checking.** Lean can export a development in a plain text format (`lean4export`) that other programs read. Independent kernels such as [nanoda](https://github.com/ammkrn/nanoda_lib) and [Lean4Lean](https://github.com/digama0/lean4lean) re-verify the result. Lean's [Comparator](https://github.com/leanprover/comparator) tool combines this with a sandbox and an axiom whitelist to answer one question: does this solution file really prove the statement in that challenge file?\n2. **Verifying the checker itself.** Carneiro's [Lean4Lean](https://arxiv.org/abs/2403.14064) is a second typechecker written in Lean. It checks all of Mathlib and has a partial machine-checked correctness proof, which has already uncovered one soundness bug.\n\n## Limits to keep in mind\n\nThe kernel guarantees that a term has a type, not that the type says what the author meant. Misformalized statements are the main residual risk, which is why statement-comparison tools and curated statement corpora exist (see the Formal Conjectures entry). Beyond that, the guarantee rests on the kernel implementation being correct and on the type theory being consistent, neither of which is itself proved inside Lean."
 site:
   published: true
   aiReviewed: true
 ---
+
+## What it is
+
+Lean separates a large, untrusted **elaborator** (parsing, unification, tactics, automation) from a small **kernel**. The elaborator produces a term, and the kernel checks that the term has the claimed type. If the kernel accepts it, the theorem counts, however the term was found. This is the "de Bruijn criterion" and it is why a proof written by a language model can be trusted exactly as much as one written by a person.
+
+## The type theory
+
+Lean's logic is a dependent type theory in the family of the calculus of inductive constructions. The pieces that matter in practice, as laid out in the [Lean reference manual](https://lean-lang.org/doc/reference/latest/The-Type-System/):
+
+- **Terms and types are the same kind of thing.** Functions can return types, and a type can depend on a value (a vector type indexed by its length).
+- **Universes.** Types live in a hierarchy `Sort u`. `Prop` is the universe of propositions and is _impredicative_ and _proof-irrelevant_: any two proofs of the same proposition are definitionally equal.
+- **Inductive types** with recursors, which cover natural numbers, lists, structures such as groups and rings, and logical connectives.
+- **Quotients** (`Quot`) as a primitive with its own reduction rule, used to build objects such as quotient groups and the reals' Cauchy completion.
+- **Definitional equality** closes terms under β, δ (unfolding), ι (recursor on a constructor), ζ (let), quotient reduction, η for functions and structures, and proof irrelevance. The kernel decides it, and its cost is where heavy proofs by computation (`decide`, `rfl`) are won or lost.
+- **Three standard axioms** sit on top: `propext`, `Quot.sound` and `Classical.choice`. Checking a theorem with `#print axioms` shows which of them it uses.
+
+## Why it is load-bearing
+
+A soundness bug in the kernel would break every theorem at once, and a performance cliff in it limits what can be proved by computation. Two lines of work follow from that.
+
+1. **Independent re-checking.** Lean can export a development in a plain text format (`lean4export`) that other programs read. Independent kernels such as [nanoda](https://github.com/ammkrn/nanoda_lib) and [Lean4Lean](https://github.com/digama0/lean4lean) re-verify the result. Lean's [Comparator](https://github.com/leanprover/comparator) tool combines this with a sandbox and an axiom whitelist to answer one question: does this solution file really prove the statement in that challenge file?
+2. **Verifying the checker itself.** Carneiro's [Lean4Lean](https://arxiv.org/abs/2403.14064) is a second typechecker written in Lean. It checks all of Mathlib and has a partial machine-checked correctness proof, which has already uncovered one soundness bug.
+
+## Limits to keep in mind
+
+The kernel guarantees that a term has a type, not that the type says what the author meant. Misformalized statements are the main residual risk, which is why statement-comparison tools and curated statement corpora exist (see the Formal Conjectures entry). Beyond that, the guarantee rests on the kernel implementation being correct and on the type theory being consistent, neither of which is itself proved inside Lean.
 
 # Plain explanation
 
