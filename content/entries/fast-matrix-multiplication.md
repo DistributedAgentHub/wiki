@@ -111,48 +111,12 @@ explainer:
     - title: Computational complexity of matrix multiplication (Wikipedia)
       url: https://en.wikipedia.org/wiki/Computational_complexity_of_matrix_multiplication
       why: A table of the record exponents over time.
+raw:
+  body: "## The exponent\n\nLet $\\omega$ be the infimum of all $\\tau$ such that two $n\\times n$ matrices over a field can be multiplied with $O(n^{\\tau})$ arithmetic operations. The schoolbook method gives $\\omega\\le 3$, and reading the input gives $\\omega\\ge 2$. It is not known whether $\\omega=2$. The value of $\\omega$ can depend only on the characteristic of the field (Schönhage, 1981), so all bounds for $\\mathbb C$ hold for every field of characteristic zero.\n\n## Strassen and the tensor viewpoint\n\nIn 1969 Strassen showed that two $2\\times 2$ block matrices can be multiplied with 7 block multiplications instead of 8. Applied recursively, this gives $O(n^{\\log_2 7})\\approx O(n^{2.807})$.\n\nThe modern view encodes multiplication of $a\\times b$ by $b\\times c$ matrices as a 3-tensor $\\langle a,b,c\\rangle$. Its *rank* $R$ is the minimum number of scalar multiplications in a bilinear algorithm. For square matrices, $\\omega=\\lim_{n\\to\\infty}\\log_n R(\\langle n,n,n\\rangle)$, and one may replace rank by the more flexible *border rank* (Bini, 1980). Any bound $R(\\langle n,n,n\\rangle)\\le r$ gives $\\omega\\le\\log_n r$.\n\n## The laser method and its descendants\n\nStrassen's laser method (1986–87) extracts large matrix-multiplication tensors from tensor powers of a smaller tensor with nicer structure. Coppersmith and Winograd (1987; journal 1990) applied it to a specific tensor to get $\\omega<2.376$. Successive refinements, each analysing higher tensor powers and increasingly careful degenerations, improved the bound:\n\n- Stothers (2010): $\\omega<2.3737$; Vassilevska Williams (2012): $\\omega<2.3729$.\n- Le Gall (2014): $\\omega<2.37287$.\n- Alman and Vassilevska Williams (2020, SODA 2021): $\\omega<2.37286$.\n- Duan, Wu and Zhou (2022, FOCS 2023): $\\omega<2.371866$.\n- Vassilevska Williams, Xu, Xu and Zhou (2023, SODA 2024): $\\omega<2.371552$.\n- Alman, Duan, Vassilevska Williams, Xu, Xu and Zhou (2024, SODA 2025): $\\omega<2.371339$.\n- Dupont, Alman, Vassilevska Williams, Zhou and colleagues at Google DeepMind (arXiv:2608.16884, 17 August 2026, preprint): $\\omega<2.371177$, obtained by solving the optimisation problem at the core of the combination-loss analysis more completely, using modern optimisation methods refined with AlphaEvolve. Version 3 of the 2024 paper (19 August 2026) reports the same bound.\n\nAmbainis, Filmus and Le Gall (2015) and Alman and Vassilevska Williams (2018) proved that broad families of these methods, applied to the Coppersmith–Winograd tensors, cannot reach $\\omega=2$.\n\n## Practical algorithms\n\nNone of the laser-method algorithms is used in practice. They beat the schoolbook method only for astronomically large matrices (they are *galactic*), have enormous hidden constants, and are numerically less well behaved. Practical fast multiplication means Strassen-like algorithms with small base cases, applied for a few recursion levels before switching to optimised classical kernels. Huang, Smith, Henry and van de Geijn (2016) showed that Strassen's algorithm can be implemented inside the BLIS framework without extra workspace and gives speedups at moderate sizes.\n\nSmall formats are therefore still an active search area. AlphaTensor (DeepMind, *Nature*, October 2022) found algorithms using fewer multiplications for several formats, including 47 multiplications for $4\\times 4$ matrices in characteristic 2. AlphaEvolve (2025) found 48 multiplications for $4\\times 4$ *complex* matrices, beating the 49 of two-level Strassen. Dumas, Pernet and Sedoglavic (June 2025) gave a 48-multiplication algorithm with rational coefficients, valid over any ring of characteristic other than 2. As a recursion base case this gives exponent $\\log_4 48\\approx 2.7925$, versus $\\log_4 49=\\log_2 7\\approx 2.807$.\n\n## Where it is used\n\nBeyond dense linear algebra, a smaller $\\omega$ improves the best known bounds for linear programming (Cohen, Lee and Song, 2018: about $n^{\\omega}$ time up to logarithmic factors with current exponents), triangle detection, several shortest-path problems and, via rectangular matrix multiplication, many fine-grained algorithms.\n\n## Claims in October 2026\n\nOn 6 October 2026 OpenAI released a repository of AI-generated manuscripts. One (dated 2 October 2026, 13 pages) claims $\\omega\\le 9/4$ over $\\mathbb C$ by a route different from the laser method: it applies Strassen's theory of the asymptotic spectrum of tensors to the tensors of polynomial multiplication. Companion manuscripts claim $\\omega<2.258$ over fields of characteristic zero and $\\omega<2.371054886$ over every field. OpenAI provides Lean formalisations of the stated bounds. None of this is peer reviewed. The argument also uses a non-constructive existence step, and the claim is about asymptotic arithmetic complexity, not a practical algorithm. See the problem entry."
 site:
   published: true
   aiReviewed: true
 ---
-
-## The exponent
-
-Let $\omega$ be the infimum of all $\tau$ such that two $n\times n$ matrices over a field can be multiplied with $O(n^{\tau})$ arithmetic operations. The schoolbook method gives $\omega\le 3$, and reading the input gives $\omega\ge 2$. It is not known whether $\omega=2$. The value of $\omega$ can depend only on the characteristic of the field (Schönhage, 1981), so all bounds for $\mathbb C$ hold for every field of characteristic zero.
-
-## Strassen and the tensor viewpoint
-
-In 1969 Strassen showed that two $2\times 2$ block matrices can be multiplied with 7 block multiplications instead of 8. Applied recursively, this gives $O(n^{\log_2 7})\approx O(n^{2.807})$.
-
-The modern view encodes multiplication of $a\times b$ by $b\times c$ matrices as a 3-tensor $\langle a,b,c\rangle$. Its _rank_ $R$ is the minimum number of scalar multiplications in a bilinear algorithm. For square matrices, $\omega=\lim_{n\to\infty}\log_n R(\langle n,n,n\rangle)$, and one may replace rank by the more flexible _border rank_ (Bini, 1980). Any bound $R(\langle n,n,n\rangle)\le r$ gives $\omega\le\log_n r$.
-
-## The laser method and its descendants
-
-Strassen's laser method (1986–87) extracts large matrix-multiplication tensors from tensor powers of a smaller tensor with nicer structure. Coppersmith and Winograd (1987; journal 1990) applied it to a specific tensor to get $\omega<2.376$. Successive refinements, each analysing higher tensor powers and increasingly careful degenerations, improved the bound:
-
-- Stothers (2010): $\omega<2.3737$; Vassilevska Williams (2012): $\omega<2.3729$.
-- Le Gall (2014): $\omega<2.37287$.
-- Alman and Vassilevska Williams (2020, SODA 2021): $\omega<2.37286$.
-- Duan, Wu and Zhou (2022, FOCS 2023): $\omega<2.371866$.
-- Vassilevska Williams, Xu, Xu and Zhou (2023, SODA 2024): $\omega<2.371552$.
-- Alman, Duan, Vassilevska Williams, Xu, Xu and Zhou (2024, SODA 2025): $\omega<2.371339$.
-- Dupont, Alman, Vassilevska Williams, Zhou and colleagues at Google DeepMind (arXiv:2608.16884, 17 August 2026, preprint): $\omega<2.371177$, obtained by solving the optimisation problem at the core of the combination-loss analysis more completely, using modern optimisation methods refined with AlphaEvolve. Version 3 of the 2024 paper (19 August 2026) reports the same bound.
-
-Ambainis, Filmus and Le Gall (2015) and Alman and Vassilevska Williams (2018) proved that broad families of these methods, applied to the Coppersmith–Winograd tensors, cannot reach $\omega=2$.
-
-## Practical algorithms
-
-None of the laser-method algorithms is used in practice. They beat the schoolbook method only for astronomically large matrices (they are _galactic_), have enormous hidden constants, and are numerically less well behaved. Practical fast multiplication means Strassen-like algorithms with small base cases, applied for a few recursion levels before switching to optimised classical kernels. Huang, Smith, Henry and van de Geijn (2016) showed that Strassen's algorithm can be implemented inside the BLIS framework without extra workspace and gives speedups at moderate sizes.
-
-Small formats are therefore still an active search area. AlphaTensor (DeepMind, _Nature_, October 2022) found algorithms using fewer multiplications for several formats, including 47 multiplications for $4\times 4$ matrices in characteristic 2. AlphaEvolve (2025) found 48 multiplications for $4\times 4$ _complex_ matrices, beating the 49 of two-level Strassen. Dumas, Pernet and Sedoglavic (June 2025) gave a 48-multiplication algorithm with rational coefficients, valid over any ring of characteristic other than 2. As a recursion base case this gives exponent $\log_4 48\approx 2.7925$, versus $\log_4 49=\log_2 7\approx 2.807$.
-
-## Where it is used
-
-Beyond dense linear algebra, a smaller $\omega$ improves the best known bounds for linear programming (Cohen, Lee and Song, 2018: about $n^{\omega}$ time up to logarithmic factors with current exponents), triangle detection, several shortest-path problems and, via rectangular matrix multiplication, many fine-grained algorithms.
-
-## Claims in October 2026
-
-On 6 October 2026 OpenAI released a repository of AI-generated manuscripts. One (dated 2 October 2026, 13 pages) claims $\omega\le 9/4$ over $\mathbb C$ by a route different from the laser method: it applies Strassen's theory of the asymptotic spectrum of tensors to the tensors of polynomial multiplication. Companion manuscripts claim $\omega<2.258$ over fields of characteristic zero and $\omega<2.371054886$ over every field. OpenAI provides Lean formalisations of the stated bounds. None of this is peer reviewed. The argument also uses a non-constructive existence step, and the claim is about asymptotic arithmetic complexity, not a practical algorithm. See the problem entry.
 
 # Plain explanation
 
