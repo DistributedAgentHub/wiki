@@ -67,11 +67,22 @@ explainer:
     - title: Giuga number (Wikipedia)
       url: https://en.wikipedia.org/wiki/Giuga_number
       why: What a counterexample must look like.
-raw:
-  body: "Giuga's form: an integer $n \\ge 2$ is prime if and only if\n$$1^{n-1} + 2^{n-1} + \\cdots + (n-1)^{n-1} \\equiv -1 \\pmod n.$$\nAgoh's equivalent form uses Bernoulli numbers: $n$ is prime iff $nB_{n-1} \\equiv -1 \\pmod n$. The forward direction (primes satisfy it) follows from Fermat's little theorem; the open part is that no composite satisfies it.\n\nLean 4 statement (Giuga's formulation) in the Formal Conjectures corpus:\n\n```lean\ndef AgohGiugaSum : Prop := ∀ p ≥ 2, p.Prime ↔\n  p ∣ 1 + ∑ i ∈ Finset.Ioo 0 p, i^(p - 1 : ℕ)\n\ntheorem agoh_giuga.variants.giuga : AgohGiugaSum\n```"
 site:
   aiReviewed: true
 ---
+
+Giuga's form: an integer $n \ge 2$ is prime if and only if
+$1^{n-1} + 2^{n-1} + \cdots + (n-1)^{n-1} \equiv -1 \pmod n.$
+Agoh's equivalent form uses Bernoulli numbers: $n$ is prime iff $nB_{n-1} \equiv -1 \pmod n$. The forward direction (primes satisfy it) follows from Fermat's little theorem; the open part is that no composite satisfies it.
+
+Lean 4 statement (Giuga's formulation) in the Formal Conjectures corpus:
+
+```lean
+def AgohGiugaSum : Prop := ∀ p ≥ 2, p.Prime ↔
+  p ∣ 1 + ∑ i ∈ Finset.Ioo 0 p, i^(p - 1 : ℕ)
+
+theorem agoh_giuga.variants.giuga : AgohGiugaSum
+```
 
 # State of the art
 
