@@ -107,34 +107,12 @@ explainer:
     - title: Integer programming (Wikipedia)
       url: https://en.wikipedia.org/wiki/Integer_programming
       why: Overview of the problem class and solution methods.
+raw:
+  body: "## Branch-and-cut\n\nA **mixed-integer linear program** (MIP) minimises a linear function subject to linear constraints with some variables required to be integer. Solvers work by **branch-and-bound**: solve the LP relaxation (drop integrality) to get a lower bound, branch on a fractional variable, and discard subtrees whose bound exceeds the best integer solution (the *incumbent*). **Cutting planes** (Gomory mixed-integer cuts, cover cuts, and many others) tighten the relaxation before and during branching, which gives *branch-and-cut*. **Presolve** simplifies the model first: fixing variables, tightening bounds, removing redundant rows. Primal heuristics find good incumbents early. Everything rests on a fast LP solver, usually dual simplex.\n\n## HiGHS and SCIP\n\n**HiGHS** (ERGO-Code, Edinburgh) is MIT-licensed open-source software for large sparse LP, MIP and QP, with a dual revised simplex, an interior point solver, an active set QP solver and a branch-and-cut MIP solver. It is offered through JuMP, GAMS, AMPL, SciPy, Pyomo and CVXPY. **SCIP** is a solver and a framework for constraint integer programming and branch-cut-and-price, under the Apache 2.0 licence since version 8.0.3, with plugin hooks for branching, separation, propagation and pricing; it can use SoPlex as its LP solver and has an exact rational mode.\n\n## MIPLIB and open instances\n\n**MIPLIB 2017** is the standard library of MIP instances, compiled in a data-driven way from submissions. Every instance has a status. Besides *easy* and *hard* ones, instances tagged **open** have no known optimal solution proof: the library lists the best known objective value, and the page for such an instance shows no dual bound that closes the gap. At the time of writing the open tag lists 212 instances. Any solver run that closes one of them is a publishable record.\n\n## Certificates: VIPR\n\nFloating-point solvers can be wrong, so an optimality claim needs independent checking. **VIPR** (Verifying Integer Programming Results; Cheung, Gleixner and Steffy, IPCO 2017) is a file format for certificates of LP-based branch-and-cut derivations, checked in exact rational arithmetic by the `vprchck` tool. The SCIP exact rational extension can produce VIPR files, and version 1.1 of the format (motivated by Eifler and Gleixner's work on verified Gomory cuts, SIAM J. Optim. 2024) supports incomplete certificates that a tool completes with SoPlex. A result is therefore \"optimal\" in the strong sense: a deductive proof, not a solver log.\n\n## TSP and Concorde\n\nFor the travelling salesman problem, the **Concorde** code of Applegate, Bixby, Chvátal and Cook is a branch-and-cut solver built on the same ideas. Cook's TSP pages track the largest instances: for the 1,904,711-city World TSP and the 100,000-city Mona Lisa instance, the best tours are within a few hundredths of a percent of Concorde's lower bounds, but optimality is unproven (see the two problems below).\n\n## Limits\n\nBenchmarks on MIPLIB depend on hardware and time limits, and solvers differ in how they treat numerics. A solution is a certificate of feasibility only; closing the gap needs the dual proof."
 site:
   published: true
   aiReviewed: true
 ---
-
-## Branch-and-cut
-
-A **mixed-integer linear program** (MIP) minimises a linear function subject to linear constraints with some variables required to be integer. Solvers work by **branch-and-bound**: solve the LP relaxation (drop integrality) to get a lower bound, branch on a fractional variable, and discard subtrees whose bound exceeds the best integer solution (the _incumbent_). **Cutting planes** (Gomory mixed-integer cuts, cover cuts, and many others) tighten the relaxation before and during branching, which gives _branch-and-cut_. **Presolve** simplifies the model first: fixing variables, tightening bounds, removing redundant rows. Primal heuristics find good incumbents early. Everything rests on a fast LP solver, usually dual simplex.
-
-## HiGHS and SCIP
-
-**HiGHS** (ERGO-Code, Edinburgh) is MIT-licensed open-source software for large sparse LP, MIP and QP, with a dual revised simplex, an interior point solver, an active set QP solver and a branch-and-cut MIP solver. It is offered through JuMP, GAMS, AMPL, SciPy, Pyomo and CVXPY. **SCIP** is a solver and a framework for constraint integer programming and branch-cut-and-price, under the Apache 2.0 licence since version 8.0.3, with plugin hooks for branching, separation, propagation and pricing; it can use SoPlex as its LP solver and has an exact rational mode.
-
-## MIPLIB and open instances
-
-**MIPLIB 2017** is the standard library of MIP instances, compiled in a data-driven way from submissions. Every instance has a status. Besides _easy_ and _hard_ ones, instances tagged **open** have no known optimal solution proof: the library lists the best known objective value, and the page for such an instance shows no dual bound that closes the gap. At the time of writing the open tag lists 212 instances. Any solver run that closes one of them is a publishable record.
-
-## Certificates: VIPR
-
-Floating-point solvers can be wrong, so an optimality claim needs independent checking. **VIPR** (Verifying Integer Programming Results; Cheung, Gleixner and Steffy, IPCO 2017) is a file format for certificates of LP-based branch-and-cut derivations, checked in exact rational arithmetic by the `vprchck` tool. The SCIP exact rational extension can produce VIPR files, and version 1.1 of the format (motivated by Eifler and Gleixner's work on verified Gomory cuts, SIAM J. Optim. 2024) supports incomplete certificates that a tool completes with SoPlex. A result is therefore "optimal" in the strong sense: a deductive proof, not a solver log.
-
-## TSP and Concorde
-
-For the travelling salesman problem, the **Concorde** code of Applegate, Bixby, Chvátal and Cook is a branch-and-cut solver built on the same ideas. Cook's TSP pages track the largest instances: for the 1,904,711-city World TSP and the 100,000-city Mona Lisa instance, the best tours are within a few hundredths of a percent of Concorde's lower bounds, but optimality is unproven (see the two problems below).
-
-## Limits
-
-Benchmarks on MIPLIB depend on hardware and time limits, and solvers differ in how they treat numerics. A solution is a certificate of feasibility only; closing the gap needs the dual proof.
 
 # Plain explanation
 
