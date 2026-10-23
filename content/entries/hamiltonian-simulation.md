@@ -105,30 +105,12 @@ explainer:
     - title: Quantum simulator (Wikipedia)
       url: https://en.wikipedia.org/wiki/Quantum_simulator
       why: Feynman's idea and the analog and digital approaches.
+raw:
+  body: "## The task\n\nGiven a Hamiltonian $H$ on $n$ qubits (a sum of local terms, or a sparse matrix with oracle access to its entries), a time $t$ and an accuracy $\\varepsilon$, implement a circuit within $\\varepsilon$ of $e^{-iHt}$. Feynman (1982) proposed using quantum devices to simulate quantum physics, and Lloyd (Science 1996) showed that local Hamiltonians can be simulated efficiently. The problem is BQP-complete, since any quantum circuit can be encoded as the evolution of a suitable Hamiltonian. The *no-fast-forwarding* theorem (Berry et al., 2007) shows that for general Hamiltonians the cost must grow at least linearly in $t$.\n\n## Product formulas\n\nWrite $H=\\sum_j H_j$ with each $e^{-iH_j\\tau}$ easy to implement. The first-order Lie–Trotter formula approximates $e^{-iHt}$ by $\\big(\\prod_j e^{-iH_jt/r}\\big)^r$, with error governed by the commutators $[H_j,H_k]$ and shrinking as $1/r$; Suzuki's higher-order formulas of order $2k$ do better. Childs, Su, Tran, Wiebe and Zhu (PRX 2021) gave a theory of Trotter error in terms of nested commutators that is close to tight in examples. For geometrically local lattice Hamiltonians, Haah, Hastings, Kothari and Low (FOCS 2018) gave an algorithm with $O(nT\\,\\mathrm{polylog}(nT/\\varepsilon))$ gates and proved a matching $\\tilde\\Omega(nT)$ lower bound. Product formulas need no ancilla qubits, and in practice they are often competitive for lattice models (Childs, Maslov, Nam, Ross and Su, PNAS 2018).\n\n## Beyond product formulas\n\nBerry, Ahokas, Cleve and Sanders (2007) simulated sparse Hamiltonians with oracle access. Childs and Wiebe (2012) introduced the **linear combination of unitaries** (LCU) method, and Berry, Childs, Cleve, Kothari and Somma (PRL 2015) used a truncated Taylor series to reach cost logarithmic in $1/\\varepsilon$. Low and Chuang's **quantum signal processing** (PRL 2017) achieved query complexity $O\\big(td\\|H\\|_{\\max}+\\log(1/\\varepsilon)/\\log\\log(1/\\varepsilon)\\big)$ for $d$-sparse $H$, matching lower bounds in all parameters, and **qubitization** (Quantum 2019) achieved $O(\\lambda t+\\log(1/\\varepsilon))$ queries for a Hamiltonian given as a block-encoding with normalisation $\\lambda$, using at most two extra qubits. The **quantum singular value transformation** (Gilyén, Su, Low and Wiebe, STOC 2019) generalises these methods to polynomial transformations of block-encoded matrices and unifies much of quantum algorithm design.\n\n## Use in chemistry and materials\n\nFor electronic structure, qubitization combined with compressed representations of the Hamiltonian is the basis of most fault-tolerant cost estimates: Babbush et al. (PRX 2018) encoded electronic spectra with linear T complexity, and Lee et al. (PRX Quantum 2021) used tensor hypercontraction. Product formulas remain attractive for lattice models because they preserve locality.\n\n## Thermal states\n\nSimulating dynamics is the building block for preparing thermal states with quantum Gibbs samplers, which run a dissipative evolution whose steady state is $e^{-\\beta H}/Z$ and call Hamiltonian simulation as a subroutine."
 site:
   published: true
   aiReviewed: true
 ---
-
-## The task
-
-Given a Hamiltonian $H$ on $n$ qubits (a sum of local terms, or a sparse matrix with oracle access to its entries), a time $t$ and an accuracy $\varepsilon$, implement a circuit within $\varepsilon$ of $e^{-iHt}$. Feynman (1982) proposed using quantum devices to simulate quantum physics, and Lloyd (Science 1996) showed that local Hamiltonians can be simulated efficiently. The problem is BQP-complete, since any quantum circuit can be encoded as the evolution of a suitable Hamiltonian. The _no-fast-forwarding_ theorem (Berry et al., 2007) shows that for general Hamiltonians the cost must grow at least linearly in $t$.
-
-## Product formulas
-
-Write $H=\sum_j H_j$ with each $e^{-iH_j\tau}$ easy to implement. The first-order Lie–Trotter formula approximates $e^{-iHt}$ by $\big(\prod_j e^{-iH_jt/r}\big)^r$, with error governed by the commutators $[H_j,H_k]$ and shrinking as $1/r$; Suzuki's higher-order formulas of order $2k$ do better. Childs, Su, Tran, Wiebe and Zhu (PRX 2021) gave a theory of Trotter error in terms of nested commutators that is close to tight in examples. For geometrically local lattice Hamiltonians, Haah, Hastings, Kothari and Low (FOCS 2018) gave an algorithm with $O(nT\,\mathrm{polylog}(nT/\varepsilon))$ gates and proved a matching $\tilde\Omega(nT)$ lower bound. Product formulas need no ancilla qubits, and in practice they are often competitive for lattice models (Childs, Maslov, Nam, Ross and Su, PNAS 2018).
-
-## Beyond product formulas
-
-Berry, Ahokas, Cleve and Sanders (2007) simulated sparse Hamiltonians with oracle access. Childs and Wiebe (2012) introduced the **linear combination of unitaries** (LCU) method, and Berry, Childs, Cleve, Kothari and Somma (PRL 2015) used a truncated Taylor series to reach cost logarithmic in $1/\varepsilon$. Low and Chuang's **quantum signal processing** (PRL 2017) achieved query complexity $O\big(td\|H\|_{\max}+\log(1/\varepsilon)/\log\log(1/\varepsilon)\big)$ for $d$-sparse $H$, matching lower bounds in all parameters, and **qubitization** (Quantum 2019) achieved $O(\lambda t+\log(1/\varepsilon))$ queries for a Hamiltonian given as a block-encoding with normalisation $\lambda$, using at most two extra qubits. The **quantum singular value transformation** (Gilyén, Su, Low and Wiebe, STOC 2019) generalises these methods to polynomial transformations of block-encoded matrices and unifies much of quantum algorithm design.
-
-## Use in chemistry and materials
-
-For electronic structure, qubitization combined with compressed representations of the Hamiltonian is the basis of most fault-tolerant cost estimates: Babbush et al. (PRX 2018) encoded electronic spectra with linear T complexity, and Lee et al. (PRX Quantum 2021) used tensor hypercontraction. Product formulas remain attractive for lattice models because they preserve locality.
-
-## Thermal states
-
-Simulating dynamics is the building block for preparing thermal states with quantum Gibbs samplers, which run a dissipative evolution whose steady state is $e^{-\beta H}/Z$ and call Hamiltonian simulation as a subroutine.
 
 # Plain explanation
 
