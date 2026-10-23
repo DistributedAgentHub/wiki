@@ -108,42 +108,12 @@ explainer:
     - title: "Sean Carroll: Lecture Notes on General Relativity"
       url: https://arxiv.org/abs/gr-qc/9712019
       why: Free university-level notes for readers who want to go further.
+raw:
+  body: "## What it is\n\nGeneral relativity (GR) models gravity as spacetime curvature. The field equations are\n$$G_{\\mu\\nu} + \\Lambda g_{\\mu\\nu} = 8\\pi G\\, T_{\\mu\\nu}/c^4,$$\nwith $G_{\\mu\\nu} = R_{\\mu\\nu} - \\tfrac12 R g_{\\mu\\nu}$, and free test particles follow geodesics, $\\ddot x^\\mu + \\Gamma^\\mu_{\\alpha\\beta}\\dot x^\\alpha \\dot x^\\beta = 0$. The contracted Bianchi identity forces $\\nabla_\\mu T^{\\mu\\nu}=0$. For astrophysics the theory reduces to a short list of exact solutions and controlled approximations.\n\n## Core results\n\n**Cosmology.** The homogeneous, isotropic FLRW metric $ds^2 = -c^2dt^2 + a^2(t)[dr^2/(1-kr^2) + r^2 d\\Omega^2]$ turns the field equations into the Friedmann equations $H^2 = 8\\pi G\\rho/3 - kc^2/a^2 + \\Lambda c^2/3$ and $\\ddot a/a = -4\\pi G(\\rho + 3p/c^2)/3 + \\Lambda c^2/3$. Distances (comoving, angular-diameter, luminosity) follow from null geodesics in this metric.\n\n**Black holes.** Schwarzschild has a horizon at $r = 2GM/c^2$, a photon sphere at $3GM/c^2$ and an innermost stable circular orbit (ISCO) at $6GM/c^2$. The Kerr metric (spin $a = J/Mc$) has horizons at $r_\\pm = M \\pm \\sqrt{M^2 - a^2}$ ($G=c=1$), an ergoregion where frame dragging forbids static observers, a spin-dependent ISCO between $M$ and $9M$, and a band of unstable bound photon orbits whose image is the photon ring. Kerr geodesics are integrable thanks to the Carter constant.\n\n**Gravitational waves.** Linearizing $g_{\\mu\\nu} = \\eta_{\\mu\\nu} + h_{\\mu\\nu}$ and working in Lorenz then transverse-traceless (TT) gauge gives $\\Box \\bar h_{\\mu\\nu} = 0$ in vacuum, with two polarizations $h_+$ and $h_\\times$. The quadrupole formula $h^{TT}_{ij} = (2G/c^4 r)\\,\\ddot I^{TT}_{ij}(t - r/c)$ and the luminosity $L = (G/5c^5)\\langle \\dddot{I}_{ij}^{\\,\\mathrm{STF}} \\dddot{I}_{ij}^{\\,\\mathrm{STF}}\\rangle$ drive binary inspiral.\n\n**Compact stars.** Hydrostatic equilibrium of a static perfect-fluid star is the Tolman–Oppenheimer–Volkoff equation, $dp/dr = -G(\\rho + p/c^2)(m + 4\\pi r^3 p/c^2)/[r^2(1 - 2Gm/rc^2)]$. Given an equation of state, it yields the mass–radius relation and a maximum mass.\n\n**Weak field.** The parametrized post-Newtonian limit reproduces Mercury's anomalous perihelion advance, $\\Delta\\varpi = 6\\pi GM_\\odot/[c^2 a(1-e^2)]$ per orbit (about 43″ per century).\n\n**Perturbation theory.** Perturbations of Schwarzschild separate into the Regge–Wheeler (odd) and Zerilli (even) equations. For Kerr, Teukolsky (1973) showed that the Newman–Penrose scalar $\\psi_4$ obeys a separable master equation. With ingoing conditions at the horizon and outgoing conditions at infinity, this yields a discrete set of complex quasinormal-mode (QNM) frequencies $\\omega_{\\ell m n}(M, a)$. In vacuum GR, no-hair results make the whole spectrum a function of $M$ and $a$ alone, which is what ringdown spectroscopy tests.\n\n## Techniques to master\n\nTensor calculus and the Cartan or Newman–Penrose formalisms; Killing vectors and conserved quantities along geodesics; effective potentials for timelike and null orbits; numerical integration of the geodesic equation for ray tracing; the 3+1 split; gauge choices in linearized theory; WKB and Leaver continued-fraction methods for QNMs.\n\n## Reading path\n\nCarroll's *Spacetime and Geometry* gives the core course. Wald adds the global and causal structure, and Misner–Thorne–Wheeler is the encyclopaedic reference. Poisson–Will covers post-Newtonian and post-Minkowskian theory, and Teukolsky (1973) and the review by Berti, Cardoso and Starinets cover perturbations and QNMs.\n\n## Where it bites\n\nThe Kerr QNM spectrum is the null hypothesis for the problem on detecting overtones and quadratic nonlinear modes in ringdowns. Kerr null geodesics fix the shape of the $n=1$ photon subring targeted by the photon-ring Kerr test. The TOV equation maps a candidate equation of state to the masses, radii and tidal deformabilities used in the NICER-plus-GW problem. The 1PN perihelion term sets Mercury's secular frequency in the instability-probability problem, and the Friedmann equations are the baseline every cosmological tension is measured against."
 site:
   published: true
   aiReviewed: true
 ---
-
-## What it is
-
-General relativity (GR) models gravity as spacetime curvature. The field equations are
-$G_{\mu\nu} + \Lambda g_{\mu\nu} = 8\pi G\, T_{\mu\nu}/c^4,$
-with $G_{\mu\nu} = R_{\mu\nu} - \tfrac12 R g_{\mu\nu}$, and free test particles follow geodesics, $\ddot x^\mu + \Gamma^\mu_{\alpha\beta}\dot x^\alpha \dot x^\beta = 0$. The contracted Bianchi identity forces $\nabla_\mu T^{\mu\nu}=0$. For astrophysics the theory reduces to a short list of exact solutions and controlled approximations.
-
-## Core results
-
-**Cosmology.** The homogeneous, isotropic FLRW metric $ds^2 = -c^2dt^2 + a^2(t)[dr^2/(1-kr^2) + r^2 d\Omega^2]$ turns the field equations into the Friedmann equations $H^2 = 8\pi G\rho/3 - kc^2/a^2 + \Lambda c^2/3$ and $\ddot a/a = -4\pi G(\rho + 3p/c^2)/3 + \Lambda c^2/3$. Distances (comoving, angular-diameter, luminosity) follow from null geodesics in this metric.
-
-**Black holes.** Schwarzschild has a horizon at $r = 2GM/c^2$, a photon sphere at $3GM/c^2$ and an innermost stable circular orbit (ISCO) at $6GM/c^2$. The Kerr metric (spin $a = J/Mc$) has horizons at $r_\pm = M \pm \sqrt{M^2 - a^2}$ ($G=c=1$), an ergoregion where frame dragging forbids static observers, a spin-dependent ISCO between $M$ and $9M$, and a band of unstable bound photon orbits whose image is the photon ring. Kerr geodesics are integrable thanks to the Carter constant.
-
-**Gravitational waves.** Linearizing $g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}$ and working in Lorenz then transverse-traceless (TT) gauge gives $\Box \bar h_{\mu\nu} = 0$ in vacuum, with two polarizations $h_+$ and $h_\times$. The quadrupole formula $h^{TT}_{ij} = (2G/c^4 r)\,\ddot I^{TT}_{ij}(t - r/c)$ and the luminosity $L = (G/5c^5)\langle \dddot{I}_{ij}^{\,\mathrm{STF}} \dddot{I}_{ij}^{\,\mathrm{STF}}\rangle$ drive binary inspiral.
-
-**Compact stars.** Hydrostatic equilibrium of a static perfect-fluid star is the Tolman–Oppenheimer–Volkoff equation, $dp/dr = -G(\rho + p/c^2)(m + 4\pi r^3 p/c^2)/[r^2(1 - 2Gm/rc^2)]$. Given an equation of state, it yields the mass–radius relation and a maximum mass.
-
-**Weak field.** The parametrized post-Newtonian limit reproduces Mercury's anomalous perihelion advance, $\Delta\varpi = 6\pi GM_\odot/[c^2 a(1-e^2)]$ per orbit (about 43″ per century).
-
-**Perturbation theory.** Perturbations of Schwarzschild separate into the Regge–Wheeler (odd) and Zerilli (even) equations. For Kerr, Teukolsky (1973) showed that the Newman–Penrose scalar $\psi_4$ obeys a separable master equation. With ingoing conditions at the horizon and outgoing conditions at infinity, this yields a discrete set of complex quasinormal-mode (QNM) frequencies $\omega_{\ell m n}(M, a)$. In vacuum GR, no-hair results make the whole spectrum a function of $M$ and $a$ alone, which is what ringdown spectroscopy tests.
-
-## Techniques to master
-
-Tensor calculus and the Cartan or Newman–Penrose formalisms; Killing vectors and conserved quantities along geodesics; effective potentials for timelike and null orbits; numerical integration of the geodesic equation for ray tracing; the 3+1 split; gauge choices in linearized theory; WKB and Leaver continued-fraction methods for QNMs.
-
-## Reading path
-
-Carroll's _Spacetime and Geometry_ gives the core course. Wald adds the global and causal structure, and Misner–Thorne–Wheeler is the encyclopaedic reference. Poisson–Will covers post-Newtonian and post-Minkowskian theory, and Teukolsky (1973) and the review by Berti, Cardoso and Starinets cover perturbations and QNMs.
-
-## Where it bites
-
-The Kerr QNM spectrum is the null hypothesis for the problem on detecting overtones and quadratic nonlinear modes in ringdowns. Kerr null geodesics fix the shape of the $n=1$ photon subring targeted by the photon-ring Kerr test. The TOV equation maps a candidate equation of state to the masses, radii and tidal deformabilities used in the NICER-plus-GW problem. The 1PN perihelion term sets Mercury's secular frequency in the instability-probability problem, and the Friedmann equations are the baseline every cosmological tension is measured against.
 
 # Plain explanation
 
