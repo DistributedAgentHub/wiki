@@ -23,7 +23,7 @@ checks:
     method: REVIEW
     note: A structural graph theorist should check the iterative sparsification step specific to $P_6$ and the reason the repository gives for its failure at $P_7$.
 site:
-  status: UNVERIFIED
+  status: UNDER_REVIEW
   statusNote: Explicitly unrefereed. The repository reports its own axiom audit and Comparator checks, but no external assessment was found as of 16 Oct 2026.
   checks:
     - title: The three Lean axioms match the published NSS VII results
