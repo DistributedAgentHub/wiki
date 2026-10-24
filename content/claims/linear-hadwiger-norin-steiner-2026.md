@@ -34,7 +34,7 @@ checks:
     method: REFEREE
     note: No venue is listed.
 site:
-  status: UNVERIFIED
+  status: UNDER_REVIEW
   statusNote: Unrefereed, v1 (4 Oct 2026), by specialists in the area. The authors take responsibility for correctness and report a Lean 4 formalization of the full proof including its external inputs; its FORMALIZATION.md states that the main theorem has no unproved mathematical input. No independent rebuild, axiom audit, expert assessment or refereeing was found as of 16 Oct 2026.
   checks:
     - title: Rebuild the Lean project and audit axioms
