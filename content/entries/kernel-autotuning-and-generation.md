@@ -91,12 +91,30 @@ explainer:
     - title: Making Deep Learning Go Brrrr From First Principles (Horace He)
       url: https://horace.io/brrr_intro.html
       why: A readable tour of compute-bound versus memory-bound work on GPUs.
-raw:
-  body: "## Why tuning exists\n\nFor a given operator the best tile shape, number of pipeline stages, warps per block and loop order depend on tensor sizes, data types and the GPU model. Rules of thumb get close, but the fastest configuration for a shape can differ from a neighbour's, and the search space is large. Vendor libraries use heuristics and large tables; open stacks tune by measurement.\n\n## Search-based approaches\n\n- **Exhaustive or grid autotuning.** Triton's `@triton.autotune` decorator takes a list of configurations and a key (the argument values that trigger re-tuning), benchmarks each, and caches the winner. Simple and reliable, but each new shape costs compile and run time.\n- **Learned cost models and search.** TVM's AutoTVM and Ansor generate candidate programs from a hierarchical search space and use evolutionary search guided by a learned cost model, reporting speedups over earlier frameworks on CPUs and GPUs (Ansor abstract: up to 1.7x on NVIDIA GPU against the state of the art at the time).\n- **Heuristic selection in libraries.** cuBLAS and CUTLASS profilers rank precompiled kernels per problem.\n\nOpen questions are sample efficiency (how few timed runs find a near-best configuration), transfer across shapes and GPUs, and the cost of compilation, which often dominates at the dynamic shapes seen in serving.\n\n## Generating kernels with language models\n\nKernelBench (Ouyang et al., 2025) asks language models to write GPU kernels for 250 PyTorch workloads and scores them with **fast_p**: the fraction of generated kernels that are correct and at least a factor p faster than the PyTorch baseline. The authors report that frontier reasoning models matched the baseline in under 20% of cases out of the box, and that execution and profiler feedback in an iterative loop improves results. By mid-2026 the picture had changed: KernelBench-Verified (Zhang et al., 2026), which adds a TF32 baseline and hidden test distributions to catch kernels that hard-code shortcuts, reports single-shot best-of-5 fast_1 of up to 52% on Level 1 and 65% on Level 2 for frontier models on H200, but at most 38% on Level 3 (whole architectures). Because correctness and speed can be checked mechanically, kernel writing is one of the few areas where agents can be evaluated without human judgement, and where reward hacking (cached results, skipped work, benchmarks that miss edge cases) must be guarded against.\n\n## What depends on it\n\nCompilers that auto-tune determine whether researchers can write a new operator in a day and still get hardware-level speed; any agent that proposes kernels needs a trusted harness and baselines like these."
 site:
   published: true
   aiReviewed: true
 ---
+
+## Why tuning exists
+
+For a given operator the best tile shape, number of pipeline stages, warps per block and loop order depend on tensor sizes, data types and the GPU model. Rules of thumb get close, but the fastest configuration for a shape can differ from a neighbour's, and the search space is large. Vendor libraries use heuristics and large tables; open stacks tune by measurement.
+
+## Search-based approaches
+
+- **Exhaustive or grid autotuning.** Triton's `@triton.autotune` decorator takes a list of configurations and a key (the argument values that trigger re-tuning), benchmarks each, and caches the winner. Simple and reliable, but each new shape costs compile and run time.
+- **Learned cost models and search.** TVM's AutoTVM and Ansor generate candidate programs from a hierarchical search space and use evolutionary search guided by a learned cost model, reporting speedups over earlier frameworks on CPUs and GPUs (Ansor abstract: up to 1.7x on NVIDIA GPU against the state of the art at the time).
+- **Heuristic selection in libraries.** cuBLAS and CUTLASS profilers rank precompiled kernels per problem.
+
+Open questions are sample efficiency (how few timed runs find a near-best configuration), transfer across shapes and GPUs, and the cost of compilation, which often dominates at the dynamic shapes seen in serving.
+
+## Generating kernels with language models
+
+KernelBench (Ouyang et al., 2025) asks language models to write GPU kernels for 250 PyTorch workloads and scores them with **fast\_p**: the fraction of generated kernels that are correct and at least a factor p faster than the PyTorch baseline. The authors report that frontier reasoning models matched the baseline in under 20% of cases out of the box, and that execution and profiler feedback in an iterative loop improves results. By mid-2026 the picture had changed: KernelBench-Verified (Zhang et al., 2026), which adds a TF32 baseline and hidden test distributions to catch kernels that hard-code shortcuts, reports single-shot best-of-5 fast_1 of up to 52% on Level 1 and 65% on Level 2 for frontier models on H200, but at most 38% on Level 3 (whole architectures). Because correctness and speed can be checked mechanically, kernel writing is one of the few areas where agents can be evaluated without human judgement, and where reward hacking (cached results, skipped work, benchmarks that miss edge cases) must be guarded against.
+
+## What depends on it
+
+Compilers that auto-tune determine whether researchers can write a new operator in a day and still get hardware-level speed; any agent that proposes kernels needs a trusted harness and baselines like these.
 
 # Plain explanation
 
