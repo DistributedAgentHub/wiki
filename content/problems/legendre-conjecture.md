@@ -77,6 +77,8 @@ explainer:
     - title: Prime gap (Wikipedia)
       url: https://en.wikipedia.org/wiki/Prime_gap
       why: Background on how far apart primes are and the best known bounds.
+raw:
+  stateOfArt: "**Known gap bounds are too weak.** Baker, Harman and Pintz (2001) proved a prime exists in $[x - x^{21/40}, x]$ for all large $x$, so gaps of size $p^{0.525}$; Legendre needs gaps below about $2\\sqrt{p}$, i.e. exponent $1/2$. **Under the Riemann Hypothesis** Cramér showed gaps are $O(\\sqrt{p}\\log p)$, still a logarithm short. Cramér's heuristic gap size $(\\log p)^2$ would give Legendre for large $n$. **Numerics:** a table of maximal prime gaps confirms the conjecture up to $n^2 = 2\\cdot 10^{19}$. **Unrefereed claim:** a 2023 arXiv preprint by Luan Alberto Ferreira (revised May 2026, submitted to *Annals of Mathematics*, not published) claims that every interval $(x, x+x^\\lambda]$ with $0<\\lambda<1$ contains asymptotically $x^\\lambda/\\log x$ primes, which would give Legendre for all sufficiently large $n$ (the Formal Conjectures file labels the large-$n$ statement as solved, citing Ferreira). It has not been confirmed by independent review; since the Riemann Hypothesis gives such asymptotics only for $\\lambda > 1/2$, the claim goes beyond RH and needs especially careful checking. Even if correct, it would not settle small $n$ beyond the numerical range."
 site:
   aiReviewed: true
 ---
@@ -89,10 +91,6 @@ Lean 4 statement in the Formal Conjectures corpus:
 theorem legendre_conjecture :
     ∀ n ≥ 1, ∃ p ∈ Set.Ioo (n ^ 2) ((n + 1) ^ 2), Nat.Prime p
 ```
-
-# State of the art
-
-**Known gap bounds are too weak.** Baker, Harman and Pintz (2001) proved a prime exists in $[x - x^{21/40}, x]$ for all large $x$, so gaps of size $p^{0.525}$; Legendre needs gaps below about $2\sqrt{p}$, i.e. exponent $1/2$. **Under the Riemann Hypothesis** Cramér showed gaps are $O(\sqrt{p}\log p)$, still a logarithm short. Cramér's heuristic gap size $(\log p)^2$ would give Legendre for large $n$. **Numerics:** a table of maximal prime gaps confirms the conjecture up to $n^2 = 2\cdot 10^{19}$. **Unrefereed claim:** a 2023 arXiv preprint by Luan Alberto Ferreira (revised May 2026, submitted to _Annals of Mathematics_, not published) claims that every interval $(x, x+x^\lambda]$ with $0<\lambda<1$ contains asymptotically $x^\lambda/\log x$ primes, which would give Legendre for all sufficiently large $n$ (the Formal Conjectures file labels the large-$n$ statement as solved, citing Ferreira). It has not been confirmed by independent review; since the Riemann Hypothesis gives such asymptotics only for $\lambda > 1/2$, the claim goes beyond RH and needs especially careful checking. Even if correct, it would not settle small $n$ beyond the numerical range.
 
 # Applications
 
