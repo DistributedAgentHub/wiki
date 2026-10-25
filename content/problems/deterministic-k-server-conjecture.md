@@ -98,11 +98,11 @@ explainer:
     - title: Competitive analysis (online algorithm) (Wikipedia)
       url: https://en.wikipedia.org/wiki/Competitive_analysis_(online_algorithm)
       why: Defines the competitive ratio used throughout.
-raw:
-  body: "In the $k$-server problem, $k$ servers sit at points of a metric space $(M,d)$ and a request sequence $r_1,r_2,\\dots$ arrives online; each request must be served by moving some server to it, and the cost is total distance moved. An online algorithm is $c$-competitive if its cost is at most $c\\cdot\\mathrm{OPT}+a$ on every sequence. Manasse, McGeoch and Sleator proved that no deterministic algorithm is better than $k$-competitive in any metric with more than $k$ points, and conjectured that a deterministic $k$-competitive algorithm exists in every metric space. Koutsoupias and Papadimitriou (1995) proved that the work function algorithm (WFA) is $(2k-1)$-competitive. *Is the optimal deterministic competitive ratio exactly $k$ in every metric space?* The strong form asks whether the WFA itself is $k$-competitive. Before 2026 the conjecture was known only for $k=2$, metrics with $k+1$ or $k+2$ points, the line, trees, uniform metrics (paging), weighted stars (weighted paging) and $k=3$ on the circle."
 site:
   aiReviewed: true
 ---
+
+In the $k$-server problem, $k$ servers sit at points of a metric space $(M,d)$ and a request sequence $r_1,r_2,\dots$ arrives online; each request must be served by moving some server to it, and the cost is total distance moved. An online algorithm is $c$-competitive if its cost is at most $c\cdot\mathrm{OPT}+a$ on every sequence. Manasse, McGeoch and Sleator proved that no deterministic algorithm is better than $k$-competitive in any metric with more than $k$ points, and conjectured that a deterministic $k$-competitive algorithm exists in every metric space. Koutsoupias and Papadimitriou (1995) proved that the work function algorithm (WFA) is $(2k-1)$-competitive. _Is the optimal deterministic competitive ratio exactly $k$ in every metric space?_ The strong form asks whether the WFA itself is $k$-competitive. Before 2026 the conjecture was known only for $k=2$, metrics with $k+1$ or $k+2$ points, the line, trees, uniform metrics (paging), weighted stars (weighted paging) and $k=3$ on the circle.
 
 # State of the art
 
