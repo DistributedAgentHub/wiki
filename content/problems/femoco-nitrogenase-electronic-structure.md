@@ -93,11 +93,13 @@ explainer:
     - title: Elucidating reaction mechanisms on quantum computers (Reiher et al.)
       url: https://arxiv.org/abs/1605.03590
       why: The paper that made FeMoco a quantum benchmark.
-raw:
-  body: "Determine, with controlled error, (i) the ground-state electronic and spin structure of the resting-state FeMo-cofactor (the [MoFe$_7$S$_9$C] cluster of nitrogenase, total spin $S=3/2$, E$_0$ state) including which spin-coupling and valence-localisation pattern is lowest and the gaps to the competing states to within 1 kcal/mol; (ii) how this landscape changes in the real cluster (full ligand shell, homocitrate, protein electrostatics, geometric fluctuations) relative to the widely used 54-electron, 54-orbital model Hamiltonian; and (iii) the electronic structure of the reduced E$_n$ states (notably E$_4$) at which N$_2$ binds.\n\nA precise sub-problem is the *model* problem: the ground-state energy of the standard FeMoco active-space Hamiltonian, which is the quantum-computing benchmark, to an agreed accuracy, together with the question of whether any classical method does it at all."
 site:
   aiReviewed: true
 ---
+
+Determine, with controlled error, (i) the ground-state electronic and spin structure of the resting-state FeMo-cofactor (the \[MoFe$_7$S$_9$C] cluster of nitrogenase, total spin $S=3/2$, E$_0$ state) including which spin-coupling and valence-localisation pattern is lowest and the gaps to the competing states to within 1 kcal/mol; (ii) how this landscape changes in the real cluster (full ligand shell, homocitrate, protein electrostatics, geometric fluctuations) relative to the widely used 54-electron, 54-orbital model Hamiltonian; and (iii) the electronic structure of the reduced E$_n$ states (notably E$_4$) at which N$_2$ binds.
+
+A precise sub-problem is the _model_ problem: the ground-state energy of the standard FeMoco active-space Hamiltonian, which is the quantum-computing benchmark, to an agreed accuracy, together with the question of whether any classical method does it at all.
 
 # State of the art
 
