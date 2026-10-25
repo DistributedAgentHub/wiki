@@ -95,39 +95,12 @@ explainer:
     - title: Prime number theorem - Wikipedia
       url: https://en.wikipedia.org/wiki/Prime_number_theorem
       why: The result that the zeros' location already helps prove.
+raw:
+  body: "## The function\n\nFor $\\operatorname{Re}(s)>1$ the zeta function is the Dirichlet series\n$$\\zeta(s)=\\sum_{n\\ge 1} n^{-s}=\\prod_{p\\text{ prime}}\\left(1-p^{-s}\\right)^{-1}.$$\nThe equality of the sum and the product (Euler, 1737) is unique factorization in analytic form. Riemann (1859) showed that $\\zeta$ extends to a meromorphic function on $\\mathbb{C}$ whose only singularity is a simple pole at $s=1$, and that it satisfies a functional equation relating $s$ and $1-s$: with $\\xi(s)=\\tfrac12 s(s-1)\\pi^{-s/2}\\Gamma(s/2)\\zeta(s)$ one has $\\xi(s)=\\xi(1-s)$.\n\nThe zeros of $\\zeta$ come in two kinds. The \"trivial\" zeros are at $s=-2,-4,-6,\\dots$, forced by the Gamma factor. The \"non-trivial\" zeros $\\rho$ lie in the critical strip $0<\\operatorname{Re}(s)<1$, are symmetric about the real axis and about the line $\\operatorname{Re}(s)=\\tfrac12$, and there are infinitely many of them.\n\n## Why zeros control primes\n\nRiemann's explicit formula expresses the prime-counting function through the zeros. In the Chebyshev form, for $x>1$ not a prime power,\n$$\\psi(x)=\\sum_{n\\le x}\\Lambda(n)=x-\\sum_{\\rho}\\frac{x^{\\rho}}{\\rho}-\\log 2\\pi-\\tfrac12\\log\\left(1-x^{-2}\\right),$$\nwhere $\\Lambda$ is the von Mangoldt function and the sum over zeros is taken symmetrically, as $\\lim_{T\\to\\infty}\\sum_{|\\gamma|<T}$. Each zero $\\rho=\\beta+i\\gamma$ contributes an oscillation of size $x^{\\beta}$. The main term $x$ comes from the pole at $s=1$. Consequently the real parts of the zeros set the size of the error in the prime number theorem: the theorem itself ($\\pi(x)\\sim x/\\log x$, Hadamard and de la Vallée Poussin, 1896) is equivalent to $\\zeta(s)\\neq 0$ on $\\operatorname{Re}(s)=1$, and the Riemann Hypothesis (all non-trivial zeros have $\\beta=\\tfrac12$) is equivalent to the sharpest possible error term, $\\pi(x)=\\operatorname{li}(x)+O(\\sqrt{x}\\log x)$ (von Koch, 1901).\n\n## What is proved unconditionally\n\n- Zero-free regions: the classical region $\\beta<1-c/\\log(|\\gamma|+2)$ was sharpened by Vinogradov and Korobov to roughly $1-c(\\log|\\gamma|)^{-2/3}(\\log\\log|\\gamma|)^{-1/3}$. Nothing close to $\\beta=\\tfrac12$ is known.\n- Positive proportion of zeros on the critical line: Selberg (1942); more than one third (Levinson, 1974); more than two fifths (Conrey, 1989); the current record is just over five twelfths (Pratt, Robles, Zaharescu and Zeindler, 2020).\n- Zero-density estimates: bounds on $N(\\sigma,T)$, the number of zeros with $\\beta\\ge\\sigma$ and $|\\gamma|\\le T$. These are \"RH on average\" and are often sufficient for applications. Huxley's 1972 bound $N(\\sigma,T)\\ll T^{12(1-\\sigma)/5+\\varepsilon}$ stood for over fifty years until Guth and Maynard (2024) proved $N(\\sigma,T)\\le T^{30(1-\\sigma)/13+o(1)}$.\n- Numerical verification: every non-trivial zero with $|\\gamma|\\le 3\\cdot 10^{12}$ lies on the critical line, rigorously, by interval arithmetic (Platt and Trudgian). Earlier non-rigorous computations by Gourdon (2004) checked roughly the first $10^{13}$ zeros.\n\n## Generalizations\n\nDirichlet $L$-functions, Dedekind zeta functions of number fields and automorphic $L$-functions have the same structure and the same conjectural location of zeros (the Generalized Riemann Hypothesis). Over finite fields the analogue is a theorem: Weil proved it for curves (1948) and Deligne for higher-dimensional varieties (1974). That result is evidence that the phenomenon is real, but the proofs rely on cohomology and Frobenius, with no known counterpart for $\\zeta$ itself.\n\n## Uses\n\nBeyond pure number theory, $\\zeta$-based estimates feed into explicit prime bounds, error analysis in sieve theory, and conditional algorithms (for example, Miller's deterministic primality test is polynomial-time under GRH; the unconditional AKS test covers that need). Statistics of the zeros match random matrix theory (Montgomery, Odlyzko), an observation that connects the subject to quantum chaos."
 site:
   published: true
   aiReviewed: true
 ---
-
-## The function
-
-For $\operatorname{Re}(s)>1$ the zeta function is the Dirichlet series
-$\zeta(s)=\sum_{n\ge 1} n^{-s}=\prod_{p\text{ prime}}\left(1-p^{-s}\right)^{-1}.$
-The equality of the sum and the product (Euler, 1737) is unique factorization in analytic form. Riemann (1859) showed that $\zeta$ extends to a meromorphic function on $\mathbb{C}$ whose only singularity is a simple pole at $s=1$, and that it satisfies a functional equation relating $s$ and $1-s$: with $\xi(s)=\tfrac12 s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$ one has $\xi(s)=\xi(1-s)$.
-
-The zeros of $\zeta$ come in two kinds. The "trivial" zeros are at $s=-2,-4,-6,\dots$, forced by the Gamma factor. The "non-trivial" zeros $\rho$ lie in the critical strip $0<\operatorname{Re}(s)<1$, are symmetric about the real axis and about the line $\operatorname{Re}(s)=\tfrac12$, and there are infinitely many of them.
-
-## Why zeros control primes
-
-Riemann's explicit formula expresses the prime-counting function through the zeros. In the Chebyshev form, for $x>1$ not a prime power,
-$\psi(x)=\sum_{n\le x}\Lambda(n)=x-\sum_{\rho}\frac{x^{\rho}}{\rho}-\log 2\pi-\tfrac12\log\left(1-x^{-2}\right),$
-where $\Lambda$ is the von Mangoldt function and the sum over zeros is taken symmetrically, as $\lim_{T\to\infty}\sum_{|\gamma|<T}$. Each zero $\rho=\beta+i\gamma$ contributes an oscillation of size $x^{\beta}$. The main term $x$ comes from the pole at $s=1$. Consequently the real parts of the zeros set the size of the error in the prime number theorem: the theorem itself ($\pi(x)\sim x/\log x$, Hadamard and de la Vallée Poussin, 1896) is equivalent to $\zeta(s)\neq 0$ on $\operatorname{Re}(s)=1$, and the Riemann Hypothesis (all non-trivial zeros have $\beta=\tfrac12$) is equivalent to the sharpest possible error term, $\pi(x)=\operatorname{li}(x)+O(\sqrt{x}\log x)$ (von Koch, 1901).
-
-## What is proved unconditionally
-
-- Zero-free regions: the classical region $\beta<1-c/\log(|\gamma|+2)$ was sharpened by Vinogradov and Korobov to roughly $1-c(\log|\gamma|)^{-2/3}(\log\log|\gamma|)^{-1/3}$. Nothing close to $\beta=\tfrac12$ is known.
-- Positive proportion of zeros on the critical line: Selberg (1942); more than one third (Levinson, 1974); more than two fifths (Conrey, 1989); the current record is just over five twelfths (Pratt, Robles, Zaharescu and Zeindler, 2020).
-- Zero-density estimates: bounds on $N(\sigma,T)$, the number of zeros with $\beta\ge\sigma$ and $|\gamma|\le T$. These are "RH on average" and are often sufficient for applications. Huxley's 1972 bound $N(\sigma,T)\ll T^{12(1-\sigma)/5+\varepsilon}$ stood for over fifty years until Guth and Maynard (2024) proved $N(\sigma,T)\le T^{30(1-\sigma)/13+o(1)}$.
-- Numerical verification: every non-trivial zero with $|\gamma|\le 3\cdot 10^{12}$ lies on the critical line, rigorously, by interval arithmetic (Platt and Trudgian). Earlier non-rigorous computations by Gourdon (2004) checked roughly the first $10^{13}$ zeros.
-
-## Generalizations
-
-Dirichlet $L$-functions, Dedekind zeta functions of number fields and automorphic $L$-functions have the same structure and the same conjectural location of zeros (the Generalized Riemann Hypothesis). Over finite fields the analogue is a theorem: Weil proved it for curves (1948) and Deligne for higher-dimensional varieties (1974). That result is evidence that the phenomenon is real, but the proofs rely on cohomology and Frobenius, with no known counterpart for $\zeta$ itself.
-
-## Uses
-
-Beyond pure number theory, $\zeta$-based estimates feed into explicit prime bounds, error analysis in sieve theory, and conditional algorithms (for example, Miller's deterministic primality test is polynomial-time under GRH; the unconditional AKS test covers that need). Statistics of the zeros match random matrix theory (Montgomery, Odlyzko), an observation that connects the subject to quantum chaos.
 
 # Plain explanation
 
