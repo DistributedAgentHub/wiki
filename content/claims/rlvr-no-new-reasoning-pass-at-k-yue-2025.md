@@ -22,8 +22,6 @@ checks:
     method: CROSS_CHECK
     note: ProRL reports the opposite for a 1.5B model with a different recipe; the two have not been run under one protocol.
     sourceUrl: https://arxiv.org/abs/2505.24864
-raw:
-  summary: "Across math, code and visual-reasoning benchmarks and several model families, RL with verifiable rewards improves pass@1 but the base model catches up and sometimes surpasses the RL model at large $k$ (up to 128 to 1024 samples). The authors conclude RLVR mainly sharpens the distribution within the base model's support, and that distillation from a stronger teacher, unlike RL, expands the boundary."
 site:
   status: UNDER_REVIEW
   statusNote: "Preprint. Contested by later work: ProRL (preprint) reports expansion under prolonged RL with KL control and reference resets, and a question-level analysis (\"Invisible Leash\", preprint) reports that lost verified successes outweigh gained ones. The authors themselves note a counter-example (GRPO pass@256 on MATH500 above the base model) and that pass@k can count lucky guesses."
@@ -33,3 +31,5 @@ site:
     - title: Cross-check against prolonged-RL results
       status: OPEN
 ---
+
+Across math, code and visual-reasoning benchmarks and several model families, RL with verifiable rewards improves pass\@1 but the base model catches up and sometimes surpasses the RL model at large $k$ (up to 128 to 1024 samples). The authors conclude RLVR mainly sharpens the distribution within the base model's support, and that distillation from a stronger teacher, unlike RL, expands the boundary.
