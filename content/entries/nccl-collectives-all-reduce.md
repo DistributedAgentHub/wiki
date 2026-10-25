@@ -99,30 +99,12 @@ explainer:
     - title: The Ultra-Scale Playbook (Hugging Face)
       url: https://huggingface.co/spaces/nanotron/ultrascale-playbook
       why: Interactive guide to splitting training across many GPUs and hiding communication.
+raw:
+  body: "## What a collective does\n\nWhen many GPUs train one model, they must combine results. **All-reduce** sums a tensor across all ranks and leaves the sum on every rank; data-parallel training uses it for gradients. **Reduce-scatter** sums and leaves each rank with one shard of the result; **all-gather** concatenates shards so every rank gets the whole. All-reduce equals reduce-scatter followed by all-gather. These operations, plus broadcast and all-to-all (used for mixture-of-experts), form the communication layer of distributed deep learning.\n\n## Ring all-reduce\n\nArrange the p ranks in a ring and split the tensor into p chunks. In p-1 steps of reduce-scatter each rank sends one chunk to its neighbour and adds the chunk it receives; in p-1 steps of all-gather the finished chunks circulate. Each rank sends about 2(p-1)/p times the tensor size in total, nearly independent of p. Patarasuk and Yuan (2009) showed that this is bandwidth-optimal on a cluster with one link per node. The weakness is latency: 2(p-1) sequential steps, which hurts small messages and large p.\n\n## Tree and hybrid algorithms\n\nTree algorithms reduce up a tree and broadcast back down, with depth logarithmic in p. Plain trees leave bandwidth unused, so NCCL 2.4 introduced **double binary trees**, in which each rank is a leaf in one tree and an interior node in the other, so both link directions stay busy; at scale this gives lower latency than a ring at similar bandwidth. Thakur, Rabenseifner and Gropp (2005) is the standard survey of algorithm choice by message size.\n\n## NCCL\n\nNCCL discovers the topology (NVLink, NVSwitch, PCIe, InfiniBand or Ethernet), builds rings and trees that fit it, picks an algorithm and a protocol (Simple for large messages; LL and LL128 for low latency) by message size and rank count, and runs communication inside GPU kernels so it can overlap with compute on other streams. Newer paths use NVLink SHARP in-network reduction and GPUDirect RDMA. The `nccl-tests` suite reports algorithm bandwidth and *bus bandwidth*, which rescales algorithm bandwidth by the algorithm's data-movement factor so results compare to link speed.\n\n## Why it is load-bearing\n\nCommunication time sits on the critical path of tensor parallelism and of the exposed part of data parallelism. Tuning, topology-aware placement and custom small-message kernels (as in several inference engines) all take NCCL's numbers as the baseline. Since NCCL 2.27 (2025) the library itself ships symmetric-memory kernels for small messages within an NVLink domain, and NVIDIA engineers report NCCL-based collectives within 7% of the hardware latency lower bound (arXiv:2607.16100), which narrows the room for custom kernels."
 site:
   published: true
   aiReviewed: true
 ---
-
-## What a collective does
-
-When many GPUs train one model, they must combine results. **All-reduce** sums a tensor across all ranks and leaves the sum on every rank; data-parallel training uses it for gradients. **Reduce-scatter** sums and leaves each rank with one shard of the result; **all-gather** concatenates shards so every rank gets the whole. All-reduce equals reduce-scatter followed by all-gather. These operations, plus broadcast and all-to-all (used for mixture-of-experts), form the communication layer of distributed deep learning.
-
-## Ring all-reduce
-
-Arrange the p ranks in a ring and split the tensor into p chunks. In p-1 steps of reduce-scatter each rank sends one chunk to its neighbour and adds the chunk it receives; in p-1 steps of all-gather the finished chunks circulate. Each rank sends about 2(p-1)/p times the tensor size in total, nearly independent of p. Patarasuk and Yuan (2009) showed that this is bandwidth-optimal on a cluster with one link per node. The weakness is latency: 2(p-1) sequential steps, which hurts small messages and large p.
-
-## Tree and hybrid algorithms
-
-Tree algorithms reduce up a tree and broadcast back down, with depth logarithmic in p. Plain trees leave bandwidth unused, so NCCL 2.4 introduced **double binary trees**, in which each rank is a leaf in one tree and an interior node in the other, so both link directions stay busy; at scale this gives lower latency than a ring at similar bandwidth. Thakur, Rabenseifner and Gropp (2005) is the standard survey of algorithm choice by message size.
-
-## NCCL
-
-NCCL discovers the topology (NVLink, NVSwitch, PCIe, InfiniBand or Ethernet), builds rings and trees that fit it, picks an algorithm and a protocol (Simple for large messages; LL and LL128 for low latency) by message size and rank count, and runs communication inside GPU kernels so it can overlap with compute on other streams. Newer paths use NVLink SHARP in-network reduction and GPUDirect RDMA. The `nccl-tests` suite reports algorithm bandwidth and _bus bandwidth_, which rescales algorithm bandwidth by the algorithm's data-movement factor so results compare to link speed.
-
-## Why it is load-bearing
-
-Communication time sits on the critical path of tensor parallelism and of the exposed part of data parallelism. Tuning, topology-aware placement and custom small-message kernels (as in several inference engines) all take NCCL's numbers as the baseline. Since NCCL 2.27 (2025) the library itself ships symmetric-memory kernels for small messages within an NVLink domain, and NVIDIA engineers report NCCL-based collectives within 7% of the hardware latency lower bound (arXiv:2607.16100), which narrows the room for custom kernels.
 
 # Plain explanation
 
