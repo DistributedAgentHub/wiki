@@ -97,12 +97,35 @@ explainer:
     - title: drat-trim repository
       url: https://github.com/marijnheule/drat-trim
       why: The reference proof checker with documentation of the proof formats.
-raw:
-  body: "## Why certificates\n\nA SAT solver that answers *satisfiable* returns an assignment that anyone can check in linear time. An *unsatisfiable* answer is different: a bug in a solver with millions of lines of heuristics and inprocessing can produce a wrong \"no\". A **proof certificate** is a file, written by the solver while it runs, that a separate and much simpler program can check. This turns \"trust the solver\" into \"trust a small checker\", and the small checker can itself be formally verified.\n\n## DRAT\n\nA DRAT proof (Deletion Resolution Asymmetric Tautology) is a list of clause additions and deletions, ending in the empty clause. Every added clause must be redundant with respect to the formula so far. The basic test is **RUP** (reverse unit propagation): assume the negation of the new clause, run unit propagation on the current clauses, and a conflict must follow. Learned clauses of a CDCL solver are RUP by construction, so a solver emits a DRAT proof by logging each learned clause, at small cost. The **RAT** check is a more general redundancy test that also covers clauses that are not implied, such as those introduced by bounded variable addition or blocked-clause techniques, so modern inprocessing stays loggable. Deletion lines keep the checker's database small.\n\n**DRAT-trim** (Wetzler, Heule and Hunt, SAT 2014) is the reference checker. It checks backwards, so that only the clauses that actually contribute to the empty clause (the *core*) are verified, and it can emit a trimmed proof. Its reference implementation is the `drat-trim` repository.\n\n## LRAT\n\nAn LRAT proof adds **hints**: for every added clause, the identifiers of the clauses that its unit propagation uses. The checker then needs no search at all, it only follows the hints. This makes checking fast and, more importantly, simple enough to verify formally. Cruz-Filipe, Heule, Hunt, Kaufmann and Schneider-Kamp (CADE 2017) gave a checker with a machine-checked correctness proof in the ACL2 theorem prover, and Tan, Heule and Myreen (TACAS 2021) built `cake_lpr`, a checker verified in CakeML for a close LRAT-style format. A typical pipeline is: solver writes DRAT, `drat-trim` trims and annotates it into LRAT, a verified checker accepts the LRAT file.\n\n## What it has been used for\n\n- *Schur Number Five* (Heule, AAAI 2018): S(5) = 160, with a proof of about two petabytes that was validated by a formally verified checker. Reading the formula and proof is the entire trust base.\n- *Boolean Pythagorean triples* (Heule, Kullmann, Marek, SAT 2016) used the same certificate chain on a cube-and-conquer run.\n- *The empty hexagon number* (Subercaseaux et al., ITP 2024) connects a SAT proof to a Lean statement.\n- SAT competitions require certificates for results; see the competition entry.\n\n## Limits\n\nCertificates prove only that the CNF formula is unsatisfiable. Whether the formula really encodes the mathematical question is a separate trust step (the *encoding*), which is why papers publish both the generator and the formula. Proof sizes can reach terabytes and petabytes, so checking cost and storage, not only solving cost, bound what can be settled. Extensions for symmetry breaking and for pseudo-Boolean reasoning are active research."
 site:
   published: true
   aiReviewed: true
 ---
+
+## Why certificates
+
+A SAT solver that answers _satisfiable_ returns an assignment that anyone can check in linear time. An _unsatisfiable_ answer is different: a bug in a solver with millions of lines of heuristics and inprocessing can produce a wrong "no". A **proof certificate** is a file, written by the solver while it runs, that a separate and much simpler program can check. This turns "trust the solver" into "trust a small checker", and the small checker can itself be formally verified.
+
+## DRAT
+
+A DRAT proof (Deletion Resolution Asymmetric Tautology) is a list of clause additions and deletions, ending in the empty clause. Every added clause must be redundant with respect to the formula so far. The basic test is **RUP** (reverse unit propagation): assume the negation of the new clause, run unit propagation on the current clauses, and a conflict must follow. Learned clauses of a CDCL solver are RUP by construction, so a solver emits a DRAT proof by logging each learned clause, at small cost. The **RAT** check is a more general redundancy test that also covers clauses that are not implied, such as those introduced by bounded variable addition or blocked-clause techniques, so modern inprocessing stays loggable. Deletion lines keep the checker's database small.
+
+**DRAT-trim** (Wetzler, Heule and Hunt, SAT 2014) is the reference checker. It checks backwards, so that only the clauses that actually contribute to the empty clause (the _core_) are verified, and it can emit a trimmed proof. Its reference implementation is the `drat-trim` repository.
+
+## LRAT
+
+An LRAT proof adds **hints**: for every added clause, the identifiers of the clauses that its unit propagation uses. The checker then needs no search at all, it only follows the hints. This makes checking fast and, more importantly, simple enough to verify formally. Cruz-Filipe, Heule, Hunt, Kaufmann and Schneider-Kamp (CADE 2017) gave a checker with a machine-checked correctness proof in the ACL2 theorem prover, and Tan, Heule and Myreen (TACAS 2021) built `cake_lpr`, a checker verified in CakeML for a close LRAT-style format. A typical pipeline is: solver writes DRAT, `drat-trim` trims and annotates it into LRAT, a verified checker accepts the LRAT file.
+
+## What it has been used for
+
+- _Schur Number Five_ (Heule, AAAI 2018): S(5) = 160, with a proof of about two petabytes that was validated by a formally verified checker. Reading the formula and proof is the entire trust base.
+- _Boolean Pythagorean triples_ (Heule, Kullmann, Marek, SAT 2016) used the same certificate chain on a cube-and-conquer run.
+- _The empty hexagon number_ (Subercaseaux et al., ITP 2024) connects a SAT proof to a Lean statement.
+- SAT competitions require certificates for results; see the competition entry.
+
+## Limits
+
+Certificates prove only that the CNF formula is unsatisfiable. Whether the formula really encodes the mathematical question is a separate trust step (the _encoding_), which is why papers publish both the generator and the formula. Proof sizes can reach terabytes and petabytes, so checking cost and storage, not only solving cost, bound what can be settled. Extensions for symmetry breaking and for pseudo-Boolean reasoning are active research.
 
 # Plain explanation
 
