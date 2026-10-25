@@ -106,6 +106,9 @@ explainer:
     - title: Circuit complexity (Wikipedia)
       url: https://en.wikipedia.org/wiki/Circuit_complexity
       why: Why lower bounds for circuits are hard to prove.
+raw:
+  resolutionCriteria: "A deterministic polynomial-time algorithm that outputs, for every N, a matrix M_N over a fixed finite field (or Q) with R_{M_N}(εN) ≥ N^{1+δ} for fixed ε, δ > 0, with a proof of the rigidity bound accepted by experts."
+  verifySpec: "A resolution is a deterministic polynomial-time construction of matrices M_N with rigidity at least N^(1+delta) at rank eps*N, plus a proof. Rigidity of a given large matrix is hard to certify by computation, and Mathlib has no rigidity theory, so algebraic-complexity experts review the proof."
 site:
   aiReviewed: true
 ---
@@ -120,10 +123,6 @@ The best bound for any explicit matrix over any field is Ω((N²/r) log(N/r)) (F
 
 Mainly theoretical: it would give the first superlinear lower bounds for log-depth linear circuits (e.g. for the FFT and Walsh–Hadamard transform), and yield separations in communication complexity (Razborov rigidity). Rigidity upper bounds have already produced faster low-depth circuits for the Hadamard transform.
 
-# Resolution criteria
-
-A deterministic polynomial-time algorithm that outputs, for every N, a matrix M_N over a fixed finite field (or Q) with R\_{M_N}(εN) ≥ N^{1+δ} for fixed ε, δ > 0, with a proof of the rigidity bound accepted by experts.
-
 # Rating rationale
 
 Difficulty 79.5: open for nearly 50 years, with every structured candidate ruled out and even P^NP constructions stuck at sub-polynomial rank; just below the log-rank conjecture (80), which has a clearer combinatorial core, and above ACC⁰ lower bounds (72). Application value 6.5: the payoff is lower bounds for linear transforms such as the FFT, with algorithmic spin-offs only from rigidity upper bounds, slightly above log-rank (5.5). Leverage 47: it would settle Valiant's route to log-depth linear-circuit lower bounds and, via Razborov rigidity and Dvir–Golovnev–Weinstein, connect to communication and data-structure lower bounds, level with log-rank (48).
@@ -131,10 +130,6 @@ Difficulty 79.5: open for nearly 50 years, with every structured candidate ruled
 # Work mix rationale
 
 A new explicit construction with a proof is needed; computation only tests small candidates.
-
-# Verification
-
-A resolution is a deterministic polynomial-time construction of matrices M_N with rigidity at least N^(1+delta) at rank eps\*N, plus a proof. Rigidity of a given large matrix is hard to certify by computation, and Mathlib has no rigidity theory, so algebraic-complexity experts review the proof.
 
 # Plain explanation
 
