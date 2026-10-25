@@ -110,18 +110,23 @@ explainer:
     - title: Event Horizon Telescope website
       url: https://eventhorizontelescope.org/
       why: Official source on the images.
-raw:
-  body: "A black-hole image contains a sequence of nested thin rings (\"subrings\") of light that has wound $n$ half-orbits around the hole; for a Kerr black hole the $n$-th subring approaches the critical curve with exponentially demagnified flux, $F_{n+1}/F_n\\approx e^{-\\gamma}$ at large $n$, where $\\gamma$ is the Lyapunov exponent of the bound photon orbits ($\\gamma=\\pi$ for Schwarzschild); at $n=1$ the ring still depends on the emission geometry, so it tracks the critical curve only approximately. The ring's diameter and shape are set by mass and spin, with a strongly constrained shape for Kerr. The visibility amplitude of the $n=1$ ring appears as a periodic ripple on long baselines. **Problem:** detect the $n=1$ photon ring of M87* and/or Sgr A* (baselines of order $2\\times10^{10}\\lambda$ for M87*, about twice the Earth's diameter at 230 GHz, so a space element is needed) and measure its diameter and shape to percent-level accuracy, so as to test the Kerr hypothesis against horizonless or non-Kerr alternatives."
-  stateOfArt: "EHT images of M87* and Sgr A* resolve the bright n = 0 emission ring but not the n ≥ 1 subrings. Broderick et al. (ApJ 935, 61, 2022) claimed to isolate the n = 1 ring in EHT 2017 M87* data with a hybrid image model; the claim is contested because the 2017 baselines do not reach the ring's characteristic visibility signature, so there is no undisputed detection. Johnson et al. (arXiv:1907.04329, Sci. Adv. 2020) showed that each subring produces a universal damped-periodic visibility signature and that n = 1 needs baselines beyond the Earth at 230 GHz; Gralla, Lupsasca and Marrone (arXiv:2008.03879, PRD 2020) showed that the ring's shape gives a precise GR test. The Black Hole Explorer (BHEX; Johnson et al., arXiv:2406.12917; photon-ring case by Lupsasca et al., arXiv:2406.09498) is a space-VLBI concept observing in two bands near 100 and 300 GHz from an orbit of about 30,000 km; its 2025 SMEX target slipped, and as of April 2026 MIT Haystack said it will be proposed to NASA's Small Explorer call in mid-2026, with no selection announced by October 2026. Theory continues on non-Kerr alternatives: Suzuki et al. (arXiv:2511.20756, preprint) find that high-order rings of a Kerr naked singularity with a = 1.01 differ measurably from Kerr in visibility space."
-  resolutionCriteria: "Detection of the n=1 subring signature in visibility data of M87* or Sgr A* at ≥ 5σ, with a measured ring diameter consistent (or inconsistent) with the Kerr critical-curve prediction at ≲ 1–2% precision after marginalising over astrophysical plasma models."
-  verifySpec: "Needs new interferometric visibility data detecting the n = 1 subring of M87* or Sgr A* at 5 sigma or more, with a ring diameter measured to about 1 to 2% precision after marginalising over plasma models, to test consistency with the Kerr critical curve."
 site:
   aiReviewed: true
 ---
 
+A black-hole image contains a sequence of nested thin rings ("subrings") of light that has wound $n$ half-orbits around the hole; for a Kerr black hole the $n$-th subring approaches the critical curve with exponentially demagnified flux, $F_{n+1}/F_n\approx e^{-\gamma}$ at large $n$, where $\gamma$ is the Lyapunov exponent of the bound photon orbits ($\gamma=\pi$ for Schwarzschild); at $n=1$ the ring still depends on the emission geometry, so it tracks the critical curve only approximately. The ring's diameter and shape are set by mass and spin, with a strongly constrained shape for Kerr. The visibility amplitude of the $n=1$ ring appears as a periodic ripple on long baselines. **Problem:** detect the $n=1$ photon ring of M87\* and/or Sgr A\* (baselines of order $2\times10^{10}\lambda$ for M87\*, about twice the Earth's diameter at 230 GHz, so a space element is needed) and measure its diameter and shape to percent-level accuracy, so as to test the Kerr hypothesis against horizonless or non-Kerr alternatives.
+
+# State of the art
+
+EHT images of M87\* and Sgr A\* resolve the bright n = 0 emission ring but not the n ≥ 1 subrings. Broderick et al. (ApJ 935, 61, 2022) claimed to isolate the n = 1 ring in EHT 2017 M87\* data with a hybrid image model; the claim is contested because the 2017 baselines do not reach the ring's characteristic visibility signature, so there is no undisputed detection. Johnson et al. (arXiv:1907.04329, Sci. Adv. 2020) showed that each subring produces a universal damped-periodic visibility signature and that n = 1 needs baselines beyond the Earth at 230 GHz; Gralla, Lupsasca and Marrone (arXiv:2008.03879, PRD 2020) showed that the ring's shape gives a precise GR test. The Black Hole Explorer (BHEX; Johnson et al., arXiv:2406.12917; photon-ring case by Lupsasca et al., arXiv:2406.09498) is a space-VLBI concept observing in two bands near 100 and 300 GHz from an orbit of about 30,000 km; its 2025 SMEX target slipped, and as of April 2026 MIT Haystack said it will be proposed to NASA's Small Explorer call in mid-2026, with no selection announced by October 2026. Theory continues on non-Kerr alternatives: Suzuki et al. (arXiv:2511.20756, preprint) find that high-order rings of a Kerr naked singularity with a = 1.01 differ measurably from Kerr in visibility space.
+
 # Applications
 
 A photon-ring measurement would be a strong-field test of general relativity independent of gravitational waves and would measure black-hole spin; the space-VLBI technology (precision phase referencing, high-rate downlink) has spin-offs for deep-space communication and radio astronomy.
+
+# Resolution criteria
+
+Detection of the n=1 subring signature in visibility data of M87\* or Sgr A\* at ≥ 5σ, with a measured ring diameter consistent (or inconsistent) with the Kerr critical-curve prediction at ≲ 1–2% precision after marginalising over astrophysical plasma models.
 
 # Rating rationale
 
@@ -130,6 +135,10 @@ Difficulty 53: the physics and the signature are well understood, but detection 
 # Work mix rationale
 
 Mainly building and flying a space-VLBI element with stable phase referencing; analysis needs plasma-model simulations.
+
+# Verification
+
+Needs new interferometric visibility data detecting the n = 1 subring of M87\* or Sgr A\* at 5 sigma or more, with a ring diameter measured to about 1 to 2% precision after marginalising over plasma models, to test consistency with the Kerr critical curve.
 
 # Plain explanation
 
