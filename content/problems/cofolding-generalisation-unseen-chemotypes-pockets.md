@@ -94,13 +94,11 @@ explainer:
     - title: Docking (molecular) (Wikipedia)
       url: https://en.wikipedia.org/wiki/Docking_(molecular)
       why: Classical background for what co-folding competes with.
+raw:
+  body: "**Task.** A co-folding model maps (protein sequence, ligand graph) to an all-atom complex. It generalises *physically* if (a) pose accuracy holds on pockets and ligands unlike any training example, (b) its predictions respond to chemistry as the physics requires, and (c) its confidence is calibrated.\n\n**Concrete target.** On a post-cut-off benchmark stratified by similarity to the training set (ligand Tanimoto $< 0.4$ and pocket structure or sequence identity $< 30\\%$ to any training complex, and no training ligand in the same pose), a single open model achieves (i) $\\ge 70\\%$ of ligand RMSD $< 2$ Å, a rate within 10 percentage points of its rate on the most-similar stratum; (ii) PoseBusters validity (bond geometry, no clashes, no internal strain) on $\\ge 95\\%$ of poses without post-hoc minimisation; (iii) on adversarial binding-site perturbations (residues mutated to glycine or to bulky or charge-inverting residues, or pocket removal) the ligand is displaced or confidence collapses in $\\ge 90\\%$ of cases where the mutation would abolish binding in a free-energy calculation; and (iv) expected-calibration error on pose confidence $< 0.05$."
 site:
   aiReviewed: true
 ---
-
-**Task.** A co-folding model maps (protein sequence, ligand graph) to an all-atom complex. It generalises _physically_ if (a) pose accuracy holds on pockets and ligands unlike any training example, (b) its predictions respond to chemistry as the physics requires, and (c) its confidence is calibrated.
-
-**Concrete target.** On a post-cut-off benchmark stratified by similarity to the training set (ligand Tanimoto $< 0.4$ and pocket structure or sequence identity $< 30\%$ to any training complex, and no training ligand in the same pose), a single open model achieves (i) $\ge 70\%$ of ligand RMSD $< 2$ Å, a rate within 10 percentage points of its rate on the most-similar stratum; (ii) PoseBusters validity (bond geometry, no clashes, no internal strain) on $\ge 95\%$ of poses without post-hoc minimisation; (iii) on adversarial binding-site perturbations (residues mutated to glycine or to bulky or charge-inverting residues, or pocket removal) the ligand is displaced or confidence collapses in $\ge 90\%$ of cases where the mutation would abolish binding in a free-energy calculation; and (iv) expected-calibration error on pose confidence $< 0.05$.
 
 # State of the art
 
