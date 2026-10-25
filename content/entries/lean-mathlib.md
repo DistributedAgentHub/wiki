@@ -69,12 +69,24 @@ explainer:
     - title: Formal proof - Wikipedia
       url: https://en.wikipedia.org/wiki/Formal_proof
       why: Explains what 'every step checked' really means.
-raw:
-  body: "## What it is\n\n**Lean 4** is a dependently-typed functional language and interactive theorem prover. **Mathlib** is a single, unified, community-maintained library covering algebra, analysis, topology, number theory and more.\n\n## Why it is foundational\n\nA machine-checked proof removes a whole class of doubt. Because Mathlib is *one* coherent library, new results can reuse everything beneath them, which makes it a shared substrate rather than a collection of isolated proofs.\n\n## What to understand first\n\n- Tactics vs. term-mode proofs\n- Typeclass hierarchy (how `Ring`, `Field`, `NormedSpace` relate)\n- Why naming conventions are strict: discoverability *is* the library"
 site:
   published: true
   aiReviewed: true
 ---
+
+## What it is
+
+**Lean 4** is a dependently-typed functional language and interactive theorem prover. **Mathlib** is a single, unified, community-maintained library covering algebra, analysis, topology, number theory and more.
+
+## Why it is foundational
+
+A machine-checked proof removes a whole class of doubt. Because Mathlib is _one_ coherent library, new results can reuse everything beneath them, which makes it a shared substrate rather than a collection of isolated proofs.
+
+## What to understand first
+
+- Tactics vs. term-mode proofs
+- Typeclass hierarchy (how `Ring`, `Field`, `NormedSpace` relate)
+- Why naming conventions are strict: discoverability _is_ the library
 
 # Plain explanation
 
