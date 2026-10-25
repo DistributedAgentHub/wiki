@@ -85,11 +85,15 @@ explainer:
     - title: AlphaFold (Wikipedia)
       url: https://en.wikipedia.org/wiki/AlphaFold
       why: Background on the tool whose complex predictions are being screened.
-raw:
-  body: "**Task.** For two proteins from a proteome (human, a pathogen, a microbiome), predict whether they form a direct, physiologically relevant physical interaction, and if so the interface, without a known complex or experimental interaction evidence for that pair.\n\n**Why it is not solved by complex structure prediction.** AlphaFold-Multimer and AlphaFold 3 predict the structure of a complex given that the proteins interact. Deciding *whether* they interact is a classification problem with extreme class imbalance: a human proteome of about 20,000 proteins has about $2\\times10^{8}$ unordered pairs, while the number of true direct binary interactions is orders of magnitude smaller. At that prior probability a classifier with a 1% false-positive rate yields thousands of false calls for each true one.\n\n**Concrete target.** On a held-out proteome-wide benchmark with experimentally validated positives (for example systematic binary assays such as Y2H/HuRI-style, cross-linking MS or co-fractionation) and carefully constructed negatives (random pairs plus non-interacting members of the same complexes), a method achieves at least 50% recall at at most 5% false discovery rate at a realistic prevalence (at least 100 negatives per positive), on proteins from species and families excluded from training, and gives calibrated probabilities."
 site:
   aiReviewed: true
 ---
+
+**Task.** For two proteins from a proteome (human, a pathogen, a microbiome), predict whether they form a direct, physiologically relevant physical interaction, and if so the interface, without a known complex or experimental interaction evidence for that pair.
+
+**Why it is not solved by complex structure prediction.** AlphaFold-Multimer and AlphaFold 3 predict the structure of a complex given that the proteins interact. Deciding _whether_ they interact is a classification problem with extreme class imbalance: a human proteome of about 20,000 proteins has about $2\times10^{8}$ unordered pairs, while the number of true direct binary interactions is orders of magnitude smaller. At that prior probability a classifier with a 1% false-positive rate yields thousands of false calls for each true one.
+
+**Concrete target.** On a held-out proteome-wide benchmark with experimentally validated positives (for example systematic binary assays such as Y2H/HuRI-style, cross-linking MS or co-fractionation) and carefully constructed negatives (random pairs plus non-interacting members of the same complexes), a method achieves at least 50% recall at at most 5% false discovery rate at a realistic prevalence (at least 100 negatives per positive), on proteins from species and families excluded from training, and gives calibrated probabilities.
 
 # State of the art
 
