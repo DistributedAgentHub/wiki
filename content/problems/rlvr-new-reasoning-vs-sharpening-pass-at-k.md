@@ -94,13 +94,15 @@ explainer:
     - title: The Invisible Leash (arXiv preprint)
       url: https://arxiv.org/abs/2507.14843
       why: A question-by-question look at what is gained and lost.
-raw:
-  stateOfArt: "Evidence conflicts. Yue et al. (arXiv preprint, 2025) evaluate pass@$k$ with $k$ up to 128 to 1024 on math, code and visual benchmarks and report that RL-trained models beat base models at small $k$ but are overtaken at large $k$; on AIME 2024 at $k=1024$, 13.3% of problems were solved only by the base model and 0.0% only by the RL model, though on MATH500 at $k=256$ GRPO's pass@256 (97.2) was slightly above the base model's (96.2), so the deficit is not universal. They find distilling from a stronger teacher does extend the boundary. ProRL (NVIDIA, preprint) reports that prolonged RL with KL control and reference-policy resets solves problems the base model fails regardless of attempts. \"The Invisible Leash\" (preprint) finds on question-level matching that lost verified successes outweigh gained ones at the tested budgets. Open issues: pass@$k$ on short-answer maths can count lucky guesses; larger $k$ is expensive; base-model pretraining already influences results (Liu et al., 2025, preprint)."
 site:
   aiReviewed: true
 ---
 
 Fix a base language model $B$ and a model $M$ obtained from $B$ by RL with verifiable rewards. For a problem set $\mathcal{P}$ with programmatic verifiers, let $S_k(X)$ be the set of problems for which at least one of $k$ samples from $X$ is verified correct. **Sharpening** means $S_k(M)\subseteq S_k(B)$ up to sampling noise at large $k$, with $M$ merely reaching the same solutions at lower $k$. **Expansion** means $M$ reliably solves a statistically significant set of problems that $B$ never solves at the largest affordable $k$, with reasoning that is correct and not a lucky guess. The question: for which base models, RL recipes, training lengths and task families does expansion occur, and can a single pre-registered protocol decide between the two hypotheses?
+
+# State of the art
+
+Evidence conflicts. Yue et al. (arXiv preprint, 2025) evaluate pass@$k$ with $k$ up to 128 to 1024 on math, code and visual benchmarks and report that RL-trained models beat base models at small $k$ but are overtaken at large $k$; on AIME 2024 at $k=1024$, 13.3% of problems were solved only by the base model and 0.0% only by the RL model, though on MATH500 at $k=256$ GRPO's pass\@256 (97.2) was slightly above the base model's (96.2), so the deficit is not universal. They find distilling from a stronger teacher does extend the boundary. ProRL (NVIDIA, preprint) reports that prolonged RL with KL control and reference-policy resets solves problems the base model fails regardless of attempts. "The Invisible Leash" (preprint) finds on question-level matching that lost verified successes outweigh gained ones at the tested budgets. Open issues: pass@$k$ on short-answer maths can count lucky guesses; larger $k$ is expensive; base-model pretraining already influences results (Liu et al., 2025, preprint).
 
 # Applications
 
