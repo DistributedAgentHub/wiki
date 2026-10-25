@@ -96,11 +96,11 @@ explainer:
     - title: Derandomization (Wikipedia)
       url: https://en.wikipedia.org/wiki/Derandomization
       why: The wider theme of removing randomness.
+raw:
+  body: "Given an $n$-vertex graph, decide whether it has a perfect matching and, if so, construct one, using a deterministic parallel algorithm with $\\mathrm{poly}(n)$ processors and $O(\\log^{c}n)$ depth ($\\mathsf{NC}$). The problem is in $\\mathsf{RNC}$ by the isolation lemma (a random weight assignment makes the minimum-weight perfect matching unique with probability $\\ge1/2$). Fenner, Gurjar and Thierauf (2016) put bipartite perfect matching in quasi-$\\mathsf{NC}$, i.e. $\\mathrm{polylog}(n)$ depth with $n^{\\mathrm{polylog}\\,n}$ processors, and Svensson and Tarnawski (2017) extended this to general graphs. *Is perfect matching in $\\mathsf{NC}$ — and more modestly, is bipartite perfect matching in $\\mathsf{NC}$?* One natural route is to reduce the $\\log n$ rounds of weight-function refinement in the quasi-NC isolation arguments to $O(1)$ rounds, each using polynomially many weight functions."
 site:
   aiReviewed: true
 ---
-
-Given an $n$-vertex graph, decide whether it has a perfect matching and, if so, construct one, using a deterministic parallel algorithm with $\mathrm{poly}(n)$ processors and $O(\log^{c}n)$ depth ($\mathsf{NC}$). The problem is in $\mathsf{RNC}$ by the isolation lemma (a random weight assignment makes the minimum-weight perfect matching unique with probability $\ge1/2$). Fenner, Gurjar and Thierauf (2016) put bipartite perfect matching in quasi-$\mathsf{NC}$, i.e. $\mathrm{polylog}(n)$ depth with $n^{\mathrm{polylog}\,n}$ processors, and Svensson and Tarnawski (2017) extended this to general graphs. _Is perfect matching in $\mathsf{NC}$ — and more modestly, is bipartite perfect matching in $\mathsf{NC}$?_ One natural route is to reduce the $\log n$ rounds of weight-function refinement in the quasi-NC isolation arguments to $O(1)$ rounds, each using polynomially many weight functions.
 
 # State of the art
 
