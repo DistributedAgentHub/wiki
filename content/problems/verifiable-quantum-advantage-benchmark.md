@@ -108,11 +108,11 @@ explainer:
     - title: Quantum algorithm (Wikipedia)
       url: https://en.wikipedia.org/wiki/Quantum_algorithm
       why: Which tasks are believed to be quantum-advantaged and why.
+raw:
+  body: "Define a benchmark task family $\\{T_n\\}$ with a classically checkable output (the verifier runs in time polynomial in $n$ on a laptop, or accepts a cryptographic proof). A claim of *verifiable quantum advantage* at size $n_0$ consists of (i) a quantum experiment that passes verification with a fidelity bound certified without exponential classical simulation, (ii) a stated classical-hardness assumption or classical cost estimate for the best-known algorithms, and (iii) an open challenge: the instances and a classical-spoofing prize are published and no classical algorithm matches the experiment's certified score at size $n_0$ within 12 months. *Is there a task and device for which all three hold at a size where the best-known classical cost exceeds $10^{6}$ core-years?* The target excludes tasks whose classical hardness rests only on tensor-network bond-dimension estimates, since those have repeatedly been overturned by better contraction heuristics."
 site:
   aiReviewed: true
 ---
-
-Define a benchmark task family $\{T_n\}$ with a classically checkable output (the verifier runs in time polynomial in $n$ on a laptop, or accepts a cryptographic proof). A claim of _verifiable quantum advantage_ at size $n_0$ consists of (i) a quantum experiment that passes verification with a fidelity bound certified without exponential classical simulation, (ii) a stated classical-hardness assumption or classical cost estimate for the best-known algorithms, and (iii) an open challenge: the instances and a classical-spoofing prize are published and no classical algorithm matches the experiment's certified score at size $n_0$ within 12 months. _Is there a task and device for which all three hold at a size where the best-known classical cost exceeds $10^{6}$ core-years?_ The target excludes tasks whose classical hardness rests only on tensor-network bond-dimension estimates, since those have repeatedly been overturned by better contraction heuristics.
 
 # State of the art
 
