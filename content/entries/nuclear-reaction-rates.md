@@ -111,44 +111,12 @@ explainer:
     - title: Gamow factor (Wikipedia)
       url: https://en.wikipedia.org/wiki/Gamow_factor
       why: Explains the tunnelling chance that makes the Gamow peak.
+raw:
+  body: "## What it is\n\nFor a reaction $a + X \\to Y + b$ in a plasma at temperature $T$, the rate per unit volume is $r = n_a n_X \\langle\\sigma v\\rangle/(1+\\delta_{aX})$, with\n$$\\langle\\sigma v\\rangle = \\sqrt{\\frac{8}{\\pi\\mu}}\\,(kT)^{-3/2}\\int_0^\\infty \\sigma(E)\\,E\\,e^{-E/kT}\\,dE.$$\nFor charged particles the Coulomb barrier makes $\\sigma$ fall steeply. It is factored as $\\sigma(E) = S(E)\\,E^{-1}e^{-2\\pi\\eta}$, with Sommerfeld parameter $\\eta = Z_aZ_Xe^2/\\hbar v$ and a slowly varying astrophysical S-factor $S(E)$.\n\n## Core results\n\n**Gamow peak.** For a non-resonant $S$, the integrand peaks at $E_0 = [(\\pi\\alpha Z_aZ_X kT)^2 \\mu c^2/2]^{1/3}$ with width $\\Delta = 4\\sqrt{E_0kT/3}$. Rates therefore scale as steep powers of $T$, and only a narrow energy window matters. For $^{12}$C(α,γ)$^{16}$O in core helium burning this window is near 300 keV, where the cross section is far too small to measure directly.\n\n**Resonances.** A narrow resonance contributes $\\langle\\sigma v\\rangle = (2\\pi/\\mu kT)^{3/2}\\hbar^2 (\\omega\\gamma) e^{-E_r/kT}$, with resonance strength $\\omega\\gamma$. Broad and subthreshold resonances (for $^{12}$C(α,γ), the $1^-$ and $2^+$ states of $^{16}$O below the α threshold) interfere with direct capture. R-matrix fits are the standard tool for joint E1/E2 extrapolation to stellar energies.\n\n**Screening.** Plasma electrons lower the barrier. In the weak-screening limit the rate is enhanced by $f = \\exp(Z_aZ_Xe^2/\\lambda_D kT)$, and intermediate and strong regimes need other prescriptions. Laboratory measurements also carry atomic electron screening, which must be removed before use in stars.\n\n**Big Bang nucleosynthesis.** Given $\\eta_b = n_b/n_\\gamma$ (fixed by the CMB to under 1%), $N_{\\rm eff}$ and the neutron lifetime, a network of about a dozen reactions predicts $Y_p$, D/H, $^3$He/H and $^7$Li/H. D/H agrees with observation. Predicted $^7$Li/H exceeds the Spite-plateau value by a factor of about three, the lithium problem. Fields et al. (2020) conclude that nuclear-rate updates do not remove it.\n\n**Stellar burning.** The pp chains and CNO cycle (Solar Fusion III, 2024) govern hydrogen burning. The triple-α and $^{12}$C(α,γ)$^{16}$O reactions govern helium burning. The second sets the post-helium C/O ratio and hence the carbon- and oxygen-burning history of massive stars.\n\n## Techniques to master\n\nDeriving and numerically evaluating $\\langle\\sigma v\\rangle$, including the reverse rates from detailed balance. Extrapolating S-factors and fitting R-matrix models. Using rate libraries and their Monte Carlo uncertainty bands: NACRE II, STARLIB (lognormal rate distributions) and the JINA REACLIB seven-parameter fits $\\lambda = \\exp[a_0 + \\sum_{i=1}^5 a_i T_9^{(2i-5)/3} + a_6\\ln T_9]$. Stiff reaction-network integration. Running MESA with modified rates.\n\n## Experiment\n\nUnderground accelerators (LUNA at Gran Sasso, and newer facilities) cut the cosmic-ray background enough to measure near Gamow energies. LUNA's $d(p,\\gamma)^3$He measurement (Mossa et al. 2020) fixed the main deuterium-destruction rate in BBN. Inverse kinematics, recoil separators and indirect methods (ANC, Trojan horse) fill the remaining gaps.\n\n## Reading path\n\nIliadis, *Nuclear Physics of Stars* (2nd ed.), is the core text, and Clayton, *Principles of Stellar Evolution and Nucleosynthesis*, gives the classical derivations. After those read deBoer et al. (2017) on $^{12}$C(α,γ)$^{16}$O, Fields et al. (2020) on BBN, and the MESA instrument papers.\n\n## Where it bites\n\nThe lithium problem asks whether residual uncertainty in $^7$Be destruction rates, or stellar depletion in halo dwarfs, explains the factor-of-three discrepancy. For the mass gap, Farmer et al. found the lower edge near $45\\,M_\\odot$ to be robust against metallicity, mixing and winds but to shift between about 40 and 56 $M_\\odot$ within the 1σ $^{12}$C(α,γ)$^{16}$O uncertainty. Over a wider rate range the maximum black-hole mass below the gap spans 40–90 $M_\\odot$. Gravitational-wave populations can therefore constrain $S_{300}$, and the downstream problem asks whether that constraint can reach ±10%."
 site:
   published: true
   aiReviewed: true
 ---
-
-## What it is
-
-For a reaction $a + X \to Y + b$ in a plasma at temperature $T$, the rate per unit volume is $r = n_a n_X \langle\sigma v\rangle/(1+\delta_{aX})$, with
-$\langle\sigma v\rangle = \sqrt{\frac{8}{\pi\mu}}\,(kT)^{-3/2}\int_0^\infty \sigma(E)\,E\,e^{-E/kT}\,dE.$
-For charged particles the Coulomb barrier makes $\sigma$ fall steeply. It is factored as $\sigma(E) = S(E)\,E^{-1}e^{-2\pi\eta}$, with Sommerfeld parameter $\eta = Z_aZ_Xe^2/\hbar v$ and a slowly varying astrophysical S-factor $S(E)$.
-
-## Core results
-
-**Gamow peak.** For a non-resonant $S$, the integrand peaks at $E_0 = [(\pi\alpha Z_aZ_X kT)^2 \mu c^2/2]^{1/3}$ with width $\Delta = 4\sqrt{E_0kT/3}$. Rates therefore scale as steep powers of $T$, and only a narrow energy window matters. For $^{12}$C(α,γ)$^{16}$O in core helium burning this window is near 300 keV, where the cross section is far too small to measure directly.
-
-**Resonances.** A narrow resonance contributes $\langle\sigma v\rangle = (2\pi/\mu kT)^{3/2}\hbar^2 (\omega\gamma) e^{-E_r/kT}$, with resonance strength $\omega\gamma$. Broad and subthreshold resonances (for $^{12}$C(α,γ), the $1^-$ and $2^+$ states of $^{16}$O below the α threshold) interfere with direct capture. R-matrix fits are the standard tool for joint E1/E2 extrapolation to stellar energies.
-
-**Screening.** Plasma electrons lower the barrier. In the weak-screening limit the rate is enhanced by $f = \exp(Z_aZ_Xe^2/\lambda_D kT)$, and intermediate and strong regimes need other prescriptions. Laboratory measurements also carry atomic electron screening, which must be removed before use in stars.
-
-**Big Bang nucleosynthesis.** Given $\eta_b = n_b/n_\gamma$ (fixed by the CMB to under 1%), $N_{\rm eff}$ and the neutron lifetime, a network of about a dozen reactions predicts $Y_p$, D/H, $^3$He/H and $^7$Li/H. D/H agrees with observation. Predicted $^7$Li/H exceeds the Spite-plateau value by a factor of about three, the lithium problem. Fields et al. (2020) conclude that nuclear-rate updates do not remove it.
-
-**Stellar burning.** The pp chains and CNO cycle (Solar Fusion III, 2024) govern hydrogen burning. The triple-α and $^{12}$C(α,γ)$^{16}$O reactions govern helium burning. The second sets the post-helium C/O ratio and hence the carbon- and oxygen-burning history of massive stars.
-
-## Techniques to master
-
-Deriving and numerically evaluating $\langle\sigma v\rangle$, including the reverse rates from detailed balance. Extrapolating S-factors and fitting R-matrix models. Using rate libraries and their Monte Carlo uncertainty bands: NACRE II, STARLIB (lognormal rate distributions) and the JINA REACLIB seven-parameter fits $\lambda = \exp[a_0 + \sum_{i=1}^5 a_i T_9^{(2i-5)/3} + a_6\ln T_9]$. Stiff reaction-network integration. Running MESA with modified rates.
-
-## Experiment
-
-Underground accelerators (LUNA at Gran Sasso, and newer facilities) cut the cosmic-ray background enough to measure near Gamow energies. LUNA's $d(p,\gamma)^3$He measurement (Mossa et al. 2020) fixed the main deuterium-destruction rate in BBN. Inverse kinematics, recoil separators and indirect methods (ANC, Trojan horse) fill the remaining gaps.
-
-## Reading path
-
-Iliadis, _Nuclear Physics of Stars_ (2nd ed.), is the core text, and Clayton, _Principles of Stellar Evolution and Nucleosynthesis_, gives the classical derivations. After those read deBoer et al. (2017) on $^{12}$C(α,γ)$^{16}$O, Fields et al. (2020) on BBN, and the MESA instrument papers.
-
-## Where it bites
-
-The lithium problem asks whether residual uncertainty in $^7$Be destruction rates, or stellar depletion in halo dwarfs, explains the factor-of-three discrepancy. For the mass gap, Farmer et al. found the lower edge near $45\,M_\odot$ to be robust against metallicity, mixing and winds but to shift between about 40 and 56 $M_\odot$ within the 1σ $^{12}$C(α,γ)$^{16}$O uncertainty. Over a wider rate range the maximum black-hole mass below the gap spans 40–90 $M_\odot$. Gravitational-wave populations can therefore constrain $S_{300}$, and the downstream problem asks whether that constraint can reach ±10%.
 
 # Plain explanation
 
