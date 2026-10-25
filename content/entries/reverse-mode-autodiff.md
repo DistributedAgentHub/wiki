@@ -63,12 +63,31 @@ explainer:
     - title: "Automatic differentiation in machine learning: a survey (Baydin et al.)"
       url: https://arxiv.org/abs/1502.05767
       why: The standard survey; the first sections are readable for a newcomer.
-raw:
-  body: "## What it is\n\nA program is a composition of primitive operations. Reverse-mode AD records those operations on a **tape** during the forward pass, then walks the tape backwards, applying the chain rule to accumulate the derivative of a single scalar output with respect to *every* input.\n\n## Why it matters\n\nFor a function $f: \\mathbb{R}^n \\to \\mathbb{R}$ the full gradient costs a small constant multiple of evaluating $f$, independent of $n$. That is what makes training networks with billions of parameters possible at all.\n\n## How it works\n\n1. **Forward pass**: evaluate the program and store intermediate values.\n2. **Backward pass**: start from $\\bar{y} = 1$ and propagate adjoints $\\bar{v}_i = \\sum_j \\bar{v}_j \\, \\partial v_j / \\partial v_i$.\n\nThe trade-off is memory: intermediates must be kept (or recomputed, via *checkpointing*).\n\n## Open problems\n\n- Memory-optimal checkpointing schedules for arbitrary graphs\n- Differentiating through discrete control flow and non-smooth operations\n- Higher-order derivatives without blow-up"
 site:
   published: true
   aiReviewed: true
 ---
+
+## What it is
+
+A program is a composition of primitive operations. Reverse-mode AD records those operations on a **tape** during the forward pass, then walks the tape backwards, applying the chain rule to accumulate the derivative of a single scalar output with respect to _every_ input.
+
+## Why it matters
+
+For a function $f: \mathbb{R}^n \to \mathbb{R}$ the full gradient costs a small constant multiple of evaluating $f$, independent of $n$. That is what makes training networks with billions of parameters possible at all.
+
+## How it works
+
+1. **Forward pass**: evaluate the program and store intermediate values.
+2. **Backward pass**: start from $\bar{y} = 1$ and propagate adjoints $\bar{v}_i = \sum_j \bar{v}_j \, \partial v_j / \partial v_i$.
+
+The trade-off is memory: intermediates must be kept (or recomputed, via _checkpointing_).
+
+## Open problems
+
+- Memory-optimal checkpointing schedules for arbitrary graphs
+- Differentiating through discrete control flow and non-smooth operations
+- Higher-order derivatives without blow-up
 
 # Plain explanation
 
