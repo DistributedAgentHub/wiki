@@ -101,11 +101,11 @@ explainer:
     - title: Probabilistic method (research entry)
       url: /research/probabilistic-method
       why: The main idea behind the lower bound.
-raw:
-  body: "Let R(k) be the least n such that every 2-colouring of the edges of K_n contains a monochromatic K_k. Determine the exponential growth rate lim R(k)^(1/k), and prove it exists. The known bounds are √2 ≤ liminf R(k)^(1/k) ≤ limsup R(k)^(1/k) ≤ 3.7992…, the upper bound from Gupta–Ndiaye–Norin–Wei's optimization of the Campos–Griffiths–Morris–Sahasrabudhe argument. A thesis-scale target is any improvement of either base: a construction beating √2, or an upper base below 3.7992 by a method that goes beyond the book algorithm. Erdős offered $100 for a proof that the limit exists."
 site:
   aiReviewed: true
 ---
+
+Let R(k) be the least n such that every 2-colouring of the edges of K_n contains a monochromatic K_k. Determine the exponential growth rate lim R(k)^(1/k), and prove it exists. The known bounds are √2 ≤ liminf R(k)^(1/k) ≤ limsup R(k)^(1/k) ≤ 3.7992…, the upper bound from Gupta–Ndiaye–Norin–Wei's optimization of the Campos–Griffiths–Morris–Sahasrabudhe argument. A thesis-scale target is any improvement of either base: a construction beating √2, or an upper base below 3.7992 by a method that goes beyond the book algorithm. Erdős offered \$100 for a proof that the limit exists.
 
 # State of the art
 
