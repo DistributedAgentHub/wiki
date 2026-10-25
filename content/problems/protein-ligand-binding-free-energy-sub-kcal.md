@@ -92,11 +92,13 @@ explainer:
     - title: Drug design (Wikipedia)
       url: https://en.wikipedia.org/wiki/Drug_design
       why: Context for why binding strength matters.
-raw:
-  body: "Demonstrate prospective prediction of relative *and* absolute protein–ligand binding free energies with root-mean-square error of at most 1 kcal/mol and Kendall rank correlation above 0.6 over at least 30 diverse targets, including cases that currently fail: charged or highly polar ligands and net-charge-changing perturbations, buried water networks, flexible loops and induced fit, metalloproteins, covalent inhibitors, membrane proteins and scaffold hops, with no per-target tuning and with results independent of the MD engine and force-field family used.\n\nThe limit is partly experimental: the reproducibility of measured relative affinities is around 0.8–1.0 kcal/mol RMSE in curated sets, so the stated target approaches the noise floor of the benchmark itself and must be verified on assays with replicate measurements."
 site:
   aiReviewed: true
 ---
+
+Demonstrate prospective prediction of relative _and_ absolute protein–ligand binding free energies with root-mean-square error of at most 1 kcal/mol and Kendall rank correlation above 0.6 over at least 30 diverse targets, including cases that currently fail: charged or highly polar ligands and net-charge-changing perturbations, buried water networks, flexible loops and induced fit, metalloproteins, covalent inhibitors, membrane proteins and scaffold hops, with no per-target tuning and with results independent of the MD engine and force-field family used.
+
+The limit is partly experimental: the reproducibility of measured relative affinities is around 0.8–1.0 kcal/mol RMSE in curated sets, so the stated target approaches the noise floor of the benchmark itself and must be verified on assays with replicate measurements.
 
 # State of the art
 
