@@ -100,11 +100,11 @@ explainer:
     - title: Transformers, parallel computation, and logarithmic depth (Sanford, Hsu, Telgarsky)
       url: https://arxiv.org/abs/2402.09268
       why: The paper that introduced the k-hop task and the log-depth results.
-raw:
-  body: "For $X\\in\\Sigma^N$ let $\\mathrm{find}^1_X(i)=\\max(\\{0\\}\\cup\\{j\\le i: X_{j-1}=X_i\\})$, $\\mathrm{find}^k_X=\\mathrm{find}^1_X\\circ\\mathrm{find}^{k-1}_X$, and $\\mathrm{hop}_k(X)_i=X_{\\mathrm{find}^k_X(i)}$ (or $\\bot$ if the index is 0). The $k$-hop induction-heads task asks a causally masked transformer with $L$ layers, $H$ heads, embedding dimension $m$ and $p=\\Theta(\\log N)$-bit precision to output $\\mathrm{hop}_k(X)_i$ at every position $i$. Sanford, Hsu and Telgarsky proved that $m=O(1)$, $H=1$ and $L=\\lfloor\\log_2k\\rfloor+2$ suffice, and that, assuming the one-versus-two-cycles conjecture for Massively Parallel Computation, every such transformer with $mH=O(k^{1-\\epsilon})$ and $k=\\Theta(N^{\\xi})$, $\\xi\\in(0,1/2]$, needs $L=\\Omega(\\log k)$. *Problem: prove $L=\\Omega(\\log k)$ unconditionally in the narrow regime $mH\\le\\mathrm{polylog}\\,N$ (with $k=\\Theta(N^{\\xi})$), or construct transformers of depth $o(\\log k)$ in that regime.* Even an unconditional lower bound $L=\\omega(1)$ for any $k=N^{\\Omega(1)}$ would be new. Extending the bound to the full regime $mH=O(k^{1-\\epsilon})$ runs into a known circuit-complexity barrier (see bottlenecks), which is why the problem is stated for narrow models."
 site:
   aiReviewed: true
 ---
+
+For $X\in\Sigma^N$ let $\mathrm{find}^1_X(i)=\max(\{0\}\cup\{j\le i: X_{j-1}=X_i\})$, $\mathrm{find}^k_X=\mathrm{find}^1_X\circ\mathrm{find}^{k-1}_X$, and $\mathrm{hop}_k(X)_i=X_{\mathrm{find}^k_X(i)}$ (or $\bot$ if the index is 0). The $k$-hop induction-heads task asks a causally masked transformer with $L$ layers, $H$ heads, embedding dimension $m$ and $p=\Theta(\log N)$-bit precision to output $\mathrm{hop}_k(X)_i$ at every position $i$. Sanford, Hsu and Telgarsky proved that $m=O(1)$, $H=1$ and $L=\lfloor\log_2k\rfloor+2$ suffice, and that, assuming the one-versus-two-cycles conjecture for Massively Parallel Computation, every such transformer with $mH=O(k^{1-\epsilon})$ and $k=\Theta(N^{\xi})$, $\xi\in(0,1/2]$, needs $L=\Omega(\log k)$. _Problem: prove $L=\Omega(\log k)$ unconditionally in the narrow regime $mH\le\mathrm{polylog}\,N$ (with $k=\Theta(N^{\xi})$), or construct transformers of depth $o(\log k)$ in that regime._ Even an unconditional lower bound $L=\omega(1)$ for any $k=N^{\Omega(1)}$ would be new. Extending the bound to the full regime $mH=O(k^{1-\epsilon})$ runs into a known circuit-complexity barrier (see bottlenecks), which is why the problem is stated for narrow models.
 
 # State of the art
 
