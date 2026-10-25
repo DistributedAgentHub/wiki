@@ -105,8 +105,6 @@ explainer:
     - title: Axion (Wikipedia)
       url: https://en.wikipedia.org/wiki/Axion
       why: The kind of particle that could cause the effect.
-raw:
-  applications: "A confirmed β ≠ 0 would be evidence of parity-violating physics (axion-like dark energy or dark matter coupled to photons) and set g_{φγ}; absolute polarization-angle calibration is also required for primordial B-mode searches."
 site:
   aiReviewed: true
 ---
@@ -116,6 +114,10 @@ A parity-violating coupling of an axion-like field $\phi$ to photons, $\tfrac{g_
 # State of the art
 
 Minami and Komatsu (arXiv:2011.11254, PRL 2020) estimated β and the detector angle simultaneously using the Galactic-foreground EB correlation: β = 0.35 ± 0.14° (68%), 2.4σ. Eskilt and Komatsu (arXiv:2205.13962, PRD 2022) combined WMAP and Planck: β = 0.342° (+0.094/−0.091), excluding zero at 3.6σ, with no evidence of frequency dependence (also Eskilt, arXiv:2201.13347). ACT DR6, separating the instrumental angle with a model of the telescope optics, gives β = 0.215° ± 0.074°, 2.9σ (Diego-Palazuelos and Komatsu, arXiv:2509.13654, PRD). A joint Planck PR4 + ACT DR6 analysis gives β = 0.277° ± 0.057°, 4.8σ, if the instrumental-angle priors are taken at face value, and 3.5σ in a dust-mitigated test (Eskilt, arXiv:2608.06480, August 2026, unrefereed). Lonappan, Keating and Arnold (arXiv:2609.09149, ApJL 2026) apply a birefringence-blind differential-calibration estimator to Planck NPIPE maps and reproduce the Minami–Komatsu calibration pattern (χ² = 8.18 for 7 dof), giving β = 0.37 ± 0.12° conditionally; the authors present it as a consistency check, not an independent measurement. The limiting systematic is the absolute angle: the Crab Nebula (Tau A), the standard celestial calibrator, is known to about 0.27° (Aumont et al. 2020), and drone-borne calibrators (e.g. PROTOCALC for Simons Observatory and CLASS) had first flights in 2024–25.
+
+# Applications
+
+A confirmed β ≠ 0 would be evidence of parity-violating physics (axion-like dark energy or dark matter coupled to photons) and set g\_{φγ}; absolute polarization-angle calibration is also required for primordial B-mode searches.
 
 # Resolution criteria
 
