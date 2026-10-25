@@ -98,27 +98,12 @@ explainer:
     - title: "Hugging Face: Let's talk about LLM evaluation"
       url: https://huggingface.co/blog/clefourrier/llm-evaluation
       why: An evaluation maintainer explains automatic benchmarks, human ratings and model judges.
+raw:
+  body: "## What is being measured\n\nA language-model score is the output of a pipeline: a task dataset, a prompt template (zero- or few-shot), a way of reading the answer (the likelihood of each multiple-choice option, or a generated string checked by rule or by a judge model), and a metric. Small changes in any step shift the number, which is why results from different groups often disagree. **Lessons from the Trenches** (Biderman et al., 2024) documents these sensitivities and describes the lm-evaluation-harness, an open framework meant to make runs reproducible. **HELM** (Liang et al., 2022) argues for reporting many scenarios and metrics (accuracy, calibration, robustness, fairness, efficiency) rather than a single score.\n\n## Failure modes\n\n- **Contamination.** Test items appearing in pre-training data inflate scores; a survey (Xu et al., 2024) catalogues detection methods, all of which have limits.\n- **Training on the test task.** Dominguez-Olmedo et al. (2024) argue that models trained on different amounts of task-style data are not comparable, and that giving every model the same task-specific fine-tuning before testing changes rankings and reduces apparent emergence.\n- **Metric artefacts.** Schaeffer et al. (2023) argued that apparently sudden 'emergent' abilities can come from discontinuous metrics such as exact match rather than from a change in the model.\n- **Judge models.** Zheng et al. (2023) examine using strong models as judges (MT-Bench, Chatbot Arena), report agreement with human preferences above 80% for GPT-4, and document position, verbosity and self-preference biases.\n\n## Predicting scores\n\nPre-training loss follows smooth scaling laws, but task accuracy does not follow them directly. Two lines of work address this: *model ladders* (Bhagia et al., 2024) fit a two-step relation from model and data size to loss and from loss to task accuracy using small models, and *observational scaling laws* (Ruan et al., 2024) fit a low-dimensional capability space across many existing models. Bhagia et al. report predicting the accuracy of 7B and 13B target models within 2 points absolute error on four multiple-choice tasks using about 1% of the targets' compute.\n\nEvaluation methodology is not a closed field: there is no agreed answer for how to evaluate open-ended generation, agents or long-context behaviour with the reliability expected of a measurement instrument."
 site:
   published: true
   aiReviewed: true
 ---
-
-## What is being measured
-
-A language-model score is the output of a pipeline: a task dataset, a prompt template (zero- or few-shot), a way of reading the answer (the likelihood of each multiple-choice option, or a generated string checked by rule or by a judge model), and a metric. Small changes in any step shift the number, which is why results from different groups often disagree. **Lessons from the Trenches** (Biderman et al., 2024) documents these sensitivities and describes the lm-evaluation-harness, an open framework meant to make runs reproducible. **HELM** (Liang et al., 2022) argues for reporting many scenarios and metrics (accuracy, calibration, robustness, fairness, efficiency) rather than a single score.
-
-## Failure modes
-
-- **Contamination.** Test items appearing in pre-training data inflate scores; a survey (Xu et al., 2024) catalogues detection methods, all of which have limits.
-- **Training on the test task.** Dominguez-Olmedo et al. (2024) argue that models trained on different amounts of task-style data are not comparable, and that giving every model the same task-specific fine-tuning before testing changes rankings and reduces apparent emergence.
-- **Metric artefacts.** Schaeffer et al. (2023) argued that apparently sudden 'emergent' abilities can come from discontinuous metrics such as exact match rather than from a change in the model.
-- **Judge models.** Zheng et al. (2023) examine using strong models as judges (MT-Bench, Chatbot Arena), report agreement with human preferences above 80% for GPT-4, and document position, verbosity and self-preference biases.
-
-## Predicting scores
-
-Pre-training loss follows smooth scaling laws, but task accuracy does not follow them directly. Two lines of work address this: _model ladders_ (Bhagia et al., 2024) fit a two-step relation from model and data size to loss and from loss to task accuracy using small models, and _observational scaling laws_ (Ruan et al., 2024) fit a low-dimensional capability space across many existing models. Bhagia et al. report predicting the accuracy of 7B and 13B target models within 2 points absolute error on four multiple-choice tasks using about 1% of the targets' compute.
-
-Evaluation methodology is not a closed field: there is no agreed answer for how to evaluate open-ended generation, agents or long-context behaviour with the reliability expected of a measurement instrument.
 
 # Plain explanation
 
