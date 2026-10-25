@@ -97,11 +97,13 @@ explainer:
     - title: CCDC blog on the seventh blind test
       url: https://www.ccdc.cam.ac.uk/discover/blog/overcoming-pharmaceutical-and-other-materials-issues-before-they-exist/
       why: Plain summary of the test and its findings.
-raw:
-  body: "Given only a 2D molecular diagram, predict the experimentally observable crystal forms of a flexible, drug-like organic molecule (at least 6 rotatable bonds, possibly multiple components, salts or Z$'>1$ forms) by (i) generating a search space that contains every experimentally known polymorph, (ii) ranking structures by *free energy at the relevant temperature* (including lattice vibrations, anharmonicity and conformational entropy) with an accuracy of about 1 kJ/mol on relative stabilities (the typical energy gap between polymorphs), and (iii) predicting kinetic accessibility and disorder, with the blind success criterion that the observed form(s) are within the top few ranked structures and unobserved low-energy structures are rationalised.\n\nThe crux is the ranking accuracy: polymorph energy differences are often below 2 kJ/mol while workhorse dispersion-corrected DFT has errors of 2–4 kJ/mol and flexible molecules multiply the number of competitive conformers."
 site:
   aiReviewed: true
 ---
+
+Given only a 2D molecular diagram, predict the experimentally observable crystal forms of a flexible, drug-like organic molecule (at least 6 rotatable bonds, possibly multiple components, salts or Z$'>1$ forms) by (i) generating a search space that contains every experimentally known polymorph, (ii) ranking structures by _free energy at the relevant temperature_ (including lattice vibrations, anharmonicity and conformational entropy) with an accuracy of about 1 kJ/mol on relative stabilities (the typical energy gap between polymorphs), and (iii) predicting kinetic accessibility and disorder, with the blind success criterion that the observed form(s) are within the top few ranked structures and unobserved low-energy structures are rationalised.
+
+The crux is the ranking accuracy: polymorph energy differences are often below 2 kJ/mol while workhorse dispersion-corrected DFT has errors of 2–4 kJ/mol and flexible molecules multiply the number of competitive conformers.
 
 # State of the art
 
