@@ -132,12 +132,40 @@ explainer:
     - title: Does RL Really Incentivize Reasoning Capacity Beyond the Base Model? (arXiv preprint)
       url: https://arxiv.org/abs/2504.13837
       why: The sharpest statement of the sceptical view.
-raw:
-  body: "## What changed\n\nRLHF needs a learned reward model, which can be exploited. For maths, code and some logic tasks, correctness can be checked by a program: compare a final answer, run unit tests. Reinforcement learning with verifiable rewards (RLVR; the name was introduced in the Tulu 3 report, 2024) optimises the model directly on such a binary or rule-based reward. DeepSeek-R1-Zero (DeepSeek-AI, 2025) applied RL with rule-based accuracy and format rewards to a pretrained base model with no supervised reasoning demonstrations and reported emergent behaviours such as self-reflection and verification; the final paper appeared in Nature in September 2025.\n\n## GRPO\n\nPPO needs a learned value network the size of the policy to compute advantages, which is costly for large language models. Group Relative Policy Optimization, introduced in DeepSeekMath (Shao et al., 2024), samples a group of $G$ responses per prompt, scores them, and uses the group-normalised reward as the advantage of every token in a response:\n\n$$\\hat A_i=\\frac{r_i-\\operatorname{mean}(r_1,\\dots,r_G)}{\\operatorname{std}(r_1,\\dots,r_G)}.$$\n\nIt then applies a PPO-style clipped objective with a KL penalty to a reference model. No critic is trained.\n\n## Known refinements and criticisms\n\n- **DAPO** (Yu et al., 2025) lists four changes: decoupled clip ranges, dynamic sampling that discards groups with all-correct or all-wrong rewards, token-level loss, and overlong-response reward shaping. It reports 50 points on AIME 2024 with Qwen2.5-32B and releases code built on verl.\n- **Dr. GRPO** (Liu et al., 2025) argues that the length normalisation and the standard-deviation term bias GRPO toward longer incorrect responses, and proposes an unbiased variant. The same study finds that some Qwen2.5 base models already show strong reasoning behaviour without a prompt template, which complicates attribution of gains to RL.\n- **Kimi k1.5** (2025) reports a critic-free long-context RL recipe with comparable results.\n\n## The central scientific question\n\nDoes RLVR give a model reasoning ability it did not have, or does it make the model sample already-latent solutions more reliably? Yue et al. (2025, preprint) evaluate pass@$k$ with $k$ up to 128, 256 or 1024 depending on the benchmark and report that RL-trained models win at small $k$ but base models catch up and sometimes overtake at large $k$, concluding that RLVR \"narrows coverage\" and that distillation from a stronger teacher, unlike RL, does extend the boundary. ProRL (NVIDIA, 2025, preprint) reports that prolonged RL with KL control and reference resets does expand the boundary, including problems the base model never solves. The \"invisible leash\" analysis (2025, preprint) finds, question by question, that lost verified successes outweigh new ones at the tested budgets. The question is unsettled and depends on base model, task, training length and sampling budget.\n\n## Compute and scaling\n\nThe Art of Scaling RL Compute (Khatri et al., 2025, preprint) fits sigmoidal compute-to-performance curves over more than 400,000 GPU-hours and reports that stable recipes extrapolate from small runs to a single 100,000 GPU-hour run.\n\n## Practice\n\nThe main open training stacks are verl, TRL and the Open-R1 reproduction effort."
 site:
   published: true
   aiReviewed: true
 ---
+
+## What changed
+
+RLHF needs a learned reward model, which can be exploited. For maths, code and some logic tasks, correctness can be checked by a program: compare a final answer, run unit tests. Reinforcement learning with verifiable rewards (RLVR; the name was introduced in the Tulu 3 report, 2024) optimises the model directly on such a binary or rule-based reward. DeepSeek-R1-Zero (DeepSeek-AI, 2025) applied RL with rule-based accuracy and format rewards to a pretrained base model with no supervised reasoning demonstrations and reported emergent behaviours such as self-reflection and verification; the final paper appeared in Nature in September 2025.
+
+## GRPO
+
+PPO needs a learned value network the size of the policy to compute advantages, which is costly for large language models. Group Relative Policy Optimization, introduced in DeepSeekMath (Shao et al., 2024), samples a group of $G$ responses per prompt, scores them, and uses the group-normalised reward as the advantage of every token in a response:
+
+$\hat A_i=\frac{r_i-\operatorname{mean}(r_1,\dots,r_G)}{\operatorname{std}(r_1,\dots,r_G)}.$
+
+It then applies a PPO-style clipped objective with a KL penalty to a reference model. No critic is trained.
+
+## Known refinements and criticisms
+
+- **DAPO** (Yu et al., 2025) lists four changes: decoupled clip ranges, dynamic sampling that discards groups with all-correct or all-wrong rewards, token-level loss, and overlong-response reward shaping. It reports 50 points on AIME 2024 with Qwen2.5-32B and releases code built on verl.
+- **Dr. GRPO** (Liu et al., 2025) argues that the length normalisation and the standard-deviation term bias GRPO toward longer incorrect responses, and proposes an unbiased variant. The same study finds that some Qwen2.5 base models already show strong reasoning behaviour without a prompt template, which complicates attribution of gains to RL.
+- **Kimi k1.5** (2025) reports a critic-free long-context RL recipe with comparable results.
+
+## The central scientific question
+
+Does RLVR give a model reasoning ability it did not have, or does it make the model sample already-latent solutions more reliably? Yue et al. (2025, preprint) evaluate pass@$k$ with $k$ up to 128, 256 or 1024 depending on the benchmark and report that RL-trained models win at small $k$ but base models catch up and sometimes overtake at large $k$, concluding that RLVR "narrows coverage" and that distillation from a stronger teacher, unlike RL, does extend the boundary. ProRL (NVIDIA, 2025, preprint) reports that prolonged RL with KL control and reference resets does expand the boundary, including problems the base model never solves. The "invisible leash" analysis (2025, preprint) finds, question by question, that lost verified successes outweigh new ones at the tested budgets. The question is unsettled and depends on base model, task, training length and sampling budget.
+
+## Compute and scaling
+
+The Art of Scaling RL Compute (Khatri et al., 2025, preprint) fits sigmoidal compute-to-performance curves over more than 400,000 GPU-hours and reports that stable recipes extrapolate from small runs to a single 100,000 GPU-hour run.
+
+## Practice
+
+The main open training stacks are verl, TRL and the Open-R1 reproduction effort.
 
 # Plain explanation
 
