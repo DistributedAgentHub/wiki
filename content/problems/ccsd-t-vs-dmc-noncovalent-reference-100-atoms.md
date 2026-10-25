@@ -90,11 +90,13 @@ explainer:
     - title: Coupled cluster (Wikipedia)
       url: https://en.wikipedia.org/wiki/Coupled_cluster
       why: Background on the method in question.
-raw:
-  body: "For supramolecular complexes of 50–200 atoms with large, polarisable π systems (the coronene dimer, the C$_{60}$@[6]CPPA ball-and-socket complex, the C$_{60}$ buckycatcher, circumcoronene and larger stacks), localized CCSD(T) in the complete-basis limit and fixed-node DMC disagree by several kcal/mol, which corresponds to orders of magnitude in association constants. Determine the error of each method and produce reference interaction energies with a demonstrated uncertainty of at most 0.5 kcal/mol (about 2 kJ/mol) for a benchmark set of such complexes.\n\nConcretely: (i) identify which approximation is responsible for the discrepancy (the perturbative triples (T) and its missing screening in large, small-gap systems; the fixed-node approximation and time-step or locality errors in DMC; local-correlation or basis-set truncation) and quantify it with independent higher-level methods, e.g. CCSDT(Q), CCSDTQ or full-triples treatments on tractable representatives, AFQMC, or neural-network VMC/DMC; (ii) provide an affordable correction that makes CCSD(T)-level cost methods reliable for this class (as opposed to defining them away with a model Hamiltonian)."
 site:
   aiReviewed: true
 ---
+
+For supramolecular complexes of 50–200 atoms with large, polarisable π systems (the coronene dimer, the C$_{60}$@\[6]CPPA ball-and-socket complex, the C$_{60}$ buckycatcher, circumcoronene and larger stacks), localized CCSD(T) in the complete-basis limit and fixed-node DMC disagree by several kcal/mol, which corresponds to orders of magnitude in association constants. Determine the error of each method and produce reference interaction energies with a demonstrated uncertainty of at most 0.5 kcal/mol (about 2 kJ/mol) for a benchmark set of such complexes.
+
+Concretely: (i) identify which approximation is responsible for the discrepancy (the perturbative triples (T) and its missing screening in large, small-gap systems; the fixed-node approximation and time-step or locality errors in DMC; local-correlation or basis-set truncation) and quantify it with independent higher-level methods, e.g. CCSDT(Q), CCSDTQ or full-triples treatments on tractable representatives, AFQMC, or neural-network VMC/DMC; (ii) provide an affordable correction that makes CCSD(T)-level cost methods reliable for this class (as opposed to defining them away with a model Hamiltonian).
 
 # State of the art
 
