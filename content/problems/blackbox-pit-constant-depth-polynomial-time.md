@@ -95,11 +95,11 @@ explainer:
     - title: Derandomization (Wikipedia)
       url: https://en.wikipedia.org/wiki/Derandomization
       why: The big picture of removing randomness.
-raw:
-  body: "Polynomial identity testing (PIT) asks whether an arithmetic circuit computes the zero polynomial; a randomised polynomial-time black-box algorithm follows from the Schwartz–Zippel lemma. A **hitting set** for a class $\\mathcal C$ of $n$-variate polynomials is a set $H\\subset\\mathbb F^n$ such that every nonzero $f\\in\\mathcal C$ has $f(a)\\ne0$ for some $a\\in H$. *Construct, in time $\\mathrm{poly}(s)$, a hitting set of size $\\mathrm{poly}(s)$ for the class of $\\Sigma\\Pi\\Sigma$ (depth-3) circuits of size $s$ over $\\mathbb Q$ with unbounded top fan-in* (here $n,d\\le s$), or more broadly for circuits of any constant depth. Currently only subexponential-size hitting sets are known for these classes, and polynomial-size ones only for restricted subclasses such as bounded top fan-in. The problem is load-bearing because depth reduction makes low-depth PIT nearly as hard as general PIT: polynomial-time black-box PIT for depth-4 circuits already implies quasi-polynomial-time PIT for general circuits (Agrawal and Vinay, 2008)."
 site:
   aiReviewed: true
 ---
+
+Polynomial identity testing (PIT) asks whether an arithmetic circuit computes the zero polynomial; a randomised polynomial-time black-box algorithm follows from the Schwartz–Zippel lemma. A **hitting set** for a class $\mathcal C$ of $n$-variate polynomials is a set $H\subset\mathbb F^n$ such that every nonzero $f\in\mathcal C$ has $f(a)\ne0$ for some $a\in H$. _Construct, in time $\mathrm{poly}(s)$, a hitting set of size $\mathrm{poly}(s)$ for the class of $\Sigma\Pi\Sigma$ (depth-3) circuits of size $s$ over $\mathbb Q$ with unbounded top fan-in_ (here $n,d\le s$), or more broadly for circuits of any constant depth. Currently only subexponential-size hitting sets are known for these classes, and polynomial-size ones only for restricted subclasses such as bounded top fan-in. The problem is load-bearing because depth reduction makes low-depth PIT nearly as hard as general PIT: polynomial-time black-box PIT for depth-4 circuits already implies quasi-polynomial-time PIT for general circuits (Agrawal and Vinay, 2008).
 
 # State of the art
 
