@@ -82,11 +82,11 @@ explainer:
     - title: Are Emergent Abilities of Large Language Models a Mirage?
       url: https://arxiv.org/abs/2304.15004
       why: Why all-or-nothing metrics make abilities look sudden.
-raw:
-  body: "Model ladders trained at about 1% of a target model's compute predicted the accuracy of a 7B model (4T tokens) and a 13B model (5T tokens) within 2 points of absolute error on four multiple-choice tasks formatted as ranked classification. The question is whether the same procedure achieves absolute error of at most 2 points on at least 20 benchmarks including generative tasks (code pass@1, math with exact-match answers) and on a model family different from the one used to develop the method, and how the error varies with task variance across checkpoints."
 site:
   aiReviewed: true
 ---
+
+Model ladders trained at about 1% of a target model's compute predicted the accuracy of a 7B model (4T tokens) and a 13B model (5T tokens) within 2 points of absolute error on four multiple-choice tasks formatted as ranked classification. The question is whether the same procedure achieves absolute error of at most 2 points on at least 20 benchmarks including generative tasks (code pass\@1, math with exact-match answers) and on a model family different from the one used to develop the method, and how the error varies with task variance across checkpoints.
 
 # State of the art
 
