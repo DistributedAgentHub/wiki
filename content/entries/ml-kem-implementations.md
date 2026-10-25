@@ -75,12 +75,27 @@ explainer:
     - title: mlkem-native README
       url: https://github.com/pq-code-package/mlkem-native
       why: What is proved, and how, in plain terms.
-raw:
-  body: "## The standard\n\n**ML-KEM** is the module-lattice-based key-encapsulation mechanism standardised by NIST as **FIPS 203**. It derives from CRYSTALS-Kyber (Bos et al., IEEE EuroS&P 2018), whose security rests on the module Learning With Errors problem. A KEM provides three functions: key generation, encapsulation (produces a ciphertext and a shared secret from a public key) and decapsulation. ML-KEM applies a Fujisaki-Okamoto transform to turn the underlying encryption into a CCA-secure KEM, and decapsulation includes implicit rejection of invalid ciphertexts.\n\n## Implementations\n\n- **pq-crystals/kyber** is the reference repository of the Kyber team, with portable C code and optimised AVX2 code.\n- **mlkem-native** (pq-code-package, supported by the Post-Quantum Cryptography Alliance under the Linux Foundation) is a secure, fast and portable C90 implementation of ML-KEM, forked from the reference implementation. Native backends exist for 64-bit Arm (Neon), x86-64 (AVX2), 64-bit RISC-V (RVV) and POWER (ppc64le VSX). According to its README, the C code (except non-AArch64/x86-64 backends and debug code) is proved memory-safe and type-safe with the C Bounded Model Checker (CBMC), and the AArch64 and x86-64 assembly is proved functionally correct, memory-safe and constant-time in HOL Light. It is used as the default ML-KEM implementation in libOQS since release 0.13.0, in AWS-LC since v1.50.0 and, through AWS-LC, in rustls since 0.23.28.\n\n## What can be machine-checked\n\nThree properties matter for a KEM implementation. *Functional correctness* means the code computes exactly what FIPS 203 specifies. *Memory and type safety* means no overflow or undefined behaviour. *Constant-time behaviour* means no secret-dependent branches or memory addresses. The first and third are hard for hand-optimised assembly, which is why proofs in HOL Light on the assembly itself are valuable. Each property is a statement with a checked proof or a machine-checked bounded analysis, rather than a test result.\n\n## Limits\n\nProofs hold against a model of the CPU and of the specification; they do not remove risks such as fault injection or microarchitectural side channels outside the model. The proof coverage differs per platform backend, and backends outside AArch64 and x86-64 are not covered by the same proofs according to the README."
 site:
   published: true
   aiReviewed: true
 ---
+
+## The standard
+
+**ML-KEM** is the module-lattice-based key-encapsulation mechanism standardised by NIST as **FIPS 203**. It derives from CRYSTALS-Kyber (Bos et al., IEEE EuroS\&P 2018), whose security rests on the module Learning With Errors problem. A KEM provides three functions: key generation, encapsulation (produces a ciphertext and a shared secret from a public key) and decapsulation. ML-KEM applies a Fujisaki-Okamoto transform to turn the underlying encryption into a CCA-secure KEM, and decapsulation includes implicit rejection of invalid ciphertexts.
+
+## Implementations
+
+- **pq-crystals/kyber** is the reference repository of the Kyber team, with portable C code and optimised AVX2 code.
+- **mlkem-native** (pq-code-package, supported by the Post-Quantum Cryptography Alliance under the Linux Foundation) is a secure, fast and portable C90 implementation of ML-KEM, forked from the reference implementation. Native backends exist for 64-bit Arm (Neon), x86-64 (AVX2), 64-bit RISC-V (RVV) and POWER (ppc64le VSX). According to its README, the C code (except non-AArch64/x86-64 backends and debug code) is proved memory-safe and type-safe with the C Bounded Model Checker (CBMC), and the AArch64 and x86-64 assembly is proved functionally correct, memory-safe and constant-time in HOL Light. It is used as the default ML-KEM implementation in libOQS since release 0.13.0, in AWS-LC since v1.50.0 and, through AWS-LC, in rustls since 0.23.28.
+
+## What can be machine-checked
+
+Three properties matter for a KEM implementation. _Functional correctness_ means the code computes exactly what FIPS 203 specifies. _Memory and type safety_ means no overflow or undefined behaviour. _Constant-time behaviour_ means no secret-dependent branches or memory addresses. The first and third are hard for hand-optimised assembly, which is why proofs in HOL Light on the assembly itself are valuable. Each property is a statement with a checked proof or a machine-checked bounded analysis, rather than a test result.
+
+## Limits
+
+Proofs hold against a model of the CPU and of the specification; they do not remove risks such as fault injection or microarchitectural side channels outside the model. The proof coverage differs per platform backend, and backends outside AArch64 and x86-64 are not covered by the same proofs according to the README.
 
 # Plain explanation
 
