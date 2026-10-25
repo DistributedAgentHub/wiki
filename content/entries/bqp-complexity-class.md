@@ -95,12 +95,32 @@ explainer:
     - title: Polynomial hierarchy (Wikipedia)
       url: https://en.wikipedia.org/wiki/Polynomial_hierarchy
       why: What the hierarchy is.
-raw:
-  body: "## Definition\n\n**BQP** (bounded-error quantum polynomial time), defined by Bernstein and Vazirani (1993; SIAM J. Comput. 1997), contains the decision problems solved by a uniform family of polynomial-size quantum circuits that accept yes-instances with probability at least $2/3$ and no-instances with probability at most $1/3$. The choice of a finite universal gate set does not matter, since the Solovay–Kitaev theorem converts between gate sets with polylogarithmic overhead.\n\n## Containments\n\n$$\\mathsf{BPP}\\subseteq\\mathsf{BQP}\\subseteq\\mathsf{PP}\\subseteq\\mathsf{PSPACE}.$$\n\nThe first inclusion holds because quantum circuits can simulate classical randomness. Bernstein and Vazirani showed $\\mathsf{BQP}\\subseteq\\mathsf{PSPACE}$ by summing amplitudes path by path, and Adleman, DeMarrais and Huang (1997) showed $\\mathsf{BQP}\\subseteq\\mathsf{PP}$. Since $\\mathsf{BQP}\\subseteq\\mathsf{PSPACE}$, an unconditional proof that $\\mathsf{BQP}\\ne\\mathsf{BPP}$ would prove $\\mathsf{P}\\ne\\mathsf{PSPACE}$, which is out of reach; all evidence for quantum speedups is therefore conditional or relative to oracles.\n\n## Oracle results\n\nIn the query (oracle) model separations can be proved outright. Simon's problem (1994) separates BQP from BPP relative to an oracle. Bennett, Bernstein, Brassard and Vazirani (1997) showed that relative to a random oracle, NP is not contained in BQP, which is part of why quantum computers are not expected to solve NP-complete problems efficiently. Aaronson (2010) proposed **Forrelation**-type problems to separate BQP from the polynomial hierarchy PH: he gave an oracle *relation* problem in BQP but not in PH and reduced the decision version to a \"generalised Linial–Nisan conjecture\". Aaronson and Ambainis (2015) showed Forrelation gives an essentially optimal 1 versus $\\tilde\\Omega(\\sqrt N)$ query separation. Raz and Tal (STOC 2019; J. ACM 2022) then proved an oracle relative to which $\\mathsf{BQP}\\not\\subseteq\\mathsf{PH}$, by showing that a Forrelation distribution fools constant-depth classical circuits; Wu (2020) gave a stochastic-calculus proof. Bravyi, Gosset, Grier and Schaeffer (2021) gave an $O(n2^{n/2})$ classical algorithm for Forrelation and corrected an error in an earlier proof of the optimal quantum-to-classical query simulation.\n\n## Complete problems\n\nBQP has no known complete *language*, but promise versions have natural complete problems: simulating local Hamiltonians, approximating the Jones polynomial at certain roots of unity (Aharonov, Jones and Landau, 2006), $k$-fold Forrelation, and the matrix inversion problem of Harrow, Hassidim and Lloyd. Its quantum analogue of NP, **QMA**, has the local Hamiltonian problem as its complete problem (Kitaev), the starting point of the quantum PCP conjecture.\n\n## Why the boundary matters\n\nPractical speedups come from problems believed to be in BQP but not BPP: factoring and discrete logarithms, simulation of quantum systems, and some algebraic problems. Whether BQP reaches beyond PH, and whether quantum computations can be verified classically, are the main structural questions left."
 site:
   published: true
   aiReviewed: true
 ---
+
+## Definition
+
+**BQP** (bounded-error quantum polynomial time), defined by Bernstein and Vazirani (1993; SIAM J. Comput. 1997), contains the decision problems solved by a uniform family of polynomial-size quantum circuits that accept yes-instances with probability at least $2/3$ and no-instances with probability at most $1/3$. The choice of a finite universal gate set does not matter, since the Solovay–Kitaev theorem converts between gate sets with polylogarithmic overhead.
+
+## Containments
+
+$\mathsf{BPP}\subseteq\mathsf{BQP}\subseteq\mathsf{PP}\subseteq\mathsf{PSPACE}.$
+
+The first inclusion holds because quantum circuits can simulate classical randomness. Bernstein and Vazirani showed $\mathsf{BQP}\subseteq\mathsf{PSPACE}$ by summing amplitudes path by path, and Adleman, DeMarrais and Huang (1997) showed $\mathsf{BQP}\subseteq\mathsf{PP}$. Since $\mathsf{BQP}\subseteq\mathsf{PSPACE}$, an unconditional proof that $\mathsf{BQP}\ne\mathsf{BPP}$ would prove $\mathsf{P}\ne\mathsf{PSPACE}$, which is out of reach; all evidence for quantum speedups is therefore conditional or relative to oracles.
+
+## Oracle results
+
+In the query (oracle) model separations can be proved outright. Simon's problem (1994) separates BQP from BPP relative to an oracle. Bennett, Bernstein, Brassard and Vazirani (1997) showed that relative to a random oracle, NP is not contained in BQP, which is part of why quantum computers are not expected to solve NP-complete problems efficiently. Aaronson (2010) proposed **Forrelation**-type problems to separate BQP from the polynomial hierarchy PH: he gave an oracle _relation_ problem in BQP but not in PH and reduced the decision version to a "generalised Linial–Nisan conjecture". Aaronson and Ambainis (2015) showed Forrelation gives an essentially optimal 1 versus $\tilde\Omega(\sqrt N)$ query separation. Raz and Tal (STOC 2019; J. ACM 2022) then proved an oracle relative to which $\mathsf{BQP}\not\subseteq\mathsf{PH}$, by showing that a Forrelation distribution fools constant-depth classical circuits; Wu (2020) gave a stochastic-calculus proof. Bravyi, Gosset, Grier and Schaeffer (2021) gave an $O(n2^{n/2})$ classical algorithm for Forrelation and corrected an error in an earlier proof of the optimal quantum-to-classical query simulation.
+
+## Complete problems
+
+BQP has no known complete _language_, but promise versions have natural complete problems: simulating local Hamiltonians, approximating the Jones polynomial at certain roots of unity (Aharonov, Jones and Landau, 2006), $k$-fold Forrelation, and the matrix inversion problem of Harrow, Hassidim and Lloyd. Its quantum analogue of NP, **QMA**, has the local Hamiltonian problem as its complete problem (Kitaev), the starting point of the quantum PCP conjecture.
+
+## Why the boundary matters
+
+Practical speedups come from problems believed to be in BQP but not BPP: factoring and discrete logarithms, simulation of quantum systems, and some algebraic problems. Whether BQP reaches beyond PH, and whether quantum computations can be verified classically, are the main structural questions left.
 
 # Plain explanation
 
