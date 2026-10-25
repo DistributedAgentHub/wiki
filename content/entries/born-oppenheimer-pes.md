@@ -70,12 +70,36 @@ explainer:
     - title: Conical intersection (Wikipedia)
       url: https://en.wikipedia.org/wiki/Conical_intersection
       why: Why surfaces touching matters for photochemistry.
-raw:
-  body: "## What it is\n\nThe molecular Hamiltonian couples electrons (mass $m_e$) and nuclei (mass $M \\gg m_e$). Born and Oppenheimer (1927) expanded in $\\kappa=(m_e/M)^{1/4}$ and showed that, to leading order, the electronic problem can be solved at fixed nuclear positions $\\mathbf{R}$:\n$$\\hat H_{el}(\\mathbf R)\\,\\Phi_k(\\mathbf r;\\mathbf R)=E_k(\\mathbf R)\\,\\Phi_k(\\mathbf r;\\mathbf R).$$\nThe eigenvalue $E_k(\\mathbf R)$ is the **potential energy surface (PES)** of electronic state $k$. Nuclei then move as classical or quantum particles on $E_k$: minima are stable molecules, first-order saddle points are transition states, and the curvature gives vibrational frequencies.\n\n## The adiabatic expansion and where it fails\n\nWriting the full wavefunction as $\\Psi=\\sum_k \\chi_k(\\mathbf R)\\Phi_k(\\mathbf r;\\mathbf R)$ produces **nonadiabatic couplings** $\\mathbf d_{jk}=\\langle\\Phi_j|\\nabla_R\\Phi_k\\rangle = \\langle\\Phi_j|\\nabla_R \\hat H_{el}|\\Phi_k\\rangle/(E_k-E_j)$. They are negligible when states are well separated and diverge where surfaces touch. Surfaces of the same spin and symmetry touch on a $(3N-8)$-dimensional seam called a **conical intersection**; these funnel excited molecules back to the ground state in femtoseconds (vision, DNA photostability, photochemical damage). Related breakdowns: the geometric (Berry) phase, spin–orbit-driven intersystem crossing, proton and hydrogen tunnelling, and non-adiabatic electron transfer.\n\n## Why it is foundational\n\n- Almost all of computational chemistry is the problem \"compute $E_0(\\mathbf R)$ and its gradient accurately and cheaply\".\n- Methods that go beyond one surface (surface hopping, multiple spawning, MCTDH, exact factorization) need several surfaces, their couplings and a way to propagate nuclei.\n- Machine-learned potentials are regression models for $E_k(\\mathbf R)$.\n\n## Worth understanding\n\n- Why the adiabatic and diabatic representations differ and why diabatization is not unique\n- Why the electronic gap controls validity, and why metals and near-degenerate radicals are awkward\n- The diagonal Born–Oppenheimer correction as the first systematic improvement\n\n## Current frontier\n\nBeyond-Born–Oppenheimer work includes exact-factorization theory, which writes the full electron-nuclear wavefunction as a product of a nuclear part and a conditional electronic part, multiconfigurational nuclear wavepacket methods (MCTDH, ab initio multiple spawning), and quantum-simulator experiments on trapped ions that probe conical-intersection dynamics. Machine-learned potentials for several coupled surfaces, including their couplings and phases, are an active and incomplete area."
 site:
   published: true
   aiReviewed: true
 ---
+
+## What it is
+
+The molecular Hamiltonian couples electrons (mass $m_e$) and nuclei (mass $M \gg m_e$). Born and Oppenheimer (1927) expanded in $\kappa=(m_e/M)^{1/4}$ and showed that, to leading order, the electronic problem can be solved at fixed nuclear positions $\mathbf{R}$:
+$\hat H_{el}(\mathbf R)\,\Phi_k(\mathbf r;\mathbf R)=E_k(\mathbf R)\,\Phi_k(\mathbf r;\mathbf R).$
+The eigenvalue $E_k(\mathbf R)$ is the **potential energy surface (PES)** of electronic state $k$. Nuclei then move as classical or quantum particles on $E_k$: minima are stable molecules, first-order saddle points are transition states, and the curvature gives vibrational frequencies.
+
+## The adiabatic expansion and where it fails
+
+Writing the full wavefunction as $\Psi=\sum_k \chi_k(\mathbf R)\Phi_k(\mathbf r;\mathbf R)$ produces **nonadiabatic couplings** $\mathbf d_{jk}=\langle\Phi_j|\nabla_R\Phi_k\rangle = \langle\Phi_j|\nabla_R \hat H_{el}|\Phi_k\rangle/(E_k-E_j)$. They are negligible when states are well separated and diverge where surfaces touch. Surfaces of the same spin and symmetry touch on a $(3N-8)$-dimensional seam called a **conical intersection**; these funnel excited molecules back to the ground state in femtoseconds (vision, DNA photostability, photochemical damage). Related breakdowns: the geometric (Berry) phase, spin–orbit-driven intersystem crossing, proton and hydrogen tunnelling, and non-adiabatic electron transfer.
+
+## Why it is foundational
+
+- Almost all of computational chemistry is the problem "compute $E_0(\mathbf R)$ and its gradient accurately and cheaply".
+- Methods that go beyond one surface (surface hopping, multiple spawning, MCTDH, exact factorization) need several surfaces, their couplings and a way to propagate nuclei.
+- Machine-learned potentials are regression models for $E_k(\mathbf R)$.
+
+## Worth understanding
+
+- Why the adiabatic and diabatic representations differ and why diabatization is not unique
+- Why the electronic gap controls validity, and why metals and near-degenerate radicals are awkward
+- The diagonal Born–Oppenheimer correction as the first systematic improvement
+
+## Current frontier
+
+Beyond-Born–Oppenheimer work includes exact-factorization theory, which writes the full electron-nuclear wavefunction as a product of a nuclear part and a conditional electronic part, multiconfigurational nuclear wavepacket methods (MCTDH, ab initio multiple spawning), and quantum-simulator experiments on trapped ions that probe conical-intersection dynamics. Machine-learned potentials for several coupled surfaces, including their couplings and phases, are an active and incomplete area.
 
 # Plain explanation
 
