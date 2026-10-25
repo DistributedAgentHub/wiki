@@ -106,36 +106,12 @@ explainer:
     - title: ProteinGym
       url: https://github.com/OATML-Markslab/ProteinGym
       why: See the benchmark and leaderboard for variant-effect predictors.
+raw:
+  body: "## What it is\n\nTwo linked toolkits. **Protein language models (pLMs)** such as ESM-2 and ESM3 are transformers trained by masked-token prediction on hundreds of millions of natural sequences; their likelihoods and embeddings encode fitness and structure. **Generative design models** produce new backbones and sequences: *RFdiffusion* (a diffusion model fine-tuned from RoseTTAFold that denoises backbone coordinates under conditions such as a target surface or a catalytic motif), *ProteinMPNN* (inverse folding: given a backbone, sample sequences), hallucination/gradient-based pipelines such as *BindCraft* that back-propagate through AlphaFold-class predictors, and multimodal generative models such as ESM3 and Chai-2. Prerequisites: biomolecular structure prediction, diffusion models, and basic protein biophysics.\n\n## The standard design loop\n\n1. Specify a target (a binding epitope, a catalytic geometry, a symmetry).\n2. Generate backbones by diffusion or hallucination.\n3. Design sequences with inverse folding.\n4. **Filter in silico** with an independent structure predictor (self-consistency: predicted vs. designed structure, confidence metrics such as ipAE/ipTM) and physics scores.\n5. Express and test hundreds to thousands of designs by yeast display, binding assays or kinetics; optionally affinity-mature.\n\nStep 4 is the weak point: in-silico success metrics are imperfect proxies for binding or catalysis, so reported \"hit rates\" depend heavily on what is counted and how many designs per target are tested.\n\n## Zero-shot fitness prediction\n\npLM log-likelihood ratios and MSA-based models predict the effect of point mutations. The ProteinGym benchmark (about 217 deep mutational scanning assays and clinical variant sets) tracks Spearman correlation; leaders in 2026 sit near 0.5 average Spearman on substitutions, and performance is much worse for higher-order epistasis and for out-of-distribution proteins. AlphaMissense (2023) adapts AlphaFold to score human missense variants for pathogenicity.\n\n## Techniques to master\n\nDiffusion on SE(3), inverse folding, display-library screening and NGS readout, assay design (kcat/KM, K_D by SPR or BLI), reporting honest hit rates and controls, leakage and memorisation in pLMs.\n\n## Where it bites\n\nOpen problems here: de novo enzymes with native-like kcat/KM and no directed evolution, de novo antibodies to a chosen epitope with drug-like affinity and developability, and clinical-grade calibration of missense-effect predictors."
 site:
   published: true
   aiReviewed: true
 ---
-
-## What it is
-
-Two linked toolkits. **Protein language models (pLMs)** such as ESM-2 and ESM3 are transformers trained by masked-token prediction on hundreds of millions of natural sequences; their likelihoods and embeddings encode fitness and structure. **Generative design models** produce new backbones and sequences: _RFdiffusion_ (a diffusion model fine-tuned from RoseTTAFold that denoises backbone coordinates under conditions such as a target surface or a catalytic motif), _ProteinMPNN_ (inverse folding: given a backbone, sample sequences), hallucination/gradient-based pipelines such as _BindCraft_ that back-propagate through AlphaFold-class predictors, and multimodal generative models such as ESM3 and Chai-2. Prerequisites: biomolecular structure prediction, diffusion models, and basic protein biophysics.
-
-## The standard design loop
-
-1. Specify a target (a binding epitope, a catalytic geometry, a symmetry).
-2. Generate backbones by diffusion or hallucination.
-3. Design sequences with inverse folding.
-4. **Filter in silico** with an independent structure predictor (self-consistency: predicted vs. designed structure, confidence metrics such as ipAE/ipTM) and physics scores.
-5. Express and test hundreds to thousands of designs by yeast display, binding assays or kinetics; optionally affinity-mature.
-
-Step 4 is the weak point: in-silico success metrics are imperfect proxies for binding or catalysis, so reported "hit rates" depend heavily on what is counted and how many designs per target are tested.
-
-## Zero-shot fitness prediction
-
-pLM log-likelihood ratios and MSA-based models predict the effect of point mutations. The ProteinGym benchmark (about 217 deep mutational scanning assays and clinical variant sets) tracks Spearman correlation; leaders in 2026 sit near 0.5 average Spearman on substitutions, and performance is much worse for higher-order epistasis and for out-of-distribution proteins. AlphaMissense (2023) adapts AlphaFold to score human missense variants for pathogenicity.
-
-## Techniques to master
-
-Diffusion on SE(3), inverse folding, display-library screening and NGS readout, assay design (kcat/KM, K_D by SPR or BLI), reporting honest hit rates and controls, leakage and memorisation in pLMs.
-
-## Where it bites
-
-Open problems here: de novo enzymes with native-like kcat/KM and no directed evolution, de novo antibodies to a chosen epitope with drug-like affinity and developability, and clinical-grade calibration of missense-effect predictors.
 
 # Plain explanation
 
