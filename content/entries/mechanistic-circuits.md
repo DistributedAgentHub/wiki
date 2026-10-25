@@ -97,28 +97,12 @@ explainer:
     - title: "Anthropic: Tracing the thoughts of a large language model"
       url: https://www.anthropic.com/research/tracing-thoughts-language-model
       why: A non-technical tour of circuit tracing on a production model.
+raw:
+  body: "## The framework\n\nElhage et al. (Anthropic, 2021) described a transformer as a set of components that read from and write to a shared residual stream, with attention heads as independent circuits whose behaviour can be analysed in terms of query-key and output-value matrices. A *circuit* is a subgraph of components and connections that implements a behaviour. Olsson et al. (2022) identified *induction heads*, pairs of attention heads that complete patterns of the form [A][B] ... [A] to [B], and gave evidence that they underlie much in-context learning in small models. Wang et al. (2022) reverse-engineered a 26-head circuit for indirect-object identification in GPT-2 small, the most-cited worked example.\n\n## Methods\n\n- **Activation patching** replaces a component's activation from a clean run with its value on a corrupted run (or the reverse) and measures the effect on the output. It gives causal, not merely correlational, evidence. Zhang and Nanda (2024) examine metrics and methods for it, including how the choice of corruption and metric changes conclusions.\n- **Automated circuit discovery.** ACDC (Conmy et al., 2023) prunes edges of the computational graph by patching; faster attribution-patching approximations use gradients.\n- **Circuit tracing** with learned replacement models and attribution graphs (Ameisen et al., Anthropic, 2025) extends the idea to features rather than heads.\n\n## Evaluation\n\nTwo questions matter for a claimed circuit: *faithfulness* (does the circuit alone reproduce the model's behaviour?) and *completeness* (does removing it remove the behaviour?). The Mechanistic Interpretability Benchmark (Mueller et al., ICML 2025) standardises circuit localization across four tasks and five models and reports that attribution-based and mask-optimisation methods perform best, which makes methods comparable on a shared leaderboard.\n\n## Caveats\n\nCircuits found with a particular input distribution and corruption may not describe the model elsewhere, and the minimal circuit is not unique. Scaling manual analysis to frontier models is the central unsolved difficulty."
 site:
   published: true
   aiReviewed: true
 ---
-
-## The framework
-
-Elhage et al. (Anthropic, 2021) described a transformer as a set of components that read from and write to a shared residual stream, with attention heads as independent circuits whose behaviour can be analysed in terms of query-key and output-value matrices. A _circuit_ is a subgraph of components and connections that implements a behaviour. Olsson et al. (2022) identified _induction heads_, pairs of attention heads that complete patterns of the form \[A]\[B] ... \[A] to \[B], and gave evidence that they underlie much in-context learning in small models. Wang et al. (2022) reverse-engineered a 26-head circuit for indirect-object identification in GPT-2 small, the most-cited worked example.
-
-## Methods
-
-- **Activation patching** replaces a component's activation from a clean run with its value on a corrupted run (or the reverse) and measures the effect on the output. It gives causal, not merely correlational, evidence. Zhang and Nanda (2024) examine metrics and methods for it, including how the choice of corruption and metric changes conclusions.
-- **Automated circuit discovery.** ACDC (Conmy et al., 2023) prunes edges of the computational graph by patching; faster attribution-patching approximations use gradients.
-- **Circuit tracing** with learned replacement models and attribution graphs (Ameisen et al., Anthropic, 2025) extends the idea to features rather than heads.
-
-## Evaluation
-
-Two questions matter for a claimed circuit: _faithfulness_ (does the circuit alone reproduce the model's behaviour?) and _completeness_ (does removing it remove the behaviour?). The Mechanistic Interpretability Benchmark (Mueller et al., ICML 2025) standardises circuit localization across four tasks and five models and reports that attribution-based and mask-optimisation methods perform best, which makes methods comparable on a shared leaderboard.
-
-## Caveats
-
-Circuits found with a particular input distribution and corruption may not describe the model elsewhere, and the minimal circuit is not unique. Scaling manual analysis to frontier models is the central unsolved difficulty.
 
 # Plain explanation
 
