@@ -89,12 +89,23 @@ explainer:
     - title: CHSH inequality (Wikipedia)
       url: https://en.wikipedia.org/wiki/CHSH_inequality
       why: The game used to verify two quantum provers.
-raw:
-  body: "**Question:** does every language in BQP have an interactive proof in which the verifier is a classical probabilistic polynomial-time machine, there is a single prover, the honest prover runs in quantum polynomial time, completeness is at least $2/3$, and soundness is at most $1/3$ against *every* prover, including computationally unbounded ones (information-theoretic soundness)?\n\nWithout the efficiency requirement on the honest prover the answer is yes, since $\\mathsf{BQP}\\subseteq\\mathsf{PSPACE}=\\mathsf{IP}$, but the IP = PSPACE protocol needs a prover far more powerful than a quantum computer. The question is whether a quantum computer can convince a classical skeptic of its outputs with no assumption about the skeptic's adversary."
-  stateOfArt: "**With a little quantum power for the verifier.** If the verifier can prepare or measure single qubits, BQP can be verified information-theoretically: Aharonov, Ben-Or and Eban (2008; with Mahadev, 2017) and the blind-computation protocols of Broadbent, Fitzsimons and Kashefi (FOCS 2009) and Fitzsimons and Kashefi.\n\n**With two provers.** A classical verifier interacting with two entangled but non-communicating provers can verify BQP, using the rigidity of CHSH games (Reichardt, Unger and Vazirani, Nature 2013); Coladangelo, Grilo, Jeffery and Vidick (2019) brought the resources down to quasilinear.\n\n**With one prover and cryptography.** Mahadev (FOCS 2018; SIAM J. Comput. 2022) gave the first protocol for a classical verifier and a single quantum prover, with soundness against provers that cannot solve LWE efficiently, that is computational soundness only.\n\n**Barriers.** Aaronson, Cojocaru, Gheorghiu and Kashefi (2019) showed that *blind* information-theoretically secure protocols with purely classical interaction would imply unlikely complexity consequences (for example $\\mathsf{BQP}\\subseteq\\mathsf{MA}/O(n^d)$ for polynomial communication), which suggests the blindness route will not work; non-blind protocols are not ruled out. For problems in $\\mathsf{NP}\\cap\\mathsf{BQP}$, such as factoring, verification is easy because the answer can be checked directly; the open case is general BQP. No protocol and no barrier for the general question is known as of 2026."
 site:
   aiReviewed: true
 ---
+
+**Question:** does every language in BQP have an interactive proof in which the verifier is a classical probabilistic polynomial-time machine, there is a single prover, the honest prover runs in quantum polynomial time, completeness is at least $2/3$, and soundness is at most $1/3$ against _every_ prover, including computationally unbounded ones (information-theoretic soundness)?
+
+Without the efficiency requirement on the honest prover the answer is yes, since $\mathsf{BQP}\subseteq\mathsf{PSPACE}=\mathsf{IP}$, but the IP = PSPACE protocol needs a prover far more powerful than a quantum computer. The question is whether a quantum computer can convince a classical skeptic of its outputs with no assumption about the skeptic's adversary.
+
+# State of the art
+
+**With a little quantum power for the verifier.** If the verifier can prepare or measure single qubits, BQP can be verified information-theoretically: Aharonov, Ben-Or and Eban (2008; with Mahadev, 2017) and the blind-computation protocols of Broadbent, Fitzsimons and Kashefi (FOCS 2009) and Fitzsimons and Kashefi.
+
+**With two provers.** A classical verifier interacting with two entangled but non-communicating provers can verify BQP, using the rigidity of CHSH games (Reichardt, Unger and Vazirani, Nature 2013); Coladangelo, Grilo, Jeffery and Vidick (2019) brought the resources down to quasilinear.
+
+**With one prover and cryptography.** Mahadev (FOCS 2018; SIAM J. Comput. 2022) gave the first protocol for a classical verifier and a single quantum prover, with soundness against provers that cannot solve LWE efficiently, that is computational soundness only.
+
+**Barriers.** Aaronson, Cojocaru, Gheorghiu and Kashefi (2019) showed that _blind_ information-theoretically secure protocols with purely classical interaction would imply unlikely complexity consequences (for example $\mathsf{BQP}\subseteq\mathsf{MA}/O(n^d)$ for polynomial communication), which suggests the blindness route will not work; non-blind protocols are not ruled out. For problems in $\mathsf{NP}\cap\mathsf{BQP}$, such as factoring, verification is easy because the answer can be checked directly; the open case is general BQP. No protocol and no barrier for the general question is known as of 2026.
 
 # Applications
 
