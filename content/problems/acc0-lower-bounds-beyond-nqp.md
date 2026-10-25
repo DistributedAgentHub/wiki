@@ -102,11 +102,11 @@ explainer:
     - title: Complexity Theory's 50-Year Journey to the Limits of Knowledge (Quanta)
       url: https://www.quantamagazine.org/complexity-theorys-50-year-journey-to-the-limits-of-knowledge-20230817/
       why: Places Williams's algorithmic method in the wider story.
-raw:
-  body: "$\\mathsf{ACC}^0$ is the class of languages decided by constant-depth, polynomial-size circuits with AND, OR, NOT and MOD$_m$ gates for a fixed $m$. Williams (2011) proved $\\mathsf{NEXP}\\not\\subset\\mathsf{ACC}^0$, and Murray and Williams (2018) proved $\\mathsf{NQP}=\\mathsf{NTIME}[n^{\\mathrm{polylog}\\,n}]\\not\\subset\\mathsf{ACC}^0$. *Prove $\\mathsf{NP}\\not\\subset\\mathsf{ACC}^0$*: exhibit a language in $\\mathsf{NP}$ that has no polynomial-size $\\mathsf{ACC}^0$ circuits. Intermediate targets are classes strictly between $\\mathsf{NP}$ and $\\mathsf{NQP}$, such as $\\mathsf{NTIME}[n^{\\log\\log n}]$, and $\\mathsf{P}^{\\mathsf{NP}}$. Both known results use Williams's algorithmic method: a slightly faster-than-exhaustive satisfiability algorithm for $\\mathsf{ACC}^0$ circuits implies a lower bound."
 site:
   aiReviewed: true
 ---
+
+$\mathsf{ACC}^0$ is the class of languages decided by constant-depth, polynomial-size circuits with AND, OR, NOT and MOD$_m$ gates for a fixed $m$. Williams (2011) proved $\mathsf{NEXP}\not\subset\mathsf{ACC}^0$, and Murray and Williams (2018) proved $\mathsf{NQP}=\mathsf{NTIME}[n^{\mathrm{polylog}\,n}]\not\subset\mathsf{ACC}^0$. _Prove $\mathsf{NP}\not\subset\mathsf{ACC}^0$_: exhibit a language in $\mathsf{NP}$ that has no polynomial-size $\mathsf{ACC}^0$ circuits. Intermediate targets are classes strictly between $\mathsf{NP}$ and $\mathsf{NQP}$, such as $\mathsf{NTIME}[n^{\log\log n}]$, and $\mathsf{P}^{\mathsf{NP}}$. Both known results use Williams's algorithmic method: a slightly faster-than-exhaustive satisfiability algorithm for $\mathsf{ACC}^0$ circuits implies a lower bound.
 
 # State of the art
 
