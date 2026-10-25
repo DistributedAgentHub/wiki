@@ -101,12 +101,38 @@ explainer:
     - title: Attention Is All You Need (Vaswani et al., 2017)
       url: https://arxiv.org/abs/1706.03762
       why: The original paper, whose first sections are readable.
-raw:
-  body: "## Architecture\n\nA transformer maps a sequence of $n$ token vectors $X\\in\\mathbb R^{n\\times d_{\\mathrm{model}}}$ to a sequence of the same shape through a stack of identical blocks. Each block has a *self-attention* layer and a position-wise feed-forward network, each wrapped in a residual connection and normalisation. In one attention head, learned projections give queries, keys and values $Q,K,V\\in\\mathbb R^{n\\times d}$, and the output is\n$$\\mathrm{Att}(Q,K,V)=\\mathrm{softmax}\\!\\Big(\\tfrac{QK^{\\top}}{\\sqrt d}\\Big)V,$$\nwhere softmax acts on each row. Several heads run in parallel and their outputs are concatenated. In a decoder-only language model a causal mask forbids attending to later positions and the model predicts the next token. Vaswani et al. (2017) introduced the design for machine translation, replacing the recurrent networks that had dominated sequence modelling.\n\n## Cost\n\nForming $QK^{\\top}$ takes $O(n^2 d)$ time and the attention matrix has $n^2$ entries, so naive attention is quadratic in context length. The feed-forward layers cost $O(n\\,d_{\\mathrm{model}}^2)$, which dominates at short context. During autoregressive generation the keys and values of all previous tokens are cached, so each new token costs $O(nd)$ time but requires reading the whole cache from memory, which makes decoding memory-bound on current accelerators. Training uses reverse-mode automatic differentiation and is parallel across positions, which is a main reason transformers displaced recurrent networks.\n\n## Making attention cheaper\n\nThere are three families of responses.\n\n**Exact but IO-aware.** FlashAttention (Dao et al., 2022) computes exactly the same output but tiles the computation so the $n\\times n$ matrix is never written to slow memory, cutting memory traffic and making memory use linear in $n$. The arithmetic stays quadratic.\n\n**Approximate or sparse.** Sparse, low-rank, kernel and hashing-based methods approximate the attention matrix. Linear attention (Katharopoulos et al., 2020) replaces the softmax by a kernel feature map so that attention can be computed as a recurrence with a fixed-size state.\n\n**Recurrent and state-space layers.** Models such as Mamba (Gu and Dao, 2023) use selective state-space recurrences with cost linear in $n$, and hybrids interleave them with a few full-attention layers. Their hidden state has fixed size, which limits how much of a long context they can retrieve exactly; how much this matters in practice has been studied mainly by experiment, not theory.\n\n## What theory says\n\nAlman and Song (2023) proved a sharp threshold for computing attention to within $1/\\mathrm{poly}(n)$ additive error: when entries of $Q,K,V$ are bounded by $o(\\sqrt{\\log n})$ there is an $n^{1+o(1)}$ algorithm, and when they reach $\\Theta(\\sqrt{\\log n})$ no truly subquadratic algorithm exists unless the Strong Exponential Time Hypothesis fails (for head dimension $d=\\Theta(\\log n)$). Standard transformers also face expressivity limits: with saturated attention (Merrill, Sabharwal and Smith, TACL 2022) or with logarithmic numerical precision (Merrill and Sabharwal, TACL 2023), constant-depth transformers compute only functions in the circuit class $\\mathsf{TC}^0$, which limits what they can do in a single forward pass, without long chains of generated reasoning tokens.\n\n## Open questions\n\nWhether a subquadratic layer can match full attention on the tasks that matter, and why transformer loss improves predictably with scale, are treated in the two open problems attached to this entry."
 site:
   published: true
   aiReviewed: true
 ---
+
+## Architecture
+
+A transformer maps a sequence of $n$ token vectors $X\in\mathbb R^{n\times d_{\mathrm{model}}}$ to a sequence of the same shape through a stack of identical blocks. Each block has a _self-attention_ layer and a position-wise feed-forward network, each wrapped in a residual connection and normalisation. In one attention head, learned projections give queries, keys and values $Q,K,V\in\mathbb R^{n\times d}$, and the output is
+$\mathrm{Att}(Q,K,V)=\mathrm{softmax}\!\Big(\tfrac{QK^{\top}}{\sqrt d}\Big)V,$
+where softmax acts on each row. Several heads run in parallel and their outputs are concatenated. In a decoder-only language model a causal mask forbids attending to later positions and the model predicts the next token. Vaswani et al. (2017) introduced the design for machine translation, replacing the recurrent networks that had dominated sequence modelling.
+
+## Cost
+
+Forming $QK^{\top}$ takes $O(n^2 d)$ time and the attention matrix has $n^2$ entries, so naive attention is quadratic in context length. The feed-forward layers cost $O(n\,d_{\mathrm{model}}^2)$, which dominates at short context. During autoregressive generation the keys and values of all previous tokens are cached, so each new token costs $O(nd)$ time but requires reading the whole cache from memory, which makes decoding memory-bound on current accelerators. Training uses reverse-mode automatic differentiation and is parallel across positions, which is a main reason transformers displaced recurrent networks.
+
+## Making attention cheaper
+
+There are three families of responses.
+
+**Exact but IO-aware.** FlashAttention (Dao et al., 2022) computes exactly the same output but tiles the computation so the $n\times n$ matrix is never written to slow memory, cutting memory traffic and making memory use linear in $n$. The arithmetic stays quadratic.
+
+**Approximate or sparse.** Sparse, low-rank, kernel and hashing-based methods approximate the attention matrix. Linear attention (Katharopoulos et al., 2020) replaces the softmax by a kernel feature map so that attention can be computed as a recurrence with a fixed-size state.
+
+**Recurrent and state-space layers.** Models such as Mamba (Gu and Dao, 2023) use selective state-space recurrences with cost linear in $n$, and hybrids interleave them with a few full-attention layers. Their hidden state has fixed size, which limits how much of a long context they can retrieve exactly; how much this matters in practice has been studied mainly by experiment, not theory.
+
+## What theory says
+
+Alman and Song (2023) proved a sharp threshold for computing attention to within $1/\mathrm{poly}(n)$ additive error: when entries of $Q,K,V$ are bounded by $o(\sqrt{\log n})$ there is an $n^{1+o(1)}$ algorithm, and when they reach $\Theta(\sqrt{\log n})$ no truly subquadratic algorithm exists unless the Strong Exponential Time Hypothesis fails (for head dimension $d=\Theta(\log n)$). Standard transformers also face expressivity limits: with saturated attention (Merrill, Sabharwal and Smith, TACL 2022) or with logarithmic numerical precision (Merrill and Sabharwal, TACL 2023), constant-depth transformers compute only functions in the circuit class $\mathsf{TC}^0$, which limits what they can do in a single forward pass, without long chains of generated reasoning tokens.
+
+## Open questions
+
+Whether a subquadratic layer can match full attention on the tasks that matter, and why transformer loss improves predictably with scale, are treated in the two open problems attached to this entry.
 
 # Plain explanation
 
