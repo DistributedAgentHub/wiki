@@ -97,12 +97,24 @@ explainer:
     - title: "Tri Dao: State Space Duality (Mamba-2), Part I"
       url: https://tridao.me/blog/2024/mamba2-part1-model/
       why: The co-author explains the link between SSMs and attention in blog form.
-raw:
-  body: "## From linear systems to a neural layer\n\nA state-space model maps an input sequence to an output through a hidden state that evolves linearly: the state is updated from the previous state and the current input, and the output is read from the state. Run as a recurrence, decoding needs constant memory per step regardless of context length. Because the update is linear, it can also be written as a long convolution, or computed with a parallel scan, so training parallelises over the sequence.\n\n**S4** (Gu, Goel and Ré, 2021) made this practical by parametrizing the state matrix in a structured form that is both stable and efficient on long-range benchmarks. **Mamba** (Gu and Dao, 2023, preprint) made the state-update parameters depend on the input (a *selective* SSM), which lets the layer decide per token what to keep or forget; because input-dependence breaks the convolutional form, the authors wrote a hardware-aware scan kernel. **Mamba-2** (Dao and Gu, ICML 2024) showed a duality between selective SSMs and a form of masked linear attention (structured state space duality, SSD), and rewrote the layer around matrix multiplications; the authors report the core layer is 2-8 times faster than Mamba's scan while staying competitive with transformers on language modelling.\n\n## The recall gap\n\nA fixed-size state is a bottleneck. Arora et al. (Zoology, 2023) found that most of the quality gap between gated-convolution/recurrent models and attention on language modelling is attributable to *associative recall*: looking up a value associated with an earlier key. Jelassi et al. (2024) proved and measured that fixed-state models are worse than transformers at copying long inputs. For this reason many deployed designs are **hybrids** that interleave a few attention layers with SSM layers.\n\n## Open points\n\nHow much state is needed for a given recall ability, whether kernels remain faster than FlashAttention-class attention at the context lengths people actually use, and whether SSMs can match transformers at the frontier are all open and mostly settled by benchmarks rather than theory. The related theory question of how many attention layers multi-hop retrieval needs is tracked in the transformer entry."
 site:
   published: true
   aiReviewed: true
 ---
+
+## From linear systems to a neural layer
+
+A state-space model maps an input sequence to an output through a hidden state that evolves linearly: the state is updated from the previous state and the current input, and the output is read from the state. Run as a recurrence, decoding needs constant memory per step regardless of context length. Because the update is linear, it can also be written as a long convolution, or computed with a parallel scan, so training parallelises over the sequence.
+
+**S4** (Gu, Goel and Ré, 2021) made this practical by parametrizing the state matrix in a structured form that is both stable and efficient on long-range benchmarks. **Mamba** (Gu and Dao, 2023, preprint) made the state-update parameters depend on the input (a _selective_ SSM), which lets the layer decide per token what to keep or forget; because input-dependence breaks the convolutional form, the authors wrote a hardware-aware scan kernel. **Mamba-2** (Dao and Gu, ICML 2024) showed a duality between selective SSMs and a form of masked linear attention (structured state space duality, SSD), and rewrote the layer around matrix multiplications; the authors report the core layer is 2-8 times faster than Mamba's scan while staying competitive with transformers on language modelling.
+
+## The recall gap
+
+A fixed-size state is a bottleneck. Arora et al. (Zoology, 2023) found that most of the quality gap between gated-convolution/recurrent models and attention on language modelling is attributable to _associative recall_: looking up a value associated with an earlier key. Jelassi et al. (2024) proved and measured that fixed-state models are worse than transformers at copying long inputs. For this reason many deployed designs are **hybrids** that interleave a few attention layers with SSM layers.
+
+## Open points
+
+How much state is needed for a given recall ability, whether kernels remain faster than FlashAttention-class attention at the context lengths people actually use, and whether SSMs can match transformers at the frontier are all open and mostly settled by benchmarks rather than theory. The related theory question of how many attention layers multi-hop retrieval needs is tracked in the transformer entry.
 
 # Plain explanation
 
