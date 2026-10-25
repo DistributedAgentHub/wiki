@@ -20,6 +20,8 @@ links:
   - to: unique-games-conjecture
     kind: RELATED
     note: Both are label-cover conjectures from Khot's 2002 paper; the 2-to-2 theorem that settled one half of the picture uses the same Grassmann-graph machinery.
+raw:
+  stateOfArt: "Khot stated the conjecture together with the Unique Games Conjecture (STOC 2002). Khot, Minzer and Safra (Annals of Mathematics 198, 2023), completing work with Dinur and Kindler, proved the 2-to-2 Games theorem with *imperfect* completeness (value $1-\\varepsilon$ versus $\\delta$), which also gives 2-to-1 hardness with imperfect completeness. The perfect-completeness version, which controls hardness for satisfiable instances such as colouring 3-colourable graphs (Dinur–Mossel–Regev), is open in the accepted literature.\n\n**Unverified claim:** openai/math family 105 (October 2026) claims a proof, with OpenAI's own unreviewed Lean formalization. It is on the Verification board."
 site:
   aiReviewed: true
 ---
@@ -27,12 +29,6 @@ site:
 A **2-to-1 game** is a label-cover instance on a bipartite graph in which each edge constraint is a map sending exactly two labels on one side to each label on the other. Its value is the largest fraction of constraints a labelling satisfies.
 
 **Conjecture (perfect completeness):** for every $\delta>0$ there is an alphabet size $k=k(\delta)$ such that it is NP-hard to distinguish 2-to-1 games of value $1$ from those of value at most $\delta$.
-
-# State of the art
-
-Khot stated the conjecture together with the Unique Games Conjecture (STOC 2002). Khot, Minzer and Safra (Annals of Mathematics 198, 2023), completing work with Dinur and Kindler, proved the 2-to-2 Games theorem with _imperfect_ completeness (value $1-\varepsilon$ versus $\delta$), which also gives 2-to-1 hardness with imperfect completeness. The perfect-completeness version, which controls hardness for satisfiable instances such as colouring 3-colourable graphs (Dinur–Mossel–Regev), is open in the accepted literature.
-
-**Unverified claim:** openai/math family 105 (October 2026) claims a proof, with OpenAI's own unreviewed Lean formalization. It is on the Verification board.
 
 # Applications
 
