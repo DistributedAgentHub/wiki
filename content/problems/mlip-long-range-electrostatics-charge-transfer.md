@@ -90,11 +90,13 @@ explainer:
     - title: Machine Learning Force Fields (Unke et al.)
       url: https://doi.org/10.1021/acs.chemrev.0c01111
       why: Includes sections on long-range and charge effects.
-raw:
-  body: "Create a universal MLIP architecture whose energy depends correctly on *non-local* electronic degrees of freedom: total molecular charge and spin multiplicity as inputs, charge transfer over distances beyond the cutoff radius (several Å), electrostatics with correct $1/r$ decay, and polarisation response to external fields and electrodes (including constant-potential electrochemical interfaces), while scaling linearly or as $O(N\\log N)$ to $10^5$–$10^6$ atoms.\n\nConcretely it should reproduce a reference method (hybrid DFT or better) to within 1 kcal/mol per-molecule on charge-transfer complexes, zwitterions and ion pairs separated by 5–20 Å, on ionic liquids and aqueous electrolytes (radial distribution functions, dielectric constants within 5%, ionic conductivity within a factor of 1.5), and on metal/electrolyte interfaces, in a *transferable* way, i.e. not retrained for every system."
 site:
   aiReviewed: true
 ---
+
+Create a universal MLIP architecture whose energy depends correctly on _non-local_ electronic degrees of freedom: total molecular charge and spin multiplicity as inputs, charge transfer over distances beyond the cutoff radius (several Å), electrostatics with correct $1/r$ decay, and polarisation response to external fields and electrodes (including constant-potential electrochemical interfaces), while scaling linearly or as $O(N\log N)$ to $10^5$–$10^6$ atoms.
+
+Concretely it should reproduce a reference method (hybrid DFT or better) to within 1 kcal/mol per-molecule on charge-transfer complexes, zwitterions and ion pairs separated by 5–20 Å, on ionic liquids and aqueous electrolytes (radial distribution functions, dielectric constants within 5%, ionic conductivity within a factor of 1.5), and on metal/electrolyte interfaces, in a _transferable_ way, i.e. not retrained for every system.
 
 # State of the art
 
