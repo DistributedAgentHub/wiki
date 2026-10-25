@@ -100,11 +100,11 @@ explainer:
     - title: Geometric measure theory (research entry)
       url: /research/geometric-measure-theory
       why: The dimension and incidence toolkit used.
+raw:
+  body: "A Kakeya set K ⊂ ℝ^n contains a unit line segment in every direction. Prove that for n = 4 every Kakeya set has Hausdorff and Minkowski dimension 4. The sharper Kakeya maximal function conjecture asserts ‖f*_δ‖_{L^4(S³)} ≤ C_ε δ^(−ε) ‖f‖_{L^4(ℝ⁴)}, where f*_δ(ω) is the supremum over δ-tubes of direction ω of the average of |f|. The three-dimensional dimension conjecture is a theorem (Wang–Zahl), so the open core is the genuinely four-dimensional geometry."
 site:
   aiReviewed: true
 ---
-
-A Kakeya set K ⊂ ℝ^n contains a unit line segment in every direction. Prove that for n = 4 every Kakeya set has Hausdorff and Minkowski dimension 4. The sharper Kakeya maximal function conjecture asserts ‖f\*_δ‖_{L^4(S³)} ≤ C_ε δ^(−ε) ‖f‖\_{L^4(ℝ⁴)}, where f\*\_δ(ω) is the supremum over δ-tubes of direction ω of the average of |f|. The three-dimensional dimension conjecture is a theorem (Wang–Zahl), so the open core is the genuinely four-dimensional geometry.
 
 # State of the art
 
