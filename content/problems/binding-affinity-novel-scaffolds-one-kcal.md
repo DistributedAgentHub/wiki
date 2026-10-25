@@ -102,11 +102,15 @@ explainer:
     - title: OpenFE
       url: https://openfree.energy/
       why: Open-source free-energy tools and benchmarks.
-raw:
-  body: "**Task.** Given a protein target and a drug-like ligand whose chemical scaffold is not represented among known binders of that target (and is dissimilar from the training data), predict the binding free energy $\\Delta G = RT\\ln K_d$ with an error comparable to the experimental noise floor.\n\n**Concrete target.** On a prospective blinded set of at least 200 compounds spanning at least 10 protein families (kinases, GPCRs, proteases, nuclear receptors, bromodomains, ...), in which each compound's scaffold has Tanimoto similarity $< 0.4$ to every training compound, the method, applied *without per-target retraining, fine-tuning or tuning on target assay data*, achieves RMSE $\\le 1.2$ kcal/mol, median unsigned error $\\le 1.0$ kcal/mol, and Kendall's $\\tau \\ge 0.6$ (about 80% of the CASP16 experimental-noise ceiling of about 0.73) within each target, at a cost that permits at least $10^4$ compounds per target (that is, well below current alchemical free-energy cost).\n\nThe accuracy bar is set by assay reproducibility: public data give a pairwise inter-lab RMSE of about 0.91 kcal/mol, and 1 kcal/mol corresponds to a factor of about 5.4 in $K_d$."
 site:
   aiReviewed: true
 ---
+
+**Task.** Given a protein target and a drug-like ligand whose chemical scaffold is not represented among known binders of that target (and is dissimilar from the training data), predict the binding free energy $\Delta G = RT\ln K_d$ with an error comparable to the experimental noise floor.
+
+**Concrete target.** On a prospective blinded set of at least 200 compounds spanning at least 10 protein families (kinases, GPCRs, proteases, nuclear receptors, bromodomains, ...), in which each compound's scaffold has Tanimoto similarity $< 0.4$ to every training compound, the method, applied _without per-target retraining, fine-tuning or tuning on target assay data_, achieves RMSE $\le 1.2$ kcal/mol, median unsigned error $\le 1.0$ kcal/mol, and Kendall's $\tau \ge 0.6$ (about 80% of the CASP16 experimental-noise ceiling of about 0.73) within each target, at a cost that permits at least $10^4$ compounds per target (that is, well below current alchemical free-energy cost).
+
+The accuracy bar is set by assay reproducibility: public data give a pairwise inter-lab RMSE of about 0.91 kcal/mol, and 1 kcal/mol corresponds to a factor of about 5.4 in $K_d$.
 
 # State of the art
 
