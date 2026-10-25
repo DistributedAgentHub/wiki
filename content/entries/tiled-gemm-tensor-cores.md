@@ -89,12 +89,36 @@ explainer:
     - title: Roofline model (Wikipedia)
       url: https://en.wikipedia.org/wiki/Roofline_model
       why: Short overview of the chart and how to read it.
-raw:
-  body: "## The problem\n\nA general matrix multiply (GEMM) computes C = A·B. Done naively, every output element re-reads a row of A and a column of B from main memory, so the kernel is memory-bound even though the arithmetic intensity of the whole product is high. High-performance GEMM, formalised in the CPU setting by Goto and van de Geijn (2008), reorganises the loops into blocks so each loaded value is reused many times from a faster level.\n\n## Hierarchical tiling on a GPU\n\nThe output is partitioned into **thread-block tiles** (for example 128×256). Each thread block marches along the K dimension, loading a tile of A and a tile of B into shared memory, then accumulating into registers. Inside the block, **warp tiles** divide the work, and each warp issues **tensor-core MMA** instructions on small fixed shapes. Because the accumulators live in registers across the whole K loop, each element of C is written once.\n\n## Hopper-era mechanics\n\nOn Hopper, three features change the structure of a fast kernel:\n\n- **TMA** copies whole tiles from global to shared memory asynchronously, freeing threads from address arithmetic.\n- **WGMMA**, a warpgroup-level asynchronous MMA, reads operands directly from shared memory.\n- **Warp specialisation**: some warps are producers (issue TMA loads) while others are consumers (issue WGMMA), connected by a software pipeline of shared-memory stages and barriers.\n\nPersistent kernels keep one block per SM and loop over tiles to hide launch and prologue cost. Tile scheduling matters too: when the number of tiles is not a multiple of the SM count, the last wave leaves SMs idle. Stream-K (Osama et al.) splits the K loop across blocks to balance this.\n\n## CUTLASS and CuTe\n\nCUTLASS is NVIDIA's open-source C++ template library of these building blocks, and the reference for what vendor kernels do. CUTLASS 3.x is built on **CuTe**, a layout algebra in which a tensor is a pointer plus a *layout* (a nested shape and stride function). Tiling, partitioning across threads and copying between memory levels become compositions of layouts, which lets one kernel source target different tile shapes and data types. Python front ends and the CuTe DSL expose the same ideas without C++ templates.\n\n## Why it is load-bearing\n\nPeak-utilisation numbers for attention, FP8 and block-scaled GEMMs are all reported relative to what a well-tuned GEMM reaches. Open implementations such as DeepGEMM show that a compact, JIT-compiled FP8 GEMM can be competitive with vendor libraries on selected shapes, so reproducing and extending this structure is an active, benchmarkable engineering frontier."
 site:
   published: true
   aiReviewed: true
 ---
+
+## The problem
+
+A general matrix multiply (GEMM) computes C = A·B. Done naively, every output element re-reads a row of A and a column of B from main memory, so the kernel is memory-bound even though the arithmetic intensity of the whole product is high. High-performance GEMM, formalised in the CPU setting by Goto and van de Geijn (2008), reorganises the loops into blocks so each loaded value is reused many times from a faster level.
+
+## Hierarchical tiling on a GPU
+
+The output is partitioned into **thread-block tiles** (for example 128×256). Each thread block marches along the K dimension, loading a tile of A and a tile of B into shared memory, then accumulating into registers. Inside the block, **warp tiles** divide the work, and each warp issues **tensor-core MMA** instructions on small fixed shapes. Because the accumulators live in registers across the whole K loop, each element of C is written once.
+
+## Hopper-era mechanics
+
+On Hopper, three features change the structure of a fast kernel:
+
+- **TMA** copies whole tiles from global to shared memory asynchronously, freeing threads from address arithmetic.
+- **WGMMA**, a warpgroup-level asynchronous MMA, reads operands directly from shared memory.
+- **Warp specialisation**: some warps are producers (issue TMA loads) while others are consumers (issue WGMMA), connected by a software pipeline of shared-memory stages and barriers.
+
+Persistent kernels keep one block per SM and loop over tiles to hide launch and prologue cost. Tile scheduling matters too: when the number of tiles is not a multiple of the SM count, the last wave leaves SMs idle. Stream-K (Osama et al.) splits the K loop across blocks to balance this.
+
+## CUTLASS and CuTe
+
+CUTLASS is NVIDIA's open-source C++ template library of these building blocks, and the reference for what vendor kernels do. CUTLASS 3.x is built on **CuTe**, a layout algebra in which a tensor is a pointer plus a _layout_ (a nested shape and stride function). Tiling, partitioning across threads and copying between memory levels become compositions of layouts, which lets one kernel source target different tile shapes and data types. Python front ends and the CuTe DSL expose the same ideas without C++ templates.
+
+## Why it is load-bearing
+
+Peak-utilisation numbers for attention, FP8 and block-scaled GEMMs are all reported relative to what a well-tuned GEMM reaches. Open implementations such as DeepGEMM show that a compact, JIT-compiled FP8 GEMM can be competitive with vendor libraries on selected shapes, so reproducing and extending this structure is an active, benchmarkable engineering frontier.
 
 # Plain explanation
 
