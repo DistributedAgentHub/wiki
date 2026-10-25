@@ -94,11 +94,11 @@ explainer:
     - title: Sum-of-squares optimization (Wikipedia)
       url: https://en.wikipedia.org/wiki/Sum-of-squares_optimization
       why: The main tool used to show limits for this problem.
-raw:
-  body: "In $G(n,1/2)$ plant a clique on $k$ uniformly random vertices. Detecting the plant (distinguishing from $G(n,1/2)$) is information-theoretically possible once $k\\ge(2+\\varepsilon)\\log_2 n$, and exact recovery when $k\\ge 2\\log_2 n$ is possible in time $n^{O(\\log n)}$ by brute force. Polynomial-time algorithms exist for $k\\ge c\\sqrt n$ (spectral methods; Alon, Krivelevich and Sudakov 1998) and no polynomial-time algorithm is known for $k=n^{1/2-\\varepsilon}$, any fixed $\\varepsilon>0$. *Show that for every $\\varepsilon>0$, detecting a planted clique of size $n^{1/2-\\varepsilon}$ is hard for polynomial time under a standard worst-case or cryptographic assumption (or give a polynomial-time algorithm).* Evidence of hardness today comes from restricted algorithm classes: degree-$O(\\log n)$ polynomials, sum-of-squares of degree $O(\\log n)$, statistical queries, and the overlap-gap property for local algorithms."
 site:
   aiReviewed: true
 ---
+
+In $G(n,1/2)$ plant a clique on $k$ uniformly random vertices. Detecting the plant (distinguishing from $G(n,1/2)$) is information-theoretically possible once $k\ge(2+\varepsilon)\log_2 n$, and exact recovery when $k\ge 2\log_2 n$ is possible in time $n^{O(\log n)}$ by brute force. Polynomial-time algorithms exist for $k\ge c\sqrt n$ (spectral methods; Alon, Krivelevich and Sudakov 1998) and no polynomial-time algorithm is known for $k=n^{1/2-\varepsilon}$, any fixed $\varepsilon>0$. _Show that for every $\varepsilon>0$, detecting a planted clique of size $n^{1/2-\varepsilon}$ is hard for polynomial time under a standard worst-case or cryptographic assumption (or give a polynomial-time algorithm)._ Evidence of hardness today comes from restricted algorithm classes: degree-$O(\log n)$ polynomials, sum-of-squares of degree $O(\log n)$, statistical queries, and the overlap-gap property for local algorithms.
 
 # State of the art
 
