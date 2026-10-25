@@ -105,12 +105,38 @@ explainer:
     - title: CASP (Wikipedia)
       url: https://en.wikipedia.org/wiki/CASP
       why: How the blind contests that measure progress work.
-raw:
-  body: "## What it is\n\nGiven the amino-acid sequence of a protein (or sequences of several chains, nucleic acids, ligands and ions), predict the 3D coordinates of every heavy atom. The modern recipe is a neural network trained on the Protein Data Bank (PDB, roughly 200,000 entries) that exploits **coevolution**: residues in contact mutate in a correlated way across homologous sequences, so a multiple sequence alignment (MSA) carries distance information. A student should know basic protein chemistry (backbone, side-chain torsions, secondary structure), the idea of homology, and the attention mechanism of transformers.\n\n## The core machinery\n\n**AlphaFold2 (2020-21).** An *Evoformer* trunk passes information between an MSA representation and a pairwise residue representation with triangular attention and multiplication updates, which softly enforce triangle-inequality-like consistency. A *structure module* then predicts per-residue rigid frames with an SE(3)-equivariant (invariant point attention) update, trained with a frame-aligned point error (FAPE) loss. Outputs include per-residue confidence (pLDDT) and predicted aligned error (PAE). At CASP14 (2020) the median backbone accuracy was near experimental resolution for most single-domain targets.\n\n**AlphaFold 3 (2024).** Replaces the structure module by a *diffusion* model over atom coordinates conditioned on a smaller \"Pairformer\" trunk, and handles proteins, DNA, RNA, small-molecule ligands, ions and modifications in a single \"co-folding\" model. Open reimplementations and variants followed: Boltz-1/Boltz-2, Chai-1, Protenix, OpenFold3 and, from industry, closed models such as Isomorphic Labs' IsoDDE (technical report, February 2026).\n\n**Language-model route.** ESMFold predicts structure from a protein language model (ESM-2) without an MSA, trading some accuracy for speed on orphan sequences.\n\n## What the models are good and bad at\n\nSingle-chain, well-sampled folds: close to solved. Weaker or open: alternative conformations and fold switching, RNA tertiary structure, protein-protein interaction specificity (as opposed to the structure of a known complex), antibody-antigen interfaces (CDR H3), and generalisation to chemistry unlike the training set. The CASP16 assessment (2024) found AF3-class models at or near the state of the art in nearly all categories, with the gap to AF2 narrowing when AF2 is heavily sampled.\n\n## Techniques to master\n\nMSA construction and its limits, SE(3) equivariance and diffusion models, confidence calibration (pLDDT, ipTM, PAE), evaluation metrics (GDT_TS, lDDT, DockQ, TM-score) and leakage control by time-split and sequence-identity splits.\n\n## Reading path\n\nJumper et al. (2021), Abramson et al. (2024), then the CASP16 assessment papers and a benchmark such as PoseBusters or Runs N' Poses to see where models fail.\n\n## Where it bites\n\nDownstream problems here: predicting fold switching and multi-state ensembles, RNA 3D structure, proteome-scale interaction specificity, and whether protein-ligand co-folding generalises beyond memorised pockets."
 site:
   published: true
   aiReviewed: true
 ---
+
+## What it is
+
+Given the amino-acid sequence of a protein (or sequences of several chains, nucleic acids, ligands and ions), predict the 3D coordinates of every heavy atom. The modern recipe is a neural network trained on the Protein Data Bank (PDB, roughly 200,000 entries) that exploits **coevolution**: residues in contact mutate in a correlated way across homologous sequences, so a multiple sequence alignment (MSA) carries distance information. A student should know basic protein chemistry (backbone, side-chain torsions, secondary structure), the idea of homology, and the attention mechanism of transformers.
+
+## The core machinery
+
+**AlphaFold2 (2020-21).** An _Evoformer_ trunk passes information between an MSA representation and a pairwise residue representation with triangular attention and multiplication updates, which softly enforce triangle-inequality-like consistency. A _structure module_ then predicts per-residue rigid frames with an SE(3)-equivariant (invariant point attention) update, trained with a frame-aligned point error (FAPE) loss. Outputs include per-residue confidence (pLDDT) and predicted aligned error (PAE). At CASP14 (2020) the median backbone accuracy was near experimental resolution for most single-domain targets.
+
+**AlphaFold 3 (2024).** Replaces the structure module by a _diffusion_ model over atom coordinates conditioned on a smaller "Pairformer" trunk, and handles proteins, DNA, RNA, small-molecule ligands, ions and modifications in a single "co-folding" model. Open reimplementations and variants followed: Boltz-1/Boltz-2, Chai-1, Protenix, OpenFold3 and, from industry, closed models such as Isomorphic Labs' IsoDDE (technical report, February 2026).
+
+**Language-model route.** ESMFold predicts structure from a protein language model (ESM-2) without an MSA, trading some accuracy for speed on orphan sequences.
+
+## What the models are good and bad at
+
+Single-chain, well-sampled folds: close to solved. Weaker or open: alternative conformations and fold switching, RNA tertiary structure, protein-protein interaction specificity (as opposed to the structure of a known complex), antibody-antigen interfaces (CDR H3), and generalisation to chemistry unlike the training set. The CASP16 assessment (2024) found AF3-class models at or near the state of the art in nearly all categories, with the gap to AF2 narrowing when AF2 is heavily sampled.
+
+## Techniques to master
+
+MSA construction and its limits, SE(3) equivariance and diffusion models, confidence calibration (pLDDT, ipTM, PAE), evaluation metrics (GDT_TS, lDDT, DockQ, TM-score) and leakage control by time-split and sequence-identity splits.
+
+## Reading path
+
+Jumper et al. (2021), Abramson et al. (2024), then the CASP16 assessment papers and a benchmark such as PoseBusters or Runs N' Poses to see where models fail.
+
+## Where it bites
+
+Downstream problems here: predicting fold switching and multi-state ensembles, RNA 3D structure, proteome-scale interaction specificity, and whether protein-ligand co-folding generalises beyond memorised pockets.
 
 # Plain explanation
 
