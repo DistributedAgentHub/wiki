@@ -88,12 +88,30 @@ explainer:
     - title: Making Deep Learning Go Brrrr From First Principles (Horace He)
       url: https://horace.io/brrr_intro.html
       why: A readable tour of compute-bound versus memory-bound work on GPUs.
-raw:
-  body: "## The idea\n\nCUDA exposes the machine at the level of a single thread: the programmer arranges threads, shared memory, synchronisation and memory coalescing by hand. Triton (Tillet, Kung and Cox, 2019) raises the unit of programming to a **block**. A kernel instance, called a *program*, operates on whole tiles of tensors using operations such as `tl.load`, `tl.dot`, `tl.sum` and elementwise arithmetic. The compiler decides how a tile is spread over threads, which tiles are staged through shared memory, and where synchronisation is needed.\n\n## What a kernel looks like\n\nA Triton kernel is a Python function decorated with `@triton.jit`. It computes pointer offsets for a tile with `tl.arange`, loads with a mask for boundaries, performs `tl.dot` on tiles (which lowers to tensor-core instructions) and stores the result. Constants such as tile sizes are `tl.constexpr` parameters, so the compiler specialises code per configuration. Launch grids are given from Python, and tensors are ordinary PyTorch tensors.\n\n## The compiler\n\nTriton lowers through MLIR-based dialects: a front-end Triton IR, then a GPU-specific IR that carries layouts (how tile elements map to threads and to MMA fragments), then LLVM and PTX. Passes handle coalescing, layout conversion, shared-memory allocation, software pipelining of loads, and, in recent releases for Hopper, asynchronous copies through TMA and warp specialisation. Backends exist for NVIDIA and AMD GPUs and other accelerators.\n\n## Role in the ecosystem\n\nTorchInductor, the compiler behind `torch.compile` in PyTorch 2, emits Triton kernels for fused pointwise, reduction and some matrix-multiply operations. FlashAttention-style kernels, quantised GEMMs, mixture-of-experts kernels and many research operators exist as Triton code because it is far quicker to write and modify than templated C++.\n\n## Where it falls short\n\nThe abstraction hides decisions that matter at the top end. On Hopper and later, the fastest kernels use explicit producer and consumer warps, register reallocation and hand-chosen pipeline stages; matching them from Triton depends on compiler heuristics that may not fire, or on newer language extensions. Autotuning (trying several tile shapes and stage counts) covers some of the gap. Related approaches include TileLang and CuTe-based Python DSLs, which expose more of the hardware."
 site:
   published: true
   aiReviewed: true
 ---
+
+## The idea
+
+CUDA exposes the machine at the level of a single thread: the programmer arranges threads, shared memory, synchronisation and memory coalescing by hand. Triton (Tillet, Kung and Cox, 2019) raises the unit of programming to a **block**. A kernel instance, called a _program_, operates on whole tiles of tensors using operations such as `tl.load`, `tl.dot`, `tl.sum` and elementwise arithmetic. The compiler decides how a tile is spread over threads, which tiles are staged through shared memory, and where synchronisation is needed.
+
+## What a kernel looks like
+
+A Triton kernel is a Python function decorated with `@triton.jit`. It computes pointer offsets for a tile with `tl.arange`, loads with a mask for boundaries, performs `tl.dot` on tiles (which lowers to tensor-core instructions) and stores the result. Constants such as tile sizes are `tl.constexpr` parameters, so the compiler specialises code per configuration. Launch grids are given from Python, and tensors are ordinary PyTorch tensors.
+
+## The compiler
+
+Triton lowers through MLIR-based dialects: a front-end Triton IR, then a GPU-specific IR that carries layouts (how tile elements map to threads and to MMA fragments), then LLVM and PTX. Passes handle coalescing, layout conversion, shared-memory allocation, software pipelining of loads, and, in recent releases for Hopper, asynchronous copies through TMA and warp specialisation. Backends exist for NVIDIA and AMD GPUs and other accelerators.
+
+## Role in the ecosystem
+
+TorchInductor, the compiler behind `torch.compile` in PyTorch 2, emits Triton kernels for fused pointwise, reduction and some matrix-multiply operations. FlashAttention-style kernels, quantised GEMMs, mixture-of-experts kernels and many research operators exist as Triton code because it is far quicker to write and modify than templated C++.
+
+## Where it falls short
+
+The abstraction hides decisions that matter at the top end. On Hopper and later, the fastest kernels use explicit producer and consumer warps, register reallocation and hand-chosen pipeline stages; matching them from Triton depends on compiler heuristics that may not fire, or on newer language extensions. Autotuning (trying several tile shapes and stage counts) covers some of the gap. Related approaches include TileLang and CuTe-based Python DSLs, which expose more of the hardware.
 
 # Plain explanation
 
