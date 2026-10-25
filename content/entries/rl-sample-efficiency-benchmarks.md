@@ -112,12 +112,30 @@ explainer:
     - title: Leveraging Procedural Generation to Benchmark RL (arXiv)
       url: https://arxiv.org/abs/1912.01588
       why: The ProcGen paper and protocol.
-raw:
-  body: "## Arcade Learning Environment\n\nThe Arcade Learning Environment (ALE; Bellemare et al., 2013) wraps Atari 2600 games as an RL testbed with a common interface. DQN (Mnih et al., Nature 2015) reached human-level on many games using 200 million frames per game, the setting that defined deep RL benchmarking. Scores are normalised so that 0 is a random policy and 1 is a human reference: the *human-normalised score*. Aggregates over games include the mean, the median and, as recommended below, the interquartile mean (IQM).\n\n## Atari 100k\n\nKaiser et al. (2019) introduced a low-data variant: 100,000 agent steps per game (400,000 frames, about two hours of play) on 26 games, to match human learning speed. Progress since: SimPLe (2019), data-augmented model-free agents, EfficientZero (NeurIPS 2021; model-based with search, 109.0% median human-normalised score), and BBF (Schwarzer et al., 2023), a value-based agent that scales the network and reports IQM 1.045 and mean 2.247 with about 6 to 10 hours on a single GPU in the paper's accounts. The BBF authors note that no agent was human-level on all 26 games and propose goals such as matching Rainbow's final performance within two hours of gameplay.\n\n## ProcGen\n\nProcGen Benchmark (Cobbe et al., 2019) has 16 procedurally generated game environments. Agents train on a limited number of levels and are tested on the full level distribution, which measures generalisation as well as sample efficiency. The paper recommends 200 training levels and 25 million timesteps in \"easy\" difficulty, and normalised return $(R-R_{\\min})/(R_{\\max}-R_{\\min})$ averaged over games. Phasic Policy Gradient (Cobbe et al., 2020) reported large sample-efficiency gains over PPO there.\n\n## Statistical protocol\n\nAgarwal et al. (2021) showed that point estimates of mean or median scores over a few runs can mislead. Their recommendations, implemented in the rliable library, are to report interquartile mean, optimality gap, performance profiles and stratified bootstrap confidence intervals, and to treat seeds-per-task as part of the result. On Atari 100k they found substantial discrepancies between published point estimates and interval estimates.\n\n## Why it matters for claims\n\nWhether a paper says \"human-level\" depends on the aggregate (median versus IQM versus all games), the number of seeds, and the compute used (GPU-hours, CPU cores). Reproducing a claim therefore needs the code, the aggregate, and the compute budget stated together."
 site:
   published: true
   aiReviewed: true
 ---
+
+## Arcade Learning Environment
+
+The Arcade Learning Environment (ALE; Bellemare et al., 2013) wraps Atari 2600 games as an RL testbed with a common interface. DQN (Mnih et al., Nature 2015) reached human-level on many games using 200 million frames per game, the setting that defined deep RL benchmarking. Scores are normalised so that 0 is a random policy and 1 is a human reference: the _human-normalised score_. Aggregates over games include the mean, the median and, as recommended below, the interquartile mean (IQM).
+
+## Atari 100k
+
+Kaiser et al. (2019) introduced a low-data variant: 100,000 agent steps per game (400,000 frames, about two hours of play) on 26 games, to match human learning speed. Progress since: SimPLe (2019), data-augmented model-free agents, EfficientZero (NeurIPS 2021; model-based with search, 109.0% median human-normalised score), and BBF (Schwarzer et al., 2023), a value-based agent that scales the network and reports IQM 1.045 and mean 2.247 with about 6 to 10 hours on a single GPU in the paper's accounts. The BBF authors note that no agent was human-level on all 26 games and propose goals such as matching Rainbow's final performance within two hours of gameplay.
+
+## ProcGen
+
+ProcGen Benchmark (Cobbe et al., 2019) has 16 procedurally generated game environments. Agents train on a limited number of levels and are tested on the full level distribution, which measures generalisation as well as sample efficiency. The paper recommends 200 training levels and 25 million timesteps in "easy" difficulty, and normalised return $(R-R_{\min})/(R_{\max}-R_{\min})$ averaged over games. Phasic Policy Gradient (Cobbe et al., 2020) reported large sample-efficiency gains over PPO there.
+
+## Statistical protocol
+
+Agarwal et al. (2021) showed that point estimates of mean or median scores over a few runs can mislead. Their recommendations, implemented in the rliable library, are to report interquartile mean, optimality gap, performance profiles and stratified bootstrap confidence intervals, and to treat seeds-per-task as part of the result. On Atari 100k they found substantial discrepancies between published point estimates and interval estimates.
+
+## Why it matters for claims
+
+Whether a paper says "human-level" depends on the aggregate (median versus IQM versus all games), the number of seeds, and the compute used (GPU-hours, CPU cores). Reproducing a claim therefore needs the code, the aggregate, and the compute budget stated together.
 
 # Plain explanation
 
