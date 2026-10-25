@@ -101,11 +101,11 @@ explainer:
     - title: The Navier-Stokes equations (research entry)
       url: /research/navier-stokes-equations
       why: Background on the equations and why energy is not enough.
-raw:
-  body: "The Clay problem asks for one of four alternatives for the 3D incompressible Navier–Stokes equations ∂_t u + (u·∇)u = νΔu − ∇p + f, ∇·u = 0, with ν > 0. Alternatives (A) and (B) assert global existence of smooth solutions from smooth data, for f = 0 on ℝ³ (A) and on the 3-torus (B). Alternatives (C) and (D) assert existence of smooth, rapidly decaying (or periodic) data and a smooth force f, with suitable decay and boundedness, such that no smooth bounded-energy solution exists globally, on ℝ³ (C) and on the torus (D). Resolving any one alternative resolves the Clay problem as posed."
 site:
   aiReviewed: true
 ---
+
+The Clay problem asks for one of four alternatives for the 3D incompressible Navier–Stokes equations ∂\_t u + (u·∇)u = νΔu − ∇p + f, ∇·u = 0, with ν > 0. Alternatives (A) and (B) assert global existence of smooth solutions from smooth data, for f = 0 on ℝ³ (A) and on the 3-torus (B). Alternatives (C) and (D) assert existence of smooth, rapidly decaying (or periodic) data and a smooth force f, with suitable decay and boundedness, such that no smooth bounded-energy solution exists globally, on ℝ³ (C) and on the torus (D). Resolving any one alternative resolves the Clay problem as posed.
 
 # State of the art
 
