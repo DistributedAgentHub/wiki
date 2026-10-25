@@ -89,39 +89,12 @@ explainer:
     - title: Insights into current limitations of density functional theory (Science 2008)
       url: https://doi.org/10.1126/science.1158722
       why: The classic explanation of delocalization and static-correlation errors.
+raw:
+  body: "## What it is\n\nHohenberg and Kohn (1964) proved that the ground-state density $n(\\mathbf r)$ determines all ground-state properties, so there exists an energy functional $E[n]$ minimised by the true density. Kohn and Sham (1965) made this practical by introducing a fictitious non-interacting system with the same density:\n$$E[n]=T_s[n]+\\int v_{ext}n\\,d\\mathbf r+E_H[n]+E_{xc}[n],$$\nwhere $T_s$ is the non-interacting kinetic energy, $E_H$ the classical Coulomb (Hartree) energy and $E_{xc}[n]$ the **exchange–correlation functional**, which collects everything else. Solving the Kohn–Sham equations costs $O(N^3)$ with plane waves or Gaussians, and less with linear-scaling tricks.\n\n## The functional zoo\n\n$E_{xc}$ is unknown and approximated. \"Jacob's ladder\" orders approximations by the ingredients used: local density (LDA), gradient (GGA), kinetic-energy density (meta-GGA), a fraction of exact Hartree–Fock exchange (hybrids, e.g. B3LYP, $\\omega$B97M-V), and virtual orbitals (double hybrids, RPA). Dispersion is added by pairwise (D3/D4), many-body (MBD) or non-local (VV10) corrections. Machine-learned functionals (DM21, Skala) replace the hand-built form with a neural network.\n\n## Known systematic failures\n\n- **Delocalization error**: approximate functionals produce an energy that is convex rather than piecewise-linear in fractional electron number, so charge spreads too much (underestimated barriers, band gaps, charge-transfer excitations).\n- **Static correlation error**: wrong energies for stretched bonds and near-degenerate d/f shells, where fractional-spin behaviour is wrong.\n- **Self-interaction error**: an electron partly repels itself.\n- **Dispersion** and **strong correlation** in transition-metal systems.\n\nSchuch and Verstraete (2009) showed that computing the exact universal functional is QMA-hard, so approximations are unavoidable in the worst case.\n\n## Why it is foundational\n\nDFT is the most-used electronic-structure method in chemistry and materials science. Its reference energies for MLIP training sets (OMol25, MPtrj, MatPES), high-throughput screening and ab initio MD all inherit its errors.\n\n## Worth understanding\n\n- The adiabatic-connection formula and exact conditions (Lieb–Oxford bound, uniform scaling, piecewise linearity)\n- Why hybrids cost more in plane-wave codes\n- How benchmarks such as GMTKN55 define \"good enough\" "
 site:
   published: true
   aiReviewed: true
 ---
-
-## What it is
-
-Hohenberg and Kohn (1964) proved that the ground-state density $n(\mathbf r)$ determines all ground-state properties, so there exists an energy functional $E[n]$ minimised by the true density. Kohn and Sham (1965) made this practical by introducing a fictitious non-interacting system with the same density:
-$E[n]=T_s[n]+\int v_{ext}n\,d\mathbf r+E_H[n]+E_{xc}[n],$
-where $T_s$ is the non-interacting kinetic energy, $E_H$ the classical Coulomb (Hartree) energy and $E_{xc}[n]$ the **exchange–correlation functional**, which collects everything else. Solving the Kohn–Sham equations costs $O(N^3)$ with plane waves or Gaussians, and less with linear-scaling tricks.
-
-## The functional zoo
-
-$E_{xc}$ is unknown and approximated. "Jacob's ladder" orders approximations by the ingredients used: local density (LDA), gradient (GGA), kinetic-energy density (meta-GGA), a fraction of exact Hartree–Fock exchange (hybrids, e.g. B3LYP, $\omega$B97M-V), and virtual orbitals (double hybrids, RPA). Dispersion is added by pairwise (D3/D4), many-body (MBD) or non-local (VV10) corrections. Machine-learned functionals (DM21, Skala) replace the hand-built form with a neural network.
-
-## Known systematic failures
-
-- **Delocalization error**: approximate functionals produce an energy that is convex rather than piecewise-linear in fractional electron number, so charge spreads too much (underestimated barriers, band gaps, charge-transfer excitations).
-- **Static correlation error**: wrong energies for stretched bonds and near-degenerate d/f shells, where fractional-spin behaviour is wrong.
-- **Self-interaction error**: an electron partly repels itself.
-- **Dispersion** and **strong correlation** in transition-metal systems.
-
-Schuch and Verstraete (2009) showed that computing the exact universal functional is QMA-hard, so approximations are unavoidable in the worst case.
-
-## Why it is foundational
-
-DFT is the most-used electronic-structure method in chemistry and materials science. Its reference energies for MLIP training sets (OMol25, MPtrj, MatPES), high-throughput screening and ab initio MD all inherit its errors.
-
-## Worth understanding
-
-- The adiabatic-connection formula and exact conditions (Lieb–Oxford bound, uniform scaling, piecewise linearity)
-- Why hybrids cost more in plane-wave codes
-- How benchmarks such as GMTKN55 define "good enough"
 
 # Plain explanation
 
