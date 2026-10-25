@@ -111,36 +111,12 @@ explainer:
     - title: Mastering the game of Go without human knowledge (Nature)
       url: https://doi.org/10.1038/nature24270
       why: The AlphaGo Zero paper.
+raw:
+  body: "## Monte Carlo tree search\n\nMCTS builds a game tree incrementally. Each iteration (a *simulation*) selects a path from the root using statistics stored in the tree, expands a leaf, evaluates it, and backs the result up the path. Kocsis and Szepesvári (2006) introduced UCT, which treats each node's choice as a bandit problem and picks children by an upper confidence bound, and Coulom (2006) introduced the term Monte Carlo tree search. Before neural networks, MCTS with random rollouts was the strongest approach to Go, though still below top professionals.\n\n## AlphaGo, AlphaGo Zero and AlphaZero\n\nAlphaGo (Silver et al., Nature 2016) combined MCTS with a policy network trained on human games and a value network, and beat a professional player. AlphaGo Zero (Nature 2017) removed human data: a single network outputs move probabilities $p$ and a value $v$, MCTS using them produces improved move distributions, and the network is trained to match the search's visit-count distribution and the game outcome. Search therefore acts as a *policy improvement operator* and the network distils its result, repeated in a self-play loop. AlphaZero (Silver et al., 2017; Science 2018) applied the same algorithm unchanged to chess and shogi.\n\nSelection uses a PUCT rule, roughly\n\n$$a^*=\\arg\\max_a\\left[Q(s,a)+c\\,P(s,a)\\frac{\\sqrt{\\sum_b N(s,b)}}{1+N(s,a)}\\right],$$\n\nwhere $Q$ is the mean backed-up value, $P$ the network prior and $N$ visit counts.\n\n## Efficiency work\n\nAlphaZero used thousands of TPUs. KataGo (Wu, 2019) reports a 50-fold computation reduction over comparable methods and surpassing the final ELF OpenGo model after 19 days on fewer than 30 GPUs, using non-domain-specific changes such as auxiliary targets and playout-cap randomisation. Gumbel AlphaZero/MuZero (Danihelka, Guez, Schrittwieser and Silver, ICLR 2022) replaces the root selection with sampling without replacement via the Gumbel-top-$k$ trick, which gives a policy-improvement guarantee even with few simulations; it is implemented in DeepMind's mctx library.\n\n## Limits\n\nSearch needs a simulator (or a learned model; see model-based RL) and a clear terminal reward. Branching factor and stochasticity raise cost. Using the same machinery for open-ended language reasoning is an active but unsettled area.\n\n## Practice\n\nReference code: DeepMind's JAX library mctx for batched search, OpenSpiel for game environments, and KataGo, the strongest open Go engine."
 site:
   published: true
   aiReviewed: true
 ---
-
-## Monte Carlo tree search
-
-MCTS builds a game tree incrementally. Each iteration (a _simulation_) selects a path from the root using statistics stored in the tree, expands a leaf, evaluates it, and backs the result up the path. Kocsis and Szepesvári (2006) introduced UCT, which treats each node's choice as a bandit problem and picks children by an upper confidence bound, and Coulom (2006) introduced the term Monte Carlo tree search. Before neural networks, MCTS with random rollouts was the strongest approach to Go, though still below top professionals.
-
-## AlphaGo, AlphaGo Zero and AlphaZero
-
-AlphaGo (Silver et al., Nature 2016) combined MCTS with a policy network trained on human games and a value network, and beat a professional player. AlphaGo Zero (Nature 2017) removed human data: a single network outputs move probabilities $p$ and a value $v$, MCTS using them produces improved move distributions, and the network is trained to match the search's visit-count distribution and the game outcome. Search therefore acts as a _policy improvement operator_ and the network distils its result, repeated in a self-play loop. AlphaZero (Silver et al., 2017; Science 2018) applied the same algorithm unchanged to chess and shogi.
-
-Selection uses a PUCT rule, roughly
-
-$a^*=\arg\max_a\left[Q(s,a)+c\,P(s,a)\frac{\sqrt{\sum_b N(s,b)}}{1+N(s,a)}\right],$
-
-where $Q$ is the mean backed-up value, $P$ the network prior and $N$ visit counts.
-
-## Efficiency work
-
-AlphaZero used thousands of TPUs. KataGo (Wu, 2019) reports a 50-fold computation reduction over comparable methods and surpassing the final ELF OpenGo model after 19 days on fewer than 30 GPUs, using non-domain-specific changes such as auxiliary targets and playout-cap randomisation. Gumbel AlphaZero/MuZero (Danihelka, Guez, Schrittwieser and Silver, ICLR 2022) replaces the root selection with sampling without replacement via the Gumbel-top-$k$ trick, which gives a policy-improvement guarantee even with few simulations; it is implemented in DeepMind's mctx library.
-
-## Limits
-
-Search needs a simulator (or a learned model; see model-based RL) and a clear terminal reward. Branching factor and stochasticity raise cost. Using the same machinery for open-ended language reasoning is an active but unsettled area.
-
-## Practice
-
-Reference code: DeepMind's JAX library mctx for batched search, OpenSpiel for game environments, and KataGo, the strongest open Go engine.
 
 # Plain explanation
 
