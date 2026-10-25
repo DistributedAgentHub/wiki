@@ -91,11 +91,11 @@ explainer:
     - title: Klee–Minty cube (Wikipedia)
       url: https://en.wikipedia.org/wiki/Klee%E2%80%93Minty_cube
       why: The famous worst-case example that smoothing defuses.
-raw:
-  body: "Consider the linear program $\\max c^\\top x$ subject to $Ax\\le b$ with $A\\in\\mathbb R^{n\\times d}$, where each row is perturbed by independent Gaussian noise of standard deviation $\\sigma\\max_i\\|a_i\\|$. The *smoothed complexity* of a simplex variant is the maximum over inputs of the expected number of pivots. Spielman and Teng (2001; J. ACM 2004) proved a polynomial bound for the shadow-vertex simplex method; Bach and Huiberts (arXiv:2504.04197, April 2025) proved $O(\\sigma^{-1/2}d^{11/4}\\log(n)^{7/4})$, together with a high-probability lower bound $\\Omega(\\sigma^{-1/2}d^{1/2}\\ln(4/\\sigma)^{-1/4})$ on the combinatorial diameter of the smoothed polyhedron (for $n=\\lfloor(4/\\sigma)^d\\rfloor$), so the $\\sigma$-dependence is optimal up to polylogarithmic factors. *Determine the tight dependence on the dimension $d$: is the smoothed complexity $\\tilde\\Theta(d^{a}\\sigma^{-1/2})$ for some explicit $a\\in[1/2,11/4]$, and can the analysis be extended to the pivot rules actually used in solvers (Dantzig, steepest edge, devex)?*"
 site:
   aiReviewed: true
 ---
+
+Consider the linear program $\max c^\top x$ subject to $Ax\le b$ with $A\in\mathbb R^{n\times d}$, where each row is perturbed by independent Gaussian noise of standard deviation $\sigma\max_i\|a_i\|$. The _smoothed complexity_ of a simplex variant is the maximum over inputs of the expected number of pivots. Spielman and Teng (2001; J. ACM 2004) proved a polynomial bound for the shadow-vertex simplex method; Bach and Huiberts (arXiv:2504.04197, April 2025) proved $O(\sigma^{-1/2}d^{11/4}\log(n)^{7/4})$, together with a high-probability lower bound $\Omega(\sigma^{-1/2}d^{1/2}\ln(4/\sigma)^{-1/4})$ on the combinatorial diameter of the smoothed polyhedron (for $n=\lfloor(4/\sigma)^d\rfloor$), so the $\sigma$-dependence is optimal up to polylogarithmic factors. _Determine the tight dependence on the dimension $d$: is the smoothed complexity $\tilde\Theta(d^{a}\sigma^{-1/2})$ for some explicit $a\in[1/2,11/4]$, and can the analysis be extended to the pivot rules actually used in solvers (Dantzig, steepest edge, devex)?_
 
 # State of the art
 
