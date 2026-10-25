@@ -97,8 +97,6 @@ explainer:
     - title: Extremal and probabilistic combinatorics (research entry)
       url: /research/extremal-combinatorics
       why: Context for set-system problems.
-raw:
-  ratingRationale: "Sixty-six years old with a $1000 prize, and the 2019–2020 spread method stops exactly one log k factor short with no idea for removing it, so 71: above union-closed sets (66) and below diagonal Ramsey (78). Application value 12.5 is the highest among the combinatorics problems because sunflower bounds feed circuit and data-structure lower bounds. Leverage 40: the spread lemma already reshaped the threshold-conjecture line (Park–Pham)."
 site:
   aiReviewed: true
 ---
@@ -116,6 +114,10 @@ Sunflower bounds enter monotone circuit lower bounds (Razborov’s method), DNF 
 # Resolution criteria
 
 A refereed proof that f(k,r) ≤ C(r)^k for every fixed r (or for r = 3), or a construction showing superexponential growth in k.
+
+# Rating rationale
+
+Sixty-six years old with a \$1000 prize, and the 2019–2020 spread method stops exactly one log k factor short with no idea for removing it, so 71: above union-closed sets (66) and below diagonal Ramsey (78). Application value 12.5 is the highest among the combinatorics problems because sunflower bounds feed circuit and data-structure lower bounds. Leverage 40: the spread lemma already reshaped the threshold-conjecture line (Park–Pham).
 
 # Work mix rationale
 
