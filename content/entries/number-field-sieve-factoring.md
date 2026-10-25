@@ -98,12 +98,39 @@ explainer:
     - title: Lu, Factoring RSA-260 (Cognition)
       url: https://cognition.com/blog/factoring-rsa-260
       why: How the number field sieve was moved onto GPUs, with a cost breakdown.
-raw:
-  body: "## What it does\n\nRSA is secure only if the public modulus $N=pq$ cannot be factored. The **general number field sieve** (GNFS), developed around 1990 by Pollard, the Lenstras, Manasse and others, is the fastest known classical method for numbers of this size. Its heuristic running time is\n\n$$L_N\\left[\\tfrac13,\\ (64/9)^{1/3}\\right]=\\exp\\!\\left((1.923+o(1))(\\ln N)^{1/3}(\\ln\\ln N)^{2/3}\\right),$$\n\nsub-exponential in the number of digits. No proof of this running time exists; it rests on heuristics about how often numbers are *smooth* (have only small prime factors).\n\n## The four stages\n\n1. **Polynomial selection.** Choose two polynomials with a common root modulo $N$, one of degree 5 or 6. Better polynomials make the later numbers smaller and smoother; this stage alone can take weeks of compute.\n2. **Sieving.** Search pairs $(a,b)$ for which two related numbers are simultaneously smooth. Each such pair is a *relation*. Lattice sieving over many *special-q* primes is the dominant cost.\n3. **Filtering and linear algebra.** Combine relations into a huge sparse matrix over GF(2) (more than a billion rows for the largest records) and find vectors in its kernel with block Lanczos or block Wiedemann.\n4. **Square root.** Each kernel vector gives a congruence of squares $x^2\\equiv y^2 \\pmod N$, and $\\gcd(x-y,N)$ reveals a factor with probability about one half.\n\n## Records and what they measure\n\nThe RSA Factoring Challenge (1991) published semiprimes named by decimal digits (RSA-100 to RSA-617) and, from 2001, by bits (RSA-576 to RSA-2048). Notable factorisations: RSA-768 (232 digits) in 2009 by Kleinjung and co-authors; RSA-240 and RSA-250 (829 bits) in 2019 and 2020 by Boudot, Gaudry, Guillevic, Heninger, Thomé and Zimmermann with CADO-NFS on CPU clusters; RSA-260 (862 bits) on 3 September 2026 by Eric Lu at Cognition, with a modified CADO-NFS including a GPU lattice siever, about 4,900 GPU-days on B200/GB200/GB300-class GPUs; and RSA-896 (270 digits, 896 bits) on 19 September 2026 by Stephen A. Weis with assistance from Claude, using a GPU port of CADO-NFS on up to 2,048 H100 GPUs, about 30 GPU-years over 10 days. Neither 2026 team reports a new algorithmic idea: the gains are GPU engineering.\n\nRSA-270 (also 270 digits, but 895 bits) is a different number from RSA-896 and is still unfactored, as are RSA-280 (928 bits) and all larger challenge numbers.\n\n## Why the records matter\n\nA record is an upper bound on the cost of factoring a number of that size with public tools. Key-size guidance (2048-bit RSA as a minimum, deprecation of 1024-bit keys) is extrapolated from these data points with the $L_N[1/3]$ formula. A factorisation is trivially checkable: multiply the two primes and compare.\n\n## Limits\n\nRecords measure money and engineering as much as algorithms. Shor's algorithm on a fault-tolerant quantum computer would make all these sizes easy, which is a separate question."
 site:
   published: true
   aiReviewed: true
 ---
+
+## What it does
+
+RSA is secure only if the public modulus $N=pq$ cannot be factored. The **general number field sieve** (GNFS), developed around 1990 by Pollard, the Lenstras, Manasse and others, is the fastest known classical method for numbers of this size. Its heuristic running time is
+
+$L_N\left[\tfrac13,\ (64/9)^{1/3}\right]=\exp\!\left((1.923+o(1))(\ln N)^{1/3}(\ln\ln N)^{2/3}\right),$
+
+sub-exponential in the number of digits. No proof of this running time exists; it rests on heuristics about how often numbers are _smooth_ (have only small prime factors).
+
+## The four stages
+
+1. **Polynomial selection.** Choose two polynomials with a common root modulo $N$, one of degree 5 or 6. Better polynomials make the later numbers smaller and smoother; this stage alone can take weeks of compute.
+2. **Sieving.** Search pairs $(a,b)$ for which two related numbers are simultaneously smooth. Each such pair is a _relation_. Lattice sieving over many _special-q_ primes is the dominant cost.
+3. **Filtering and linear algebra.** Combine relations into a huge sparse matrix over GF(2) (more than a billion rows for the largest records) and find vectors in its kernel with block Lanczos or block Wiedemann.
+4. **Square root.** Each kernel vector gives a congruence of squares $x^2\equiv y^2 \pmod N$, and $\gcd(x-y,N)$ reveals a factor with probability about one half.
+
+## Records and what they measure
+
+The RSA Factoring Challenge (1991) published semiprimes named by decimal digits (RSA-100 to RSA-617) and, from 2001, by bits (RSA-576 to RSA-2048). Notable factorisations: RSA-768 (232 digits) in 2009 by Kleinjung and co-authors; RSA-240 and RSA-250 (829 bits) in 2019 and 2020 by Boudot, Gaudry, Guillevic, Heninger, Thomé and Zimmermann with CADO-NFS on CPU clusters; RSA-260 (862 bits) on 3 September 2026 by Eric Lu at Cognition, with a modified CADO-NFS including a GPU lattice siever, about 4,900 GPU-days on B200/GB200/GB300-class GPUs; and RSA-896 (270 digits, 896 bits) on 19 September 2026 by Stephen A. Weis with assistance from Claude, using a GPU port of CADO-NFS on up to 2,048 H100 GPUs, about 30 GPU-years over 10 days. Neither 2026 team reports a new algorithmic idea: the gains are GPU engineering.
+
+RSA-270 (also 270 digits, but 895 bits) is a different number from RSA-896 and is still unfactored, as are RSA-280 (928 bits) and all larger challenge numbers.
+
+## Why the records matter
+
+A record is an upper bound on the cost of factoring a number of that size with public tools. Key-size guidance (2048-bit RSA as a minimum, deprecation of 1024-bit keys) is extrapolated from these data points with the $L_N[1/3]$ formula. A factorisation is trivially checkable: multiply the two primes and compare.
+
+## Limits
+
+Records measure money and engineering as much as algorithms. Shor's algorithm on a fault-tolerant quantum computer would make all these sizes easy, which is a separate question.
 
 # Plain explanation
 
