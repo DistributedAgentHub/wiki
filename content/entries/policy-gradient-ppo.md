@@ -114,12 +114,38 @@ explainer:
     - title: The 37 implementation details of PPO
       url: https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/
       why: Shows how many small choices make up 'PPO' in practice.
-raw:
-  body: "## The problem they solve\n\nA reinforcement learning agent picks actions $a$ in states $s$ with a policy $\\pi_\\theta(a\\mid s)$ and receives rewards. The goal is to maximise the expected discounted return $J(\\theta)=\\mathbb{E}_{\\pi_\\theta}\\left[\\sum_t \\gamma^t r_t\\right]$. Value-based methods such as Q-learning learn how good actions are and act greedily on that. Policy gradient methods instead adjust the parameters $\\theta$ of the policy itself, which handles continuous actions and stochastic policies naturally.\n\n## The policy gradient theorem\n\nSutton, McAllester, Singh and Mansour (NeurIPS 1999) showed that the gradient of $J$ can be written without differentiating the unknown state distribution:\n\n$$\\nabla_\\theta J(\\theta)=\\mathbb{E}_{\\pi_\\theta}\\left[\\nabla_\\theta \\log \\pi_\\theta(a\\mid s)\\, Q^{\\pi_\\theta}(s,a)\\right].$$\n\nWilliams's REINFORCE (1992) is the Monte Carlo estimator of this expression, using sampled returns in place of $Q$. Its variance is high. Subtracting a state-dependent baseline, usually a learned value function $V(s)$, leaves the gradient unbiased and reduces variance; the weight on $\\nabla\\log\\pi$ becomes an *advantage* $A(s,a)=Q(s,a)-V(s)$. Generalised Advantage Estimation (Schulman et al., 2015) trades bias against variance with a parameter $\\lambda$ and is the standard advantage estimator in actor-critic code.\n\n## Trust regions and PPO\n\nA plain gradient step can change the policy so much that performance collapses and the data collected under the old policy no longer describes the new one. Trust Region Policy Optimization (TRPO, Schulman et al., 2015) maximises a surrogate objective subject to a bound on the KL divergence between old and new policy, with a monotonic-improvement argument behind it. PPO (Schulman et al., 2017) replaces the constrained problem with a cheap clipped surrogate. With the probability ratio $\\rho_t(\\theta)=\\pi_\\theta(a_t\\mid s_t)/\\pi_{\\theta_{\\text{old}}}(a_t\\mid s_t)$ it maximises\n\n$$L^{\\text{CLIP}}(\\theta)=\\mathbb{E}_t\\left[\\min\\left(\\rho_t A_t,\\ \\operatorname{clip}(\\rho_t,1-\\epsilon,1+\\epsilon)A_t\\right)\\right],$$\n\nwhich removes the incentive to move the ratio outside $[1-\\epsilon,1+\\epsilon]$, so several epochs of minibatch updates can reuse one batch of rollouts. The paper's experiments used $\\epsilon=0.2$ as the best-performing value.\n\n## What the algorithm really is\n\nEngstrom et al. (2020) found that much of PPO's advantage over TRPO on continuous-control benchmarks comes from code-level choices such as value-function clipping, reward scaling, orthogonal initialisation and learning-rate annealing, not from the clipping rule itself. Huang et al. documented 37 implementation details that affect results. The consequence is that \"PPO\" in a paper and \"PPO\" in a library can differ materially, and reproduction claims need the code, not only the objective.\n\n## Where it is used\n\nPPO trained OpenAI Five (Dota 2, 2019) and was the reinforcement-learning stage of InstructGPT. Open reference implementations include CleanRL and Stable-Baselines3. Theory lags practice: tabular and softmax policy gradient have global convergence guarantees under assumptions on distribution mismatch (Agarwal et al., 2019), and softmax policy gradient can need exponentially many iterations in the effective horizon (Li et al., 2021), but guarantees for the clipped objective used in practice with neural networks are limited to overparametrised variants (Liu et al., 2019)."
 site:
   published: true
   aiReviewed: true
 ---
+
+## The problem they solve
+
+A reinforcement learning agent picks actions $a$ in states $s$ with a policy $\pi_\theta(a\mid s)$ and receives rewards. The goal is to maximise the expected discounted return $J(\theta)=\mathbb{E}_{\pi_\theta}\left[\sum_t \gamma^t r_t\right]$. Value-based methods such as Q-learning learn how good actions are and act greedily on that. Policy gradient methods instead adjust the parameters $\theta$ of the policy itself, which handles continuous actions and stochastic policies naturally.
+
+## The policy gradient theorem
+
+Sutton, McAllester, Singh and Mansour (NeurIPS 1999) showed that the gradient of $J$ can be written without differentiating the unknown state distribution:
+
+$\nabla_\theta J(\theta)=\mathbb{E}_{\pi_\theta}\left[\nabla_\theta \log \pi_\theta(a\mid s)\, Q^{\pi_\theta}(s,a)\right].$
+
+Williams's REINFORCE (1992) is the Monte Carlo estimator of this expression, using sampled returns in place of $Q$. Its variance is high. Subtracting a state-dependent baseline, usually a learned value function $V(s)$, leaves the gradient unbiased and reduces variance; the weight on $\nabla\log\pi$ becomes an _advantage_ $A(s,a)=Q(s,a)-V(s)$. Generalised Advantage Estimation (Schulman et al., 2015) trades bias against variance with a parameter $\lambda$ and is the standard advantage estimator in actor-critic code.
+
+## Trust regions and PPO
+
+A plain gradient step can change the policy so much that performance collapses and the data collected under the old policy no longer describes the new one. Trust Region Policy Optimization (TRPO, Schulman et al., 2015) maximises a surrogate objective subject to a bound on the KL divergence between old and new policy, with a monotonic-improvement argument behind it. PPO (Schulman et al., 2017) replaces the constrained problem with a cheap clipped surrogate. With the probability ratio $\rho_t(\theta)=\pi_\theta(a_t\mid s_t)/\pi_{\theta_{\text{old}}}(a_t\mid s_t)$ it maximises
+
+$L^{\text{CLIP}}(\theta)=\mathbb{E}_t\left[\min\left(\rho_t A_t,\ \operatorname{clip}(\rho_t,1-\epsilon,1+\epsilon)A_t\right)\right],$
+
+which removes the incentive to move the ratio outside $[1-\epsilon,1+\epsilon]$, so several epochs of minibatch updates can reuse one batch of rollouts. The paper's experiments used $\epsilon=0.2$ as the best-performing value.
+
+## What the algorithm really is
+
+Engstrom et al. (2020) found that much of PPO's advantage over TRPO on continuous-control benchmarks comes from code-level choices such as value-function clipping, reward scaling, orthogonal initialisation and learning-rate annealing, not from the clipping rule itself. Huang et al. documented 37 implementation details that affect results. The consequence is that "PPO" in a paper and "PPO" in a library can differ materially, and reproduction claims need the code, not only the objective.
+
+## Where it is used
+
+PPO trained OpenAI Five (Dota 2, 2019) and was the reinforcement-learning stage of InstructGPT. Open reference implementations include CleanRL and Stable-Baselines3. Theory lags practice: tabular and softmax policy gradient have global convergence guarantees under assumptions on distribution mismatch (Agarwal et al., 2019), and softmax policy gradient can need exponentially many iterations in the effective horizon (Li et al., 2021), but guarantees for the clipped objective used in practice with neural networks are limited to overparametrised variants (Liu et al., 2019).
 
 # Plain explanation
 
