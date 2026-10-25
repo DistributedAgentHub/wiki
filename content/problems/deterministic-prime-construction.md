@@ -103,11 +103,11 @@ explainer:
     - title: Derandomization (Wikipedia)
       url: https://en.wikipedia.org/wiki/Derandomization
       why: The general question this problem exemplifies.
+raw:
+  body: "Given $N=2^n$, output a prime in $[N,2N]$ by a deterministic algorithm. A randomised algorithm picks random integers and tests primality (Miller–Rabin, or deterministically by Agrawal–Kayal–Saxena, 2004): its expected running time is $\\mathrm{poly}(n)$ because primes have density $\\sim 1/\\ln N$. *Is there a deterministic algorithm running in time $\\mathrm{poly}(n)$, i.e. $(\\log N)^{O(1)}$?* The best unconditional algorithm takes $N^{1/2+o(1)}$ time, exponential in $n$. The problem is a clean test case for derandomisation: it is a search problem in a dense set whose density is known."
 site:
   aiReviewed: true
 ---
-
-Given $N=2^n$, output a prime in $[N,2N]$ by a deterministic algorithm. A randomised algorithm picks random integers and tests primality (Miller–Rabin, or deterministically by Agrawal–Kayal–Saxena, 2004): its expected running time is $\mathrm{poly}(n)$ because primes have density $\sim 1/\ln N$. _Is there a deterministic algorithm running in time $\mathrm{poly}(n)$, i.e. $(\log N)^{O(1)}$?_ The best unconditional algorithm takes $N^{1/2+o(1)}$ time, exponential in $n$. The problem is a clean test case for derandomisation: it is a search problem in a dense set whose density is known.
 
 # State of the art
 
