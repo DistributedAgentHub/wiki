@@ -114,12 +114,46 @@ explainer:
     - title: Time complexity (Wikipedia)
       url: https://en.wikipedia.org/wiki/Time_complexity
       why: Background on how running times are described.
-raw:
-  body: "## What it is\n\nFine-grained complexity classifies problems in P by their exact exponent, conditional on a few hypotheses connected by *fine-grained reductions*. A $(a,b)$-reduction from $A$ to $B$ (Vassilevska Williams–Williams) solves an $A$-instance of size $n$ in time $a(n)^{1-\\delta}$ apart from oracle calls to $B$ on instances of sizes $n_i$, where for every $\\varepsilon>0$ there is $\\delta>0$ with $\\sum_i b(n_i)^{1-\\varepsilon}\\le a(n)^{1-\\delta}$; then a polynomial speedup for $B$ gives one for $A$.\n\n## The core hypotheses\n\n- **ETH / SETH** (Impagliazzo–Paturi–Zane). ETH: 3-SAT needs $2^{\\delta n}$ time for some $\\delta>0$. SETH: for every $\\varepsilon>0$ there is $k$ with $k$-SAT not in $O(2^{(1-\\varepsilon)n})$. The sparsification lemma reduces to $O(n)$ clauses.\n- **Orthogonal Vectors.** Given $n$ vectors in $\\{0,1\\}^d$, $d=c\\log n$, decide whether two are orthogonal. Williams (2005), by split-and-list, showed SETH implies no $n^{2-\\varepsilon}$ algorithm for every $c$ (OVH).\n- **APSP**: no $n^{3-\\varepsilon}$ algorithm for all-pairs shortest paths with integer weights in $[-n^c,n^c]$. **3SUM**: no $n^{2-\\varepsilon}$ algorithm deciding whether $n$ integers in $[-n^c,n^c]$ contain $a+b+c=0$.\n\nVassilevska Williams and Williams (FOCS 2010; J. ACM 2018) proved APSP subcubic-equivalent to min-plus product, negative triangle, replacement paths and others.\n\n## Conditional lower bounds and algorithms\n\nEdit distance in $O(n^{2-\\delta})$ would refute SETH (Backurs–Indyk 2015), and likewise LCS (Abboud–Backurs–Vassilevska Williams; Bringmann–Künnemann) and discrete Fréchet distance (Bringmann 2014). The gadgets embed OV: each vector becomes a string, and the alignment cost drops by a fixed amount exactly when some pair is orthogonal.\n\nThe **polynomial method** gives the matching upper-bound side. Williams (STOC 2014) computed min-plus products in $n^3/2^{\\Omega(\\sqrt{\\log n})}$ time by expressing small min-plus blocks as $\\mathsf{AC}^0[2]$ circuits, converting them to sparse probabilistic polynomials, and evaluating them with fast rectangular matrix multiplication. Abboud, Williams and Yu (SODA 2015) solved OV with $d=c\\log n$ in $n^{2-1/O(\\log c)}$ time; this is consistent with OVH because the savings vanish as $c\\to\\infty$.\n\n**Matrix multiplication** separates algebraic from combinatorial algorithms: triangle detection and Boolean matrix multiplication run in $O(n^{\\omega})$, while \"combinatorial\" lower bounds are stated separately. Min-plus product does not reduce to ring matrix multiplication directly, which is why APSP was conjectured cubic.\n\n**NSETH** (Carmosino, Gao, Impagliazzo, Mihajlin, Paturi, Schneider 2016) asserts that $k$-TAUT has no $2^{(1-\\varepsilon)n}$ *nondeterministic* algorithm. Because 3SUM and APSP have fast nondeterministic and co-nondeterministic algorithms, NSETH rules out deterministic fine-grained reductions from SAT to them: the hypotheses are believed independent.\n\n**Status in October 2026.** Alman and Vassilevska Williams (arXiv:2610.06783, 5 October 2026; unrefereed) claim deterministic $O(n^{1.9992})$ 3SUM and $O(n^{2.9995})$ APSP for polynomially bounded integers, from a new thin-matrix-product algorithm based on a variant of Coppersmith's rectangular matrix multiplication; the abstract credits Anthropic's Claude with discovering the algorithm. The paper states that SETH and Orthogonal Vectors are unaffected. If the claim holds, many conditional bounds based on APSP or 3SUM lose their basis while SETH-based ones stand.\n\n## Techniques to master\n\nSplit-and-list reductions; gadget design for alignment problems; subcubic equivalences via negative-triangle; probabilistic polynomials and Razborov–Smolensky; rectangular matrix multiplication; self-reducibility and hashing for 3SUM.\n\n## Standard references / Reading path\n\nVassilevska Williams, \"On some fine-grained questions in algorithms and complexity\" (ICM 2018); Impagliazzo–Paturi–Zane (JCSS 2001); the Backurs–Indyk and Williams APSP papers; Carmosino et al. on NSETH; then arXiv:2610.06783.\n\n## Where it bites\n\n**SETH** is neither proved nor refuted. The **APSP and 3SUM hypotheses** are under a credible, unrefereed refutation claim. **(1+ε)-approximate edit distance in $n^{2-\\delta}$ time** is open: Gorbachev (arXiv:2610.01311, October 2026, unrefereed) gives a factor-3 approximation in $\\tilde O(N^{11/6})$, and no fine-grained lower bound excludes a $(1+\\varepsilon)$-approximation in near-linear time."
 site:
   published: true
   aiReviewed: true
 ---
+
+## What it is
+
+Fine-grained complexity classifies problems in P by their exact exponent, conditional on a few hypotheses connected by _fine-grained reductions_. A $(a,b)$-reduction from $A$ to $B$ (Vassilevska Williams–Williams) solves an $A$-instance of size $n$ in time $a(n)^{1-\delta}$ apart from oracle calls to $B$ on instances of sizes $n_i$, where for every $\varepsilon>0$ there is $\delta>0$ with $\sum_i b(n_i)^{1-\varepsilon}\le a(n)^{1-\delta}$; then a polynomial speedup for $B$ gives one for $A$.
+
+## The core hypotheses
+
+- **ETH / SETH** (Impagliazzo–Paturi–Zane). ETH: 3-SAT needs $2^{\delta n}$ time for some $\delta>0$. SETH: for every $\varepsilon>0$ there is $k$ with $k$-SAT not in $O(2^{(1-\varepsilon)n})$. The sparsification lemma reduces to $O(n)$ clauses.
+- **Orthogonal Vectors.** Given $n$ vectors in $\{0,1\}^d$, $d=c\log n$, decide whether two are orthogonal. Williams (2005), by split-and-list, showed SETH implies no $n^{2-\varepsilon}$ algorithm for every $c$ (OVH).
+- **APSP**: no $n^{3-\varepsilon}$ algorithm for all-pairs shortest paths with integer weights in $[-n^c,n^c]$. **3SUM**: no $n^{2-\varepsilon}$ algorithm deciding whether $n$ integers in $[-n^c,n^c]$ contain $a+b+c=0$.
+
+Vassilevska Williams and Williams (FOCS 2010; J. ACM 2018) proved APSP subcubic-equivalent to min-plus product, negative triangle, replacement paths and others.
+
+## Conditional lower bounds and algorithms
+
+Edit distance in $O(n^{2-\delta})$ would refute SETH (Backurs–Indyk 2015), and likewise LCS (Abboud–Backurs–Vassilevska Williams; Bringmann–Künnemann) and discrete Fréchet distance (Bringmann 2014). The gadgets embed OV: each vector becomes a string, and the alignment cost drops by a fixed amount exactly when some pair is orthogonal.
+
+The **polynomial method** gives the matching upper-bound side. Williams (STOC 2014) computed min-plus products in $n^3/2^{\Omega(\sqrt{\log n})}$ time by expressing small min-plus blocks as $\mathsf{AC}^0[2]$ circuits, converting them to sparse probabilistic polynomials, and evaluating them with fast rectangular matrix multiplication. Abboud, Williams and Yu (SODA 2015) solved OV with $d=c\log n$ in $n^{2-1/O(\log c)}$ time; this is consistent with OVH because the savings vanish as $c\to\infty$.
+
+**Matrix multiplication** separates algebraic from combinatorial algorithms: triangle detection and Boolean matrix multiplication run in $O(n^{\omega})$, while "combinatorial" lower bounds are stated separately. Min-plus product does not reduce to ring matrix multiplication directly, which is why APSP was conjectured cubic.
+
+**NSETH** (Carmosino, Gao, Impagliazzo, Mihajlin, Paturi, Schneider 2016) asserts that $k$-TAUT has no $2^{(1-\varepsilon)n}$ _nondeterministic_ algorithm. Because 3SUM and APSP have fast nondeterministic and co-nondeterministic algorithms, NSETH rules out deterministic fine-grained reductions from SAT to them: the hypotheses are believed independent.
+
+**Status in October 2026.** Alman and Vassilevska Williams (arXiv:2610.06783, 5 October 2026; unrefereed) claim deterministic $O(n^{1.9992})$ 3SUM and $O(n^{2.9995})$ APSP for polynomially bounded integers, from a new thin-matrix-product algorithm based on a variant of Coppersmith's rectangular matrix multiplication; the abstract credits Anthropic's Claude with discovering the algorithm. The paper states that SETH and Orthogonal Vectors are unaffected. If the claim holds, many conditional bounds based on APSP or 3SUM lose their basis while SETH-based ones stand.
+
+## Techniques to master
+
+Split-and-list reductions; gadget design for alignment problems; subcubic equivalences via negative-triangle; probabilistic polynomials and Razborov–Smolensky; rectangular matrix multiplication; self-reducibility and hashing for 3SUM.
+
+## Standard references / Reading path
+
+Vassilevska Williams, "On some fine-grained questions in algorithms and complexity" (ICM 2018); Impagliazzo–Paturi–Zane (JCSS 2001); the Backurs–Indyk and Williams APSP papers; Carmosino et al. on NSETH; then arXiv:2610.06783.
+
+## Where it bites
+
+**SETH** is neither proved nor refuted. The **APSP and 3SUM hypotheses** are under a credible, unrefereed refutation claim. **(1+ε)-approximate edit distance in $n^{2-\delta}$ time** is open: Gorbachev (arXiv:2610.01311, October 2026, unrefereed) gives a factor-3 approximation in $\tilde O(N^{11/6})$, and no fine-grained lower bound excludes a $(1+\varepsilon)$-approximation in near-linear time.
 
 # Plain explanation
 
