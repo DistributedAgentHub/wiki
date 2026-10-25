@@ -101,12 +101,36 @@ explainer:
     - title: Smoothed analysis (Wikipedia)
       url: https://en.wikipedia.org/wiki/Smoothed_analysis
       why: Why the worst cases almost never appear in practice.
-raw:
-  body: "## The problem\n\nA linear program asks for\n$$\\min\\; c^{\\top}x\\quad\\text{subject to}\\quad Ax\\le b,$$\nwith $A\\in\\mathbb R^{m\\times n}$. The feasible set is a polyhedron, and an optimum, if it exists, is attained at a vertex.\n\n## Simplex\n\nDantzig's simplex method (1947) moves from vertex to vertex along edges, improving the objective. For the classical pivot rules there are instances, starting with Klee and Minty (1972), on which it takes exponentially many steps. In practice it is nevertheless very fast. Spielman and Teng (2001) explained this through *smoothed analysis*: if every input number is perturbed by Gaussian noise of standard deviation $\\sigma$, a simplex variant takes polynomially many pivots in expectation. The bound has been improved repeatedly; Bach and Huiberts (2025) obtained $O(\\sigma^{-1/2}d^{11/4}\\log(n)^{7/4})$ pivot steps and a matching lower bound on the diameter of the perturbed polyhedron, so the dependence on noise is essentially optimal for this approach.\n\n## Polynomial-time methods\n\nThe ellipsoid method (Khachiyan, 1979) gave the first polynomial algorithm in the bit-length of the input; Karmarkar's interior-point method (1984) made polynomial-time LP practical. Interior-point methods follow the *central path* through the interior, solving a linear system per step. Cohen, Lee and Song (2018) showed that LP with $n$ variables can be solved to accuracy $\\delta$ in about $n^{\\omega}\\log(n/\\delta)$ arithmetic operations, where $\\omega$ is the matrix multiplication exponent (with current values of $\\omega$ and its dual exponent). For very large instances, first-order methods such as PDLP, available in Google's OR-Tools, avoid factorising matrices and scale to problems that factorisation-based solvers cannot hold in memory.\n\n## Strongly polynomial time\n\nThe algorithms above run in time polynomial in the *bit-length* of the data, which can depend on the sizes of the numbers. A *strongly polynomial* algorithm uses a number of arithmetic operations polynomial in $m$ and $n$ alone. Tardos (1986) gave an algorithm whose number of arithmetic operations depends only on the size of the constraint matrix $A$, not on $b$ and $c$, so it is strongly polynomial when $A$ has small integer entries (as in network flow problems). Finding one for general LP, in the real-number model of computation, is Smale's ninth problem (1998). Related facts: the Hirsch conjecture on polytope diameters was disproved by Santos (2010), though polynomial bounds on the diameter remain open; and primal-dual log-barrier interior-point methods are not strongly polynomial (Allamigeon, Benchimol, Gaubert and Joswig, 2017), a result extended to all self-concordant barrier methods by Allamigeon, Gaubert and Vandame (2022).\n\n## Recent progress\n\nDadush, Huiberts, Natura and Végh (STOC 2020) gave an interior-point method whose iteration count depends only on a rescaling-invariant condition measure of $A$. Dadush, Koh, Natura, Olver and Végh (STOC 2024) gave a strongly polynomial algorithm for LPs with at most two nonzero entries per row or per column, which includes minimum-cost generalised flow, a long-standing open case.\n\n## Practice\n\nCommercial and open-source solvers combine simplex, barrier and first-order methods with presolve. Real-world instances with millions of variables are routine. The theory leaves the worst-case question open, but there is no known practical instance class on which the algorithms in use perform badly."
 site:
   published: true
   aiReviewed: true
 ---
+
+## The problem
+
+A linear program asks for
+$\min\; c^{\top}x\quad\text{subject to}\quad Ax\le b,$
+with $A\in\mathbb R^{m\times n}$. The feasible set is a polyhedron, and an optimum, if it exists, is attained at a vertex.
+
+## Simplex
+
+Dantzig's simplex method (1947) moves from vertex to vertex along edges, improving the objective. For the classical pivot rules there are instances, starting with Klee and Minty (1972), on which it takes exponentially many steps. In practice it is nevertheless very fast. Spielman and Teng (2001) explained this through _smoothed analysis_: if every input number is perturbed by Gaussian noise of standard deviation $\sigma$, a simplex variant takes polynomially many pivots in expectation. The bound has been improved repeatedly; Bach and Huiberts (2025) obtained $O(\sigma^{-1/2}d^{11/4}\log(n)^{7/4})$ pivot steps and a matching lower bound on the diameter of the perturbed polyhedron, so the dependence on noise is essentially optimal for this approach.
+
+## Polynomial-time methods
+
+The ellipsoid method (Khachiyan, 1979) gave the first polynomial algorithm in the bit-length of the input; Karmarkar's interior-point method (1984) made polynomial-time LP practical. Interior-point methods follow the _central path_ through the interior, solving a linear system per step. Cohen, Lee and Song (2018) showed that LP with $n$ variables can be solved to accuracy $\delta$ in about $n^{\omega}\log(n/\delta)$ arithmetic operations, where $\omega$ is the matrix multiplication exponent (with current values of $\omega$ and its dual exponent). For very large instances, first-order methods such as PDLP, available in Google's OR-Tools, avoid factorising matrices and scale to problems that factorisation-based solvers cannot hold in memory.
+
+## Strongly polynomial time
+
+The algorithms above run in time polynomial in the _bit-length_ of the data, which can depend on the sizes of the numbers. A _strongly polynomial_ algorithm uses a number of arithmetic operations polynomial in $m$ and $n$ alone. Tardos (1986) gave an algorithm whose number of arithmetic operations depends only on the size of the constraint matrix $A$, not on $b$ and $c$, so it is strongly polynomial when $A$ has small integer entries (as in network flow problems). Finding one for general LP, in the real-number model of computation, is Smale's ninth problem (1998). Related facts: the Hirsch conjecture on polytope diameters was disproved by Santos (2010), though polynomial bounds on the diameter remain open; and primal-dual log-barrier interior-point methods are not strongly polynomial (Allamigeon, Benchimol, Gaubert and Joswig, 2017), a result extended to all self-concordant barrier methods by Allamigeon, Gaubert and Vandame (2022).
+
+## Recent progress
+
+Dadush, Huiberts, Natura and Végh (STOC 2020) gave an interior-point method whose iteration count depends only on a rescaling-invariant condition measure of $A$. Dadush, Koh, Natura, Olver and Végh (STOC 2024) gave a strongly polynomial algorithm for LPs with at most two nonzero entries per row or per column, which includes minimum-cost generalised flow, a long-standing open case.
+
+## Practice
+
+Commercial and open-source solvers combine simplex, barrier and first-order methods with presolve. Real-world instances with millions of variables are routine. The theory leaves the worst-case question open, but there is no known practical instance class on which the algorithms in use perform badly.
 
 # Plain explanation
 
