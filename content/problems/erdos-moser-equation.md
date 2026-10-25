@@ -68,11 +68,21 @@ explainer:
     - title: Faulhaber's formula (Wikipedia)
       url: https://en.wikipedia.org/wiki/Faulhaber%27s_formula
       why: The formula for sums of powers behind the problem.
-raw:
-  body: "Is $(k, m) = (1, 3)$ the only solution in positive integers of\n$$1^k + 2^k + \\cdots + (m-1)^k = m^k\\ ?$$\n\nLean 4 statement in the Formal Conjectures corpus:\n\n```lean\ndef powerSum (k m : ℕ) : ℕ := ∑ i ∈ Finset.Ico 1 m, i ^ k\n\ntheorem erdos_moser_conjecture :\n    ∀ k m : ℕ, 0 < k → 0 < m → powerSum k m = m ^ k → k = 1 ∧ m = 3\n```"
 site:
   aiReviewed: true
 ---
+
+Is $(k, m) = (1, 3)$ the only solution in positive integers of
+$1^k + 2^k + \cdots + (m-1)^k = m^k\ ?$
+
+Lean 4 statement in the Formal Conjectures corpus:
+
+```lean
+def powerSum (k m : ℕ) : ℕ := ∑ i ∈ Finset.Ico 1 m, i ^ k
+
+theorem erdos_moser_conjecture :
+    ∀ k m : ℕ, 0 < k → 0 < m → powerSum k m = m ^ k → k = 1 ∧ m = 3
+```
 
 # State of the art
 
