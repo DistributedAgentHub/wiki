@@ -48,6 +48,10 @@ timeline:
     title: Unrefereed OpenAI claim of the full range
     body: Model-produced manuscript claims p > 3 for positively curved surfaces; not yet assessed.
     source: https://github.com/openai/math
+  - date: 2026-10-26
+    title: OpenAI claims all-dimension results covering restriction
+    body: OpenAI says its proof of the local smoothing conjecture in every dimension also gives Stein's restriction conjecture in all dimensions; its Lean scope lists spherical extension bounds in a strict range. Unrefereed AI output; status unchanged.
+    source: https://openai.com/index/building-scientific-understanding-with-academic-communities/
 explainer:
   oneLine: How well can a wave pattern in 3D be controlled by data on a curved surface? The sharp range of exponents is still unproved.
   flow:
