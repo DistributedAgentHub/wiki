@@ -70,6 +70,8 @@ explainer:
     - title: "Wikipedia: Neural scaling law"
       url: https://en.wikipedia.org/wiki/Neural_scaling_law
       why: Background on scaling in pretraining.
+raw:
+  verifySpec: "Dataset and metric: held-out validation accuracy (pass@1, averaged over at least 16 samples per problem) on a stated maths set and a stated code set. Test: fit the curve on runs up to $C_0$ (a proposed value is 2,000 GPU-hours or less so that groups outside large labs can take part), pre-register the prediction and its interval for $\\ge 8C_0$, then run to $8C_0$. Pass if the observed value lies in the interval for at least two base-model families and two domains. Seeds: at least 3 seeds at the fit scale to estimate run-to-run variance. Publish training code and the exact hyperparameters, since recipe details determine the asymptote."
 site:
   aiReviewed: true
 ---
@@ -95,10 +97,6 @@ Difficulty 32: a method and a recipe exist; the open work is replication on othe
 # Work mix rationale
 
 Dominated by the GPU-hours needed to run enough RL curves; engineering matters for stable recipes.
-
-# Verification
-
-Dataset and metric: held-out validation accuracy (pass\@1, averaged over at least 16 samples per problem) on a stated maths set and a stated code set. Test: fit the curve on runs up to $C_0$ (a proposed value is 2,000 GPU-hours or less so that groups outside large labs can take part), pre-register the prediction and its interval for $\ge 8C_0$, then run to $8C_0$. Pass if the observed value lies in the interval for at least two base-model families and two domains. Seeds: at least 3 seeds at the fit scale to estimate run-to-run variance. Publish training code and the exact hyperparameters, since recipe details determine the asymptote.
 
 # Plain explanation
 
