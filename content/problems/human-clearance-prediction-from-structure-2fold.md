@@ -81,6 +81,8 @@ explainer:
     - title: Physiologically based pharmacokinetic modelling (Wikipedia)
       url: https://en.wikipedia.org/wiki/Physiologically_based_pharmacokinetic_modelling
       why: The mechanistic modelling approach.
+raw:
+  ratingRationale: "Decades of IVIVE work and growing ML data have not moved most predictions inside 2-fold; sparse human PK data and mechanism diversity cap accuracy, so difficulty (49) sits between segmentation (41) and residence time (61). Application value 54 for R&D efficiency and animal reduction, a specific industry benefit; leverage 27 as it is confined to drug-development pipelines."
 site:
   aiReviewed: true
 ---
@@ -106,10 +108,6 @@ Accurate prediction would let teams prioritise compounds with human-appropriate 
 # Resolution criteria
 
 A refereed, prospective, blinded study (for example a consortium challenge with undisclosed clinical clearance values) in which one method meets criteria (i)-(v) across at least 200 compounds and the five mechanism classes, with the method reproducible by outside groups.
-
-# Rating rationale
-
-Decades of IVIVE work and growing ML data have not moved most predictions inside 2-fold; sparse human PK data and mechanism diversity cap accuracy, so difficulty (49) sits between segmentation (41) and residence time (61). Application value 54 for R\&D efficiency and animal reduction, a specific industry benefit; leverage 27 as it is confined to drug-development pipelines.
 
 # Work mix rationale
 
