@@ -100,11 +100,11 @@ explainer:
     - title: Mathematical quantum field theory (research entry)
       url: /research/quantum-field-theory
       why: The wider landscape of rigorous attempts.
+raw:
+  body: "For every compact simple gauge group G (for example SU(N)), construct a non-trivial quantum Yang–Mills theory on ℝ^4 satisfying the Wightman or Osterwalder–Schrader axioms, and prove it has a mass gap: there is Δ > 0 such that every excited state has energy at least Δ above the vacuum. The classical theory is that of a connection A with curvature F = dA + A∧A and action (1/4g²)∫Tr F∧*F. The quantum theory is meant to be the continuum limit of a measure on connections defined by a lattice or regularized path integral, with the bare coupling tuned by asymptotic freedom."
 site:
   aiReviewed: true
 ---
-
-For every compact simple gauge group G (for example SU(N)), construct a non-trivial quantum Yang–Mills theory on ℝ^4 satisfying the Wightman or Osterwalder–Schrader axioms, and prove it has a mass gap: there is Δ > 0 such that every excited state has energy at least Δ above the vacuum. The classical theory is that of a connection A with curvature F = dA + A∧A and action (1/4g²)∫Tr F∧\*F. The quantum theory is meant to be the continuum limit of a measure on connections defined by a lattice or regularized path integral, with the bare coupling tuned by asymptotic freedom.
 
 # State of the art
 
