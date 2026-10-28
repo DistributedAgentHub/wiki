@@ -36,6 +36,9 @@ links:
   - to: apsp-3sum-hypotheses
     kind: RELATED
     note: SETH, APSP and 3SUM are the three base hypotheses of fine-grained complexity; under NSETH there are no deterministic fine-grained reductions from SAT to 3SUM or APSP (Carmosino et al.), and the 2026 preprint refuting the APSP and 3SUM hypotheses states that SETH is unaffected.
+  - to: exponential-time-hypothesis
+    kind: IMPLIES
+    note: SETH (s_k → 1) implies ETH (s_3 > 0); conversely a refutation of ETH, a 2^{o(n)} algorithm for 3-SAT, would refute SETH, which is why the October 2026 claims against ETH also bear on SETH.
 timeline:
   - date: 2001-01-01
     title: ETH, SETH and sparsification
@@ -53,6 +56,10 @@ timeline:
     title: 3SUM and APSP hypotheses refuted in a preprint; SETH unaffected
     body: Alman and Vassilevska Williams posted O(n^1.9992) 3SUM and O(n^2.9995) APSP algorithms for polynomially bounded integers; the paper states that SETH and Orthogonal Vectors are unaffected. Not yet refereed.
     source: https://arxiv.org/abs/2610.06783
+  - date: 2026-10-27
+    title: Two AI-found claims that ETH is false would also refute SETH; unrefereed
+    body: OpenAI (26 October 2026) and Anthropic (27 October 2026) each announced a proof that the Exponential Time Hypothesis is false, with Lean formalizations. SETH implies ETH, so a refutation of ETH would also refute SETH. Both claims are unrefereed and under review; SETH stays open here until experts accept one of them.
+    source: https://openai.com/index/building-scientific-understanding-with-academic-communities/
 explainer:
   oneLine: The belief that for logic puzzles with long clauses, trying nearly all settings is essentially the best you can do.
   flow:
@@ -110,7 +117,7 @@ site:
 
 # State of the art
 
-The best known $k$-SAT algorithms (PPSZ and its refinements) run in time $2^{(1-c/k)n}$ for a constant $c>0$, consistent with SETH; for CNF-SAT with $n$ variables and $m$ clauses the best savings are about $2^{n(1-1/O(\log(m/n)))}$. Since the 2010s SETH has been one of the main assumptions of fine-grained complexity. Williams (2005) showed that Orthogonal Vectors in truly subquadratic time would refute SETH. Backurs and Indyk (arXiv December 2014; STOC 2015) showed the same for edit distance in $O(n^{2-\delta})$ time, and Abboud, Backurs and Vassilevska Williams (2015) and Bringmann and Künnemann (2015) for longest common subsequence. Abboud, Hansen, Vassilevska Williams and Williams (2016) derived the edit-distance and LCS bounds from much weaker hypotheses about branching programs. On the limits of SETH-based hardness, Carmosino, Gao, Impagliazzo, Mihajlin, Paturi and Schneider (2016) showed that if the nondeterministic variant NSETH holds, there are no deterministic fine-grained reductions from SAT to 3SUM or APSP. As of October 2026 SETH is neither proved nor refuted. A preprint by Alman and Vassilevska Williams (arXiv:2610.06783, 5 October 2026, unrefereed) gives truly subquadratic 3SUM and truly subcubic APSP algorithms, refuting the 3SUM and APSP hypotheses; the authors list SETH and Orthogonal Vectors as unaffected.
+The best known $k$-SAT algorithms (PPSZ and its refinements) run in time $2^{(1-c/k)n}$ for a constant $c>0$, consistent with SETH; for CNF-SAT with $n$ variables and $m$ clauses the best savings are about $2^{n(1-1/O(\log(m/n)))}$. Since the 2010s SETH has been one of the main assumptions of fine-grained complexity. Williams (2005) showed that Orthogonal Vectors in truly subquadratic time would refute SETH. Backurs and Indyk (arXiv December 2014; STOC 2015) showed the same for edit distance in $O(n^{2-\delta})$ time, and Abboud, Backurs and Vassilevska Williams (2015) and Bringmann and Künnemann (2015) for longest common subsequence. Abboud, Hansen, Vassilevska Williams and Williams (2016) derived the edit-distance and LCS bounds from much weaker hypotheses about branching programs. On the limits of SETH-based hardness, Carmosino, Gao, Impagliazzo, Mihajlin, Paturi and Schneider (2016) showed that if the nondeterministic variant NSETH holds, there are no deterministic fine-grained reductions from SAT to 3SUM or APSP. As of October 2026 SETH is neither proved nor refuted. A preprint by Alman and Vassilevska Williams (arXiv:2610.06783, 5 October 2026, unrefereed) gives truly subquadratic 3SUM and truly subcubic APSP algorithms, refuting the 3SUM and APSP hypotheses; the authors list SETH and Orthogonal Vectors as unaffected. On 26 and 27 October 2026 OpenAI and Anthropic each announced a proof that ETH is false, with Lean formalizations (see the Exponential Time Hypothesis problem); both are unrefereed, and since SETH implies ETH, a refutation of ETH would also refute SETH.
 
 # Applications
 
