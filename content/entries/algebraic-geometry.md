@@ -45,6 +45,10 @@ timeline:
     title: OpenAI claims the Hodge conjecture for CM abelian varieties (unrefereed)
     body: An OpenAI manuscript claims the rational Hodge conjecture for every complex CM abelian variety. It has no Lean formalization and had not been independently checked by mid-October 2026. Three related OpenAI manuscripts were withdrawn on 7 October after a sign error was found.
     source: https://github.com/openai/math/blob/main/history.md
+  - date: 2026-10-26
+    title: OpenAI adds a Lean formalization of its CM abelian variety claim
+    body: OpenAI added a Lean formalization stating that every rational Hodge class on a complex CM abelian variety is algebraic. The openai/math repository runs no Lean build in CI and DARC has not rebuilt it, so the claim stays unrefereed and unchecked; the earlier entry's note that it had no formalization is superseded.
+    source: https://github.com/openai/math/blob/42907c9e99/lean/docs/032.md
 explainer:
   oneLine: The study of shapes cut out by polynomial equations, and the hidden structure those shapes carry.
   flow:
