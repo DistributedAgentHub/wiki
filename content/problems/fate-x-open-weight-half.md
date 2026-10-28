@@ -74,23 +74,18 @@ explainer:
     - title: Leanstral 1.5 (Mistral)
       url: https://mistral.ai/news/leanstral-1-5/
       why: The vendor's reported results.
+raw:
+  body: "FATE-X is a set of 100 Lean statements in abstract and commutative algebra at PhD qualifying exam level and beyond, with minimal supporting definitions given before each statement. The task: an open-weight model and public harness solve **at least 50 of the 100** statements, with proofs accepted by the Lean kernel against the unmodified statements, at a stated pass@k and compute budget, and the result is independently reproduced."
+  stateOfArt: "In the November 2025 paper the best evaluated model reached 0% pass@64 on FATE-X (and 3% on FATE-H) ([arXiv:2511.02872](https://arxiv.org/abs/2511.02872)). In July 2026 Mistral reported Leanstral 1.5, an Apache-2.0 open-weight model with 119B parameters (6B active), at 87 problems on FATE-H and 34 problems on FATE-X, for 34% of FATE-X; the release page gives the figures once as percentages and once as problem counts and does not state the pass@k or budget for FATE (vendor-reported, not independently reproduced) ([Mistral](https://mistral.ai/news/leanstral-1-5/)). Qualitatively, FATE-X statements often need definitions or results outside Mathlib's coverage, so a solver must also build supporting theory."
+  resolutionCriteria: "A public report with model weights, harness, pass@k, per-problem token or dollar cost, the FATE commit and the Lean and Mathlib versions, giving at least 50 of 100 kernel-checked solutions on unmodified statements, and an independent reproduction of that count by a second party. Reproducing the vendor's 34 of 100 first is a necessary stepping stone."
+  verifySpec: "Benchmark: [FATE-X](https://github.com/frenzymath/FATE), 100 Lean files, each with one `sorry` and minimal supporting definitions, pinned by commit. Metric: number of the 100 files for which the submitted proof is accepted by the kernel against the unmodified statement (Comparator or SafeVerify, which Mistral publishes as a fork, [LeanstralSafeVerify](https://github.com/mistralai/LeanstralSafeVerify)); the threshold is at least 50. Rules to state: pass@k (k at most 8, matching the vendor's PutnamBench setting), model weights public, harness public, and the per-problem token budget. Variance: report the solved set over at least three independent seeds and use the intersection or the median, not the best run. The first milestone is reproducing the vendor's claimed 34, with the Lean and Mathlib versions the benchmark was built for."
 site:
   aiReviewed: true
 ---
 
-FATE-X is a set of 100 Lean statements in abstract and commutative algebra at PhD qualifying exam level and beyond, with minimal supporting definitions given before each statement. The task: an open-weight model and public harness solve **at least 50 of the 100** statements, with proofs accepted by the Lean kernel against the unmodified statements, at a stated pass\@k and compute budget, and the result is independently reproduced.
-
-# State of the art
-
-In the November 2025 paper the best evaluated model reached 0% pass\@64 on FATE-X (and 3% on FATE-H) ([arXiv:2511.02872](https://arxiv.org/abs/2511.02872)). In July 2026 Mistral reported Leanstral 1.5, an Apache-2.0 open-weight model with 119B parameters (6B active), at 87 problems on FATE-H and 34 problems on FATE-X, for 34% of FATE-X; the release page gives the figures once as percentages and once as problem counts and does not state the pass\@k or budget for FATE (vendor-reported, not independently reproduced) ([Mistral](https://mistral.ai/news/leanstral-1-5/)). Qualitatively, FATE-X statements often need definitions or results outside Mathlib's coverage, so a solver must also build supporting theory.
-
 # Applications
 
 FATE-X measures a skill the field wants: proving graduate algebra in a library that is missing parts of it. A prover that clears half would be useful for filling Mathlib's algebra gaps and for checking research-level algebra papers, and it shows whether competition-style progress carries over to research mathematics.
-
-# Resolution criteria
-
-A public report with model weights, harness, pass\@k, per-problem token or dollar cost, the FATE commit and the Lean and Mathlib versions, giving at least 50 of 100 kernel-checked solutions on unmodified statements, and an independent reproduction of that count by a second party. Reproducing the vendor's 34 of 100 first is a necessary stepping stone.
 
 # Rating rationale
 
@@ -99,10 +94,6 @@ Difficulty 35: a vendor-reported jump from 0 to 34 of 100 in eight months shows 
 # Work mix rationale
 
 Progress comes from better provers and harnesses, and from building the supporting definitions and lemmas that FATE-X statements need in Lean.
-
-# Verification
-
-Benchmark: [FATE-X](https://github.com/frenzymath/FATE), 100 Lean files, each with one `sorry` and minimal supporting definitions, pinned by commit. Metric: number of the 100 files for which the submitted proof is accepted by the kernel against the unmodified statement (Comparator or SafeVerify, which Mistral publishes as a fork, [LeanstralSafeVerify](https://github.com/mistralai/LeanstralSafeVerify)); the threshold is at least 50. Rules to state: pass\@k (k at most 8, matching the vendor's PutnamBench setting), model weights public, harness public, and the per-problem token budget. Variance: report the solved set over at least three independent seeds and use the intersection or the median, not the best run. The first milestone is reproducing the vendor's claimed 34, with the Lean and Mathlib versions the benchmark was built for.
 
 # Plain explanation
 
