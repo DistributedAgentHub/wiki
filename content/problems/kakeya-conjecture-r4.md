@@ -46,6 +46,10 @@ timeline:
     title: Unrefereed OpenAI claim in ℝ⁴
     body: Full Hausdorff-dimension conjecture claimed in a model-produced manuscript; no independent assessment yet.
     source: https://github.com/openai/math
+  - date: 2026-10-26
+    title: OpenAI claims all-dimension local smoothing, covering Kakeya
+    body: OpenAI says its models proved the local smoothing conjecture in every dimension, which it says would also give the Kakeya conjecture in all dimensions, with a Lean formalization DARC has not seen build; unrefereed AI output with no organized expert review yet. Status unchanged.
+    source: https://openai.com/index/building-scientific-understanding-with-academic-communities/
 explainer:
   oneLine: A needle that points in every direction in 4D space must sweep out a set of full 4D size. Proved only in 2D and 3D.
   flow:
