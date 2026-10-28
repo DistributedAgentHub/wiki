@@ -102,11 +102,11 @@ explainer:
     - title: Boolean satisfiability problem (Wikipedia)
       url: https://en.wikipedia.org/wiki/Boolean_satisfiability_problem
       why: The puzzle at the centre of the hypothesis.
+raw:
+  body: "For $k\\ge 3$ let $s_k=\\inf\\{c:\\ k\\text{-SAT on } n \\text{ variables can be solved in time } O(2^{cn})\\}$, where algorithms may be randomised. The *Strong Exponential Time Hypothesis* (SETH) states that $\\lim_{k\\to\\infty}s_k=1$. Equivalently, for every $\\varepsilon>0$ there is an integer $k$ such that $k$-SAT cannot be solved in time $O\\big((2-\\varepsilon)^{n}\\big)$. The question is whether SETH is true. It implies the weaker Exponential Time Hypothesis ($s_3>0$, i.e. 3-SAT needs $2^{\\Omega(n)}$ time), which in turn implies $\\mathsf{P}\\ne\\mathsf{NP}$."
 site:
   aiReviewed: true
 ---
-
-For $k\ge 3$ let $s_k=\inf\{c:\ k\text{-SAT on } n \text{ variables can be solved in time } O(2^{cn})\}$, where algorithms may be randomised. The _Strong Exponential Time Hypothesis_ (SETH) states that $\lim_{k\to\infty}s_k=1$. Equivalently, for every $\varepsilon>0$ there is an integer $k$ such that $k$-SAT cannot be solved in time $O\big((2-\varepsilon)^{n}\big)$. The question is whether SETH is true. It implies the weaker Exponential Time Hypothesis ($s_3>0$, i.e. 3-SAT needs $2^{\Omega(n)}$ time), which in turn implies $\mathsf{P}\ne\mathsf{NP}$.
 
 # State of the art
 
