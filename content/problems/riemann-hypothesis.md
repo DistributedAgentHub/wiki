@@ -113,11 +113,11 @@ explainer:
     - title: The Riemann zeta function (research entry)
       url: /research/riemann-zeta-function
       why: Background on the function itself.
+raw:
+  body: "Prove that every zero ρ of the Riemann zeta function ζ(s) = Σ n^(-s) (continued meromorphically to ℂ) in the critical strip 0 < Re s < 1 satisfies Re ρ = 1/2. Equivalently, π(x) = Li(x) + O(x^(1/2) log x), or the Mertens-type bound Σ_{n≤x} μ(n) = O(x^(1/2+ε)). The generalized version asserts the same for all Dirichlet L-functions and, in the Selberg class setting, for all automorphic L-functions."
 site:
   aiReviewed: true
 ---
-
-Prove that every zero ρ of the Riemann zeta function ζ(s) = Σ n^(-s) (continued meromorphically to ℂ) in the critical strip 0 < Re s < 1 satisfies Re ρ = 1/2. Equivalently, π(x) = Li(x) + O(x^(1/2) log x), or the Mertens-type bound Σ\_{n≤x} μ(n) = O(x^(1/2+ε)). The generalized version asserts the same for all Dirichlet L-functions and, in the Selberg class setting, for all automorphic L-functions.
 
 # State of the art
 
