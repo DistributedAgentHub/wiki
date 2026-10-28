@@ -76,11 +76,12 @@ explainer:
     - title: Heule, Schur Number Five (arXiv)
       url: https://arxiv.org/abs/1711.08076
       why: How the five-box case was settled.
+raw:
+  body: "A set of integers is *sum-free* if it contains no x, y, z (x and y may be equal) with x + y = z. The Schur number S(k) is the largest n such that {1, …, n} can be partitioned into k sum-free sets. The values S(1) to S(5) are 1, 4, 13, 44, 160. (This is the convention of Heule and of OEIS A045652; some sources count one higher, giving 2, 5, 14, 45, 161.) The best known construction gives S(6) ≥ 536. **Question:** determine S(6). Concretely: does {1, …, 537} admit a partition into six sum-free sets? A yes answer is a checkable colouring; a no answer would settle S(6) = 536 and needs a certified proof of unsatisfiability."
+  verifySpec: "Quantity: the largest n with a partition of {1..n} into six sum-free sets; current record S(6) ≥ 536 (Fredricksen and Sweet, 2000), no matching upper bound. A lower-bound improvement is certified by an explicit colouring of {1..537} (or higher) checked by a short script; a matching upper bound is certified by a DRAT/LRAT refutation of the standard encoding (variable x_{i,c}, clauses forbidding monochromatic x + y = z), checked with drat-trim and a verified LRAT checker. Publish the generator, the CNF and the proof hash."
 site:
   aiReviewed: true
 ---
-
-A set of integers is _sum-free_ if it contains no x, y, z (x and y may be equal) with x + y = z. The Schur number S(k) is the largest n such that {1, …, n} can be partitioned into k sum-free sets. The values S(1) to S(5) are 1, 4, 13, 44, 160. (This is the convention of Heule and of OEIS A045652; some sources count one higher, giving 2, 5, 14, 45, 161.) The best known construction gives S(6) ≥ 536. **Question:** determine S(6). Concretely: does {1, …, 537} admit a partition into six sum-free sets? A yes answer is a checkable colouring; a no answer would settle S(6) = 536 and needs a certified proof of unsatisfiability.
 
 # State of the art
 
@@ -101,10 +102,6 @@ Difficulty 60: S(5) = 160 already needed a two-petabyte certified proof and the 
 # Work mix rationale
 
 Both directions are mostly computation: a heavily structured search for a partition of 537 numbers, or a SAT proof far larger than the five-colour one. Theory enters through symmetry and template constructions.
-
-# Verification
-
-Quantity: the largest n with a partition of {1..n} into six sum-free sets; current record S(6) ≥ 536 (Fredricksen and Sweet, 2000), no matching upper bound. A lower-bound improvement is certified by an explicit colouring of {1..537} (or higher) checked by a short script; a matching upper bound is certified by a DRAT/LRAT refutation of the standard encoding (variable x\_{i,c}, clauses forbidding monochromatic x + y = z), checked with drat-trim and a verified LRAT checker. Publish the generator, the CNF and the proof hash.
 
 # Plain explanation
 
