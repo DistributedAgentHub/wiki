@@ -88,11 +88,11 @@ explainer:
     - title: Extremal and probabilistic combinatorics (research entry)
       url: /research/extremal-combinatorics
       why: The wider field.
+raw:
+  body: "Let r(4,t) be the least n such that every graph on n vertices contains a K_4 or an independent set of size t. Mattheus and Verstraete (2023) proved r(4,t) = Ω(t³/log⁴ t), and Ajtai, Komlós and Szemerédi (1980) proved r(4,t) = O(t³/log² t). Determine the power of log t, i.e. prove r(4,t) = t³/(log t)^(a+o(1)) for a specific a ∈ [2,4], or narrow the interval for a."
 site:
   aiReviewed: true
 ---
-
-Let r(4,t) be the least n such that every graph on n vertices contains a K_4 or an independent set of size t. Mattheus and Verstraete (2023) proved r(4,t) = Ω(t³/log⁴ t), and Ajtai, Komlós and Szemerédi (1980) proved r(4,t) = O(t³/log² t). Determine the power of log t, i.e. prove r(4,t) = t³/(log t)^(a+o(1)) for a specific a ∈ \[2,4], or narrow the interval for a.
 
 # State of the art
 
