@@ -110,39 +110,12 @@ explainer:
     - title: Kissing number - Wikipedia
       url: https://en.wikipedia.org/wiki/Kissing_number
       why: A close cousin of sphere packing.
+raw:
+  body: "## The problem\n\nA sphere packing in $\\mathbb{R}^d$ is a set of non-overlapping unit balls. Its density is the fraction of space covered; $\\Delta_d$ denotes the supremum over all packings. A *lattice packing* centres the balls at the points of a lattice $\\Lambda=\\mathbb{Z}b_1\\oplus\\cdots\\oplus\\mathbb{Z}b_d$, which is the structure most used in coding and cryptography. The lattice and non-lattice optima may differ: the best known packings in some dimensions are not lattices.\n\n## Exact solutions\n\n- $d=1$ is trivial. $d=2$ is the hexagonal lattice (Thue, with a complete proof by L. Fejes Tóth in 1940).\n- $d=3$: Kepler's conjecture, proved by Hales (with Ferguson; published 2005); the formal proof (the Flyspeck project, in HOL Light and Isabelle) was completed in 2014 and published in 2017.\n- $d=8$ and $d=24$: the $E_8$ lattice and the Leech lattice are optimal. Viazovska proved the case $d=8$ (arXiv, March 2016), and Cohn, Kumar, Miller, Radchenko and Viazovska proved $d=24$ a week later.\n\nNo other dimension is solved. Lattice-only optima are known up to dimension 8 and in dimension 24.\n\n## The linear programming method\n\nCohn and Elkies (2003) showed that if a real Schwartz function $f$ on $\\mathbb{R}^d$ satisfies $f(0)>0$, $\\hat f\\ge0$ everywhere and $f(x)\\le0$ for $|x|\\ge1$, then\n$$\\Delta_d\\le \\frac{v_d}{2^d}\\,\\frac{f(0)}{\\hat f(0)},$$\nwhere $v_d$ is the volume of the unit ball, by applying the Poisson summation formula. Numerics suggested that the bound is tight in dimensions 8 and 24; Viazovska and then Cohn et al. constructed explicit \"magic functions\" through modular forms to prove it. The same method gives upper bounds in all dimensions, and it is a Fourier-analytic cousin of Delsarte's linear programming bound for codes.\n\n## High dimensions\n\nIn large $d$ the picture is exponential. Lower bounds come from the probabilistic method: Minkowski and Hlawka showed $\\Delta_d\\ge 2\\zeta(d)2^{-d}$, and for a century the improvements were by polynomial factors in $d$ (Rogers, Ball, Venkatesh). Campos, Jenssen, Michelen and Sahasrabudhe (2023) obtained $(1-o(1))\\,d\\log d\\,/2^{d+1}$ for general packings, and Klartag (2025) showed that lattice packings of density at least $c\\,d^2 2^{-d}$ exist. Upper bounds have an exponentially different shape: the Kabatiansky-Levenshtein bound of 1978 has the form $2^{-0.599\\,d+o(d)}$. An OpenAI manuscript released on 1 August 2026 (unrefereed) claims to determine the exact asymptotic strength of the Cohn–Elkies bound, $\\mathrm{LP}_d^{1/d}\\to\\sqrt{e/(2\\pi)}$, as conjectured in 2020 by Afkhami-Jeddi, Cohn, Hartman, de Laat and Tajdini. This would give the upper-bound exponent $\\tfrac12\\log_2(2\\pi/e)\\approx0.6044$, and it would show that the method cannot go further. See the problem page.\n\n## Connections\n\n- **Coding theory.** Packings in $\\mathbb{R}^d$ correspond to codes for the Gaussian channel, and spherical codes to codes on the sphere. Sphere-packing bounds give limits on code performance at a given rate and dimension.\n- **Cryptography.** Lattice problems such as the shortest vector problem (SVP) and learning with errors are the basis of post-quantum cryptography. Densest lattices, kissing numbers and spherical-code bounds enter the cost analyses of sieving algorithms for SVP.\n- **Fourier analysis.** Sign-uncertainty principles (Bourgain-Clozel-Kahane; Cohn-Goncalves) and Fourier interpolation formulas (Radchenko-Viazovska) are closely tied to linear programming bounds for packings.\n- **Formalization.** A Lean formalization of Viazovska's dimension-8 proof, launched by Hariharan and Viazovska in March 2024, was completed in February 2026. Math Inc.'s autoformalization system Gauss did the final stages."
 site:
   published: true
   aiReviewed: true
 ---
-
-## The problem
-
-A sphere packing in $\mathbb{R}^d$ is a set of non-overlapping unit balls. Its density is the fraction of space covered; $\Delta_d$ denotes the supremum over all packings. A _lattice packing_ centres the balls at the points of a lattice $\Lambda=\mathbb{Z}b_1\oplus\cdots\oplus\mathbb{Z}b_d$, which is the structure most used in coding and cryptography. The lattice and non-lattice optima may differ: the best known packings in some dimensions are not lattices.
-
-## Exact solutions
-
-- $d=1$ is trivial. $d=2$ is the hexagonal lattice (Thue, with a complete proof by L. Fejes Tóth in 1940).
-- $d=3$: Kepler's conjecture, proved by Hales (with Ferguson; published 2005); the formal proof (the Flyspeck project, in HOL Light and Isabelle) was completed in 2014 and published in 2017.
-- $d=8$ and $d=24$: the $E_8$ lattice and the Leech lattice are optimal. Viazovska proved the case $d=8$ (arXiv, March 2016), and Cohn, Kumar, Miller, Radchenko and Viazovska proved $d=24$ a week later.
-
-No other dimension is solved. Lattice-only optima are known up to dimension 8 and in dimension 24.
-
-## The linear programming method
-
-Cohn and Elkies (2003) showed that if a real Schwartz function $f$ on $\mathbb{R}^d$ satisfies $f(0)>0$, $\hat f\ge0$ everywhere and $f(x)\le0$ for $|x|\ge1$, then
-$\Delta_d\le \frac{v_d}{2^d}\,\frac{f(0)}{\hat f(0)},$
-where $v_d$ is the volume of the unit ball, by applying the Poisson summation formula. Numerics suggested that the bound is tight in dimensions 8 and 24; Viazovska and then Cohn et al. constructed explicit "magic functions" through modular forms to prove it. The same method gives upper bounds in all dimensions, and it is a Fourier-analytic cousin of Delsarte's linear programming bound for codes.
-
-## High dimensions
-
-In large $d$ the picture is exponential. Lower bounds come from the probabilistic method: Minkowski and Hlawka showed $\Delta_d\ge 2\zeta(d)2^{-d}$, and for a century the improvements were by polynomial factors in $d$ (Rogers, Ball, Venkatesh). Campos, Jenssen, Michelen and Sahasrabudhe (2023) obtained $(1-o(1))\,d\log d\,/2^{d+1}$ for general packings, and Klartag (2025) showed that lattice packings of density at least $c\,d^2 2^{-d}$ exist. Upper bounds have an exponentially different shape: the Kabatiansky-Levenshtein bound of 1978 has the form $2^{-0.599\,d+o(d)}$. An OpenAI manuscript released on 1 August 2026 (unrefereed) claims to determine the exact asymptotic strength of the Cohn–Elkies bound, $\mathrm{LP}_d^{1/d}\to\sqrt{e/(2\pi)}$, as conjectured in 2020 by Afkhami-Jeddi, Cohn, Hartman, de Laat and Tajdini. This would give the upper-bound exponent $\tfrac12\log_2(2\pi/e)\approx0.6044$, and it would show that the method cannot go further. See the problem page.
-
-## Connections
-
-- **Coding theory.** Packings in $\mathbb{R}^d$ correspond to codes for the Gaussian channel, and spherical codes to codes on the sphere. Sphere-packing bounds give limits on code performance at a given rate and dimension.
-- **Cryptography.** Lattice problems such as the shortest vector problem (SVP) and learning with errors are the basis of post-quantum cryptography. Densest lattices, kissing numbers and spherical-code bounds enter the cost analyses of sieving algorithms for SVP.
-- **Fourier analysis.** Sign-uncertainty principles (Bourgain-Clozel-Kahane; Cohn-Goncalves) and Fourier interpolation formulas (Radchenko-Viazovska) are closely tied to linear programming bounds for packings.
-- **Formalization.** A Lean formalization of Viazovska's dimension-8 proof, launched by Hariharan and Viazovska in March 2024, was completed in February 2026. Math Inc.'s autoformalization system Gauss did the final stages.
 
 # Plain explanation
 
