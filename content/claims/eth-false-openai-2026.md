@@ -14,6 +14,12 @@ sources:
     url: https://github.com/openai/math/blob/7ef5c0cc5c/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf
   - title: "OpenAI: Lean formalization scope note (openai/math at 7ef5c0cc5c)"
     url: https://github.com/openai/math/blob/7ef5c0cc5c/lean/docs/378.md
+  - title: "O'Donnell: Some exposition of \"The Exponential Time Hypothesis Is False\" (28 October 2026, produced through interaction with LLMs)"
+    url: https://www.cs.cmu.edu/~odonnell/some_eth_false_exposition.pdf
+  - title: "Kintali: A simplified proof of ETH is false (26 October 2026)"
+    url: https://shivakintali.github.io/papers/ETH.pdf
+  - title: "Fortnow: The Exponential Time Refutation (Computational Complexity blog, 28 October 2026)"
+    url: https://blog.computationalcomplexity.org/2026/10/the-exponential-time-refutation.html
 checks:
   - title: Expert verification of the algorithm and its running-time analysis
     method: REVIEW
@@ -31,9 +37,13 @@ checks:
     method: CROSS_CHECK
     note: "Anthropic released a separate deterministic #3-SAT algorithm with the same type of bound, $2^{O(n\\log\\log n/\\sqrt{\\log n})}$, on 27 October 2026. Compare the constructions and bounds for shared ideas and gaps."
     sourceUrl: https://github.com/anthropics/formal-math/tree/16a5ce41304fcdaea4e0be7c132e1c361dc26da5/eth
+  - title: "Independent expositions: O'Donnell (sparse permanent) and Kintali (simplified proof)"
+    method: CROSS_CHECK
+    note: "Two researchers have rewritten the argument. O'Donnell (28 October, produced through interaction with LLMs) reduces #3SAT to a permanent with at most 3 nonzeros per row and column and claims exact deterministic counting in $2^{O(n(\\log\\log n)^2/\\sqrt{\\log n})}$, one $\\log\\log n$ factor worse than OpenAI's bound. Kintali (26 October) claims a deterministic 3-SAT algorithm in $C(n+m+1)^c 2^{\\varepsilon n}$ for each fixed $\\varepsilon>0$. Both are self-posted and unrefereed, so they show the argument can be re-told, not that it is correct; check them against the manuscript for gaps the rewrites share."
+    sourceUrl: https://www.cs.cmu.edu/~odonnell/some_eth_false_exposition.pdf
 site:
   status: UNDER_REVIEW
-  statusNote: OpenAI says the result is to be verified and shepherded by a group led by Russell Impagliazzo and Ramamohan Paturi (UC San Diego) and Ryan Williams (MIT), and that it will fund a conference. No expert verdict has been published. The openai/math repository has no Lean CI workflow, so DARC has not seen a build; formal here means that a formalization exists, not that DARC rebuilt it. The bound in the Lean scope file is weaker than the manuscript's bound. Unrefereed; the problem stays OPEN.
+  statusNote: OpenAI says the result is to be verified and shepherded by a group led by Russell Impagliazzo and Ramamohan Paturi (UC San Diego) and Ryan Williams (MIT), and that it will fund a conference. No expert verdict has been published. The openai/math repository has no Lean CI workflow, so DARC has not seen a build; formal here means that a formalization exists, not that DARC rebuilt it. The bound in the Lean scope file is weaker than the manuscript's bound. Unrefereed; the problem stays OPEN. Ryan O'Donnell (dated 28 October) and Shiva Kintali (dated 26 October) have each posted a self-published exposition of the proof, and Lance Fortnow's blog post of 28 October says he has not verified it himself and that OpenAI will work with Impagliazzo, Paturi and Williams on verification. No review outcome has been published.
   checks:
     - title: Expert verification of the algorithm and its running-time analysis
       status: OPEN
@@ -42,6 +52,8 @@ site:
     - title: Lean statement matches ETH
       status: OPEN
     - title: Compare with the independent Anthropic claim
+      status: OPEN
+    - title: "Independent expositions: O'Donnell (sparse permanent) and Kintali (simplified proof)"
       status: OPEN
 ---
 
