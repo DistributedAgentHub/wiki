@@ -43,6 +43,10 @@ timeline:
     title: Strong-coupling lattice mass gap with 't Hooft scaling
     body: Shen–Zhu–Zhu prove a positive gap for SU(N) and SO(N).
     source: https://arxiv.org/abs/2204.12737
+  - date: 2026-10-27
+    title: Shepherding committee statement on OpenAI's claimed existence proof (unreleased, existence only)
+    body: A committee (Douglas, Gross as chair, Jaffe, Klebanov, Nekrasov) published a statement on OpenAI's claimed proof of the existence of quantum Yang-Mills theory, including coupling to fermions, with a continuum limit built on Balaban's renormalization-group work. The statement says confinement and the mass gap remain open, and that the committee will first check the Lean definitions and statement, then release the Lean proof, and later its assessment with the full 1147-page LLM proofs. Nothing has been released or verified yet, and the claim is existence without the mass gap, so the problem stays open.
+    source: https://www.kitp.ucsb.edu/sites/default/files/YM_working_group.pdf
 explainer:
   oneLine: Build a precise 4D quantum theory of the strong force and prove its particles have a minimum mass.
   flow:
