@@ -48,6 +48,10 @@ timeline:
     title: Project LANA interim report
     body: Isolates a compatibility problem in the disputed 3.11→3.12 step; no verdict and no reconstruction of the step yet.
     source: https://github.com/katobungen/LANA_report_202607/blob/pdf/LANA_report_202607.pdf
+  - date: 2026-11-03
+    title: Soulé preprint claims a weak form of abc
+    body: Christophe Soulé posts an unrefereed preprint claiming, via adelic intersection theory, an effective bound h(P) ≤ (12+ε)·log|Δ_F|/[F:Q] + c(ε) for rational points on genus-2 curves, and from it a weak abc, c ≤ A(ε)·rad(abc)^(24+ε), with exponent 24+ε instead of 1+ε. This is not the abc conjecture itself.
+    source: https://arxiv.org/abs/2611.05217
 explainer:
   oneLine: If a plus b equals c, the numbers cannot all be built from many repeated small primes.
   flow:
