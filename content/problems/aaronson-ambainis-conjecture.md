@@ -42,6 +42,10 @@ timeline:
     title: Distributional variants equivalent (preprint)
     body: Girish, Mittal, Nehoran and Raz proved that biased-product and slice versions are equivalent to the uniform conjecture. Not refereed.
     source: https://arxiv.org/abs/2609.35327
+  - date: 2026-11-06
+    title: AI-produced proof claimed, with Lean formalization
+    body: David Turturean of Physical Superintelligence (PSI) posted a paper and a Lean 4 formalization claiming a proof, with a bound of order ε^{5/2}/d^6. The repository says the statements, draft and Lean were produced by AI models and that Turturean reviewed the paper. Unrefereed; DARC has not rebuilt the Lean code.
+    source: https://github.com/physical-superintelligence/aaronson-ambainis
 explainer:
   oneLine: Must every bounded, low-degree function of many yes/no inputs that genuinely varies have one input that matters noticeably?
   flow:
@@ -105,7 +109,7 @@ Let $f:\{-1,1\}^n\to[-1,1]$ be a multilinear polynomial of degree at most $d$ wi
 
 **Related but distinct.** The October 2026 OpenAI release includes an unrefereed AI-generated claim that the worst-case relation $R(f)=O(Q(f)^4)$ for total Boolean functions is tight; that concerns worst-case query complexity of total functions, not the average-case simulation the conjecture is about.
 
-No proof or counterexample was found as of October 2026.
+No proof or counterexample had been accepted as of November 2026. A proof claimed on 6 November 2026 by David Turturean of PSI, with a Lean 4 formalization, is unrefereed and not yet checked by DARC (see the Verification board).
 
 # Applications
 
