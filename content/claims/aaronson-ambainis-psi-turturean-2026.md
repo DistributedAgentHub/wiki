@@ -27,8 +27,8 @@ checks:
     sourceUrl: https://github.com/physical-superintelligence/aaronson-ambainis
   - title: Expert review of the paper
     method: REVIEW
-    note: A specialist in Boolean function analysis should read the paper. PSI says the Stanford group (Blanc, Docter, Strassle, Tan) has read it and sent comments; no public assessment was found.
-    sourceUrl: https://psi.inc/research/aaronson-ambainis/
+    note: A specialist in Boolean function analysis should read the paper. PSI says the Stanford group (Blanc, Docter, Strassle, Tan) has read it and sent comments. On 7 November 2026 that group (Blanc is at MIT, the others at Stanford) posted an exposition of the proof organised around four main steps, with Anthropic's public models used in that process according to its note, and on 9 November Huffstutler, Miloschewsky and Podder posted a shorter proof (arXiv:2611.12795) that uses only a special case of the certificate inequality. Both are unrefereed, so this check stays open until a refereed or otherwise formal assessment exists.
+    sourceUrl: https://guyblanc.github.io/AA_Exposition.pdf
   - title: Check the replaced Lovett–Zhang step
     method: CROSS_CHECK
     note: The paper follows the plan of Lovett and Zhang (ITCS 2023), says their Conjecture 37 is false as stated (a tribes-function example), and replaces it with an all-pairs inequality integrated over the level. Check both the objection and the replacement.
