@@ -46,6 +46,14 @@ timeline:
     title: AI-produced proof claimed, with Lean formalization
     body: David Turturean of Physical Superintelligence (PSI) posted a paper and a Lean 4 formalization claiming a proof, with a bound of order ε^{5/2}/d^6. The repository says the statements, draft and Lean were produced by AI models and that Turturean reviewed the paper. Unrefereed; DARC has not rebuilt the Lean code.
     source: https://github.com/physical-superintelligence/aaronson-ambainis
+  - date: 2026-11-07
+    title: Independent exposition of the claimed proof
+    body: Guy Blanc, Jordan Docter, Carmen Strassle and Li-Yang Tan posted an exposition of the claimed proof organised around four main steps, with weaker exponents because they did not optimise parameters; their note says Anthropic's public models were used in the process of understanding the proof and preparing the exposition. Unrefereed.
+    source: https://guyblanc.github.io/AA_Exposition.pdf
+  - date: 2026-11-09
+    title: A second, shorter claimed proof
+    body: Thomas Huffstutler, David Miloschewsky and Supartha Podder posted a short proof that uses only a special case of Turturean's certificate inequality, which they prove themselves, and gives a deterministic simulation with $O(Q(f)^6/(\delta\varepsilon)^2)$ queries on a $1-\varepsilon$ fraction of the domain of a partial function of domain density $\delta$. Unrefereed; posted on arXiv as 2611.12795 (submitted 9 November 2026).
+    source: https://arxiv.org/abs/2611.12795
 explainer:
   oneLine: Must every bounded, low-degree function of many yes/no inputs that genuinely varies have one input that matters noticeably?
   flow:
