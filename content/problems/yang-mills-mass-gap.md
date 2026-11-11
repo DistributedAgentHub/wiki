@@ -30,6 +30,8 @@ sources:
     url: https://arxiv.org/abs/2006.16229
   - title: "Nissim: U(N) lattice Yang–Mills in the ’t Hooft regime (preprint)"
     url: https://arxiv.org/abs/2510.22788
+  - title: "Yang–Mills working group: Validation of the OpenAI Yang–Mills construction, Initial assessment (10 November 2026, PDF)"
+    url: https://github.com/yang-mills-group/YM/blob/main/docs/assessment-1.pdf
 timeline:
   - date: 1973-06-01
     title: Asymptotic freedom
@@ -47,6 +49,10 @@ timeline:
     title: Shepherding committee statement on OpenAI's claimed existence proof (unreleased, existence only)
     body: A committee (Douglas, Gross as chair, Jaffe, Klebanov, Nekrasov) published a statement on OpenAI's claimed proof of the existence of quantum Yang-Mills theory, including coupling to fermions, with a continuum limit built on Balaban's renormalization-group work. The statement says confinement and the mass gap remain open, and that the committee will first check the Lean definitions and statement, then release the Lean proof, and later its assessment with the full 1147-page LLM proofs. Nothing has been released or verified yet, and the claim is existence without the mass gap, so the problem stays open.
     source: https://www.kitp.ucsb.edu/sites/default/files/YM_working_group.pdf
+  - date: 2026-11-10
+    title: Committee publishes OpenAI's pure Yang–Mills Lean submission and its assessment (existence only)
+    body: The Yang–Mills working group released OpenAI's Lean code and a 35-page assessment. Its judgment is that the submission constructs a Wightman-axiom theory as a scaling limit of four-dimensional Wilson lattice gauge theory for any simple compact gauge group, with an infinite-volume limit that is only subsequential and not shown to be unique. The group rebuilt the Lean code and ran Comparator; no mass gap is claimed, the assessment is unrefereed, and the problem stays open.
+    source: https://github.com/yang-mills-group/YM/blob/main/docs/assessment-1.pdf
 explainer:
   oneLine: Build a precise 4D quantum theory of the strong force and prove its particles have a minimum mass.
   flow:
@@ -112,7 +118,7 @@ site:
 
 # State of the art
 
-**Open in four dimensions.** In two dimensions the Yang–Mills measure has been constructed; in three dimensions Chandra, Chevyrev, Hairer and Shen (2022, Inventiones 2024) built a state space of gauge orbits and local-in-time stochastic dynamics for the renormalized Yang–Mills–Higgs equation, but no full axiomatic theory is known in d = 3 or 4. On the lattice, Shen, Zhu and Zhu (2022) proved a unique infinite-volume measure and a positive mass gap for SU(N) and SO(N) gauge theory at strong coupling with 't Hooft scaling; Nissim (arXiv, October 2025, preprint) extended this to U(N). Chatterjee (2020) gave a rigorous link between unbroken center symmetry and confinement. These results hold at fixed lattice spacing and strong coupling, while the continuum theory needs weak coupling at short distances. Balaban's 1980s multiscale analysis handled ultraviolet stability in part but was never completed in d = 4. OpenAI's 6 October 2026 manuscript release (github.com/openai/math) claims a construction of the 2D asymptotically free O(3) sigma model with a mass gap and Lean files; it is unrefereed and does not address four-dimensional gauge theory. No claimed solution of the Clay problem is accepted, and Clay lists it as unsolved. Physical evidence is strong: lattice QCD shows a mass gap, and asymptotic freedom (Gross–Wilczek, Politzer 1973) is established at the physics level.
+**Open in four dimensions.** In two dimensions the Yang–Mills measure has been constructed; in three dimensions Chandra, Chevyrev, Hairer and Shen (2022, Inventiones 2024) built a state space of gauge orbits and local-in-time stochastic dynamics for the renormalized Yang–Mills–Higgs equation, but no full axiomatic theory is known in d = 3 or 4. On the lattice, Shen, Zhu and Zhu (2022) proved a unique infinite-volume measure and a positive mass gap for SU(N) and SO(N) gauge theory at strong coupling with 't Hooft scaling; Nissim (arXiv, October 2025, preprint) extended this to U(N). Chatterjee (2020) gave a rigorous link between unbroken center symmetry and confinement. These results hold at fixed lattice spacing and strong coupling, while the continuum theory needs weak coupling at short distances. Balaban's 1980s multiscale analysis handled ultraviolet stability in part but was never completed in d = 4. OpenAI's 6 October 2026 manuscript release (github.com/openai/math) claims a construction of the 2D asymptotically free O(3) sigma model with a mass gap and Lean files; it is unrefereed and does not address four-dimensional gauge theory. On 10 November 2026 the Yang–Mills working group (Douglas, Gross, Jaffe, Klebanov, Nekrasov) published an assessment of OpenAI's Lean submission for pure Yang–Mills: in its judgment the submission constructs a Wightman-axiom theory as a scaling limit of four-dimensional Wilson lattice gauge theory for any simple compact gauge group, through a subsequential infinite-volume limit not shown to be unique, and the group rebuilt the Lean code and ran Comparator. The assessment is unrefereed, DARC has not rebuilt the code, and it leaves the mass gap untouched. No claimed solution of the Clay problem is accepted, and Clay lists it as unsolved. Physical evidence is strong: lattice QCD shows a mass gap, and asymptotic freedom (Gross–Wilczek, Politzer 1973) is established at the physics level.
 
 # Applications
 
