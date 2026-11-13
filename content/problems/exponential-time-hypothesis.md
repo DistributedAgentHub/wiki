@@ -45,6 +45,10 @@ timeline:
     title: Expositions of the OpenAI proof by O'Donnell and Kintali; Fortnow says verification is still to come
     body: "Ryan O'Donnell posted an exposition (dated 28 October, produced with LLMs) that reduces #3SAT to a sparse permanent and claims deterministic exact counting in $2^{O(n(\\log\\log n)^2/\\sqrt{\\log n})}$, one $\\log\\log n$ factor worse than OpenAI's; it also reports Subercaseaux's consequence for $\\mathrm{NTIME}(T)$. Shiva Kintali posted a simplified exposition (dated 26 October) claiming a deterministic 3-SAT algorithm in $C(n+m+1)^c\\,2^{\\varepsilon n}$ for every fixed $\\varepsilon>0$. Lance Fortnow wrote that he has not verified the proof himself and that OpenAI will partner with Impagliazzo, Paturi and Williams to verify it. These are unrefereed expositions, not a verification."
     source: https://www.cs.cmu.edu/~odonnell/some_eth_false_exposition.pdf
+  - date: 2026-11-09
+    title: "Preprint: the claimed 3-SAT algorithms would put NTIME[t] in subexponential deterministic time"
+    body: Strassle and Subercaseaux (arXiv:2611.11832) state that the 3-SAT algorithms presented by OpenAI and Anthropic would imply $\mathrm{NTIME}[t]\subseteq\mathrm{DTIME}[2^{O(t\log\log t/\sqrt{\log t})}]$ for multitape nondeterministic Turing machines, and $2^{O(t/\sqrt{\log t})}$ from a stronger consequence of the proofs. The result is conditional on those claimed algorithms, which remain unrefereed, so it is not independent evidence that they are correct. Unrefereed preprint.
+    source: https://arxiv.org/abs/2611.11832
 explainer:
   oneLine: The belief that solving logic puzzles with three-switch rules takes time that grows exponentially with the number of switches.
   flow:
