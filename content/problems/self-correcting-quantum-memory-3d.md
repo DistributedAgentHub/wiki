@@ -37,6 +37,10 @@ sources:
     url: https://arxiv.org/abs/2510.05479
   - title: Stengele, Caha, Capel, Warzel, Haah's 3D cubic code thermalizes rapidly (preprint, 2026)
     url: https://arxiv.org/abs/2609.39959
+  - title: Balasubramanian, Davydova, Lin, A passive self-correcting quantum memory in three dimensions (preprint, 2026)
+    url: https://arxiv.org/abs/2605.10943
+  - title: Hayden, Robust Passive Quantum Memory in Three Dimensions, Part I (preprint, 2026)
+    url: https://arxiv.org/abs/2611.21749
   - title: Brown, Loss, Pachos, Self, Wootton, Quantum memories at finite temperature (Rev. Mod. Phys. 2016)
     url: https://arxiv.org/abs/1411.6643
 links:
@@ -64,10 +68,18 @@ timeline:
     title: Layer codes partially self-correct
     body: Williamson, and independently Gu et al., showed partial self-correction for layer codes.
     source: https://arxiv.org/abs/2510.09218
+  - date: 2026-05-11
+    title: Claimed passive 3D memory (preprint)
+    body: Balasubramanian, Davydova and Lin posted a 102-page preprint constructing a 3D Pauli stabilizer Hamiltonian that, they claim, stores a qubit for exponentially long times when coupled to a bath at nonzero temperature. It is unrefereed and DARC has not checked the proof.
+    source: https://arxiv.org/abs/2605.10943
   - date: 2026-09-30
     title: Cubic code ruled out (preprint)
     body: Stengele et al. proved the cubic code thermalises rapidly at all positive temperatures.
     source: https://arxiv.org/abs/2609.39959
+  - date: 2026-11-16
+    title: Stability of a variant of the BDL family (preprint, Part I)
+    body: "Hayden's 84-page preprint claims that a three-layer variant of the Balasubramanian-Davydova-Lin code family is stable: stretched-exponential memory time below a critical temperature for local Markovian baths with bounded rates, and, at zero temperature, a uniform gap and superpolynomially long lifetime under weak superpolynomially decaying perturbations. Part II is needed for the rest of the perturbed positive-temperature phase diagram. The paper says Gemini 4 Argon performed most of the detailed proof construction and that Lean 4 formulations of the main theorems are machine-checked in the author's repository. Unrefereed; DARC has not checked the proof or rebuilt the Lean code."
+    source: https://arxiv.org/abs/2611.21749
 explainer:
   oneLine: Can a 3D material keep quantum information safe on its own, as a magnet keeps a hard-drive bit?
   flow:
@@ -109,7 +121,7 @@ explainer:
       url: https://en.wikipedia.org/wiki/Topological_order
       why: The physics question behind self-correction.
 raw:
-  stateOfArt: "**Other dimensions.** The 4D toric code is self-correcting (Dennis et al., 2002; proved for Davies dynamics by Alicki, Horodecki, Horodecki and Horodecki, 2010). In 2D, Bravyi and Terhal (2009) proved that every local stabilizer code has an energy barrier bounded by a constant, which rules out self-correction for 2D stabilizer codes.\n\n**3D candidates.** Haah's cubic code (2011) has no string-like logical operators. Bravyi and Haah (PRL 2013) proved $T_{\\mathrm{mem}}\\ge L^{c\\beta}$, but only up to a critical size $L^*\\sim e^{\\beta/3}$, which is *partial* self-correction. Stengele, Caha, Capel and Warzel (arXiv:2609.39959, September 2026, preprint) prove that the cubic code thermalises rapidly at every positive temperature, so it is not self-correcting. **Layer codes** (Williamson and Baspin, Nat. Commun. 2024) reach the optimal code parameters and a polynomial energy barrier in 3D. Williamson (arXiv:2510.09218, preprint) shows a family based on good quantum Tanner codes has memory time growing exponentially with $L$ up to a length scale exponential in $\\beta$, and Gu et al. (PRL 2026) prove partial self-correction for layer codes with decoders that have guarantees; neither reaches strict self-correction in the thermodynamic limit. Roberts, Koh, Tan and Yao (arXiv:2510.05479, preprint) introduce disordered \"cored product\" codes and report numerical memory times that increase with size up to 60,000 qubits below a critical temperature.\n\n**What is known to be needed.** A diverging energy barrier is necessary but not sufficient, because the number of low-energy paths (entropy) can still make errors spread. Brown, Loss, Pachos, Self and Wootton (Rev. Mod. Phys. 2016) review the no-go theorems and their loopholes."
+  stateOfArt: "**Other dimensions.** The 4D toric code is self-correcting (Dennis et al., 2002; proved for Davies dynamics by Alicki, Horodecki, Horodecki and Horodecki, 2010). In 2D, Bravyi and Terhal (2009) proved that every local stabilizer code has an energy barrier bounded by a constant, which rules out self-correction for 2D stabilizer codes.\n\n**3D candidates.** Haah's cubic code (2011) has no string-like logical operators. Bravyi and Haah (PRL 2013) proved $T_{\\mathrm{mem}}\\ge L^{c\\beta}$, but only up to a critical size $L^*\\sim e^{\\beta/3}$, which is *partial* self-correction. Stengele, Caha, Capel and Warzel (arXiv:2609.39959, September 2026, preprint) prove that the cubic code thermalises rapidly at every positive temperature, so it is not self-correcting. **Layer codes** (Williamson and Baspin, Nat. Commun. 2024) reach the optimal code parameters and a polynomial energy barrier in 3D. Williamson (arXiv:2510.09218, preprint) shows a family based on good quantum Tanner codes has memory time growing exponentially with $L$ up to a length scale exponential in $\\beta$, and Gu et al. (PRL 2026) prove partial self-correction for layer codes with decoders that have guarantees; neither reaches strict self-correction in the thermodynamic limit. Roberts, Koh, Tan and Yao (arXiv:2510.05479, preprint) introduce disordered \"cored product\" codes and report numerical memory times that increase with size up to 60,000 qubits below a critical temperature. **Claimed constructions (preprints).** Balasubramanian, Davydova and Lin (arXiv:2605.10943, May 2026) construct a 3D Pauli stabilizer Hamiltonian, defined by repeatedly applying transformations to a seed Hamiltonian, and claim that its ground space stores a qubit for exponentially long times at nonzero temperature. Hayden (arXiv:2611.21749, Part I, November 2026) claims that a three-layer variant of that family is stable below a critical temperature, with a stretched-exponentially long memory time for local Markovian baths with detailed-balance single-site couplings, and at zero temperature under weak superpolynomially decaying perturbations; Part II is said to cover the rest of the perturbed positive-temperature phase diagram. Hayden's paper says Gemini 4 Argon did most of the detailed proof construction and that Lean 4 formulations of its main theorems are machine-checked in his repository, which DARC has not rebuilt. Both are unrefereed, and DARC has not checked either proof, so the status stays open.\n\n**What is known to be needed.** A diverging energy barrier is necessary but not sufficient, because the number of low-energy paths (entropy) can still make errors spread. Brown, Loss, Pachos, Self and Wootton (Rev. Mod. Phys. 2016) review the no-go theorems and their loopholes."
 site:
   aiReviewed: true
 ---
