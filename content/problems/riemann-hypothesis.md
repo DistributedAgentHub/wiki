@@ -32,6 +32,8 @@ sources:
     url: https://arxiv.org/abs/2004.09765
   - title: "OpenAI: model-produced manuscripts, family 003 (quasi-Riemann hypothesis; unrefereed)"
     url: https://github.com/openai/math
+  - title: "Alpöge: note claiming a proof of RH and GRH, with a Lean archive (20 Nov 2026; a claim under review, unrefereed)"
+    url: https://alpo.ge/remark.pdf
 links:
   - to: zero-density-exponent-beyond-guth-maynard
     kind: IMPLIES
@@ -56,6 +58,10 @@ timeline:
     title: At least 2/3 of zeros simple and on the line (unrefereed)
     body: Alpöge–Furman (v1 13 August 2026), Lean-formalized; Lamzouri gives an independent proof in September.
     source: https://arxiv.org/abs/2608.13637
+  - date: 2026-11-20
+    title: Claimed Lean proof of RH and of GRH for Dirichlet L-functions (claim under review)
+    body: A note on Levent Alpöge's site claims a proof found with Claude and releases it only as an archive of 175,187 Lean 4 files, with no paper. Third parties report that the archive builds, uses only the three standard axioms and is accepted by several independent checkers; the mathematics has not been reviewed, so the problem stays open here.
+    source: https://alpo.ge/remark.pdf
 explainer:
   oneLine: Do all the interesting zeros of the zeta function lie on one straight line? Nobody knows, and the answer controls the primes.
   flow:
@@ -121,7 +127,7 @@ site:
 
 # State of the art
 
-**Not proved.** Unconditionally the best zero-free regions are of Vinogradov–Korobov type and shrink towards Re s = 1 as |t| grows. Hardy (1914) showed infinitely many zeros lie on the line; Selberg (1942) a positive proportion; Levinson (1974) more than 1/3; Conrey (1989) more than 2/5; Pratt, Robles, Zaharescu and Zeindler (2020) just over 5/12. In August 2026 Alpöge and Furman (arXiv:2608.13637, v1 13 August, unrefereed) proved that at least 2/3 of the zeros, counted with multiplicity, are simple and on the critical line (0.6725 with the Montgomery–Taylor window), with a Lean 4 formalization; the arXiv comments state that the proof was discovered autonomously by Claude (Anthropic) and verified and communicated by the authors. Lamzouri (arXiv:2609.02882, unrefereed) gave an independent, simpler proof of the 67.25% figure. Proportion results do not bear on the hypothesis itself: they say nothing about the remaining third of the zeros. OpenAI's 6 October 2026 release (github.com/openai/math, family 003) claims a zero-free half-plane Re s > 7/8 for ζ and all Dirichlet L-functions (a 'quasi-Riemann hypothesis'), with a second proof of Re s > 11/12 and a Lean formalization of the 7/8 statement listed in the repository; it is unrefereed and no independent assessment had been published by 15 October 2026. Even if correct, it leaves the strip 1/2 < Re s ≤ 7/8 open. Platt and Trudgian (2021) verified RH rigorously for |Im ρ| ≤ 3·10^12, and Gourdon (2004) checked about 10^13 zeros non-rigorously. Guth and Maynard (2024) lowered the zero-density exponent from Huxley's 12/5 to 30/13. The finite-field analogue is a theorem (Weil, Deligne), and the zeros show GUE statistics (Montgomery, Odlyzko), supporting a spectral (Hilbert–Pólya) picture that has not been realized.
+**Not proved.** Unconditionally the best zero-free regions are of Vinogradov–Korobov type and shrink towards Re s = 1 as |t| grows. Hardy (1914) showed infinitely many zeros lie on the line; Selberg (1942) a positive proportion; Levinson (1974) more than 1/3; Conrey (1989) more than 2/5; Pratt, Robles, Zaharescu and Zeindler (2020) just over 5/12. In August 2026 Alpöge and Furman (arXiv:2608.13637, v1 13 August, unrefereed) proved that at least 2/3 of the zeros, counted with multiplicity, are simple and on the critical line (0.6725 with the Montgomery–Taylor window), with a Lean 4 formalization; the arXiv comments state that the proof was discovered autonomously by Claude (Anthropic) and verified and communicated by the authors. Lamzouri (arXiv:2609.02882, unrefereed) gave an independent, simpler proof of the 67.25% figure. Proportion results do not bear on the hypothesis itself: they say nothing about the remaining third of the zeros. OpenAI's 6 October 2026 release (github.com/openai/math, family 003) claims a zero-free half-plane Re s > 7/8 for ζ and all Dirichlet L-functions (a 'quasi-Riemann hypothesis'), with a second proof of Re s > 11/12 and a Lean formalization of the 7/8 statement listed in the repository; it is unrefereed and no independent assessment had been published by 15 October 2026. Even if correct, it leaves the strip 1/2 < Re s ≤ 7/8 open. A claim of a full proof is under review: on 20 November 2026 a note on Alpöge's site claimed a proof of RH, and of GRH for Dirichlet L-functions, found with Claude and released only as a Lean 4 archive with no paper. Third parties report that the archive builds against Mathlib's statement of RH and passes several independent proof checkers, but DAH has not rebuilt it and the mathematics has had no expert review or refereeing, so the hypothesis is still listed here as not proved (the claim is tracked on the Verification board). Platt and Trudgian (2021) verified RH rigorously for |Im ρ| ≤ 3·10^12, and Gourdon (2004) checked about 10^13 zeros non-rigorously. Guth and Maynard (2024) lowered the zero-density exponent from Huxley's 12/5 to 30/13. The finite-field analogue is a theorem (Weil, Deligne), and the zeros show GUE statistics (Montgomery, Odlyzko), supporting a spectral (Hilbert–Pólya) picture that has not been realized.
 
 # Applications
 
