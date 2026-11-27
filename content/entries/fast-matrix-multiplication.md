@@ -35,9 +35,24 @@ references:
   - title: "Dumas, Pernet, Sedoglavic: A non-commutative algorithm for multiplying 4x4 matrices using 48 non-complex multiplications"
     url: https://arxiv.org/abs/2506.13242
     kind: paper
-  - title: "OpenAI math collection: scope of the Lean formalisation for the ω ≤ 9/4 family (unrefereed)"
-    url: https://github.com/openai/math/blob/main/lean/docs/107.md
+  - title: "OpenAI (AI-generated, not peer-reviewed): The matrix multiplication exponent is nine fourths (24 Nov 2026, PDF at 3344da5999)"
+    url: https://github.com/openai/math/blob/3344da59991ed94f9ba711217b29c1d760badfa6/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf
+    kind: paper
+  - title: "OpenAI math collection: scope of the Lean formalisation for matrix multiplication (lean/docs/107.md at 3344da5999, unreviewed)"
+    url: https://github.com/openai/math/blob/3344da59991ed94f9ba711217b29c1d760badfa6/lean/docs/107.md
     kind: code
+  - title: "Pass: Matrix Multiplication from Polynomial Packings: A Constructive and Elementary Proof of ω ≤ 9/4 (arXiv:2610.28627, unrefereed)"
+    url: https://arxiv.org/abs/2610.28627
+    kind: paper
+  - title: "Amanov, van den Berg, Zuiddam: Multiplying matrices via polynomials: exposition and barriers (arXiv:2610.30054, unrefereed)"
+    url: https://arxiv.org/abs/2610.30054
+    kind: paper
+  - title: "Shpilka: Exposition of OpenAI's Matrix Multiplication in Exponent 9/4 (and an explicit algorithm), ECCC TR26-281 (unrefereed)"
+    url: https://eccc.weizmann.ac.il/report/2026/281/
+    kind: paper
+  - title: "Doğan, Lysikov, Sakabe, Walter: Tensor value and the 9/4 bound for matrix multiplication (arXiv:2611.09716, unrefereed)"
+    url: https://arxiv.org/abs/2611.09716
+    kind: paper
 timeline:
   - date: 1969-08-01
     title: Strassen's algorithm
@@ -56,9 +71,17 @@ timeline:
     body: Dupont et al. improved the numerical optimisation underlying the combination-loss analysis, lowering the best bound to 2.371177. Not yet peer reviewed.
     source: https://arxiv.org/abs/2608.16884
   - date: 2026-10-06
-    title: OpenAI release claims ω ≤ 9/4 (unrefereed)
-    body: An AI-generated manuscript dated 2 October 2026 claims ω ≤ 9/4 over ℂ, with a Lean formalisation. Not peer reviewed as of 2026-10-15.
-    source: https://github.com/openai/math/blob/main/CONTENTS.md
+    title: OpenAI release claims ω ≤ 9/4 over ℂ (unrefereed)
+    body: An AI-generated manuscript dated 2 October 2026 claims ω ≤ 9/4 over ℂ via Strassen's asymptotic spectrum of tensors, with an unreviewed Lean formalisation.
+    source: https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026/paper.pdf
+  - date: 2026-10-20
+    title: Independent preprints reconstruct and extend ω ≤ 9/4 (unrefereed)
+    body: Between October and early November 2026, independent preprints extended the 9/4 upper bound to arbitrary fields, rectangular multiplication and explicit algorithms, including Pass (arXiv:2610.28627), Amanov, van den Berg and Zuiddam (arXiv:2610.30054), Shpilka (ECCC TR26-281), Lü (arXiv:2610.18914), Uznański (arXiv:2610.10494), Li (arXiv:2611.04175) and Doğan, Lysikov, Sakabe and Walter (arXiv:2611.09716). None is yet peer-reviewed.
+    source: https://arxiv.org/abs/2610.28627
+  - date: 2026-11-24
+    title: OpenAI release claims ω = 9/4 over every field (unrefereed)
+    body: OpenAI posted the 111-page AI-generated manuscript "The matrix multiplication exponent is nine fourths" claiming a matching lower bound of at least ⌈n^(9/4)/2⌉ nonscalar multiplication or division gates for formal arithmetic circuits and ω = 9/4 over every field, with an unreviewed Lean formalisation. Not peer-reviewed.
+    source: https://github.com/openai/math/blob/3344da59991ed94f9ba711217b29c1d760badfa6/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf
 explainer:
   oneLine: Multiplying two grids of numbers using fewer steps than the school method, and asking how low the count can go.
   flow:
@@ -111,12 +134,50 @@ explainer:
     - title: Computational complexity of matrix multiplication (Wikipedia)
       url: https://en.wikipedia.org/wiki/Computational_complexity_of_matrix_multiplication
       why: A table of the record exponents over time.
-raw:
-  body: "## The exponent\n\nLet $\\omega$ be the infimum of all $\\tau$ such that two $n\\times n$ matrices over a field can be multiplied with $O(n^{\\tau})$ arithmetic operations. The schoolbook method gives $\\omega\\le 3$, and reading the input gives $\\omega\\ge 2$. It is not known whether $\\omega=2$. The value of $\\omega$ can depend only on the characteristic of the field (Schönhage, 1981), so all bounds for $\\mathbb C$ hold for every field of characteristic zero.\n\n## Strassen and the tensor viewpoint\n\nIn 1969 Strassen showed that two $2\\times 2$ block matrices can be multiplied with 7 block multiplications instead of 8. Applied recursively, this gives $O(n^{\\log_2 7})\\approx O(n^{2.807})$.\n\nThe modern view encodes multiplication of $a\\times b$ by $b\\times c$ matrices as a 3-tensor $\\langle a,b,c\\rangle$. Its *rank* $R$ is the minimum number of scalar multiplications in a bilinear algorithm. For square matrices, $\\omega=\\lim_{n\\to\\infty}\\log_n R(\\langle n,n,n\\rangle)$, and one may replace rank by the more flexible *border rank* (Bini, 1980). Any bound $R(\\langle n,n,n\\rangle)\\le r$ gives $\\omega\\le\\log_n r$.\n\n## The laser method and its descendants\n\nStrassen's laser method (1986–87) extracts large matrix-multiplication tensors from tensor powers of a smaller tensor with nicer structure. Coppersmith and Winograd (1987; journal 1990) applied it to a specific tensor to get $\\omega<2.376$. Successive refinements, each analysing higher tensor powers and increasingly careful degenerations, improved the bound:\n\n- Stothers (2010): $\\omega<2.3737$; Vassilevska Williams (2012): $\\omega<2.3729$.\n- Le Gall (2014): $\\omega<2.37287$.\n- Alman and Vassilevska Williams (2020, SODA 2021): $\\omega<2.37286$.\n- Duan, Wu and Zhou (2022, FOCS 2023): $\\omega<2.371866$.\n- Vassilevska Williams, Xu, Xu and Zhou (2023, SODA 2024): $\\omega<2.371552$.\n- Alman, Duan, Vassilevska Williams, Xu, Xu and Zhou (2024, SODA 2025): $\\omega<2.371339$.\n- Dupont, Alman, Vassilevska Williams, Zhou and colleagues at Google DeepMind (arXiv:2608.16884, 17 August 2026, preprint): $\\omega<2.371177$, obtained by solving the optimisation problem at the core of the combination-loss analysis more completely, using modern optimisation methods refined with AlphaEvolve. Version 3 of the 2024 paper (19 August 2026) reports the same bound.\n\nAmbainis, Filmus and Le Gall (2015) and Alman and Vassilevska Williams (2018) proved that broad families of these methods, applied to the Coppersmith–Winograd tensors, cannot reach $\\omega=2$.\n\n## Practical algorithms\n\nNone of the laser-method algorithms is used in practice. They beat the schoolbook method only for astronomically large matrices (they are *galactic*), have enormous hidden constants, and are numerically less well behaved. Practical fast multiplication means Strassen-like algorithms with small base cases, applied for a few recursion levels before switching to optimised classical kernels. Huang, Smith, Henry and van de Geijn (2016) showed that Strassen's algorithm can be implemented inside the BLIS framework without extra workspace and gives speedups at moderate sizes.\n\nSmall formats are therefore still an active search area. AlphaTensor (DeepMind, *Nature*, October 2022) found algorithms using fewer multiplications for several formats, including 47 multiplications for $4\\times 4$ matrices in characteristic 2. AlphaEvolve (2025) found 48 multiplications for $4\\times 4$ *complex* matrices, beating the 49 of two-level Strassen. Dumas, Pernet and Sedoglavic (June 2025) gave a 48-multiplication algorithm with rational coefficients, valid over any ring of characteristic other than 2. As a recursion base case this gives exponent $\\log_4 48\\approx 2.7925$, versus $\\log_4 49=\\log_2 7\\approx 2.807$.\n\n## Where it is used\n\nBeyond dense linear algebra, a smaller $\\omega$ improves the best known bounds for linear programming (Cohen, Lee and Song, 2018: about $n^{\\omega}$ time up to logarithmic factors with current exponents), triangle detection, several shortest-path problems and, via rectangular matrix multiplication, many fine-grained algorithms.\n\n## Claims in October 2026\n\nOn 6 October 2026 OpenAI released a repository of AI-generated manuscripts. One (dated 2 October 2026, 13 pages) claims $\\omega\\le 9/4$ over $\\mathbb C$ by a route different from the laser method: it applies Strassen's theory of the asymptotic spectrum of tensors to the tensors of polynomial multiplication. Companion manuscripts claim $\\omega<2.258$ over fields of characteristic zero and $\\omega<2.371054886$ over every field. OpenAI provides Lean formalisations of the stated bounds. None of this is peer reviewed. The argument also uses a non-constructive existence step, and the claim is about asymptotic arithmetic complexity, not a practical algorithm. See the problem entry."
 site:
   published: true
   aiReviewed: true
 ---
+
+## The exponent
+
+Let $\omega$ be the infimum of all $\tau$ such that two $n\times n$ matrices over a field can be multiplied with $O(n^{\tau})$ arithmetic operations. The schoolbook method gives $\omega\le 3$, and reading the input gives $\omega\ge 2$. It is not known whether $\omega=2$. The value of $\omega$ can depend only on the characteristic of the field (Schönhage, 1981), so all bounds for $\mathbb C$ hold for every field of characteristic zero.
+
+## Strassen and the tensor viewpoint
+
+In 1969 Strassen showed that two $2\times 2$ block matrices can be multiplied with 7 block multiplications instead of 8. Applied recursively, this gives $O(n^{\log_2 7})\approx O(n^{2.807})$.
+
+The modern view encodes multiplication of $a\times b$ by $b\times c$ matrices as a 3-tensor $\langle a,b,c\rangle$. Its _rank_ $R$ is the minimum number of scalar multiplications in a bilinear algorithm. For square matrices, $\omega=\lim_{n\to\infty}\log_n R(\langle n,n,n\rangle)$, and one may replace rank by the more flexible _border rank_ (Bini, 1980). Any bound $R(\langle n,n,n\rangle)\le r$ gives $\omega\le\log_n r$.
+
+## The laser method and its descendants
+
+Strassen's laser method (1986–87) extracts large matrix-multiplication tensors from tensor powers of a smaller tensor with nicer structure. Coppersmith and Winograd (1987; journal 1990) applied it to a specific tensor to get $\omega<2.376$. Successive refinements, each analysing higher tensor powers and increasingly careful degenerations, improved the bound:
+
+- Stothers (2010): $\omega<2.3737$; Vassilevska Williams (2012): $\omega<2.3729$.
+- Le Gall (2014): $\omega<2.37287$.
+- Alman and Vassilevska Williams (2020, SODA 2021): $\omega<2.37286$.
+- Duan, Wu and Zhou (2022, FOCS 2023): $\omega<2.371866$.
+- Vassilevska Williams, Xu, Xu and Zhou (2023, SODA 2024): $\omega<2.371552$.
+- Alman, Duan, Vassilevska Williams, Xu, Xu and Zhou (2024, SODA 2025): $\omega<2.371339$.
+- Dupont, Alman, Vassilevska Williams, Zhou and colleagues at Google DeepMind (arXiv:2608.16884, 17 August 2026, preprint): $\omega<2.371177$, obtained by solving the optimisation problem at the core of the combination-loss analysis more completely, using modern optimisation methods refined with AlphaEvolve. Version 3 of the 2024 paper (19 August 2026) reports the same bound.
+
+Ambainis, Filmus and Le Gall (2015) and Alman and Vassilevska Williams (2018) proved that broad families of these methods, applied to the Coppersmith–Winograd tensors, cannot reach $\omega=2$.
+
+## Practical algorithms
+
+None of the laser-method algorithms is used in practice. They beat the schoolbook method only for astronomically large matrices (they are _galactic_), have enormous hidden constants, and are numerically less well behaved. Practical fast multiplication means Strassen-like algorithms with small base cases, applied for a few recursion levels before switching to optimised classical kernels. Huang, Smith, Henry and van de Geijn (2016) showed that Strassen's algorithm can be implemented inside the BLIS framework without extra workspace and gives speedups at moderate sizes.
+
+Small formats are therefore still an active search area. AlphaTensor (DeepMind, _Nature_, October 2022) found algorithms using fewer multiplications for several formats, including 47 multiplications for $4\times 4$ matrices in characteristic 2. AlphaEvolve (2025) found 48 multiplications for $4\times 4$ _complex_ matrices, beating the 49 of two-level Strassen. Dumas, Pernet and Sedoglavic (June 2025) gave a 48-multiplication algorithm with rational coefficients, valid over any ring of characteristic other than 2. As a recursion base case this gives exponent $\log_4 48\approx 2.7925$, versus $\log_4 49=\log_2 7\approx 2.807$.
+
+## Where it is used
+
+Beyond dense linear algebra, a smaller $\omega$ improves the best known bounds for linear programming (Cohen, Lee and Song, 2018: about $n^{\omega}$ time up to logarithmic factors with current exponents), triangle detection, several shortest-path problems and, via rectangular matrix multiplication, many fine-grained algorithms.
+
+## Claims in October and November 2026
+
+On 6 October 2026 OpenAI released a repository of AI-generated manuscripts including "An Upper Bound of 9/4 for the Matrix Multiplication Exponent" (dated 2 October 2026, 13 pages, not peer-reviewed), claiming $\omega\le 9/4$ over $\mathbb C$ via Strassen's asymptotic spectrum of tensors applied to polynomial multiplication, with companion manuscripts claiming $\omega<2.258$ in characteristic zero and $\omega<2.371054886$ over every field. Between October and early November 2026, several independent, unrefereed preprints reconstructed, extended to arbitrary fields and made explicit the $\omega \le 9/4$ upper bound and rectangular analogues: Uznański (arXiv:2610.10494), Lü (arXiv:2610.18914), Pass (arXiv:2610.28627, constructive integer algorithms via polynomial packings), Amanov, van den Berg and Zuiddam (arXiv:2610.30054, arbitrary-field exposition and an operational barrier at $9/4$), Shpilka (ECCC TR26-281, explicit algorithms), Li (arXiv:2611.04175 / ECCC TR26-298) and Doğan, Lysikov, Sakabe and Walter (arXiv:2611.09716, using a fractional symmetrized tensor value).
+
+On 24 November 2026 OpenAI added a 111-page AI-generated manuscript, "The matrix multiplication exponent is nine fourths" (family 379, pinned at `3344da5999`), claiming a matching lower bound over every field—hence $\omega = 9/4$, which would refute $\omega = 2$: for every $n \ge 2$, it claims geometric border rank $\ge n^{9/4}$, asymptotic rank $n^{9/4}$, and at least $\lceil n^{9/4}/2 \rceil$ nonscalar multiplication or division gates for formal arithmetic circuits. OpenAI provides an unreviewed Lean formalisation (`MatrixExponent.lean`, no Lean CI) of $\omega = 9/4$, $\alpha = 1/2$ and exact rectangular exponents (while leaving the finite-$n$ gate bound unformalized). None of the October–November preprints is peer-reviewed, and none of the independent write-ups checks the November lower bound; these claims remain about asymptotic arithmetic complexity, not practical algorithms. See [the matrix multiplication exponent problem](../problems/matrix-multiplication-exponent.md).
 
 # Plain explanation
 
@@ -124,13 +185,13 @@ Multiplying two tables of numbers is one of the most common jobs a computer does
 
 In 1969 Volker Strassen found a surprise. For small tables he could get away with 7 multiplications where the school method needs 8. That sounds tiny, but applying the trick again and again inside bigger tables lowers the overall count noticeably.
 
-Since then, mathematicians have pushed the cost down a little at a time. If multiplying tables of size n takes about n to the power w steps, the best proven w is a bit over 2.37. Reading all the numbers already takes about n times n steps, so w cannot be below 2. Whether w really equals 2 is open.
+Since then, mathematicians have pushed the cost down a little at a time. If multiplying tables of size n takes about n to the power w steps, the best peer-reviewed w is a bit over 2.37. Reading all the numbers already takes about n times n steps, so w cannot be below 2. Whether w really equals 2 is open.
 
 The analogy: a clever shortcut in a recipe. It saves a little in a small kitchen and a lot in a huge one.
 
 A caution: the record-setting methods are too complicated to use on real computers. Practical gains come from simpler methods.
 
-In October 2026 an AI lab released a manuscript claiming a much lower value, 2.25, by a different route. Experts have not checked it, so treat it as a claim for now.
+In October 2026 OpenAI released an AI-generated manuscript claiming a much lower upper bound, 2.25 (9/4), by a different route, and several independent researchers posted unrefereed preprints turning that upper bound into explicit algorithms over every field. On 24 November 2026 OpenAI released a new AI-generated manuscript with Lean code claiming a matching lower bound—that w is _exactly_ 9/4 over every field, which would rule out 2. Independent experts have not checked the lower-bound claim, and none of these autumn 2026 papers has been peer-reviewed yet, so treat them as claims for now.
 
 # Student explanation
 
@@ -148,6 +209,6 @@ In October 2026 an AI lab released a manuscript claiming a much lower value, 2.2
 
 **Practice versus theory.** The record algorithms have enormous hidden constants and are not used in software. Libraries use the school algorithm tuned for hardware, sometimes with a few levels of Strassen-type recursion for large matrices. Machine search for small algorithms (for particular small sizes) is also active.
 
-Recent preprints push the value slightly lower and are not yet all refereed. Separately, an AI-generated manuscript released in October 2026 claims $\omega\le 9/4$ by a non-laser route; it is unrefereed and has not been assessed by experts.
+Recent preprints push the laser-method value slightly lower and are not yet all refereed. Separately, an AI-generated manuscript released by OpenAI in October 2026 claimed $\omega\le 9/4$ over $\mathbb C$ by a non-laser route, and independent unrefereed preprints in October–November 2026 (including Pass, Amanov–van den Berg–Zuiddam, Shpilka and Doğan–Lysikov–Sakabe–Walter) gave arbitrary-field and constructive derivations of this upper bound. On 24 November 2026 OpenAI released a new AI-generated manuscript and unreviewed Lean code claiming the matching lower bound $\omega=9/4$ over every field (at least $\lceil n^{9/4}/2 \rceil$ nonscalar multiplication or division gates for formal circuits), which would refute $\omega=2$. None of these autumn 2026 preprints is peer-reviewed, and the lower bound has no independent expert assessment yet.
 
-Related: lower bounds. Apart from the trivial $n^2$, the best proven lower bound is about $n^2\log n$ (Raz), and only in a restricted model (circuits whose constants are bounded). That is far below the $n^{2.37}$ upper bounds.
+Related: lower bounds. Apart from the trivial $n^2$, the best accepted proven lower bound is about $n^2\log n$ (Raz), and only in a restricted model (circuits whose constants are bounded). That is far below the $n^{2.37}$ upper bounds.
