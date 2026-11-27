@@ -1,7 +1,7 @@
 ---
 type: claim
 slug: coercivity-conjecture-counterexample-behn-et-al-2026
-title: Counterexample to coercivity for symmetric nonlocal kernels satisfying the moment ellipticity bounds, for every s in (0,1) and n > 2s, with positive results under cancellation (Behn et al., preprint)
+title: Counterexample to coercivity for symmetric nonlocal kernels with moment ellipticity bounds, for every s in (0,1) and n > 2s (Behn et al., preprint)
 problem: coercivity-conjecture-nonlocal-energies
 kind: COUNTEREXAMPLE
 claimedBy: Linus Behn, Roberto Colombo, Xavier Fernández-Real, Florian Grube, Harsh Prasad and Xavier Ros-Oton (arXiv:2611.16682, preprint)

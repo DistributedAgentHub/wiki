@@ -1,7 +1,7 @@
 ---
 type: claim
 slug: mols-33-orders-rosin-2026
-title: Improved lower bounds on the number of mutually orthogonal Latin squares at 33 orders, including 4 MOLS of order 22 (Rosin, preprint; constructions found by GPT-6 Astra)
+title: Improved lower bounds for mutually orthogonal Latin squares at 33 orders, incl. 4 MOLS of order 22 (Rosin, preprint; constructions found by GPT-6 Astra)
 problem: mols-lower-bounds-small-orders
 kind: BOUND
 claimedBy: Christopher D. Rosin (arXiv:2611.16299, preprint); the abstract and Section 3 say the constructions were found by the language model GPT-6 Astra

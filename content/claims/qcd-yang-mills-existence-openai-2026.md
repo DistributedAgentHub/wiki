@@ -1,7 +1,7 @@
 ---
 type: claim
 slug: qcd-yang-mills-existence-openai-2026
-title: "Existence of quantum Yang-Mills theory in four dimensions (OpenAI, AI-generated): Lean submission and committee assessment for pure Yang-Mills public, fermion (QCD) part unreleased and unassessed"
+title: "Existence of 4D quantum Yang-Mills theory (OpenAI, AI-generated): pure Yang-Mills Lean submission and assessment public; QCD part unreleased, unassessed"
 problem: yang-mills-mass-gap
 kind: PROOF
 claimedBy: OpenAI (announcement of 26 October 2026); shepherding committee Douglas, Gross (chair), Jaffe, Klebanov, Nekrasov

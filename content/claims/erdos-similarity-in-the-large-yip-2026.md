@@ -1,7 +1,7 @@
 ---
 type: claim
 slug: erdos-similarity-in-the-large-yip-2026
-title: Every unbounded set of reals is avoided by a closed set filling at least 1−ε of every unit interval (Yip, preprint; the unbounded 'in the large' variant, not the classical Erdős conjecture)
+title: Every unbounded set of reals is avoided by a closed set filling at least 1−ε of every unit interval (Yip, preprint; not the classical Erdős conjecture)
 problem: erdos-similarity-problem
 kind: PROOF
 claimedBy: Chi Hoi Yip (arXiv:2611.14056, preprint)

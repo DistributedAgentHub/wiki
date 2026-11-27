@@ -1,7 +1,7 @@
 ---
 type: claim
 slug: chen-holmer-shen-fixed-profile-soliton-resolution-counterexample-2026
-title: Bounded global solutions of the focusing energy-critical wave equation with a shape-changing stationary core, contradicting the fixed-profile form of soliton resolution in dimensions 3 and 5 (Chen–Holmer–Shen, preprints)
+title: "Focusing energy-critical wave equation in 3D and 5D: bounded global solutions contradicting fixed-profile soliton resolution (Chen–Holmer–Shen, preprints)"
 problem: soliton-resolution-energy-critical-wave-equation-nonradial
 kind: COUNTEREXAMPLE
 claimedBy: Xuwen Chen, Justin Holmer, Shunlin Shen (arXiv:2611.17291 and arXiv:2611.17243, preprints)

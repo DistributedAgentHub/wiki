@@ -1,7 +1,7 @@
 ---
 type: claim
 slug: lattice-chiral-measure-craig-2026
-title: A gauge-invariant fermion measure exists for overlap fermions on a finite 4D lattice for SU(5) 10+5bar and the Standard Model gauge group (Craig; preprint, AI-led proof)
+title: A gauge-invariant overlap-fermion measure exists on a finite 4D lattice for SU(5) 10+5bar and the Standard Model (Craig; preprint, AI-led proof)
 problem: standard-model-nonperturbative-lattice-definition
 kind: PROOF
 claimedBy: Nathaniel Craig (KITP and UCSB; visiting scientist at OpenAI) with OpenAI's GPT-6 Astra, arXiv:2610.09093v1 (preprint)
